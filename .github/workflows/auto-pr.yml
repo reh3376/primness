@@ -4,9 +4,9 @@
 # shell is authored by that shell's token, and GitHub blocks self-approval.
 # Do not open PRs by hand; this workflow is the only path.
 #
-# The job refuses to open or refresh a draft unless primness_roadmap.md has a
-# new Current State snapshot and current_state_history.md still holds the
-# previous one. See scripts/check-current-state.sh.
+# The job refuses to open or refresh a draft unless the head commit satisfies
+# the current-state contract it names. That contract is a JSON Schema under
+# schemas/. See scripts/check-current-state.sh.
 #
 # Requires: Settings, Actions, General, "Allow GitHub Actions to create
 # and approve pull requests" enabled on the repository.

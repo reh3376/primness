@@ -2,8 +2,9 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 16:06 EST
-- **Version**: 1.8
+- **Last Modified**: 2026-11-03 16:24 EST
+- **Version**: 1.9
+- **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
 - **Repository**: https://github.com/reh3376/primness (public; development on `primness_dev01` only; PRs required to `main`)
@@ -59,11 +60,11 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 16:06 EST:
+As of 2026-11-03 16:24 EST:
 
-I am developing on `primness_dev01`. Pull request 15 is merged, and this branch matches that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 15 is merged. Draft pull request 16 is open. D1 is still my starting sub-claim under Obstacle D.
 
-Auto-PR now refuses to open or refresh a draft unless this Current State section has changed since `main`. The new snapshot needs its own `As of` stamp, the roadmap metadata `Last Modified` changes with it, and `context_convo_notes/current_state_history.md` keeps both the new `###` heading and the previous one. `README.md` is updated in the same pull request. The check is `scripts/check-current-state.sh`.
+Auto-PR still refuses to open or refresh a draft when this section is unchanged since `main`. The check reads the contract named by the `Schema` line in this document's metadata. That version is `current-state/1`, and its requirements are the const values in `schemas/current-state/1.json`. Enums in that file are the closed options. A later version will be a new file under `schemas/current-state/`, and this file will stay. `context_convo_notes/current_state_history.md` keeps the new `###` heading and the previous one. `README.md` is updated in the same pull request.
 
 I have written the first falsifiable prediction in `docs/d1_falsifiable_prediction.md`. I have not measured it. The ten 40–80 digit semiprimes are proved in `data/d1_test_instances.md`. The smoothness harness and the local bench still record toy runs, and those runs do not decide the claim.
 

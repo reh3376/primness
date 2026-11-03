@@ -32,7 +32,7 @@ External tools (CADO-NFS, msieve, YAFU) are measurement instruments only. Their 
 2. Changes accumulate until a coherent segmentation point; the auto-PR workflow opens or updates the draft PR.
 3. PR descriptions must be detailed and reference relevant living docs.
 4. Owner reviews, approves, and merges. Do not self-approve.
-5. Every pull request updates `## Current State` in `primness_roadmap.md` and adds that snapshot to `context_convo_notes/current_state_history.md`, leaving the previous `###` heading in place. Auto-PR will not open or refresh the draft until `scripts/check-current-state.sh` passes. README.md is updated in the same pull request.
+5. Every pull request updates `## Current State` in `primness_roadmap.md` and adds that snapshot to `context_convo_notes/current_state_history.md`, leaving the previous `###` heading in place. Auto-PR will not open or refresh the draft until `scripts/check-current-state.sh` passes. That check applies the JSON Schema named by the roadmap metadata `Schema` line (currently `current-state/1`). README.md is updated in the same pull request.
 6. Progress = removing or substantially weakening an obstacle, or demonstrating a forced pivot to specialized hardware (Obstacle H).
 7. Preserve first-person voice when editing the roadmap.
 8. Prefer small-to-medium instances first so results can be compared against existing tools.
@@ -43,7 +43,7 @@ External tools (CADO-NFS, msieve, YAFU) are measurement instruments only. Their 
 - `docs/` — prediction, hardware, this onboarding doc.
 - `context_convo_notes/` — all historical notes and INDEX.
 - `.github/workflows/` — auto-pr.yml and ci.yml.
-- `scripts/check-current-state.sh` — refuses an Auto-PR draft unless the roadmap Current State snapshot moved and the previous one is still in history.
+- `scripts/check-current-state.sh` — refuses an Auto-PR draft unless the head commit satisfies the current-state contract it names. Version `current-state/1` is `schemas/current-state/1.json`.
 
 ## Immediate next work under D1
 1. Parse external polynomials and run the independent B-smooth density count and Dickman comparison inside the harness.

@@ -2,12 +2,17 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 16:06 EST
-- **Version**: 1.3
+- **Last Modified**: 2026-11-03 16:24 EST
+- **Version**: 1.4
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 16:24 EST
+- The current-state gate reads `schemas/current-state/1.json`, named by the roadmap metadata `Schema` line (`current-state/1`).
+- Paths, the section heading, the stamp shape, and which metadata labels must change are const values in that version. Enums list the closed options.
+- Pull request 15 is merged. Draft pull request 16 remains open. The D1 prediction is still unmeasured.
 
 ### 2026-11-03 16:06 EST
 - Pull request 15 is merged.
