@@ -2,12 +2,23 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 16:24 EST
-- **Version**: 1.4
+- **Last Modified**: 2026-11-03 16:40 EST
+- **Version**: 1.5
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 16:40 EST
+- The harness parses CADO and msieve polynomial files into `instrument-polynomial/1`. `format` and `source` are closed lists. Instrument scores are not fields. A parsed file stays `source` `unspecified`.
+- CADO-NFS stays outside the tree because it is LGPL-2.1. msieve is public domain. The stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. A checkout outside this tree builds after that file includes `<sys/time.h>`. The binary is not in this repository. Polynomial selection has not been run. YAFU is not copied in; its repository does not state a license in the README or a root LICENSE file.
+- The D1 prediction is still unmeasured. The ten proved semiprimes are unchanged. The next step is one polynomial per instance from CADO-NFS and one from msieve, then the smoothness count and the Dickman comparison.
+
+### 2026-11-03 16:36 EST
+- Pull requests 16 and 17 are merged.
+- The harness parses CADO and msieve polynomial files into `instrument-polynomial/1`. `format` and `source` are closed lists. Instrument scores are not fields.
+- CADO-NFS stays outside the tree because it is LGPL-2.1. msieve is public domain and is being built outside the tree. YAFU is not copied in; its repository does not state a license in the README or a root LICENSE file.
+- The D1 prediction is still unmeasured.
 
 ### 2026-11-03 16:24 EST
 - The current-state gate reads `schemas/current-state/1.json`, named by the roadmap metadata `Schema` line (`current-state/1`).

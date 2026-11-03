@@ -1,0 +1,10 @@
+# Synthetic msieve factor-base polynomial. Not selected for a Primness instance.
+N 1000003
+SKEW 1.5
+R0 -2
+R1 1
+A0 -1
+A1 0
+A2 0
+A3 0
+A4 1

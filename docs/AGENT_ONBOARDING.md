@@ -46,7 +46,7 @@ External tools (CADO-NFS, msieve, YAFU) are measurement instruments only. Their 
 - `scripts/check-current-state.sh` — refuses an Auto-PR draft unless the head commit satisfies the current-state contract it names. Version `current-state/1` is `schemas/current-state/1.json`.
 
 ## Immediate next work under D1
-1. Parse external polynomials and run the independent B-smooth density count and Dickman comparison inside the harness.
+1. Obtain one polynomial per proved instance from CADO-NFS and one from msieve. The harness already parses those files (`instrument-polynomial/1`). Then run the independent B-smooth density count and Dickman comparison inside the harness.
 2. Apply the rejection criterion; record the result in a timestamped note and update Current State.
 
 ## Integrations already in place

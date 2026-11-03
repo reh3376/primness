@@ -84,6 +84,29 @@ fn main() {
             std::process::exit(1);
         }
     };
+    match primness::poly::parse_instrument(&text) {
+        Ok(poly) => {
+            println!("Primness D1 measurement harness");
+            println!("Loaded polynomial file: {poly_path}");
+            println!(
+                "{} format={} degree={} n_digits={} algebraic_coeffs={} rational_coeffs={}",
+                primness::poly::V1,
+                poly.format.as_str(),
+                poly.degree(),
+                poly.n_digits(),
+                poly.algebraic.len(),
+                poly.rational.len()
+            );
+            println!("source: unspecified (the file does not name the instrument)");
+            println!("scale: not measured (parsed only; not the 40–80 digit protocol)");
+            return;
+        }
+        Err(primness::poly::Error::NotInstrument) => {}
+        Err(err) => {
+            eprintln!("Failed to parse {poly_path}: {err}");
+            std::process::exit(1);
+        }
+    }
     let coeffs = parse_coeffs(&text);
     let (a_max, b_max, bounds): (i64, i64, Vec<u64>) = match region {
         Some(n) => {

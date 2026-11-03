@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 16:24 EST
-- **Version**: 1.9
+- **Last Modified**: 2026-11-03 16:40 EST
+- **Version**: 1.10
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,15 +60,15 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 16:24 EST:
+As of 2026-11-03 16:40 EST:
 
-I am developing on `primness_dev01`. Pull request 15 is merged. Draft pull request 16 is open. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull requests 16 and 17 are merged. D1 is still my starting sub-claim under Obstacle D.
 
-Auto-PR still refuses to open or refresh a draft when this section is unchanged since `main`. The check reads the contract named by the `Schema` line in this document's metadata. That version is `current-state/1`, and its requirements are the const values in `schemas/current-state/1.json`. Enums in that file are the closed options. A later version will be a new file under `schemas/current-state/`, and this file will stay. `context_convo_notes/current_state_history.md` keeps the new `###` heading and the previous one. `README.md` is updated in the same pull request.
+The harness reads an external polynomial file into `instrument-polynomial/1`. `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. The file does not name the tool, so a parsed file stays `unspecified`. Degree in this version is 1 through 6. I have not measured smoothness on a polynomial from either tool, and I have not computed the Dickman comparison.
 
-I have written the first falsifiable prediction in `docs/d1_falsifiable_prediction.md`. I have not measured it. The ten 40–80 digit semiprimes are proved in `data/d1_test_instances.md`. The smoothness harness and the local bench still record toy runs, and those runs do not decide the claim.
+CADO-NFS is LGPL-2.1, so its source is not in this repository. msieve is public domain. I built a checkout outside this tree. The stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. That checkout builds after the file includes `<sys/time.h>`. The binary is not in this repository, and I have not run polynomial selection. YAFU has no `LICENSE` file at the repository root, and its README does not state one, so I have not copied that tree in.
 
-The next measurement step is unchanged: obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent smoothness count and the Dickman comparison in the harness. I have not started that.
+The ten proved semiprimes in `data/d1_test_instances.md` are unchanged. The next measurement step is one polynomial per instance from CADO-NFS and one from msieve, then the smoothness count and the Dickman comparison in the harness.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
