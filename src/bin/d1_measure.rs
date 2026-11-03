@@ -6,19 +6,26 @@ use std::env;
 use std::fs;
 
 fn evaluate_poly_sketch(a: i64, b: i64, coeffs: &[i64]) -> i64 {
-    // Homogeneous evaluation sketch: sum c_i * a^{deg-i} * b^i
     let deg = coeffs.len() as i64 - 1;
     let mut val = 0i64;
     for (i, &c) in coeffs.iter().enumerate() {
         let i = i as i64;
         val += c * a.pow((deg - i) as u32) * b.pow(i as u32);
     }
-    val
+    val.abs()
+}
+
+fn is_b_smooth(mut n: u64, b: u64) -> bool {
+    if n == 0 { return false; }
+    for p in 2..=b {
+        while n % p == 0 { n /= p; }
+        if n == 1 { return true; }
+    }
+    n == 1
 }
 
 fn main() {
     println!("Primness D1 measurement harness");
-    println!("Protocol: 40–80 digit instances, independent B-smooth density vs Dickman model");
 
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
@@ -28,13 +35,21 @@ fn main() {
 
     let poly_path = &args[1];
     match fs::read_to_string(poly_path) {
-        Ok(_contents) => {
+        Ok(_) => {
             println!("Loaded polynomial file: {}", poly_path);
-            // Demonstration evaluation on tiny coefficients
-            let demo_coeffs = vec![1, -1, 1]; // x^2 - x + 1
-            let val = evaluate_poly_sketch(3, 2, &demo_coeffs);
-            println!("Demo evaluation at (a,b)=(3,2): {}", val);
-            println!("(Next: parse real poly, evaluate over sieve region, count B-smooth)");
+            let demo_coeffs = vec![1i64, -1, 1];
+            let mut smooth = 0;
+            let trials = 20;
+            let b = 30u64;
+            for a in 1..=5 {
+                for b_val in 1..=4 {
+                    let val = evaluate_poly_sketch(a, b_val, &demo_coeffs) as u64;
+                    if is_b_smooth(val, b) { smooth += 1; }
+                }
+            }
+            let density = smooth as f64 / trials as f64;
+            println!("Demo observed B-smooth density (B={}): {:.3}", b, density);
+            println!("(Next: real polynomials, larger sieve region, Dickman comparison)");
         }
         Err(e) => eprintln!("Failed to read {}: {}", poly_path, e),
     }
