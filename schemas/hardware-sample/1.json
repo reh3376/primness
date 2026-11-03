@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "hardware-sample/1",
+  "title": "Hardware telemetry sample",
+  "description": "One line of the hardware trace recorded beside a run. A trace is a start record carrying the machine metadata, one sample record per interval, and a finish record carrying min, mean and max of the sampled metrics. Sources on this Mac are macmon (IOReport without root: CPU and GPU activity, frequency, power, temperature, fans, unified memory) and ioreg (the GPU accelerator's utilization and the unified memory it holds). Ratios run 0 to 1; pct fields are 0 to 100 as the driver reports them. Version 1 records what those sources expose; a different source or field set is a new version.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "ts_ms", "run_id", "kind", "interval_ms"],
+  "properties": {
+    "schema_version": { "const": "hardware-sample/1" },
+    "ts_ms": { "type": "integer", "minimum": 0 },
+    "run_id": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "kind": { "enum": ["start", "sample", "finish"] },
+    "interval_ms": { "type": "integer", "minimum": 100 },
+    "machine": { "$ref": "#/$defs/machine" },
+    "cpu": { "$ref": "#/$defs/cpu" },
+    "gpu": { "$ref": "#/$defs/gpu" },
+    "memory": { "$ref": "#/$defs/memory" },
+    "power": { "$ref": "#/$defs/power" },
+    "thermal": { "$ref": "#/$defs/thermal" },
+    "summary": { "$ref": "#/$defs/summary" }
+  },
+  "allOf": [
+    { "if": { "properties": { "kind": { "const": "start" } } }, "then": { "required": ["machine"] } },
+    { "if": { "properties": { "kind": { "const": "sample" } } }, "then": { "required": ["cpu", "gpu", "memory", "power", "thermal"] } },
+    { "if": { "properties": { "kind": { "const": "finish" } } }, "then": { "required": ["summary"] } }
+  ],
+  "$defs": {
+    "ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+    "machine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "chip", "os_version", "os_build", "cpu_cores", "cpu_tiers", "gpu_cores", "memory_total_bytes", "sampler", "sampler_version", "macmon_version", "sources"],
+      "properties": {
+        "model": { "type": "string", "minLength": 1 },
+        "chip": { "type": "string", "minLength": 1 },
+        "os_version": { "type": "string", "minLength": 1 },
+        "os_build": { "type": "string", "minLength": 1 },
+        "cpu_cores": { "type": "integer", "minimum": 1 },
+        "cpu_tiers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "cores", "max_freq_mhz"],
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "cores": { "type": "integer", "minimum": 1 },
+              "max_freq_mhz": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "gpu_cores": { "type": "integer", "minimum": 0 },
+        "memory_total_bytes": { "type": "integer", "minimum": 1 },
+        "sampler": { "const": "hw-sample" },
+        "sampler_version": { "type": "string", "minLength": 1 },
+        "macmon_version": { "type": "string", "minLength": 1 },
+        "sources": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["macmon", "ioreg", "sysctl"] } }
+      }
+    },
+    "cpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["active_ratio", "scaled_ratio", "power_w", "tiers"],
+      "properties": {
+        "active_ratio": { "$ref": "#/$defs/ratio" },
+        "scaled_ratio": { "$ref": "#/$defs/ratio" },
+        "power_w": { "type": "number", "minimum": 0 },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "active_ratio", "freq_mhz"],
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "active_ratio": { "$ref": "#/$defs/ratio" },
+              "freq_mhz": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "gpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["active_ratio", "scaled_ratio", "freq_mhz", "power_w", "device_utilization_pct", "renderer_utilization_pct", "tiler_utilization_pct", "memory_in_use_bytes", "memory_alloc_bytes"],
+      "properties": {
+        "active_ratio": { "$ref": "#/$defs/ratio" },
+        "scaled_ratio": { "$ref": "#/$defs/ratio" },
+        "freq_mhz": { "type": "integer", "minimum": 0 },
+        "power_w": { "type": "number", "minimum": 0 },
+        "device_utilization_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "renderer_utilization_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "tiler_utilization_pct": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "memory_in_use_bytes": { "type": "integer", "minimum": 0 },
+        "memory_alloc_bytes": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_bytes", "used_bytes", "swap_used_bytes", "gpu_in_use_bytes", "cpu_used_bytes", "used_ratio", "gpu_share_of_total", "gpu_share_of_used"],
+      "properties": {
+        "total_bytes": { "type": "integer", "minimum": 1 },
+        "used_bytes": { "type": "integer", "minimum": 0 },
+        "swap_used_bytes": { "type": "integer", "minimum": 0 },
+        "gpu_in_use_bytes": { "type": "integer", "minimum": 0 },
+        "cpu_used_bytes": { "type": "integer", "minimum": 0 },
+        "used_ratio": { "$ref": "#/$defs/ratio" },
+        "gpu_share_of_total": { "$ref": "#/$defs/ratio" },
+        "gpu_share_of_used": { "$ref": "#/$defs/ratio" }
+      }
+    },
+    "power": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_w", "sys_w", "cpu_w", "gpu_w", "ane_w", "ram_w"],
+      "properties": {
+        "all_w": { "type": "number", "minimum": 0 },
+        "sys_w": { "type": "number", "minimum": 0 },
+        "cpu_w": { "type": "number", "minimum": 0 },
+        "gpu_w": { "type": "number", "minimum": 0 },
+        "ane_w": { "type": "number", "minimum": 0 },
+        "ram_w": { "type": "number", "minimum": 0 }
+      }
+    },
+    "thermal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu_temp_c", "gpu_temp_c", "fans"],
+      "properties": {
+        "cpu_temp_c": { "type": "number" },
+        "gpu_temp_c": { "type": "number" },
+        "fans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "rpm", "max_rpm"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "rpm": { "type": "integer", "minimum": 0 },
+              "max_rpm": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "stat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "mean", "max"],
+      "properties": {
+        "min": { "type": "number" },
+        "mean": { "type": "number" },
+        "max": { "type": "number" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["samples", "duration_ms", "cpu_active_ratio", "gpu_active_ratio", "gpu_device_utilization_pct", "memory_used_ratio", "gpu_share_of_total", "cpu_temp_c", "gpu_temp_c", "power_all_w"],
+      "properties": {
+        "samples": { "type": "integer", "minimum": 0 },
+        "duration_ms": { "type": "integer", "minimum": 0 },
+        "cpu_active_ratio": { "$ref": "#/$defs/stat" },
+        "gpu_active_ratio": { "$ref": "#/$defs/stat" },
+        "gpu_device_utilization_pct": { "$ref": "#/$defs/stat" },
+        "memory_used_ratio": { "$ref": "#/$defs/stat" },
+        "gpu_share_of_total": { "$ref": "#/$defs/stat" },
+        "cpu_temp_c": { "$ref": "#/$defs/stat" },
+        "gpu_temp_c": { "$ref": "#/$defs/stat" },
+        "power_all_w": { "$ref": "#/$defs/stat" }
+      }
+    }
+  }
+}

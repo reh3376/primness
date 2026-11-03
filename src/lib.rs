@@ -1,5 +1,9 @@
 pub mod db;
+pub mod dickman;
+pub mod eval;
+pub mod hardware;
 pub mod metrics;
 pub mod poly;
 pub mod primes;
 pub mod schema;
+pub mod sieve;

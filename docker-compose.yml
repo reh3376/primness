@@ -36,10 +36,12 @@ services:
       # published port reaches it. The mapping above keeps it on 127.0.0.1.
       PRIMNESS_DASHBOARD_HOST: 0.0.0.0
       PRIMNESS_METRICS_DIR: /var/primness/metrics
+      PRIMNESS_HARDWARE_DIR: /var/primness/hardware
       PRIMNESS_SCHEMAS_DIR: /schemas
       PRIMNESS_DATABASE_URL: postgres://${POSTGRES_USER:-primness}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-primness}
     volumes:
       - ./data/metrics:/var/primness/metrics
+      - ./data/hardware:/var/primness/hardware
     restart: unless-stopped
 
 volumes:

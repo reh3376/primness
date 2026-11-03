@@ -1,6 +1,8 @@
 use leptos::prelude::*;
+use primness::hardware::{self, Sample};
 use primness::metrics::{density, RunView, Snapshot};
 use primness::schema::V1;
+use std::path::Path;
 
 const CSS: &str = r#"
   :root {
@@ -31,6 +33,7 @@ const CSS: &str = r#"
     line-height: 1;
   }
   .state { font-variant-numeric: tabular-nums; color: var(--dim); }
+  h2 { margin: 30px 0 6px; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.01em; }
   .state.collecting { color: var(--gold); }
   .reading { margin: 22px 0 8px; font-size: 1.35rem; line-height: 1.3; max-width: 38rem; }
   .scale, .schema, .legend { margin: 0 0 12px; color: var(--dim); max-width: 40rem; }
@@ -65,16 +68,52 @@ const CSS: &str = r#"
   }
 "#;
 
-pub fn render(snapshot: Snapshot, selected: &str) -> String {
+pub fn render(snapshot: Snapshot, selected: &str, hardware_dir: &Path) -> String {
     let selected = selected.to_string();
-    let body =
-        Owner::new().with(|| view! { <Page snapshot=snapshot selected=selected/> }.to_html());
+    let run_id = snapshot
+        .runs
+        .iter()
+        .find(|run| run.run_id == selected)
+        .or_else(|| snapshot.runs.first())
+        .map(|run| run.run_id.clone());
+    let hardware = HardwareModel::load(hardware_dir, run_id.as_deref());
+    let body = Owner::new().with(|| {
+        view! { <Page snapshot=snapshot selected=selected hardware=hardware/> }.to_html()
+    });
     format!("<!DOCTYPE html>\n{body}")
 }
 
 #[component]
-fn Page(snapshot: Snapshot, selected: String) -> impl IntoView {
+fn Page(snapshot: Snapshot, selected: String, hardware: HardwareModel) -> impl IntoView {
     let model = PageModel::from_snapshot(&snapshot, &selected);
+    let hw_machine = hardware.machine;
+    let hw_util_legend = hardware.util_legend;
+    let hw_thermal_legend = hardware.thermal_legend;
+    let hw_util_lines = hardware
+        .util_series
+        .into_iter()
+        .map(|(points, color)| {
+            view! { <polyline points=points fill="none" stroke=color stroke-width="2"></polyline> }
+        })
+        .collect_view();
+    let hw_thermal_lines = hardware
+        .thermal_series
+        .into_iter()
+        .map(|(points, color)| {
+            view! { <polyline points=points fill="none" stroke=color stroke-width="2"></polyline> }
+        })
+        .collect_view();
+    let hw_rows = hardware
+        .rows
+        .into_iter()
+        .map(|cols| {
+            let cells = cols
+                .into_iter()
+                .map(|text| view! { <td>{text}</td> })
+                .collect_view();
+            view! { <tr>{cells}</tr> }
+        })
+        .collect_view();
     let state_class = model.state_class.to_string();
     let state = model.state;
     let reading = model.reading;
@@ -159,6 +198,35 @@ fn Page(snapshot: Snapshot, selected: String) -> impl IntoView {
                             </tr>
                         </thead>
                         <tbody>{rows}</tbody>
+                    </table>
+                    <h2>"Hardware"</h2>
+                    <p class="scale">{hw_machine}</p>
+                    <svg viewBox="0 0 880 220" role="img" aria-label="Utilization and memory over the run">
+                        <line x1="8" y1="12" x2="872" y2="12" stroke="#3a4a5c" stroke-width="1"></line>
+                        <line x1="8" y1="62.5" x2="872" y2="62.5" stroke="#3a4a5c" stroke-width="1"></line>
+                        <line x1="8" y1="113" x2="872" y2="113" stroke="#3a4a5c" stroke-width="1"></line>
+                        <line x1="8" y1="163.5" x2="872" y2="163.5" stroke="#3a4a5c" stroke-width="1"></line>
+                        <line x1="8" y1="202" x2="872" y2="202" stroke="#3a4a5c" stroke-width="1"></line>
+                        {hw_util_lines}
+                    </svg>
+                    <p class="legend">{hw_util_legend}</p>
+                    <svg viewBox="0 0 880 220" role="img" aria-label="Temperature and power over the run">
+                        <line x1="8" y1="12" x2="872" y2="12" stroke="#3a4a5c" stroke-width="1"></line>
+                        <line x1="8" y1="113" x2="872" y2="113" stroke="#3a4a5c" stroke-width="1"></line>
+                        <line x1="8" y1="202" x2="872" y2="202" stroke="#3a4a5c" stroke-width="1"></line>
+                        {hw_thermal_lines}
+                    </svg>
+                    <p class="legend">{hw_thermal_legend}</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Min</th>
+                                <th>Mean</th>
+                                <th>Max</th>
+                            </tr>
+                        </thead>
+                        <tbody>{hw_rows}</tbody>
                     </table>
                 </main>
             </body>
@@ -418,7 +486,7 @@ mod tests {
 
     #[test]
     fn empty_page_names_the_schema() {
-        let html = render(Snapshot { runs: vec![] }, "");
+        let html = render(Snapshot { runs: vec![] }, "", Path::new("/nonexistent"));
         assert!(html.contains("Primness bench"));
         assert!(html.contains(V1));
         assert!(html.contains("No measurements yet."));
@@ -426,12 +494,186 @@ mod tests {
 
     #[test]
     fn run_page_shows_rate_density_and_schema() {
-        let html = render(Snapshot { runs: vec![run()] }, "run-a");
+        let html = render(Snapshot { runs: vec![run()] }, "run-a", Path::new("/nonexistent"));
         assert!(html.contains("800,000 values a second"));
         assert!(html.contains("#f2c14e"));
         assert!(html.contains("#6ea8c9"));
         assert!(html.contains(V1));
         assert!(html.contains("toy"));
         assert!(html.contains("362,000/s"));
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Hardware trace of the selected run
+
+const GOLD: &str = "#f2c14e";
+const BLUE: &str = "#6ea8c9";
+const GREEN: &str = "#8fd3a4";
+const PAPER: &str = "#d6deea";
+const LILAC: &str = "#c9a4f2";
+
+struct HardwareModel {
+    machine: String,
+    util_legend: String,
+    thermal_legend: String,
+    util_series: Vec<(String, &'static str)>,
+    thermal_series: Vec<(String, &'static str)>,
+    rows: Vec<[String; 4]>,
+}
+
+impl HardwareModel {
+    fn empty(machine: String) -> Self {
+        Self {
+            machine,
+            util_legend: String::new(),
+            thermal_legend: String::new(),
+            util_series: Vec::new(),
+            thermal_series: Vec::new(),
+            rows: Vec::new(),
+        }
+    }
+
+    fn load(dir: &Path, run_id: Option<&str>) -> Self {
+        let Some(run_id) = run_id else {
+            return Self::empty("No run selected.".into());
+        };
+        let records = hardware::load_run(dir, run_id);
+        Self::from_records(run_id, &records)
+    }
+
+    fn from_records(run_id: &str, records: &[Sample]) -> Self {
+        let samples: Vec<&Sample> = records.iter().filter(|s| s.kind == "sample").collect();
+        if samples.is_empty() {
+            return Self::empty(format!(
+                "No hardware trace for {run_id}. Instrument runs record one as {}; see docs/hardware_telemetry.md.",
+                hardware::V1
+            ));
+        }
+        let machine = records.iter().find_map(|s| s.machine.as_ref());
+        let interval = samples[0].interval_ms;
+        let machine_line = match machine {
+            Some(m) => format!(
+                "{} ({}), {} CPU cores, {} GPU cores, {} GB unified memory, macOS {}. {} samples every {} ms, {} via {}.",
+                m.chip,
+                m.model,
+                m.cpu_cores,
+                m.gpu_cores,
+                m.memory_total_bytes / (1 << 30),
+                m.os_version,
+                samples.len(),
+                interval,
+                hardware::V1,
+                m.sources.join(", ")
+            ),
+            None => format!("{} samples every {} ms, {}.", samples.len(), interval, hardware::V1),
+        };
+        let pick = |f: &dyn Fn(&Sample) -> Option<f64>| -> Vec<f64> {
+            samples.iter().map(|s| f(s).unwrap_or(0.0)).collect()
+        };
+        let cpu = pick(&|s| s.cpu.as_ref().map(|c| c.active_ratio));
+        let gpu = pick(&|s| s.gpu.as_ref().map(|g| g.active_ratio));
+        let gpu_dev = pick(&|s| s.gpu.as_ref().map(|g| g.device_utilization_pct as f64 / 100.0));
+        let mem = pick(&|s| s.memory.as_ref().map(|m| m.used_ratio));
+        let gpu_mem = pick(&|s| s.memory.as_ref().map(|m| m.gpu_share_of_total));
+        let cpu_t = pick(&|s| s.thermal.as_ref().map(|t| t.cpu_temp_c));
+        let gpu_t = pick(&|s| s.thermal.as_ref().map(|t| t.gpu_temp_c));
+        let power = pick(&|s| s.power.as_ref().map(|p| p.all_w));
+        let max_power = power.iter().cloned().fold(1.0_f64, f64::max);
+        let util_series = vec![
+            (polyline(&cpu, 1.0), GOLD),
+            (polyline(&gpu, 1.0), BLUE),
+            (polyline(&gpu_dev, 1.0), GREEN),
+            (polyline(&mem, 1.0), PAPER),
+            (polyline(&gpu_mem, 1.0), LILAC),
+        ];
+        let thermal_series = vec![
+            (polyline(&cpu_t, 110.0), GOLD),
+            (polyline(&gpu_t, 110.0), BLUE),
+            (polyline(&power, max_power), PAPER),
+        ];
+        let stat = |name: &str, values: &[f64], unit: &str| -> [String; 4] {
+            let min = values.iter().cloned().fold(f64::INFINITY, f64::min);
+            let max = values.iter().cloned().fold(f64::NEG_INFINITY, f64::max);
+            let mean = values.iter().sum::<f64>() / values.len() as f64;
+            [
+                name.to_string(),
+                format!("{min:.2}{unit}"),
+                format!("{mean:.2}{unit}"),
+                format!("{max:.2}{unit}"),
+            ]
+        };
+        let pct = |v: &[f64]| v.iter().map(|x| x * 100.0).collect::<Vec<_>>();
+        let rows = vec![
+            stat("CPU active", &pct(&cpu), "%"),
+            stat("GPU active", &pct(&gpu), "%"),
+            stat("GPU device utilization", &pct(&gpu_dev), "%"),
+            stat("Memory used", &pct(&mem), "%"),
+            stat("GPU share of unified memory", &pct(&gpu_mem), "%"),
+            stat("CPU temperature", &cpu_t, " C"),
+            stat("GPU temperature", &gpu_t, " C"),
+            stat("Total power", &power, " W"),
+        ];
+        Self {
+            machine: machine_line,
+            util_legend: "Gold is CPU active ratio, blue is GPU active ratio, green is GPU device utilization, grey is memory used, lilac is the GPU share of unified memory. The axis runs 0 to 100%.".into(),
+            thermal_legend: format!(
+                "Gold is CPU temperature and blue is GPU temperature on a 0 to 110 C axis. Grey is total power scaled to its peak of {max_power:.1} W."
+            ),
+            util_series,
+            thermal_series,
+            rows,
+        }
+    }
+}
+
+/// SVG points for `values` scaled by `full` onto the 880 by 220 chart.
+fn polyline(values: &[f64], full: f64) -> String {
+    if values.is_empty() {
+        return String::new();
+    }
+    let plot_w = 880.0 - 16.0;
+    let plot_h = 220.0 - 12.0 - 18.0;
+    let full = if full <= 0.0 { 1.0 } else { full };
+    let mut out = String::new();
+    for (i, value) in values.iter().enumerate() {
+        let x = if values.len() == 1 {
+            8.0 + plot_w / 2.0
+        } else {
+            8.0 + plot_w * i as f64 / (values.len() - 1) as f64
+        };
+        let y = 12.0 + plot_h * (1.0 - (value / full).clamp(0.0, 1.0));
+        if i > 0 {
+            out.push(' ');
+        }
+        out.push_str(&format!("{x:.1},{y:.1}"));
+    }
+    out
+}
+
+#[cfg(test)]
+mod hardware_tests {
+    use super::*;
+
+    #[test]
+    fn hardware_section_reads_a_trace_and_tolerates_none() {
+        let dir = std::env::temp_dir().join(format!("primness-bench-hw-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        std::fs::create_dir_all(&dir).unwrap();
+        let line = r#"{"schema_version":"hardware-sample/1","ts_ms":1,"run_id":"run-a","kind":"sample","interval_ms":1000,"cpu":{"active_ratio":0.5,"scaled_ratio":0.4,"power_w":10.0,"tiers":[]},"gpu":{"active_ratio":0.2,"scaled_ratio":0.1,"freq_mhz":338,"power_w":1.0,"device_utilization_pct":30,"renderer_utilization_pct":0,"tiler_utilization_pct":0,"memory_in_use_bytes":1000,"memory_alloc_bytes":2000},"memory":{"total_bytes":4000,"used_bytes":2000,"swap_used_bytes":0,"gpu_in_use_bytes":1000,"cpu_used_bytes":1000,"used_ratio":0.5,"gpu_share_of_total":0.25,"gpu_share_of_used":0.5},"power":{"all_w":12.0,"sys_w":20.0,"cpu_w":10.0,"gpu_w":1.0,"ane_w":0.0,"ram_w":1.0},"thermal":{"cpu_temp_c":55.0,"gpu_temp_c":50.0,"fans":[]}}"#;
+        std::fs::write(dir.join("run-a.jsonl"), format!("{line}
+{line}
+")).unwrap();
+        let model = HardwareModel::load(&dir, Some("run-a"));
+        assert_eq!(model.util_series.len(), 5);
+        assert_eq!(model.rows.len(), 8);
+        assert_eq!(model.rows[0][2], "50.00%");
+        assert!(model.machine.contains("2 samples"));
+        let html = render(Snapshot { runs: vec![] }, "", &dir);
+        assert!(html.contains("Hardware"));
+        assert!(html.contains("No run selected."));
+        let none = HardwareModel::load(&dir, Some("missing"));
+        assert!(none.machine.contains("No hardware trace"));
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }

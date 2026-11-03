@@ -1,5 +1,7 @@
 /target/
 /data/metrics/*.jsonl
+/data/hardware/*.jsonl
+/data/dumps/
 .env
 .env.*
 !.env.example

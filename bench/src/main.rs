@@ -23,6 +23,10 @@ fn main() {
     if let Err(err) = std::fs::create_dir_all(&dir) {
         eprintln!("metrics dir {}: {err}", dir.display());
     }
+    let hardware_dir = primness::hardware::hardware_dir();
+    if let Err(err) = std::fs::create_dir_all(&hardware_dir) {
+        eprintln!("hardware dir {}: {err}", hardware_dir.display());
+    }
     register_schemas();
 
     let listener = TcpListener::bind((host.as_str(), port)).unwrap_or_else(|err| {
@@ -55,7 +59,7 @@ fn main() {
             ("GET", "/") | ("GET", "/index.html") => {
                 let selected = query_param(query, "run").unwrap_or_default();
                 let snap = metrics::load_snapshot(&dir);
-                let html = page::render(snap, &selected);
+                let html = page::render(snap, &selected, &hardware_dir);
                 write_response(
                     &mut stream,
                     "200 OK",

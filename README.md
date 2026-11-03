@@ -29,16 +29,18 @@ As of the latest update on the `primness_dev01` branch:
 
 - Obstacle D has been decomposed into five precise, testable sub-claims (D1–D5).
 - D1 (polynomial value smoothness relative to the Dickman–de Bruijn model) is the selected starting point.
-- The first falsifiable prediction is written in `docs/d1_falsifiable_prediction.md`. It has not been measured.
-- The ten 40–80 digit semiprimes, with prime proofs, are in `data/d1_test_instances.md`.
-- The harness and the local bench still record toy smoothness runs. Those runs do not decide the claim.
-- Auto-PR refuses to open or refresh a draft unless this branch satisfies the current-state contract named by `primness_roadmap.md`. That contract is `schemas/current-state/1.json`. The previous snapshot remains in `context_convo_notes/current_state_history.md`.
-- The harness parses CADO and msieve polynomial files (`instrument-polynomial/1`). Those tools are not vendored: CADO-NFS is LGPL-2.1, and YAFU does not state a license in its README or a root LICENSE file. A local msieve 1.54 checkout outside this tree builds after `common/util.c` includes `<sys/time.h>`. That binary enters NFS polynomial selection only above 264 bits. Every proved semiprime is at or below 264 bits.
-- Pull request 20 is merged. This change is the first on `primness_dev01` after that merge.
-- CI runs on every push with `--workspace`, so the `bench` crate is checked and tested. The `pull_request` trigger is gone: Auto-PR opens drafts as github-actions[bot], and GitHub recorded a jobless failed run for each of those openings on pull requests 15 through 20. The main ruleset requires the `Rust check and test` check on the head commit.
-- The bench binds `PRIMNESS_DASHBOARD_HOST`, default 127.0.0.1; the container sets 0.0.0.0 behind a loopback port mapping. The ten semiprime certificates were rechecked by an independent script.
-- `docs/AGENT_ONBOARDING.md` is the zero-context handoff. The roadmap has an `open_questions` section, and that list is empty. It has no Decision Log. `context_convo_notes/INDEX.md` omits the note files from 13:06 through 14:44.
-- Next concrete step: obtain one NFS polynomial per instance from CADO-NFS, invoked outside this tree, then run the independent smoothness count and Dickman comparison.
+- The first falsifiable prediction is written in `docs/d1_falsifiable_prediction.md`. It has not been decided.
+- The ten 40–80 digit semiprimes, with prime proofs, are in `data/d1_test_instances.md`. The certificates were rechecked by an independent script.
+- CADO-NFS is built outside this tree. Its polynomial selection ran on d1-01 (`scripts/cado-polyselect.sh`, `scripts/cado-best-poly.py`); the chosen degree-4 polynomial is `data/instruments/d1-01/cado.poly`.
+- The harness evaluates instrument polynomials in BigInt over a coprime rectangle, counts B-smooth values by trial division over sieved primes, and compares the observed density with Dickman ρ (`src/dickman.rs`, tested at ρ(1) = 1, ρ(2) = 1 − ln 2 and literature values). No Murphy α is applied yet.
+- First scaled-down run on d1-01: `data/results/d1-01.scaled-down.json` (5,472,915 values). The algebraic side is above the raw Dickman prediction at every bound and the rational side below it. That is not evidence for D1 until α is applied; the run is `scaled-down`, not the protocol.
+- Every measurement writes CSV tables beside its result and `scripts/d1_report.py` turns them into a written report with the observations and open questions (`data/results/d1-01.scaled-down.report.md`).
+- Every instrument run records a `hardware-sample/1` trace (`docs/hardware_telemetry.md`): CPU, GPU, unified memory and the GPU's share of it, temperature, fans, power; summarized in the result file and plotted on the bench.
+- CI runs on every push with `--workspace`. The `pull_request` trigger is gone because Auto-PR's bot-opened drafts produced jobless failed runs. The main ruleset is to require the `Rust check and test` check on the head commit; the owner applies that rule in the repository settings.
+- The harness parses CADO and msieve polynomial files (`instrument-polynomial/1`). Those tools are not vendored: CADO-NFS is LGPL-2.1, and YAFU does not state a license. A local msieve 1.54 build enters NFS polynomial selection only above 264 bits, so it cannot supply polynomials for these instances.
+- Auto-PR refuses to open or refresh a draft unless this branch satisfies the current-state contract `schemas/current-state/1.json`.
+- `docs/AGENT_ONBOARDING.md` is the zero-context handoff. The roadmap has one `open_questions` entry and no Decision Log. `context_convo_notes/INDEX.md` omits the note files from 13:06 through 14:44.
+- Next concrete step: Murphy α in the harness from a definition recorded in the repository, then d1-02 through d1-10, then a sieve to reach the protocol's bounds.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
 
