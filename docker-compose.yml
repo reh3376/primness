@@ -1,0 +1,16 @@
+# Local measurement bench. Published only on the host loopback.
+# Start with scripts/up-dashboard.sh, which refuses the port if it is already taken.
+services:
+  bench:
+    build: .
+    image: primness-bench
+    container_name: primness-bench
+    user: "${HOST_UID}:${HOST_GID}"
+    ports:
+      - "127.0.0.1:9477:9477"
+    environment:
+      PRIMNESS_DASHBOARD_PORT: "9477"
+      PRIMNESS_METRICS_DIR: /var/primness/metrics
+    volumes:
+      - ./data/metrics:/var/primness/metrics
+    restart: unless-stopped
