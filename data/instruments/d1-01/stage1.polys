@@ -1,0 +1,2812 @@
+# (692ecb7) /Users/reh3376/external/cado-nfs/build/Mac.lan/polyselect/polyselect -N 2496735491537104256118027770442801942257 -degree 4 -P 420 -admin 0 -admax 20000 -incr 60 -nq 1000 -keep 40 -sopteffort 1 -t 16
+# Compiled with gcc Apple LLVM 17.0.0 (clang-1700.6.4.2)
+# Compilation flags (C) -std=c99 -W -Wall -O2 
+# Compilation flags (C++) -std=c++20 -O2 
+# 1 nodes, 1 league on each
+# Info: initializing 65 P primes took 0ms
+# 16 teams per league, 16 team(s) in total
+# 1 threads per team, 16 threads in total
+# thread 10 completed ad=660 at time=0.00s ; ad: 0.00s
+# thread 1 completed ad=120 at time=0.00s ; ad: 0.00s
+# thread 0 completed ad=60 at time=0.00s ; ad: 0.00s
+# thread 2 completed ad=180 at time=0.00s ; ad: 0.00s
+# thread 3 completed ad=240 at time=0.00s ; ad: 0.00s
+# thread 9 completed ad=600 at time=0.00s ; ad: 0.00s
+# thread 7 completed ad=480 at time=0.00s ; ad: 0.00s
+# thread 6 completed ad=360 at time=0.00s ; ad: 0.00s
+# thread 12 completed ad=960 at time=0.00s ; ad: 0.00s
+# thread 11 completed ad=780 at time=0.00s ; ad: 0.00s
+# thread 13 completed ad=840 at time=0.00s ; ad: 0.00s
+# thread 14 completed ad=900 at time=0.00s ; ad: 0.00s
+# thread 4 completed ad=420 at time=0.00s ; ad: 0.00s
+# thread 5 completed ad=300 at time=0.00s ; ad: 0.00s
+# thread 0 completed ad=1080 at time=0.00s ; ad: 0.00s
+# thread 3 completed ad=1140 at time=0.00s ; ad: 0.00s
+# thread 15 completed ad=720 at time=0.00s ; ad: 0.00s
+# thread 8 completed ad=540 at time=0.00s ; ad: 0.00s
+# thread 9 completed ad=1200 at time=0.00s ; ad: 0.00s
+# thread 6 completed ad=1380 at time=0.00s ; ad: 0.00s
+# thread 7 completed ad=1260 at time=0.00s ; ad: 0.00s
+# thread 14 completed ad=1560 at time=0.00s ; ad: 0.00s
+# thread 13 completed ad=1320 at time=0.00s ; ad: 0.00s
+# thread 11 completed ad=1440 at time=0.00s ; ad: 0.00s
+# thread 8 completed ad=1680 at time=0.00s ; ad: 0.00s
+# thread 4 completed ad=1500 at time=0.00s ; ad: 0.00s
+# thread 10 completed ad=1020 at time=0.00s ; ad: 0.00s
+# thread 6 completed ad=1740 at time=0.00s ; ad: 0.00s
+# thread 15 completed ad=1620 at time=0.00s ; ad: 0.00s
+# thread 6 completed ad=1800 at time=0.01s ; ad: 0.00s
+# thread 2 completed ad=1920 at time=0.01s ; ad: 0.00s
+# thread 1 completed ad=1860 at time=0.01s ; ad: 0.00s
+# thread 2 completed ad=1980 at time=0.01s ; ad: 0.00s
+# thread 12 completed ad=2040 at time=0.01s ; ad: 0.00s
+# thread 3 completed ad=2160 at time=0.01s ; ad: 0.00s
+# thread 9 completed ad=2100 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1703068960
+# Y1: 18807433
+# c0: 314696017
+# c1: 384888960
+# c2: -4287270
+# c3: -308
+# c4: 300
+# raw exp_E 11.28, lognorm 13.83, skew 75.21, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1703068960
+Y1: 18807433
+c0: 314696017
+c1: 384888960
+c2: -4287270
+c3: -308
+c4: 300
+# exp_E 11.28, lognorm 13.83, skew 75.21, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1240140957
+# Y1: 100592809
+# c0: 191573960
+# c1: 431333999
+# c2: -36245373
+# c3: -489
+# c4: 1080
+# raw exp_E 12.10, lognorm 15.19, skew 72.02, 4 rroots
+#
+# thread 11 completed ad=2220 at time=0.01s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -737176912
+Y1: 100592809
+c0: 642285955
+c1: -26062085
+c2: -7679315
+c3: 63333
+c4: 3240
+# exp_E 11.99, lognorm 13.55, skew 21.06, 4 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1139666462
+# Y1: 38986021
+# c0: -28890145
+# c1: 224613685
+# c2: -7651933
+# c3: -2267
+# c4: 1560
+# raw exp_E 11.58, lognorm 14.09, skew 37.82, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1139666462
+Y1: 38986021
+c0: -28890145
+c1: 224613685
+c2: -7651933
+c3: -2267
+c4: 1560
+# exp_E 11.58, lognorm 14.09, skew 37.82, 2 rroots
+
+# thread 5 completed ad=2280 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1180534269
+# Y1: 35160019
+# c0: -537619555
+# c1: 367089051
+# c2: -10449387
+# c3: -1362
+# c4: 1320
+# raw exp_E 11.27, lognorm 14.39, skew 47.83, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1180534269
+Y1: 35160019
+c0: -537619555
+c1: 367089051
+c2: -10449387
+c3: -1362
+c4: 1320
+# exp_E 11.27, lognorm 14.39, skew 47.83, 4 rroots
+
+# thread 0 completed ad=2520 at time=0.01s ; ad: 0.00s
+# thread 6 completed ad=2400 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1184683305
+# Y1: 75998099
+# c0: 508467887
+# c1: 350548941
+# c2: -24581223
+# c3: 170
+# c4: 1260
+# raw exp_E 11.92, lognorm 14.83, skew 56.72, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -576698513
+Y1: 75998099
+c0: 44440812
+c1: -13128143
+c2: 3718190
+c3: 121470
+c4: 3780
+# exp_E 11.34, lognorm 13.41, skew 10.41, 0 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1123254041
+# Y1: 73119061
+# c0: -271696042
+# c1: 405872415
+# c2: -25270930
+# c3: -1606
+# c4: 1680
+# raw exp_E 11.68, lognorm 14.91, skew 52.42, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1561968407
+Y1: 73119061
+c0: 91299341
+c1: 48693987
+c2: -1518365
+c3: -125778
+c4: 5040
+# exp_E 11.18, lognorm 13.27, skew 13.99, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1283598412
+# Y1: 80373071
+# c0: 281370581
+# c1: 85034611
+# c2: -6424828
+# c3: -1778
+# c4: 1020
+# raw exp_E 12.02, lognorm 13.53, skew 33.78, 4 rroots
+#
+# thread 7 completed ad=2340 at time=0.01s ; ad: 0.00s
+# thread 5 completed ad=2640 at time=0.01s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: 1127593718
+Y1: 80373071
+c0: 83445147
+c1: -34349527
+c2: -1076848
+c3: 120622
+c4: 1020
+# exp_E 11.05, lognorm 12.66, skew 16.89, 4 rroots
+
+# thread 13 completed ad=2580 at time=0.01s ; ad: 0.00s
+# thread 4 completed ad=2700 at time=0.01s ; ad: 0.00s
+# thread 6 completed ad=2760 at time=0.01s ; ad: 0.00s
+# thread 11 completed ad=2460 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1027061877
+# Y1: 112136099
+# c0: -54051763
+# c1: 374166453
+# c2: -40205641
+# c3: 3290
+# c4: 1860
+# raw exp_E 12.51, lognorm 15.29, skew 57.90, 4 rroots
+#
+# thread 14 completed ad=2880 at time=0.01s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1251334075
+Y1: 112136099
+c0: 864390846
+c1: 17164559
+c2: -8406124
+c3: -34770
+c4: 5580
+# exp_E 11.94, lognorm 13.84, skew 19.85, 4 rroots
+
+# thread 2 completed ad=2820 at time=0.01s ; ad: 0.00s
+# thread 9 completed ad=3000 at time=0.01s ; ad: 0.00s
+# thread 10 completed ad=2940 at time=0.01s ; ad: 0.00s
+# thread 13 completed ad=3120 at time=0.01s ; ad: 0.00s
+# thread 8 completed ad=3060 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1128107041
+# Y1: 38622301
+# c0: -446479155
+# c1: 320735689
+# c2: -10459951
+# c3: -2206
+# c4: 1620
+# raw exp_E 11.89, lognorm 14.38, skew 42.88, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1128107041
+Y1: 38622301
+c0: -446479155
+c1: 320735689
+c2: -10459951
+c3: -2206
+c4: 1620
+# exp_E 11.89, lognorm 14.38, skew 42.88, 4 rroots
+
+# thread 3 completed ad=3300 at time=0.01s ; ad: 0.00s
+# thread 7 completed ad=3180 at time=0.01s ; ad: 0.00s
+# thread 4 completed ad=3240 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1039833710
+# Y1: 55772243
+# c0: -139835633
+# c1: 171686257
+# c2: -8801148
+# c3: 1509
+# c4: 2040
+# raw exp_E 11.90, lognorm 14.10, skew 32.94, 4 rroots
+#
+# thread 1 completed ad=3420 at time=0.01s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -760972495
+Y1: 55772243
+c0: -43706518
+c1: -29035811
+c2: 4937165
+c3: 253854
+c4: 12240
+# exp_E 11.42, lognorm 13.67, skew 7.40, 2 rroots
+
+# thread 3 completed ad=3540 at time=0.01s ; ad: 0.00s
+# thread 15 completed ad=3480 at time=0.01s ; ad: 0.00s
+# thread 11 completed ad=3360 at time=0.01s ; ad: 0.00s
+# thread 4 completed ad=3660 at time=0.01s ; ad: 0.00s
+# thread 7 completed ad=3600 at time=0.01s ; ad: 0.00s
+# thread 1 completed ad=3720 at time=0.01s ; ad: 0.00s
+# thread 12 completed ad=3780 at time=0.01s ; ad: 0.00s
+# thread 3 completed ad=3840 at time=0.01s ; ad: 0.00s
+# thread 15 completed ad=3900 at time=0.01s ; ad: 0.00s
+# thread 6 completed ad=3960 at time=0.01s ; ad: 0.00s
+# thread 11 completed ad=4020 at time=0.01s ; ad: 0.00s
+# thread 4 completed ad=4080 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1011973653
+# Y1: 63638117
+# c0: 367701581
+# c1: 156313746
+# c2: -11282775
+# c3: -2287
+# c4: 2520
+# raw exp_E 11.82, lognorm 14.16, skew 29.93, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1075611770
+Y1: 63638117
+c0: 125047432
+c1: 61200477
+c2: -3926647
+c3: -74202
+c4: 15120
+# exp_E 11.51, lognorm 13.88, skew 11.19, 2 rroots
+
+# thread 2 completed ad=4140 at time=0.01s ; ad: 0.00s
+# thread 1 completed ad=4200 at time=0.01s ; ad: 0.00s
+# thread 12 completed ad=4260 at time=0.01s ; ad: 0.00s
+# thread 3 completed ad=4320 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -1049535943
+# Y1: 74286533
+# c0: -401782515
+# c1: 364921175
+# c2: -23816934
+# c3: -3949
+# c4: 2340
+# raw exp_E 12.05, lognorm 14.88, skew 44.38, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -975249410
+Y1: 74286533
+c0: -182039649
+c1: -23394950
+c2: 2842310
+c3: 16233
+c4: 7020
+# exp_E 11.72, lognorm 13.54, skew 11.91, 2 rroots
+
+# thread 4 completed ad=4560 at time=0.01s ; ad: 0.00s
+# thread 15 completed ad=4380 at time=0.01s ; ad: 0.00s
+# thread 13 completed ad=4440 at time=0.01s ; ad: 0.00s
+# thread 0 completed ad=4620 at time=0.01s ; ad: 0.00s
+# thread 10 completed ad=4500 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -965579266
+# Y1: 4882621
+# c0: 254336419
+# c1: 169312443
+# c2: -869088
+# c3: -1502
+# c4: 2880
+# raw exp_E 11.91, lognorm 14.06, skew 25.47, 2 rroots
+#
+# thread 5 completed ad=4740 at time=0.01s ; ad: 0.00s
+# thread 4 completed ad=4800 at time=0.01s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -980227129
+Y1: 4882621
+c0: -261148868
+c1: 174175377
+c2: -700050
+c3: -36062
+c4: 2880
+# exp_E 11.88, lognorm 14.03, skew 25.68, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -996235670
+# Y1: 92043443
+# c0: -176654613
+# c1: 125184583
+# c2: -10056894
+# c3: -4490
+# c4: 2940
+# raw exp_E 11.61, lognorm 14.12, skew 27.69, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -996235670
+Y1: 92043443
+c0: -176654613
+c1: 125184583
+c2: -10056894
+c3: -4490
+c4: 2940
+# exp_E 11.61, lognorm 14.12, skew 27.69, 4 rroots
+
+# thread 3 completed ad=4680 at time=0.01s ; ad: 0.00s
+# thread 4 completed ad=4860 at time=0.01s ; ad: 0.00s
+# thread 14 completed ad=4920 at time=0.01s ; ad: 0.00s
+# thread 6 completed ad=4980 at time=0.01s ; ad: 0.00s
+# thread 9 completed ad=5040 at time=0.01s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -917856415
+# Y1: 10921949
+# c0: 170789027
+# c1: 58559463
+# c2: -712289
+# c3: -7010
+# c4: 3600
+# raw exp_E 11.59, lognorm 13.46, skew 17.38, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -950622262
+Y1: 10921949
+c0: -10819093
+c1: 62255127
+c2: -454799
+c3: -50210
+c4: 3600
+# exp_E 11.51, lognorm 13.38, skew 16.71, 2 rroots
+
+# thread 1 completed ad=5100 at time=0.01s ; ad: 0.00s
+# thread 6 completed ad=5160 at time=0.02s ; ad: 0.00s
+# thread 15 completed ad=5280 at time=0.02s ; ad: 0.00s
+# thread 7 completed ad=5220 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -872496436
+# Y1: 53448257
+# c0: -317628487
+# c1: 372193522
+# c2: -21617975
+# c3: 5304
+# c4: 4020
+# raw exp_E 12.26, lognorm 14.91, skew 34.96, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1032841207
+Y1: 53448257
+c0: 119787576
+c1: 14783630
+c2: -346641
+c3: -214680
+c4: 20100
+# exp_E 11.97, lognorm 13.77, skew 8.76, 0 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -897983742
+# Y1: 51133403
+# c0: -392032723
+# c1: 66994634
+# c2: -2556646
+# c3: -1375
+# c4: 3960
+# raw exp_E 12.49, lognorm 13.73, skew 20.25, 2 rroots
+#
+# thread 7 completed ad=5340 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1562717981
+Y1: 51133403
+c0: -16195723
+c1: 46836422
+c2: 1512419
+c3: -207295
+c4: 3960
+# exp_E 11.96, lognorm 13.31, skew 12.49, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -889915845
+# Y1: 27395383
+# c0: -85724893
+# c1: 336507944
+# c2: -10276818
+# c3: -7152
+# c4: 4200
+# raw exp_E 11.78, lognorm 14.64, skew 30.18, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -889915845
+Y1: 27395383
+c0: -85724893
+c1: 336507944
+c2: -10276818
+c3: -7152
+c4: 4200
+# exp_E 11.78, lognorm 14.64, skew 30.18, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -863504976
+# Y1: 1429561
+# c0: 82490561
+# c1: 368546737
+# c2: -621882
+# c3: -5604
+# c4: 4500
+# raw exp_E 12.09, lognorm 14.73, skew 28.09, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -863504976
+Y1: 1429561
+c0: 82490561
+c1: 368546737
+c2: -621882
+c3: -5604
+c4: 4500
+# exp_E 12.09, lognorm 14.73, skew 28.09, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -874230636
+# Y1: 48715543
+# c0: 256659629
+# c1: 244080341
+# c2: -14400414
+# c3: -1766
+# c4: 4380
+# raw exp_E 11.95, lognorm 14.55, skew 28.09, 4 rroots
+#
+# thread 4 completed ad=5400 at time=0.02s ; ad: 0.00s
+# thread 9 completed ad=5520 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -874230636
+Y1: 48715543
+c0: 256659629
+c1: 244080341
+c2: -14400414
+c3: -1766
+c4: 4380
+# exp_E 11.95, lognorm 14.55, skew 28.09, 4 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -882930860
+# Y1: 38501917
+# c0: -2809823
+# c1: 76633428
+# c2: -3335539
+# c3: -764
+# c4: 4140
+# raw exp_E 12.17, lognorm 13.63, skew 18.29, 2 rroots
+#
+# thread 11 completed ad=5460 at time=0.02s ; ad: 0.00s
+# thread 12 completed ad=5700 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1306451947
+Y1: 38501917
+c0: 118704821
+c1: 89194677
+c2: -304687
+c3: -182924
+c4: 4140
+# exp_E 12.06, lognorm 13.64, skew 17.07, 2 rroots
+
+# thread 8 completed ad=5640 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -862306067
+# Y1: 9275293
+# c0: -203190024
+# c1: 129238611
+# c2: -1368647
+# c3: 7061
+# c4: 4440
+# raw exp_E 12.83, lognorm 14.03, skew 20.55, 2 rroots
+#
+# thread 7 completed ad=5580 at time=0.02s ; ad: 0.00s
+# thread 13 completed ad=5880 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -908682532
+Y1: 9275293
+c0: 26975653
+c1: 131959363
+c2: -808562
+c3: -81739
+c4: 4440
+# exp_E 12.64, lognorm 13.95, skew 19.96, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -846582380
+# Y1: 11684863
+# c0: -338771183
+# c1: 115782692
+# c2: -1521783
+# c3: 8580
+# c4: 4740
+# raw exp_E 12.77, lognorm 14.02, skew 20.10, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -905006695
+Y1: 11684863
+c0: -48832523
+c1: 117589159
+c2: -939483
+c3: -86220
+c4: 4740
+# exp_E 12.71, lognorm 13.88, skew 18.87, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -853890754
+# Y1: 25101283
+# c0: -291997201
+# c1: 100945803
+# c2: -2702424
+# c3: -7980
+# c4: 4920
+# raw exp_E 12.70, lognorm 13.93, skew 19.52, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -979397169
+Y1: 25101283
+c0: 119182853
+c1: 99810260
+c2: -1844724
+c3: -106380
+c4: 4920
+# exp_E 12.19, lognorm 13.75, skew 17.82, 2 rroots
+
+# thread 4 completed ad=5820 at time=0.02s ; ad: 0.00s
+# thread 10 completed ad=5760 at time=0.02s ; ad: 0.00s
+# thread 2 completed ad=5940 at time=0.02s ; ad: 0.00s
+# thread 7 completed ad=6000 at time=0.02s ; ad: 0.00s
+# thread 0 completed ad=6060 at time=0.02s ; ad: 0.00s
+# thread 5 completed ad=6120 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -841544310
+# Y1: 19418801
+# c0: -127352233
+# c1: 216707359
+# c2: -4933892
+# c3: -5256
+# c4: 5100
+# raw exp_E 12.20, lognorm 14.39, skew 23.70, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -841544310
+Y1: 19418801
+c0: -127352233
+c1: 216707359
+c2: -4933892
+c3: -5256
+c4: 5100
+# exp_E 12.20, lognorm 14.39, skew 23.70, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -836917980
+# Y1: 8396753
+# c0: 313609097
+# c1: 359420650
+# c2: -3635171
+# c3: -1111
+# c4: 5100
+# raw exp_E 12.26, lognorm 14.73, skew 27.25, 2 rroots
+#
+# thread 14 completed ad=6180 at time=0.02s ; ad: 0.00s
+# thread 4 completed ad=6240 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -836917980
+Y1: 8396753
+c0: 313609097
+c1: 359420650
+c2: -3635171
+c3: -1111
+c4: 5100
+# exp_E 12.26, lognorm 14.73, skew 27.25, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -803045532
+# Y1: 101679749
+# c0: 376242713
+# c1: 77353514
+# c2: -15824633
+# c3: 6457
+# c4: 5160
+# raw exp_E 13.11, lognorm 14.31, skew 20.49, 4 rroots
+#
+# thread 0 completed ad=6360 at time=0.02s ; ad: 0.00s
+# thread 5 completed ad=6420 at time=0.02s ; ad: 0.00s
+# thread 2 completed ad=6300 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -701365783
+Y1: 101679749
+c0: -178763866
+c1: -20181233
+c2: 7033937
+c3: 162582
+c4: 30960
+# exp_E 12.27, lognorm 14.25, skew 7.90, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -846172392
+# Y1: 30854783
+# c0: 72264809
+# c1: 311174939
+# c2: -11444548
+# c3: -7885
+# c4: 5160
+# raw exp_E 12.27, lognorm 14.66, skew 27.56, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -846172392
+Y1: 30854783
+c0: 72264809
+c1: 311174939
+c2: -11444548
+c3: -7885
+c4: 5160
+# exp_E 12.27, lognorm 14.66, skew 27.56, 2 rroots
+
+# thread 3 completed ad=6540 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -839924546
+# Y1: 41563993
+# c0: -374247353
+# c1: 437658881
+# c2: -20735770
+# c3: -10444
+# c4: 5520
+# raw exp_E 11.78, lognorm 15.01, skew 31.83, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -756796560
+Y1: 41563993
+c0: 79467634
+c1: -5698341
+c2: 232085
+c3: 67432
+c4: 11040
+# exp_E 11.67, lognorm 13.30, skew 9.21, 0 rroots
+
+# thread 2 completed ad=6720 at time=0.02s ; ad: 0.00s
+# thread 5 completed ad=6660 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -796406720
+# Y1: 63502261
+# c0: 306902977
+# c1: 69890100
+# c2: -7520395
+# c3: 9073
+# c4: 5460
+# raw exp_E 12.10, lognorm 13.79, skew 17.60, 4 rroots
+#
+# thread 6 completed ad=6780 at time=0.02s ; ad: 0.00s
+# thread 1 completed ad=6480 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -34379588
+Y1: 63502261
+c0: 157164413
+c1: -5438063
+c2: -2476327
+c3: 271153
+c4: 5460
+# exp_E 11.69, lognorm 13.38, skew 11.57, 2 rroots
+
+# thread 0 completed ad=6600 at time=0.02s ; ad: 0.00s
+# thread 15 completed ad=6840 at time=0.02s ; ad: 0.00s
+# thread 3 completed ad=6900 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -857466533
+# Y1: 92851349
+# c0: 72293938
+# c1: 75772177
+# c2: -9045774
+# c3: -10188
+# c4: 5640
+# raw exp_E 12.32, lognorm 13.95, skew 18.08, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: 349601004
+Y1: 92851349
+c0: 16898441
+c1: -22167594
+c2: -3724146
+c3: 283092
+c4: 5640
+# exp_E 11.74, lognorm 13.13, skew 8.73, 4 rroots
+
+# thread 12 completed ad=7140 at time=0.02s ; ad: 0.00s
+# thread 2 completed ad=7020 at time=0.02s ; ad: 0.00s
+# thread 9 completed ad=6960 at time=0.02s ; ad: 0.00s
+# thread 6 completed ad=7080 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -823580224
+# Y1: 8276641
+# c0: 103095345
+# c1: 133087657
+# c2: -1346923
+# c3: -3307
+# c4: 5460
+# raw exp_E 12.51, lognorm 14.10, skew 19.02, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -831856865
+Y1: 8276641
+c0: -31330468
+c1: 135749742
+c2: -1304242
+c3: -25147
+c4: 5460
+# exp_E 12.50, lognorm 14.09, skew 19.12, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -830845059
+# Y1: 52605659
+# c0: 91931333
+# c1: 247229554
+# c2: -16018954
+# c3: -5576
+# c4: 5580
+# raw exp_E 12.18, lognorm 14.65, skew 26.28, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -830845059
+Y1: 52605659
+c0: 91931333
+c1: 247229554
+c2: -16018954
+c3: -5576
+c4: 5580
+# exp_E 12.18, lognorm 14.65, skew 26.28, 4 rroots
+
+# thread 15 completed ad=7200 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -817557372
+# Y1: 65969291
+# c0: -147434347
+# c1: 316383955
+# c2: -24567699
+# c3: -4485
+# c4: 5940
+# raw exp_E 12.06, lognorm 14.98, skew 29.59, 4 rroots
+#
+# thread 9 completed ad=7560 at time=0.02s ; ad: 0.00s
+# thread 2 completed ad=7500 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -817557372
+Y1: 65969291
+c0: -147434347
+c1: 316383955
+c2: -24567699
+c3: -4485
+c4: 5940
+# exp_E 12.06, lognorm 14.98, skew 29.59, 4 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -811883629
+# Y1: 9619223
+# c0: 209282620
+# c1: 75345924
+# c2: -922429
+# c3: -1142
+# c4: 5760
+# raw exp_E 12.13, lognorm 13.80, skew 16.19, 2 rroots
+#
+# thread 14 completed ad=7440 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -840741298
+Y1: 9619223
+c0: -24559619
+c1: 80227584
+c2: -601111
+c3: -70262
+c4: 5760
+# exp_E 12.04, lognorm 13.71, skew 15.57, 2 rroots
+
+# thread 3 completed ad=7260 at time=0.02s ; ad: 0.00s
+# thread 12 completed ad=7380 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -789496877
+# Y1: 14592533
+# c0: -275914065
+# c1: 56772308
+# c2: -953443
+# c3: 10057
+# c4: 6240
+# raw exp_E 12.46, lognorm 13.76, skew 15.88, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -979199806
+Y1: 14592533
+c0: -39760719
+c1: 17231072
+c2: 4981694
+c3: -314423
+c4: 6240
+# exp_E 12.03, lognorm 13.44, skew 6.75, 2 rroots
+
+# thread 11 completed ad=7680 at time=0.02s ; ad: 0.00s
+# thread 8 completed ad=7320 at time=0.02s ; ad: 0.00s
+# thread 15 completed ad=7800 at time=0.02s ; ad: 0.00s
+# thread 6 completed ad=7620 at time=0.02s ; ad: 0.00s
+# thread 2 completed ad=7920 at time=0.02s ; ad: 0.00s
+# thread 7 completed ad=7980 at time=0.02s ; ad: 0.00s
+# thread 13 completed ad=7740 at time=0.02s ; ad: 0.00s
+# thread 10 completed ad=8100 at time=0.02s ; ad: 0.00s
+# thread 14 completed ad=8040 at time=0.02s ; ad: 0.00s
+# thread 9 completed ad=7860 at time=0.02s ; ad: 0.00s
+# thread 13 completed ad=8220 at time=0.02s ; ad: 0.00s
+# thread 2 completed ad=8160 at time=0.02s ; ad: 0.00s
+# thread 10 completed ad=8280 at time=0.02s ; ad: 0.00s
+# thread 14 completed ad=8340 at time=0.02s ; ad: 0.00s
+# thread 13 completed ad=8460 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -787965981
+# Y1: 13484477
+# c0: 54601169
+# c1: 312922444
+# c2: -5364951
+# c3: -10825
+# c4: 6660
+# raw exp_E 12.44, lognorm 14.71, skew 24.09, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -787965981
+Y1: 13484477
+c0: 54601169
+c1: 312922444
+c2: -5364951
+c3: -10825
+c4: 6660
+# exp_E 12.44, lognorm 14.71, skew 24.09, 2 rroots
+
+# thread 9 completed ad=8400 at time=0.02s ; ad: 0.00s
+# thread 14 completed ad=8520 at time=0.02s ; ad: 0.00s
+# thread 5 completed ad=8640 at time=0.02s ; ad: 0.00s
+# thread 11 completed ad=8700 at time=0.02s ; ad: 0.00s
+# thread 13 completed ad=8580 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -765941743
+# Y1: 429383
+# c0: 215164057
+# c1: 149073937
+# c2: -79210
+# c3: -10347
+# c4: 7260
+# raw exp_E 13.12, lognorm 14.31, skew 17.91, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -767229892
+Y1: 429383
+c0: -231903215
+c1: 148485748
+c2: 405953
+c3: -97467
+c4: 7260
+# exp_E 13.05, lognorm 14.24, skew 17.71, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -771819516
+# Y1: 27070727
+# c0: -177262951
+# c1: 151195662
+# c2: -5087240
+# c3: -6314
+# c4: 7260
+# raw exp_E 11.73, lognorm 14.29, skew 19.09, 2 rroots
+#
+# thread 14 completed ad=8820 at time=0.02s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -771819516
+Y1: 27070727
+c0: -177262951
+c1: 151195662
+c2: -5087240
+c3: -6314
+c4: 7260
+# exp_E 11.73, lognorm 14.29, skew 19.09, 2 rroots
+
+# thread 11 completed ad=8880 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -723424373
+# Y1: 116848967
+# c0: 219671490
+# c1: 299825841
+# c2: -54152729
+# c3: 9643
+# c4: 7380
+# raw exp_E 12.87, lognorm 15.59, skew 33.44, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -723424373
+Y1: 116848967
+c0: -284081393
+c1: -6923724
+c2: 8543509
+c3: 19286
+c4: 14760
+# exp_E 12.43, lognorm 14.20, skew 10.18, 2 rroots
+
+# thread 7 completed ad=8760 at time=0.02s ; ad: 0.00s
+# thread 10 completed ad=8940 at time=0.02s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -741554076
+# Y1: 25574177
+# c0: -347577607
+# c1: 370416774
+# c2: -12344747
+# c3: 12670
+# c4: 7800
+# raw exp_E 11.57, lognorm 14.93, skew 25.39, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -664831545
+Y1: 25574177
+c0: -22575326
+c1: -18617627
+c2: 1955143
+c3: 212540
+c4: 15600
+# exp_E 11.26, lognorm 13.23, skew 6.45, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -759505900
+# Y1: 9648029
+# c0: -59766403
+# c1: 164389615
+# c2: -2070260
+# c3: -14022
+# c4: 7680
+# raw exp_E 12.33, lognorm 14.34, skew 18.29, 2 rroots
+#
+# thread 11 completed ad=9060 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -759505900
+Y1: 9648029
+c0: -59766403
+c1: 164389615
+c2: -2070260
+c3: -14022
+c4: 7680
+# exp_E 12.33, lognorm 14.34, skew 18.29, 2 rroots
+
+# thread 2 completed ad=9120 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -794398263
+# Y1: 90521303
+# c0: -86718733
+# c1: 185230747
+# c2: -19974554
+# c3: -12583
+# c4: 7620
+# raw exp_E 12.58, lognorm 14.74, skew 23.16, 4 rroots
+#
+# thread 3 completed ad=9000 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -794398263
+Y1: 90521303
+c0: -86718733
+c1: 185230747
+c2: -19974554
+c3: -12583
+c4: 7620
+# exp_E 12.58, lognorm 14.74, skew 23.16, 4 rroots
+
+# thread 9 completed ad=9240 at time=0.03s ; ad: 0.00s
+# thread 10 completed ad=9300 at time=0.03s ; ad: 0.00s
+# thread 4 completed ad=9180 at time=0.03s ; ad: 0.00s
+# thread 2 completed ad=9540 at time=0.03s ; ad: 0.00s
+# thread 11 completed ad=9420 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -758143673
+# Y1: 78496009
+# c0: 130306109
+# c1: 246238340
+# c2: -26890204
+# c3: -8292
+# c4: 8400
+# raw exp_E 11.97, lognorm 14.99, skew 24.62, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -758143673
+Y1: 78496009
+c0: 130306109
+c1: 246238340
+c2: -26890204
+c3: -8292
+c4: 8400
+# exp_E 11.97, lognorm 14.99, skew 24.62, 4 rroots
+
+# thread 1 completed ad=9660 at time=0.03s ; ad: 0.00s
+# thread 13 completed ad=9600 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -741661762
+# Y1: 4650853
+# c0: 290971703
+# c1: 80466527
+# c2: -504267
+# c3: -14138
+# c4: 8340
+# raw exp_E 12.93, lognorm 14.04, skew 15.15, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -760265174
+Y1: 4650853
+c0: -35922805
+c1: 81686999
+c2: 466029
+c3: -147578
+c4: 8340
+# exp_E 12.64, lognorm 13.85, skew 13.45, 2 rroots
+
+# thread 15 completed ad=9900 at time=0.03s ; ad: 0.00s
+# thread 4 completed ad=9780 at time=0.03s ; ad: 0.00s
+# thread 5 completed ad=9720 at time=0.03s ; ad: 0.00s
+# thread 8 completed ad=9480 at time=0.03s ; ad: 0.00s
+# thread 6 completed ad=9360 at time=0.03s ; ad: 0.00s
+# thread 2 completed ad=9840 at time=0.03s ; ad: 0.00s
+# thread 14 completed ad=10080 at time=0.03s ; ad: 0.00s
+# thread 0 completed ad=10020 at time=0.03s ; ad: 0.00s
+# thread 15 completed ad=10140 at time=0.03s ; ad: 0.00s
+# thread 8 completed ad=10260 at time=0.03s ; ad: 0.00s
+# thread 1 completed ad=9960 at time=0.03s ; ad: 0.00s
+# thread 6 completed ad=10320 at time=0.03s ; ad: 0.00s
+# thread 5 completed ad=10200 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -731958965
+# Y1: 16196027
+# c0: -409773
+# c1: 248371440
+# c2: -5504906
+# c3: -5300
+# c4: 8820
+# raw exp_E 12.38, lognorm 14.66, skew 20.40, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -731958965
+Y1: 16196027
+c0: -1229319
+c1: 13155355
+c2: -318691
+c3: -15900
+c4: 26460
+# exp_E 10.78, lognorm 13.08, skew 5.17, 2 rroots
+
+# thread 15 completed ad=10380 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -719849199
+# Y1: 19861043
+# c0: -191394685
+# c1: 144469306
+# c2: -3845610
+# c3: 2262
+# c4: 9240
+# raw exp_E 12.64, lognorm 14.34, skew 17.13, 2 rroots
+#
+# thread 13 completed ad=10560 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -779432328
+Y1: 19861043
+c0: 120706601
+c1: 146745077
+c2: -3367008
+c3: -108618
+c4: 9240
+# exp_E 12.54, lognorm 14.25, skew 16.63, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -737816331
+# Y1: 38688983
+# c0: -352251127
+# c1: 189103244
+# c2: -8934726
+# c3: -11630
+# c4: 9000
+# raw exp_E 11.93, lognorm 14.55, skew 19.97, 2 rroots
+#
+# thread 6 completed ad=10440 at time=0.03s ; ad: 0.00s
+# thread 5 completed ad=10500 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -737816331
+Y1: 38688983
+c0: -352251127
+c1: 189103244
+c2: -8934726
+c3: -11630
+c4: 9000
+# exp_E 11.93, lognorm 14.55, skew 19.97, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -718264549
+# Y1: 166840879
+# c0: -53298548
+# c1: 319118827
+# c2: -71250144
+# c3: 2652
+# c4: 8760
+# raw exp_E 13.10, lognorm 15.86, skew 35.06, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: 115939846
+Y1: 166840879
+c0: -8902747
+c1: -38034147
+c2: 11248089
+c3: 1244964
+c4: 61320
+# exp_E 12.98, lognorm 14.47, skew 4.28, 2 rroots
+
+# thread 15 completed ad=10680 at time=0.03s ; ad: 0.00s
+# thread 9 completed ad=10800 at time=0.03s ; ad: 0.00s
+# thread 12 completed ad=10620 at time=0.03s ; ad: 0.00s
+# thread 3 completed ad=10920 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -741043922
+# Y1: 60497999
+# c0: 225415221
+# c1: 254405672
+# c2: -22267479
+# c3: -12117
+# c4: 9240
+# raw exp_E 12.20, lognorm 14.89, skew 22.77, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -741043922
+Y1: 60497999
+c0: 225415221
+c1: 254405672
+c2: -22267479
+c3: -12117
+c4: 9240
+# exp_E 12.20, lognorm 14.89, skew 22.77, 4 rroots
+
+# thread 15 completed ad=11040 at time=0.03s ; ad: 0.00s
+# thread 5 completed ad=10860 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -713994279
+# Y1: 10865689
+# c0: -201101185
+# c1: 160933383
+# c2: -2405202
+# c3: -11319
+# c4: 9780
+# raw exp_E 13.45, lognorm 14.42, skew 17.04, 2 rroots
+#
+# thread 13 completed ad=10740 at time=0.03s ; ad: 0.00s
+# thread 7 completed ad=10980 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -746591346
+Y1: 10865689
+c0: 42140987
+c1: 163137053
+c2: -1775211
+c3: -128679
+c4: 9780
+# exp_E 12.57, lognorm 14.35, skew 16.59, 2 rroots
+
+# thread 9 completed ad=11100 at time=0.03s ; ad: 0.00s
+# thread 15 completed ad=11220 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -736072430
+# Y1: 79446251
+# c0: -235669133
+# c1: 185429143
+# c2: -17264584
+# c3: -8891
+# c4: 9420
+# raw exp_E 12.56, lognorm 14.72, skew 21.05, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -736072430
+Y1: 79446251
+c0: -235669133
+c1: 185429143
+c2: -17264584
+c3: -8891
+c4: 9420
+# exp_E 12.56, lognorm 14.72, skew 21.05, 4 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -708968863
+# Y1: 6099347
+# c0: -105388211
+# c1: 190842606
+# c2: -1620830
+# c3: -16104
+# c4: 10020
+# raw exp_E 12.76, lognorm 14.54, skew 17.49, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -708968863
+Y1: 6099347
+c0: -105388211
+c1: 190842606
+c2: -1620830
+c3: -16104
+c4: 10020
+# exp_E 12.76, lognorm 14.54, skew 17.49, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -706421888
+# Y1: 8156983
+# c0: 41376337
+# c1: 312013892
+# c2: -3599795
+# c3: -20387
+# c4: 10260
+# raw exp_E 12.47, lognorm 14.86, skew 20.52, 2 rroots
+#
+# thread 10 completed ad=11160 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -690107922
+Y1: 8156983
+c0: -78203834
+c1: -78397180
+c2: 1205229
+c3: 123386
+c4: 20520
+# exp_E 12.38, lognorm 14.20, skew 10.07, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -723264123
+# Y1: 64496903
+# c0: 136615037
+# c1: 169557075
+# c2: -16206607
+# c3: -8028
+# c4: 9840
+# raw exp_E 12.36, lognorm 14.61, skew 19.24, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -723264123
+Y1: 64496903
+c0: 136615037
+c1: 169557075
+c2: -16206607
+c3: -8028
+c4: 9840
+# exp_E 12.36, lognorm 14.61, skew 19.24, 4 rroots
+
+# thread 15 completed ad=11340 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -708150622
+# Y1: 22496641
+# c0: 330217525
+# c1: 312351638
+# c2: -10254630
+# c3: -1048
+# c4: 9960
+# raw exp_E 12.02, lognorm 14.85, skew 21.52, 2 rroots
+#
+# thread 11 completed ad=11400 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -708150622
+Y1: 22496641
+c0: 330217525
+c1: 312351638
+c2: -10254630
+c3: -1048
+c4: 9960
+# exp_E 12.02, lognorm 14.85, skew 21.52, 2 rroots
+
+# thread 9 completed ad=11280 at time=0.03s ; ad: 0.00s
+# thread 0 completed ad=11460 at time=0.03s ; ad: 0.00s
+# thread 14 completed ad=11700 at time=0.03s ; ad: 0.00s
+# thread 10 completed ad=11580 at time=0.03s ; ad: 0.00s
+# thread 12 completed ad=11520 at time=0.03s ; ad: 0.00s
+# thread 8 completed ad=11640 at time=0.03s ; ad: 0.00s
+# thread 1 completed ad=11880 at time=0.03s ; ad: 0.00s
+# thread 11 completed ad=11820 at time=0.03s ; ad: 0.00s
+# thread 15 completed ad=11760 at time=0.03s ; ad: 0.00s
+# thread 10 completed ad=12060 at time=0.03s ; ad: 0.00s
+# thread 14 completed ad=12000 at time=0.03s ; ad: 0.00s
+# thread 8 completed ad=12180 at time=0.03s ; ad: 0.00s
+# thread 4 completed ad=12240 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -696615001
+# Y1: 23095409
+# c0: 72516498
+# c1: 88969645
+# c2: -3022895
+# c3: 4681
+# c4: 10440
+# raw exp_E 12.71, lognorm 14.03, skew 13.70, 2 rroots
+#
+# thread 12 completed ad=12360 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -904473682
+Y1: 23095409
+c0: -3506729
+c1: 90980789
+c2: 1924558
+c3: -371159
+c4: 10440
+# exp_E 12.69, lognorm 14.01, skew 12.01, 2 rroots
+
+# thread 13 completed ad=12120 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -700790538
+# Y1: 53775383
+# c0: 6945893
+# c1: 299867782
+# c2: -23052990
+# c3: -3368
+# c4: 10620
+# raw exp_E 12.53, lognorm 15.02, skew 22.80, 4 rroots
+#
+# thread 1 completed ad=12300 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -700790538
+Y1: 53775383
+c0: 6945893
+c1: 299867782
+c2: -23052990
+c3: -3368
+c4: 10620
+# exp_E 12.53, lognorm 15.02, skew 22.80, 4 rroots
+
+# thread 0 completed ad=11940 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -697135377
+# Y1: 9996251
+# c0: 294597791
+# c1: 272146480
+# c2: -3950297
+# c3: -11987
+# c4: 10740
+# raw exp_E 12.63, lognorm 14.79, skew 19.44, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -697135377
+Y1: 9996251
+c0: 294597791
+c1: 272146480
+c2: -3950297
+c3: -11987
+c4: 10740
+# exp_E 12.63, lognorm 14.79, skew 19.44, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -693014477
+# Y1: 6952969
+# c0: 46729856
+# c1: 322400591
+# c2: -3222424
+# c3: 20202
+# c4: 10620
+# raw exp_E 12.06, lognorm 14.92, skew 20.45, 2 rroots
+#
+# thread 15 completed ad=12420 at time=0.03s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -672155570
+Y1: 6952969
+c0: -43795736
+c1: -41779741
+c2: 2018717
+c3: 295284
+c4: 21240
+# exp_E 11.98, lognorm 13.78, skew 7.77, 2 rroots
+
+# thread 6 completed ad=12480 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -691875604
+# Y1: 17669893
+# c0: 102687749
+# c1: 146032959
+# c2: -3797976
+# c3: 1440
+# c4: 10860
+# raw exp_E 13.47, lognorm 14.37, skew 15.87, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -886244427
+Y1: 17669893
+c0: -33656422
+c1: 136952725
+c2: 4038864
+c3: -476400
+c4: 10860
+# exp_E 13.34, lognorm 14.34, skew 13.24, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -697959795
+# Y1: 62027627
+# c0: -5097763
+# c1: 320799199
+# c2: -28466753
+# c3: -8754
+# c4: 11280
+# raw exp_E 12.25, lognorm 15.15, skew 23.48, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -697959795
+Y1: 62027627
+c0: -5097763
+c1: 320799199
+c2: -28466753
+c3: -8754
+c4: 11280
+# exp_E 12.25, lognorm 15.15, skew 23.48, 4 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -695415866
+# Y1: 35769983
+# c0: 159765133
+# c1: 14339256
+# c2: -1147253
+# c3: -22917
+# c4: 11820
+# raw exp_E 12.49, lognorm 13.56, skew 10.87, 0 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -838495798
+Y1: 35769983
+c0: 88544669
+c1: 19391344
+c2: 262471
+c3: -212037
+c4: 11820
+# exp_E 12.40, lognorm 13.47, skew 9.33, 0 rroots
+
+# thread 4 completed ad=12600 at time=0.03s ; ad: 0.00s
+# thread 12 completed ad=12540 at time=0.03s ; ad: 0.00s
+# thread 11 completed ad=12780 at time=0.03s ; ad: 0.00s
+# thread 13 completed ad=12660 at time=0.03s ; ad: 0.00s
+# thread 2 completed ad=12840 at time=0.03s ; ad: 0.00s
+# thread 6 completed ad=12720 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -678330799
+# Y1: 22652633
+# c0: -239241002
+# c1: 88606421
+# c2: -2685341
+# c3: -15425
+# c4: 12300
+# raw exp_E 12.78, lognorm 14.18, skew 13.97, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -791593964
+Y1: 22652633
+c0: 51802957
+c1: 85500323
+c2: -608966
+c3: -261425
+c4: 12300
+# exp_E 12.46, lognorm 13.97, skew 12.02, 2 rroots
+
+# thread 4 completed ad=12900 at time=0.03s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -684828868
+# Y1: 22861451
+# c0: 250865889
+# c1: -920104
+# c2: -235268
+# c3: -21684
+# c4: 12060
+# raw exp_E 12.45, lognorm 13.86, skew 12.01, 0 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -661967417
+Y1: 22861451
+c0: 249700893
+c1: -1407452
+c2: -227960
+c3: 26556
+c4: 12060
+# exp_E 12.45, lognorm 13.86, skew 11.99, 0 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -631693025
+# Y1: 118929071
+# c0: 66192447
+# c1: 181040154
+# c2: -36420344
+# c3: 17272
+# c4: 12060
+# raw exp_E 12.85, lognorm 15.22, skew 22.11, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -750622096
+Y1: 118929071
+c0: -453819789
+c1: 11031158
+c2: 9729671
+c3: -92904
+c4: 36180
+# exp_E 12.58, lognorm 14.73, skew 9.72, 2 rroots
+
+# thread 11 completed ad=13020 at time=0.04s ; ad: 0.00s
+# thread 5 completed ad=12960 at time=0.04s ; ad: 0.00s
+# thread 13 completed ad=13080 at time=0.04s ; ad: 0.00s
+# thread 4 completed ad=13140 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -683572232
+# Y1: 48718249
+# c0: -236818759
+# c1: 340315939
+# c2: -23049413
+# c3: -12282
+# c4: 12300
+# raw exp_E 12.71, lognorm 15.11, skew 22.47, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -683572232
+Y1: 48718249
+c0: -236818759
+c1: 340315939
+c2: -23049413
+c3: -12282
+c4: 12300
+# exp_E 12.71, lognorm 15.11, skew 22.47, 4 rroots
+
+# thread 10 completed ad=13200 at time=0.04s ; ad: 0.00s
+# thread 14 completed ad=13260 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -674207377
+# Y1: 7949329
+# c0: -242850619
+# c1: 137735942
+# c2: -1585012
+# c3: 7034
+# c4: 12000
+# raw exp_E 13.08, lognorm 14.42, skew 15.25, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -706004693
+Y1: 7949329
+c0: -110528062
+c1: 139732341
+c2: -517420
+c3: -184966
+c4: 12000
+# exp_E 12.98, lognorm 14.32, skew 14.59, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -657867167
+# Y1: 52376651
+# c0: 250246377
+# c1: 12761300
+# c2: -2594006
+# c3: 12278
+# c4: 12300
+# raw exp_E 12.19, lognorm 13.72, skew 11.99, 2 rroots
+#
+# thread 4 completed ad=13440 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1129257026
+Y1: 52376651
+c0: -2970171
+c1: 26570162
+c2: 3052288
+c3: -430522
+c4: 12300
+# exp_E 11.95, lognorm 13.48, skew 6.65, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -676470160
+# Y1: 2865161
+# c0: -106409263
+# c1: 144280904
+# c2: -611052
+# c3: -4055
+# c4: 11940
+# raw exp_E 13.39, lognorm 14.43, skew 14.96, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -679335321
+Y1: 2865161
+c0: -251285224
+c1: 145443083
+c2: -527247
+c3: -51815
+c4: 11940
+# exp_E 13.39, lognorm 14.43, skew 15.31, 2 rroots
+
+# thread 5 completed ad=13320 at time=0.04s ; ad: 0.00s
+# thread 13 completed ad=13380 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -690940873
+# Y1: 93896893
+# c0: 325365500
+# c1: 240910025
+# c2: -38742561
+# c3: -7967
+# c4: 11940
+# raw exp_E 12.87, lognorm 15.28, skew 22.97, 4 rroots
+#
+# thread 8 completed ad=13680 at time=0.04s ; ad: 0.00s
+# thread 0 completed ad=13500 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -690940873
+Y1: 93896893
+c0: 325365500
+c1: 240910025
+c2: -38742561
+c3: -7967
+c4: 11940
+# exp_E 12.87, lognorm 15.28, skew 22.97, 4 rroots
+
+# thread 10 completed ad=13560 at time=0.04s ; ad: 0.00s
+# thread 14 completed ad=13620 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -675233395
+# Y1: 20641021
+# c0: -77031183
+# c1: 107883619
+# c2: -3215246
+# c3: -13725
+# c4: 12420
+# raw exp_E 12.82, lognorm 14.22, skew 13.89, 2 rroots
+#
+# thread 4 completed ad=13740 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -778438500
+Y1: 20641021
+c0: 91086197
+c1: 112155683
+c2: -1146371
+c3: -262125
+c4: 12420
+# exp_E 12.64, lognorm 14.15, skew 13.27, 2 rroots
+
+# thread 1 completed ad=13860 at time=0.04s ; ad: 0.00s
+# thread 15 completed ad=13920 at time=0.04s ; ad: 0.00s
+# thread 2 completed ad=13800 at time=0.04s ; ad: 0.00s
+# thread 3 completed ad=14100 at time=0.04s ; ad: 0.00s
+# thread 8 completed ad=13980 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -702489442
+# Y1: 103897751
+# c0: -229510215
+# c1: 328934932
+# c2: -43618266
+# c3: -18261
+# c4: 12720
+# raw exp_E 13.00, lognorm 15.46, skew 25.15, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -910284944
+Y1: 103897751
+c0: 154191989
+c1: 69952726
+c2: -8221598
+c3: -600105
+c4: 63600
+# exp_E 12.98, lognorm 14.46, skew 7.54, 2 rroots
+
+# thread 0 completed ad=14040 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -677555432
+# Y1: 50800727
+# c0: 207915609
+# c1: -12579995
+# c2: -220469
+# c3: -12033
+# c4: 12720
+# raw exp_E 12.66, lognorm 13.81, skew 11.35, 0 rroots
+#
+# thread 15 completed ad=14220 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -575953978
+Y1: 50800727
+c0: 181980999
+c1: -13199227
+c2: 12613
+c3: 89727
+c4: 12720
+# exp_E 12.61, lognorm 13.76, skew 10.96, 0 rroots
+
+# thread 1 completed ad=14160 at time=0.04s ; ad: 0.00s
+# thread 2 completed ad=14280 at time=0.04s ; ad: 0.00s
+# thread 9 completed ad=14340 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -667907695
+# Y1: 5297183
+# c0: -333831103
+# c1: 39877243
+# c2: -295539
+# c3: 764
+# c4: 12540
+# raw exp_E 12.32, lognorm 14.03, skew 13.10, 2 rroots
+#
+# thread 3 completed ad=14400 at time=0.04s ; ad: 0.00s
+# thread 7 completed ad=14520 at time=0.04s ; ad: 0.00s
+# thread 8 completed ad=14460 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -694393610
+Y1: 5297183
+c0: 161529817
+c1: 31322750
+c2: 1574001
+c3: -250036
+c4: 12540
+# exp_E 12.19, lognorm 13.89, skew 10.71, 0 rroots
+
+# thread 2 completed ad=14700 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -666615350
+# Y1: 20250683
+# c0: 137222117
+# c1: 304442938
+# c2: -9365694
+# c3: -12676
+# c4: 13020
+# raw exp_E 12.36, lognorm 14.91, skew 19.36, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -666615350
+Y1: 20250683
+c0: 137222117
+c1: 304442938
+c2: -9365694
+c3: -12676
+c4: 13020
+# exp_E 12.36, lognorm 14.91, skew 19.36, 2 rroots
+
+# thread 14 completed ad=14760 at time=0.04s ; ad: 0.00s
+# thread 6 completed ad=14580 at time=0.04s ; ad: 0.00s
+# thread 1 completed ad=14640 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -649781501
+# Y1: 85758163
+# c0: -233388023
+# c1: 240546785
+# c2: -27683806
+# c3: 4973
+# c4: 13380
+# raw exp_E 12.74, lognorm 15.10, skew 21.05, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -649781501
+Y1: 85758163
+c0: -50382568
+c1: -13899309
+c2: 2706745
+c3: 14919
+c4: 40140
+# exp_E 12.39, lognorm 13.74, skew 5.71, 2 rroots
+
+# thread 2 completed ad=14820 at time=0.04s ; ad: 0.00s
+# thread 11 completed ad=14880 at time=0.04s ; ad: 0.00s
+# thread 5 completed ad=14940 at time=0.04s ; ad: 0.00s
+# thread 14 completed ad=15000 at time=0.04s ; ad: 0.00s
+# thread 10 completed ad=15060 at time=0.04s ; ad: 0.00s
+# thread 2 completed ad=15180 at time=0.04s ; ad: 0.00s
+# thread 5 completed ad=15300 at time=0.04s ; ad: 0.00s
+# thread 13 completed ad=15120 at time=0.04s ; ad: 0.00s
+# thread 11 completed ad=15240 at time=0.04s ; ad: 0.00s
+# thread 14 completed ad=15360 at time=0.04s ; ad: 0.00s
+# thread 9 completed ad=15420 at time=0.04s ; ad: 0.00s
+# thread 3 completed ad=15480 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -655995958
+# Y1: 9891019
+# c0: -244773449
+# c1: 249873311
+# c2: -3690703
+# c3: -17403
+# c4: 13740
+# raw exp_E 12.90, lognorm 14.82, skew 17.52, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -655995958
+Y1: 9891019
+c0: -78324389
+c1: 83732956
+c2: -1181090
+c3: -52209
+c4: 41220
+# exp_E 12.86, lognorm 14.48, skew 8.49, 2 rroots
+
+# thread 11 completed ad=15720 at time=0.04s ; ad: 0.00s
+# thread 2 completed ad=15600 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -644033315
+# Y1: 5617901
+# c0: -55876863
+# c1: 67195008
+# c2: -583886
+# c3: -854
+# c4: 14520
+# raw exp_E 12.33, lognorm 13.99, skew 10.99, 2 rroots
+#
+# thread 0 completed ad=15540 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -644033315
+Y1: 5617901
+c0: -55876863
+c1: 67195008
+c2: -583886
+c3: -854
+c4: 14520
+# exp_E 12.33, lognorm 13.99, skew 10.99, 2 rroots
+
+# thread 5 completed ad=15660 at time=0.04s ; ad: 0.00s
+# thread 6 completed ad=15900 at time=0.04s ; ad: 0.00s
+# thread 8 completed ad=15780 at time=0.04s ; ad: 0.00s
+# thread 12 completed ad=15840 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -651447950
+# Y1: 4946633
+# c0: -161019533
+# c1: 320307707
+# c2: -2402767
+# c3: -23478
+# c4: 14040
+# raw exp_E 11.52, lognorm 15.00, skew 18.55, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -651447950
+Y1: 4946633
+c0: -161019533
+c1: 320307707
+c2: -2402767
+c3: -23478
+c4: 14040
+# exp_E 11.52, lognorm 15.00, skew 18.55, 2 rroots
+
+# thread 1 completed ad=16020 at time=0.04s ; ad: 0.00s
+# thread 11 completed ad=16080 at time=0.04s ; ad: 0.00s
+# thread 7 completed ad=16200 at time=0.04s ; ad: 0.00s
+# thread 2 completed ad=16140 at time=0.04s ; ad: 0.00s
+# thread 4 completed ad=15960 at time=0.04s ; ad: 0.00s
+# thread 13 completed ad=16380 at time=0.04s ; ad: 0.00s
+# thread 1 completed ad=16500 at time=0.04s ; ad: 0.00s
+# thread 15 completed ad=16440 at time=0.04s ; ad: 0.00s
+# thread 7 completed ad=16560 at time=0.04s ; ad: 0.00s
+# thread 5 completed ad=16260 at time=0.04s ; ad: 0.00s
+# thread 6 completed ad=16320 at time=0.04s ; ad: 0.00s
+# thread 9 completed ad=16620 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -625499237
+# Y1: 23699587
+# c0: 217787567
+# c1: 200961353
+# c2: -7915080
+# c3: 24637
+# c4: 15360
+# raw exp_E 12.65, lognorm 14.71, skew 16.00, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -649198824
+Y1: 23699587
+c0: 26705571
+c1: 1213128
+c2: 9094
+c3: -110409
+c4: 46080
+# exp_E 12.09, lognorm 13.43, skew 4.90, 0 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -645738910
+# Y1: 24008003
+# c0: 189401627
+# c1: 20387551
+# c2: -1005474
+# c3: -19369
+# c4: 15060
+# raw exp_E 12.60, lognorm 13.81, skew 10.71, 0 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -765778925
+Y1: 24008003
+c0: 74160647
+c1: 21459616
+c2: 1544061
+c3: -320569
+c4: 15060
+# exp_E 12.46, lognorm 13.67, skew 8.34, 0 rroots
+
+# thread 0 completed ad=16680 at time=0.04s ; ad: 0.00s
+# thread 7 completed ad=16740 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -624494786
+# Y1: 19686421
+# c0: -72619305
+# c1: 170634565
+# c2: -5286454
+# c3: 29036
+# c4: 15480
+# raw exp_E 13.08, lognorm 14.62, skew 15.02, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -663867628
+Y1: 19686421
+c0: 228848769
+c1: 171947032
+c2: -5089150
+c3: -94804
+c4: 15480
+# exp_E 12.32, lognorm 14.56, skew 14.99, 2 rroots
+
+# thread 10 completed ad=16860 at time=0.04s ; ad: 0.00s
+# thread 14 completed ad=16800 at time=0.04s ; ad: 0.00s
+# thread 11 completed ad=16920 at time=0.04s ; ad: 0.00s
+# thread 3 completed ad=17040 at time=0.04s ; ad: 0.00s
+# thread 10 completed ad=17160 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -642690009
+# Y1: 81594761
+# c0: -195362617
+# c1: 327693625
+# c2: -38455309
+# c3: -8918
+# c4: 15780
+# raw exp_E 12.90, lognorm 15.39, skew 22.22, 4 rroots
+#
+# thread 4 completed ad=17220 at time=0.04s ; ad: 0.00s
+# thread 11 completed ad=17280 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -642690009
+Y1: 81594761
+c0: -195362617
+c1: 327693625
+c2: -38455309
+c3: -8918
+c4: 15780
+# exp_E 12.90, lognorm 15.39, skew 22.22, 4 rroots
+
+# thread 13 completed ad=17100 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -634956635
+# Y1: 29603269
+# c0: -40209713
+# c1: 299611872
+# c2: -13876936
+# c3: -9206
+# c4: 15780
+# raw exp_E 12.46, lognorm 15.00, skew 18.57, 2 rroots
+#
+# thread 5 completed ad=17340 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -634956635
+Y1: 29603269
+c0: -40209713
+c1: 299611872
+c2: -13876936
+c3: -9206
+c4: 15780
+# exp_E 12.46, lognorm 15.00, skew 18.57, 2 rroots
+
+# thread 10 completed ad=17460 at time=0.04s ; ad: 0.00s
+# thread 7 completed ad=16980 at time=0.04s ; ad: 0.00s
+# thread 3 completed ad=17400 at time=0.04s ; ad: 0.00s
+# thread 11 completed ad=17580 at time=0.04s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -619065196
+# Y1: 27589781
+# c0: 47435461
+# c1: 303737425
+# c2: -13614848
+# c3: 22604
+# c4: 15960
+# raw exp_E 12.03, lognorm 15.01, skew 18.47, 2 rroots
+#
+# thread 3 completed ad=17700 at time=0.04s ; ad: 0.00s
+# thread 4 completed ad=17520 at time=0.04s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -591475415
+Y1: 27589781
+c0: 83717789
+c1: -10606872
+c2: 687229
+c3: 172888
+c4: 31920
+# exp_E 11.95, lognorm 13.89, skew 7.17, 0 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -619663577
+# Y1: 9260809
+# c0: 183438260
+# c1: 142936709
+# c2: -2154106
+# c3: 32682
+# c4: 16440
+# raw exp_E 13.35, lognorm 14.55, skew 13.66, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -638185195
+Y1: 9260809
+c0: -111049998
+c1: 151419237
+c2: -1955638
+c3: -98838
+c4: 16440
+# exp_E 13.31, lognorm 14.52, skew 13.81, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -641601072
+# Y1: 79661707
+# c0: 42698465
+# c1: 122121582
+# c2: -15816273
+# c3: -11907
+# c4: 16140
+# raw exp_E 12.79, lognorm 14.58, skew 14.78, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -641601072
+Y1: 79661707
+c0: 42698465
+c1: 122121582
+c2: -15816273
+c3: -11907
+c4: 16140
+# exp_E 12.79, lognorm 14.58, skew 14.78, 4 rroots
+
+# thread 0 completed ad=17760 at time=0.05s ; ad: 0.00s
+# thread 3 completed ad=17820 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -622535558
+# Y1: 76366957
+# c0: 166477937
+# c1: 18914968
+# c2: -4825852
+# c3: 70
+# c4: 16620
+# raw exp_E 12.24, lognorm 13.62, skew 10.15, 2 rroots
+#
+# thread 12 completed ad=17640 at time=0.05s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -698902515
+Y1: 76366957
+c0: 142753667
+c1: 28500402
+c2: -4726342
+c3: -66410
+c4: 16620
+# exp_E 12.24, lognorm 13.61, skew 9.99, 2 rroots
+
+# thread 1 completed ad=17880 at time=0.05s ; ad: 0.00s
+# thread 15 completed ad=17940 at time=0.05s ; ad: 0.00s
+# thread 7 completed ad=18000 at time=0.05s ; ad: 0.00s
+# thread 2 completed ad=18060 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -582534219
+# Y1: 140773349
+# c0: 224330765
+# c1: 215781602
+# c2: -65237699
+# c3: 17059
+# c4: 17100
+# raw exp_E 13.11, lognorm 15.76, skew 23.65, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -582534219
+Y1: 140773349
+c0: -133872689
+c1: -10197666
+c2: 10297951
+c3: 34118
+c4: 34200
+# exp_E 12.48, lognorm 14.31, skew 6.71, 2 rroots
+
+# thread 8 completed ad=18180 at time=0.05s ; ad: 0.00s
+# thread 6 completed ad=18120 at time=0.05s ; ad: 0.00s
+# thread 3 completed ad=18240 at time=0.05s ; ad: 0.00s
+# thread 8 completed ad=18300 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -633049337
+# Y1: 43091053
+# c0: 30446217
+# c1: 260727185
+# c2: -17886809
+# c3: -22944
+# c4: 17100
+# raw exp_E 11.81, lognorm 14.97, skew 17.74, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -633049337
+Y1: 43091053
+c0: 30446217
+c1: 260727185
+c2: -17886809
+c3: -22944
+c4: 17100
+# exp_E 11.81, lognorm 14.97, skew 17.74, 2 rroots
+
+# thread 7 completed ad=18600 at time=0.05s ; ad: 0.00s
+# thread 13 completed ad=18360 at time=0.05s ; ad: 0.00s
+# thread 3 completed ad=18420 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -614151962
+# Y1: 6700153
+# c0: 18513551
+# c1: 221348183
+# c2: -2421205
+# c3: 2766
+# c4: 17520
+# raw exp_E 12.53, lognorm 14.83, skew 15.22, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -620852115
+Y1: 6700153
+c0: 5128866
+c1: 50834165
+c2: -272996
+c3: -201942
+c4: 52560
+# exp_E 12.27, lognorm 14.18, skew 6.36, 2 rroots
+
+# thread 9 completed ad=18480 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -584309325
+# Y1: 73049371
+# c0: 83964497
+# c1: 5325172
+# c2: -1960362
+# c3: 28494
+# c4: 17580
+# raw exp_E 12.04, lognorm 13.34, skew 8.33, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -1022605551
+Y1: 73049371
+c0: -1930591
+c1: 16737748
+c2: 1324026
+c3: -393426
+c4: 17580
+# exp_E 11.82, lognorm 13.13, skew 5.39, 2 rroots
+
+# thread 5 completed ad=18660 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -643408258
+# Y1: 100296577
+# c0: -154426301
+# c1: 245673213
+# c2: -34538911
+# c3: -15082
+# c4: 16800
+# raw exp_E 12.15, lognorm 15.26, skew 20.12, 4 rroots
+#
+# thread 8 completed ad=18540 at time=0.05s ; ad: 0.00s
+# thread 7 completed ad=18780 at time=0.05s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -643408258
+Y1: 100296577
+c0: -154426301
+c1: 245673213
+c2: -34538911
+c3: -15082
+c4: 16800
+# exp_E 12.15, lognorm 15.26, skew 20.12, 4 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -591873445
+# Y1: 95903473
+# c0: 264784242
+# c1: 243559009
+# c2: -46412853
+# c3: 16075
+# c4: 17640
+# raw exp_E 12.79, lognorm 15.46, skew 20.57, 4 rroots
+#
+# thread 15 completed ad=18840 at time=0.05s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -591873445
+Y1: 95903473
+c0: -62304961
+c1: -8851954
+c2: 3077767
+c3: 32150
+c4: 35280
+# exp_E 11.84, lognorm 13.73, skew 6.07, 2 rroots
+
+# thread 3 completed ad=18900 at time=0.05s ; ad: 0.00s
+# thread 10 completed ad=18720 at time=0.05s ; ad: 0.00s
+# thread 5 completed ad=19140 at time=0.05s ; ad: 0.00s
+# thread 9 completed ad=19020 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -609987799
+# Y1: 8495089
+# c0: 1075449
+# c1: 221125625
+# c2: -3059372
+# c3: 27995
+# c4: 17640
+# raw exp_E 12.56, lognorm 14.84, skew 15.24, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -618482888
+Y1: 8495089
+c0: -50876821
+c1: 54795405
+c2: -617462
+c3: -127695
+c4: 52920
+# exp_E 12.44, lognorm 14.28, skew 6.82, 2 rroots
+
+# thread 11 completed ad=19080 at time=0.05s ; ad: 0.00s
+# thread 4 completed ad=18960 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -615361599
+# Y1: 39599849
+# c0: -71658694
+# c1: 216339895
+# c2: -13622864
+# c3: -11150
+# c4: 18120
+# raw exp_E 12.63, lognorm 14.85, skew 16.20, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -615361599
+Y1: 39599849
+c0: -71658694
+c1: 216339895
+c2: -13622864
+c3: -11150
+c4: 18120
+# exp_E 12.63, lognorm 14.85, skew 16.20, 2 rroots
+
+# thread 3 completed ad=19260 at time=0.05s ; ad: 0.00s
+# thread 1 completed ad=19200 at time=0.05s ; ad: 0.00s
+# thread 5 completed ad=19320 at time=0.05s ; ad: 0.00s
+# thread 9 completed ad=19380 at time=0.05s ; ad: 0.00s
+# thread 4 completed ad=19500 at time=0.05s ; ad: 0.00s
+# thread 12 completed ad=19440 at time=0.05s ; ad: 0.00s
+# thread 3 completed ad=19680 at time=0.05s ; ad: 0.00s
+# thread 0 completed ad=19560 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -584318643
+# Y1: 72851533
+# c0: -52169890
+# c1: 227914130
+# c2: -27592379
+# c3: 25856
+# c4: 18000
+# raw exp_E 12.46, lognorm 15.12, skew 18.17, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -948576308
+Y1: 72851533
+c0: 70861803
+c1: 104645854
+c2: -2989124
+c3: -1002432
+c4: 54000
+# exp_E 12.25, lognorm 14.57, skew 7.80, 2 rroots
+
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -579358024
+# Y1: 56074591
+# c0: 39571481
+# c1: 10660805
+# c2: -1374913
+# c3: 36596
+# c4: 18360
+# raw exp_E 11.64, lognorm 13.13, skew 7.03, 2 rroots
+#
+# thread 6 completed ad=19620 at time=0.05s ; ad: 0.00s
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -691507206
+Y1: 56074591
+c0: 12751211
+c1: 16012089
+c2: -1153849
+c3: -110284
+c4: 18360
+# exp_E 11.50, lognorm 13.00, skew 6.43, 2 rroots
+
+# thread 12 completed ad=19740 at time=0.05s ; ad: 0.00s
+# thread 3 completed ad=19800 at time=0.05s ; ad: 0.00s
+# thread 2 completed ad=19980 at time=0.05s ; ad: 0.00s
+# thread 5 exits at time=0.05s
+# thread 8 completed ad=19920 at time=0.05s ; ad: 0.00s
+# thread 8 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -644544464
+# Y1: 79899233
+# c0: 156053697
+# c1: 91816887
+# c2: -13751943
+# c3: -36322
+# c4: 18540
+# raw exp_E 13.27, lognorm 14.38, skew 12.57, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: 74548633
+Y1: 79899233
+c0: 38209132
+c1: -30582460
+c2: -5722197
+c3: 631118
+c4: 18540
+# exp_E 12.39, lognorm 13.60, skew 6.88, 4 rroots
+
+# thread 7 exits at time=0.05s
+# thread 0 completed ad=19860 at time=0.05s ; ad: 0.00s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -597364241
+# Y1: 43578149
+# c0: -151477219
+# c1: 198172103
+# c2: -13646412
+# c3: 11029
+# c4: 18780
+# raw exp_E 12.78, lognorm 14.84, skew 15.79, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -466629794
+Y1: 43578149
+c0: 32861447
+c1: -23614534
+c2: 5979056
+c3: 709167
+c4: 56340
+# exp_E 12.63, lognorm 14.25, skew 5.07, 0 rroots
+
+# thread 15 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -627836566
+# Y1: 93120991
+# c0: -153407059
+# c1: 224945478
+# c2: -29984514
+# c3: -17358
+# c4: 18540
+# raw exp_E 12.35, lognorm 15.17, skew 18.44, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -627836566
+Y1: 93120991
+c0: -153407059
+c1: 224945478
+c2: -29984514
+c3: -17358
+c4: 18540
+# exp_E 12.35, lognorm 15.17, skew 18.44, 4 rroots
+
+# thread 14 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -624172780
+# Y1: 46524551
+# c0: -237308523
+# c1: 274469351
+# c2: -19122431
+# c3: -31764
+# c4: 18720
+# raw exp_E 11.86, lognorm 15.06, skew 17.87, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -624172780
+Y1: 46524551
+c0: -237308523
+c1: 274469351
+c2: -19122431
+c3: -31764
+c4: 18720
+# exp_E 11.86, lognorm 15.06, skew 17.87, 2 rroots
+
+# thread 10 exits at time=0.05s
+# thread 6 exits at time=0.05s
+# thread 2 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -584228248
+# Y1: 41275219
+# c0: 241575705
+# c1: 140147153
+# c2: -11087631
+# c3: 31905
+# c4: 19080
+# raw exp_E 13.31, lognorm 14.57, skew 13.68, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -625503467
+Y1: 41275219
+c0: 715831563
+c1: 121066591
+c2: -11068866
+c3: -44415
+c4: 19080
+# exp_E 13.31, lognorm 14.57, skew 14.71, 2 rroots
+
+# thread 11 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -608457487
+# Y1: 18846337
+# c0: 107409939
+# c1: 19870818
+# c2: -701110
+# c3: -32310
+# c4: 19200
+# raw exp_E 12.12, lognorm 13.70, skew 8.84, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -721535509
+Y1: 18846337
+c0: -5192769
+c1: 8205858
+c2: 4027670
+c3: -493110
+c4: 19200
+# exp_E 11.69, lognorm 13.26, skew 3.37, 2 rroots
+
+# thread 1 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -610982860
+# Y1: 52377337
+# c0: -22772423
+# c1: 165564802
+# c2: -14020300
+# c3: -20351
+# c4: 19620
+# raw exp_E 12.80, lognorm 14.72, skew 14.66, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -610982860
+Y1: 52377337
+c0: -22772423
+c1: 165564802
+c2: -14020300
+c3: -20351
+c4: 19620
+# exp_E 12.80, lognorm 14.72, skew 14.66, 2 rroots
+
+# thread 12 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -589370672
+# Y1: 28497149
+# c0: 171391921
+# c1: 22059809
+# c2: -1451930
+# c3: 21442
+# c4: 19620
+# raw exp_E 12.45, lognorm 13.89, skew 9.81, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -788850715
+Y1: 28497149
+c0: -14418298
+c1: 18620163
+c2: 3866068
+c3: -527918
+c4: 19620
+# exp_E 12.04, lognorm 13.48, skew 5.00, 2 rroots
+
+# thread 13 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -615863648
+# Y1: 63030977
+# c0: -114349583
+# c1: 155520688
+# c2: -14707238
+# c3: -23341
+# c4: 19620
+# raw exp_E 12.81, lognorm 14.73, skew 14.76, 4 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -615863648
+Y1: 63030977
+c0: -114349583
+c1: 155520688
+c2: -14707238
+c3: -23341
+c4: 19620
+# exp_E 12.81, lognorm 14.73, skew 14.76, 4 rroots
+
+# thread 3 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -596317742
+# Y1: 7753829
+# c0: -60816349
+# c1: 259152233
+# c2: -3355326
+# c3: -8882
+# c4: 19860
+# raw exp_E 12.68, lognorm 14.97, skew 15.46, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -596317742
+Y1: 7753829
+c0: -60816349
+c1: 259152233
+c2: -3355326
+c3: -8882
+c4: 19860
+# exp_E 12.68, lognorm 14.97, skew 15.46, 2 rroots
+
+# thread 4 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -600805979
+# Y1: 26218909
+# c0: 12598527
+# c1: 4587350
+# c2: -221314
+# c3: -5126
+# c4: 19380
+# raw exp_E 10.90, lognorm 12.66, skew 5.20, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -679462706
+Y1: 26218909
+c0: -1447167
+c1: 3683792
+c2: 871340
+c3: -237686
+c4: 19380
+# exp_E 10.49, lognorm 12.25, skew 3.15, 2 rroots
+
+# thread 9 exits at time=0.05s
+# Raw polynomial:
+# n: 2496735491537104256118027770442801942257
+# Y0: -600150771
+# Y1: 16506229
+# c0: -108053383
+# c1: 223479777
+# c2: -6055594
+# c3: -22591
+# c4: 19860
+# raw exp_E 12.80, lognorm 14.86, skew 15.06, 2 rroots
+#
+# Size-optimized polynomial:
+n: 2496735491537104256118027770442801942257
+Y0: -600150771
+Y1: 16506229
+c0: -108053383
+c1: 223479777
+c2: -6055594
+c3: -22591
+c4: 19860
+# exp_E 12.80, lognorm 14.86, skew 15.06, 2 rroots
+
+# thread 0 exits at time=0.05s
+# Stat: potential collisions=252.23 (3.25e+02/s)
+# Stat: raw lognorm (nr/min/av/max/std): 194/12.62/14.48/15.86/0.59
+# Stat: raw proj. alpha (nr/min/av/max/std): 194/-2.31/-1.44/-1.03/0.24
+# Stat: discarded 227 polynomials because f[d]*f[d-2] > 0
+# Stat: optimized lognorm (nr/min/av/max/std): 111/12.25/14.18/15.39/0.63
+# Stat: opt proj. alpha (nr/min/av/max/std): 111/-2.37/-1.56/-1.03/0.31
+# Stat: discarded 83 polynomials because f[d-1]*f[d-3] > 0
+# Stat: exp_E (nr/min/av/max/std): 111/10.49/12.21/13.39/0.54
+# Stat: tried 333 ad-value(s), 194 size-optimized polynomials, kept 111
+# Stat: best exp_E after size optimization:                                        12.03
+# Stat: total phase took 0.77s
+# Stat: total phase took (WCT) 0.05s
+# Stat: peak mem usage 11.80 MB

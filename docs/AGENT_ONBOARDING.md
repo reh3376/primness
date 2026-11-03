@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 17:15 EST
+**Last updated:** 2026-11-03 17:50 EST
 
 ## What this project is
 
@@ -27,13 +27,13 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 17:15 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-03 17:50 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
-- Development is on `primness_dev01`. Pull request 20 is merged.
-- D1 is the starting sub-claim. It has not been measured. The Dickman–de Bruijn comparison is not implemented. No Murphy \(\alpha\) adjustment formula is written in this repository. Do not invent one.
+- Development is on `primness_dev01`. Pull request 21 is merged.
+- D1 is the starting sub-claim. It has one scaled-down measurement, on d1-01 (`data/results/d1-01.scaled-down.json`), against the raw Dickman–de Bruijn prediction. No Murphy \(\alpha\) adjustment formula is written in this repository, so the rejection criterion has not been applied. Do not invent one; record a published definition first.
 - The ten semiprimes in `data/d1_test_instances.md` are unchanged. Digit counts are 40, 44, 48, 52, 56, 60, 64, 68, 72, and 80. Their bit lengths, from those decimals, are 131 through 264. d1-10 is 264 bits and \(\log_{10}(N)\) is about 79.37.
-- The harness parses CADO and msieve polynomial files into `instrument-polynomial/1`. A parsed file does not run the toy smoother and does not emit a measurement event.
-- CADO-NFS is not installed. [tools/README.md](../tools/README.md) records it as LGPL-2.1, so its source stays outside this tree. The same file records msieve as public domain and records that YAFU’s README and repository root do not state a license, so YAFU is not copied in.
+- The harness parses CADO and msieve polynomial files into `instrument-polynomial/1` and measures them (see the harness section below). `data/instruments/d1-01/cado.poly` is the only polynomial so far.
+- CADO-NFS is built outside this tree at `~/external/cado-nfs` (commit 692ecb7). [tools/README.md](../tools/README.md) records it as LGPL-2.1, so its source stays outside this tree and the scripts call its binaries. The same file records msieve as public domain and records that YAFU’s README and repository root do not state a license, so YAFU is not copied in.
 - msieve 1.54, in a checkout outside this tree, enters NFS polynomial selection only when `mp_bits(n)` is greater than 264. The degree-4 parameter table starts at \(\log_{10}(N) = 80\). Every proved semiprime here is at or below 264 bits, so that binary takes the quadratic-sieve path for them. The stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. The checkout builds after that file includes `<sys/time.h>`. The binary is not in this repository. Polynomial selection has not been run.
 - [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md) step 2 still says to take one polynomial from CADO-NFS and one from msieve. That file was not revised when the size gate was recorded. Follow Current State for the next run: one NFS polynomial per instance from CADO-NFS, outside this tree, then the smoothness count and the Dickman comparison in the Rust harness. Do not rewrite the prediction into a new protocol.
 
@@ -48,7 +48,7 @@ The repository does not define an SNFS-structure test. The instance file says th
 5. The owner reviews, approves, and merges. Do not self-approve or merge.
 6. After the merge, fast-forward `primness_dev01` to `origin/main` and push. Auto-PR exits without opening a pull request when `origin/main..HEAD` is empty.
 
-[.github/workflows/ci.yml](../.github/workflows/ci.yml) runs `cargo check --workspace --all-targets` and `cargo test --workspace --all-targets` on every push. There is no `pull_request` trigger: the check recorded on the head commit is what the pull request shows, and the main ruleset requires that `Rust check and test` check. The workspace members are the root crate and `bench`, so the dashboard binary is in that test run. [.github/workflows/sync-readme.yml](../.github/workflows/sync-readme.yml) only prints that README updates are still manual.
+[.github/workflows/ci.yml](../.github/workflows/ci.yml) runs `cargo check --workspace --all-targets` and `cargo test --workspace --all-targets` on every push. There is no `pull_request` trigger: the check recorded on the head commit is what the pull request shows. The main ruleset is to require that `Rust check and test` check; the owner adds the rule in the repository settings. The workspace members are the root crate and `bench`, so the dashboard binary is in that test run. [.github/workflows/sync-readme.yml](../.github/workflows/sync-readme.yml) only prints that README updates are still manual.
 
 Before a push, run `sh scripts/check-current-state.sh origin/main HEAD`. The gate compares git commits, so the Current State edit has to be committed first.
 
@@ -58,7 +58,13 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 
 | Path | Role |
 | --- | --- |
-| [src/lib.rs](../src/lib.rs) | Modules `db`, `metrics`, `poly`, `primes`, `schema`. |
+| [src/lib.rs](../src/lib.rs) | Modules `db`, `dickman`, `eval`, `hardware`, `metrics`, `poly`, `primes`, `schema`, `sieve`. |
+| [src/dickman.rs](../src/dickman.rs) | Dickman–de Bruijn ρ(u): exact on [0, 2], Simpson grid above (4096 steps per unit to u = 40). Tests pin ρ(1) = 1, ρ(2) = 1 − ln 2, and the literature values at 3, 4, 5, 10. No α. |
+| [src/eval.rs](../src/eval.rs) | Homogeneous BigInt evaluation F(a, b) = Σ c_i a^i b^(d−i), and `coprime`. |
+| [src/sieve.rs](../src/sieve.rs) | Primes up to B by a bit sieve; `largest_prime_factor_if_smooth` by trial division (BigUint, then u128, then u64 phases). |
+| [src/hardware.rs](../src/hardware.rs) | `hardware-sample/1` telemetry: macmon + ioreg + sysctl, JSONL trace, Postgres rows, summary. See [docs/hardware_telemetry.md](hardware_telemetry.md). |
+| [src/bin/hw_sample.rs](../src/bin/hw_sample.rs) | Binary `hw-sample`: records a trace while a command runs or for N samples. |
+| [scripts/cado-polyselect.sh](../scripts/cado-polyselect.sh), [scripts/cado-best-poly.py](../scripts/cado-best-poly.py) | CADO-NFS polynomial selection outside the tree, under the sampler; best candidate by MurphyE into `data/instruments/<id>/cado.poly`. |
 | [src/primes.rs](../src/primes.rs) | Primality proofs for the instance generator. |
 | [src/poly.rs](../src/poly.rs) | Parser for external polynomial files. Version constant `instrument-polynomial/1`. `MAX_DEGREE` is 6. |
 | [src/schema.rs](../src/schema.rs) | Loads every `schemas/**/*.json`. Measurement events use `$id` `measurement-event/1`. |
@@ -72,7 +78,7 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 
 `d1-measure` tries `primness::poly::parse_instrument` before the toy path.
 
-- Success prints `instrument-polynomial/1`, the format, the degree, the digit count, `source: unspecified`, and `scale: not measured (parsed only; not the 40–80 digit protocol)`, then returns. The file does not name the tool, so the program does not infer `source`. No metric is emitted.
+- Success runs the instrument path: F(a, b) and G(a, b) in BigInt over a in [−A, A], b in [1, B_MAX], gcd(a, b) = 1 (defaults 500 and 250; `--a-max`, `--b-max`), smoothness by trial division at every `--bounds` value (default 2^14, 2^16, 2^18, 2^20) from one largest-prime-factor pass, and the Dickman prediction as the mean of ρ(ln|F| / ln B). Events carry `scale` `scaled-down`. The result is a `d1-measurement/1` file (`--out`, default `data/results/<instance>-<run_id>.json`) with both sides, the gap, mean u, and the hardware summary. `--source` names the instrument only when the caller knows it; the file itself never does. `full` is not yet a reachable label: the protocol's region per digit length is not fixed.
 - `Error::NotInstrument` falls through to the toy path. [examples/demo.poly](../examples/demo.poly) is three integer lines (`1`, `-1`, `1`) and takes that path.
 - Any other parse error prints to stderr and exits 1. A file that has instrument keys plus a score key such as `MurphyE` is an error. The schema has no score field.
 
@@ -118,9 +124,9 @@ The bench container is `primness-bench`, image built from [Dockerfile](../Docker
 
 ## Immediate next work
 
-1. Install or build CADO-NFS outside this tree. Do not copy its source in. Obtain one NFS polynomial per proved instance. Keep the record’s `source` as `cado-nfs` only when the caller knows that program wrote the file. The parser itself leaves `source` unspecified.
-2. Implement the smoothness count on those polynomials in the Rust harness, at a scale the event labels honestly (`scaled-down` or `full`). Compute the Dickman–de Bruijn comparison here. The Murphy \(\alpha\) adjustment needs a published definition in the repo before it is coded. The classical function satisfies \(\rho(u) = 1\) for \(u \le 1\) and \(\rho(2) = 1 - \ln 2\). Those checks are not encoded in this tree. Do not use a tool’s Murphy E, alpha, or size score as the claim.
-3. Apply the rejection criterion in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md). Record the result in a timestamped note and update Current State.
+1. Record a published definition of Murphy \(\alpha\) (Murphy 1999; Bai, Bouvier, Kruppa, Zimmermann 2016) in the repository, implement it in the harness for both sides over primes up to a stated bound, and apply it to the Dickman prediction. CADO's comment line reports \(\alpha = -3.96\) for the d1-01 polynomial; that is an instrument score and is not the measurement.
+2. Run `scripts/cado-polyselect.sh` and `d1-measure` on d1-02 through d1-10 at the same scaled-down region, with the hardware trace on. Compare the ten gaps with their standard errors.
+3. Replace trial division with a sieve over the region so the protocol's bounds \(2^{20}, 2^{24}, 2^{28}\) are reachable, and fix the protocol's region per digit length so a run can be labeled `full`. Then apply the rejection criterion in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md), record the result in a timestamped note, and update Current State.
 
 Do not start all ten instances at \(B = 2^{28}\) before one small external polynomial has been parsed. Do not run msieve NFS polynomial selection on these ten numbers with the 1.54 binary described above and expect an NFS polynomial.
 

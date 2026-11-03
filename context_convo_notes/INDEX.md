@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:13 EST
-- **Last Modified**: 2026-11-03 17:15 EST
-- **Version**: 1.2
+- **Last Modified**: 2026-11-03 17:50 EST
+- **Version**: 1.3
 - **Tags**: index, documentation, context
 - **Related Files**: primness_roadmap.md, current_state_history.md
 
@@ -16,5 +16,6 @@
 | 2026-11-03 12:51 | Careful survey of existing NFS tools as measurement instruments only | obstacle-D, D1, existing-tools, baseline | [2026-11-03_1251_existing_tools_survey.md](2026-11-03_1251_existing_tools_survey.md) |
 | 2026-11-03 15:58 | Ten proved 40–80 digit D1 semiprimes replace the placeholder table | obstacle-D, D1, instances, primality | [2026-11-03_1558_d1_instances_proved.md](2026-11-03_1558_d1_instances_proved.md) |
 | 2026-11-03 17:15 | Review of PRs 11–20; CI runs per push with --workspace; bench binds loopback | review, ci, bench, primality | [2026-11-03_1715_ci_review.md](2026-11-03_1715_ci_review.md) |
+| 2026-11-03 17:50 | CADO-NFS polynomial for d1-01; first scaled-down Dickman comparison; hardware telemetry | obstacle-D, D1, measurement, dickman, hardware | [2026-11-03_1750_d1_01_first_measurement.md](2026-11-03_1750_d1_01_first_measurement.md) |
 
 Update this table whenever a new timestamped note is added to the directory.

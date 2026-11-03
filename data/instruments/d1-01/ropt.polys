@@ -1,0 +1,2912 @@
+# (692ecb7) /Users/reh3376/external/cado-nfs/build/Mac.lan/polyselect/polyselect_ropt -inputpolys data/instruments/d1-01/stage1.polys -ropteffort 5 -t 16 -Bf 131072 -Bg 131072 -area 1e12
+# Compiled with gcc Apple LLVM 17.0.0 (clang-1700.6.4.2)
+# Compilation flags (C) -std=c99 -W -Wall -O2 
+# Compilation flags (C++) -std=c++20 -O2 
+# Info: Will use 16 threads
+# Info: ropteffort = 5
+# Info: L1_cachesize = 16384, size_tune_sievearray = 8192
+# Reading polynomials from data/instruments/d1-01/stage1.polys
+# 111 polynomial(s) read.
+
+### input polynomial 0 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1703068960
+# Y1: 18807433
+# c0: 314696017
+# c1: 384888960
+# c2: -4287270
+# c3: -308
+# c4: 300
+# skew: 76.620
+# # side 1 lognorm 13.84, exp_E 11.28, alpha 1.33 (proj -1.21), 2 real roots
+
+### root-optimized polynomial 0 ###
+n: 2496735491537104256118027770442801942257
+Y0: -273704052
+Y1: 18807433
+c0: 46426103681
+c1: -1105891976
+c2: -50382993
+c3: 90892
+c4: 300
+skew: 71.357
+# side 1 lognorm 15.52, E 12.16, alpha -3.36 (proj -1.50), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=4.000e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.28, av. E 12.16
+
+### input polynomial 1 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -737176912
+# Y1: 100592809
+# c0: 642285955
+# c1: -26062085
+# c2: -7679315
+# c3: 63333
+# c4: 3240
+# skew: 19.819
+# # side 1 lognorm 13.56, exp_E 12.00, alpha -0.44 (proj -1.56), 4 real roots
+
+### root-optimized polynomial 1 ###
+n: 2496735491537104256118027770442801942257
+Y0: -3453182755
+Y1: 100592809
+c0: -1654398329874
+c1: 44902218463
+c2: 101955281
+c3: -286587
+c4: 3240
+skew: 148.256
+# side 1 lognorm 17.93, E 14.18, alpha -3.75 (proj -1.53), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.607e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.64, av. E 13.17
+
+### input polynomial 2 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1139666462
+# Y1: 38986021
+# c0: -28890145
+# c1: 224613685
+# c2: -7651933
+# c3: -2267
+# c4: 1560
+# skew: 36.724
+# # side 1 lognorm 14.09, exp_E 11.59, alpha -1.71 (proj -1.41), 2 real roots
+
+### root-optimized polynomial 2 ###
+n: 2496735491537104256118027770442801942257
+Y0: 263830294
+Y1: 38986021
+c0: -67941147285
+c1: -10180371607
+c2: 4233791
+c3: 222373
+c4: 1560
+skew: 105.977
+# side 1 lognorm 16.54, E 13.53, alpha -3.00 (proj -1.41), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.272e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.62, av. E 13.29
+
+### input polynomial 3 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1180534269
+# Y1: 35160019
+# c0: -537619555
+# c1: 367089051
+# c2: -10449387
+# c3: -1362
+# c4: 1320
+# skew: 45.935
+# # side 1 lognorm 14.39, exp_E 11.27, alpha -0.61 (proj -1.75), 4 real roots
+
+### root-optimized polynomial 3 ###
+n: 2496735491537104256118027770442801942257
+Y0: 858746833
+Y1: 35160019
+c0: -941771436090
+c1: -37540387795
+c2: 51116524
+c3: 304878
+c4: 1320
+skew: 175.130
+# side 1 lognorm 17.41, E 13.88, alpha -3.53 (proj -1.52), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.023e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.53, av. E 13.44
+
+### input polynomial 4 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -576698513
+# Y1: 75998099
+# c0: 44440812
+# c1: -13128143
+# c2: 3718190
+# c3: 121470
+# c4: 3780
+# skew: 9.794
+# # side 1 lognorm 13.42, exp_E 11.35, alpha -1.12 (proj -2.07), 0 real root
+
+### root-optimized polynomial 4 ###
+n: 2496735491537104256118027770442801942257
+Y0: 1247255863
+Y1: 75998099
+c0: -1404594767810
+c1: -85293587853
+c2: 25527710
+c3: 484350
+c4: 3780
+skew: 163.331
+# side 1 lognorm 18.29, E 13.92, alpha -4.37 (proj -2.07), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.771e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.50, av. E 13.54
+
+### input polynomial 5 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1561968407
+# Y1: 73119061
+# c0: 91299341
+# c1: 48693987
+# c2: -1518365
+# c3: -125778
+# c4: 5040
+# skew: 14.400
+# # side 1 lognorm 13.27, exp_E 11.18, alpha -1.19 (proj -2.09), 2 real roots
+
+### root-optimized polynomial 5 ###
+n: 2496735491537104256118027770442801942257
+Y0: 1289674972
+Y1: 73119061
+c0: -2447792472645
+c1: -138447127418
+c2: 29760649
+c3: 660462
+c4: 5040
+skew: 174.752
+# side 1 lognorm 18.71, E 13.65, alpha -5.06 (proj -2.09), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.900e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.44, av. E 13.55
+
+### input polynomial 6 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: 1127593718
+# Y1: 80373071
+# c0: 83445147
+# c1: -34349527
+# c2: -1076848
+# c3: 120622
+# c4: 1020
+# skew: 16.643
+# # side 1 lognorm 12.66, exp_E 11.05, alpha -1.59 (proj -1.61), 4 real roots
+
+### root-optimized polynomial 6 ###
+n: 2496735491537104256118027770442801942257
+Y0: 3860278132
+Y1: 80373071
+c0: -4462567083975
+c1: -88660262790
+c2: 98674387
+c3: 259342
+c4: 1020
+skew: 262.181
+# side 1 lognorm 17.94, E 13.83, alpha -4.11 (proj -1.38), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.724e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.39, av. E 13.59
+
+### input polynomial 7 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1251334075
+# Y1: 112136099
+# c0: 864390846
+# c1: 17164559
+# c2: -8406124
+# c3: -34770
+# c4: 5580
+# skew: 19.325
+# # side 1 lognorm 13.84, exp_E 11.94, alpha -1.51 (proj -1.90), 4 real roots
+
+### root-optimized polynomial 7 ###
+n: 2496735491537104256118027770442801942257
+Y0: 654979608
+Y1: 112136099
+c0: -238520237215
+c1: -41061531568
+c2: -37546591
+c3: 114890
+c4: 1860
+skew: 161.554
+# side 1 lognorm 17.57, E 14.97, alpha -2.60 (proj -1.25), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.335e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.46, av. E 13.77
+
+### input polynomial 8 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1128107041
+# Y1: 38622301
+# c0: -446479155
+# c1: 320735689
+# c2: -10459951
+# c3: -2206
+# c4: 1620
+# skew: 41.023
+# # side 1 lognorm 14.38, exp_E 11.89, alpha 0.31 (proj -1.21), 4 real roots
+
+### root-optimized polynomial 8 ###
+n: 2496735491537104256118027770442801942257
+Y0: 687141106
+Y1: 38622301
+c0: -86007380993
+c1: -4106370045
+c2: 49322784
+c3: 302354
+c4: 1620
+skew: 74.958
+# side 1 lognorm 16.21, E 12.98, alpha -3.24 (proj -1.44), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.692e-06
+### Best MurphyE so far is 4.000e-06, av. exp_E 11.51, av. E 13.68
+
+### input polynomial 9 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -760972495
+# Y1: 55772243
+# c0: -43706518
+# c1: -29035811
+# c2: 4937165
+# c3: 253854
+# c4: 12240
+# skew: 8.006
+# # side 1 lognorm 13.68, exp_E 11.43, alpha -1.80 (proj -2.25), 2 real roots
+
+### root-optimized polynomial 9 ###
+n: 2496735491537104256118027770442801942257
+Y0: 410244608
+Y1: 55772243
+c0: -6102893405
+c1: -565956903
+c2: 54544625
+c3: 641007
+c4: 6120
+skew: 21.884
+# side 1 lognorm 15.83, E 11.53, alpha -4.30 (proj -1.51), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=4.049e-06
+### Best MurphyE so far is 4.049e-06, av. exp_E 11.50, av. E 13.46
+
+### input polynomial 10 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1075611770
+# Y1: 63638117
+# c0: 125047432
+# c1: 61200477
+# c2: -3926647
+# c3: -74202
+# c4: 15120
+# skew: 11.534
+# # side 1 lognorm 13.88, exp_E 11.51, alpha -1.73 (proj -2.37), 2 real roots
+
+### root-optimized polynomial 10 ###
+n: 2496735491537104256118027770442801942257
+Y0: 197150570
+Y1: 63638117
+c0: -85186479
+c1: -38330143
+c2: 45773675
+c3: 567699
+c4: 7560
+skew: 3.646
+# side 1 lognorm 15.44, E 11.48, alpha -3.96 (proj -1.91), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=4.749e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.50, av. E 13.28
+
+### input polynomial 11 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -975249410
+# Y1: 74286533
+# c0: -182039649
+# c1: -23394950
+# c2: 2842310
+# c3: 16233
+# c4: 7020
+# skew: 11.997
+# # side 1 lognorm 13.54, exp_E 11.72, alpha -1.38 (proj -1.82), 2 real roots
+
+### root-optimized polynomial 11 ###
+n: 2496735491537104256118027770442801942257
+Y0: -826676344
+Y1: 74286533
+c0: 696670939867
+c1: -60155124561
+c2: -219751411
+c3: 72393
+c4: 7020
+skew: 121.954
+# side 1 lognorm 18.26, E 13.89, alpha -4.37 (proj -1.82), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.833e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.52, av. E 13.33
+
+### input polynomial 12 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -980227129
+# Y1: 4882621
+# c0: -261148868
+# c1: 174175377
+# c2: -700050
+# c3: -36062
+# c4: 2880
+# skew: 28.238
+# # side 1 lognorm 14.06, exp_E 11.90, alpha -0.87 (proj -1.44), 2 real roots
+
+### root-optimized polynomial 12 ###
+n: 2496735491537104256118027770442801942257
+Y0: -755626563
+Y1: 4882621
+c0: 2090605097120
+c1: -13161143908
+c2: 35770495
+c3: 493858
+c4: 2880
+skew: 163.439
+# side 1 lognorm 17.76, E 13.36, alpha -4.40 (proj -1.67), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.842e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.55, av. E 13.34
+
+### input polynomial 13 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -996235670
+# Y1: 92043443
+# c0: -176654613
+# c1: 125184583
+# c2: -10056894
+# c3: -4490
+# c4: 2940
+# skew: 24.325
+# # side 1 lognorm 14.14, exp_E 11.64, alpha -2.28 (proj -1.66), 4 real roots
+
+### root-optimized polynomial 13 ###
+n: 2496735491537104256118027770442801942257
+Y0: -351931569
+Y1: 92043443
+c0: -1195357744
+c1: 4003920
+c2: 82756619
+c3: 77830
+c4: 2940
+skew: 8.464
+# side 1 lognorm 16.02, E 13.04, alpha -2.98 (proj -1.43), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.923e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.55, av. E 13.31
+
+### input polynomial 14 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -950622262
+# Y1: 10921949
+# c0: -10819093
+# c1: 62255127
+# c2: -454799
+# c3: -50210
+# c4: 3600
+# skew: 18.243
+# # side 1 lognorm 13.40, exp_E 11.53, alpha -0.21 (proj -1.87), 2 real roots
+
+### root-optimized polynomial 14 ###
+n: 2496735491537104256118027770442801942257
+Y0: 250792128
+Y1: 10921949
+c0: -190228073695
+c1: -11080169104
+c2: 244335901
+c3: 1533790
+c4: 3600
+skew: 62.687
+# side 1 lognorm 17.43, E 13.19, alpha -4.24 (proj -1.87), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.241e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.55, av. E 13.31
+
+### input polynomial 15 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1032841207
+# Y1: 53448257
+# c0: 119787576
+# c1: 14783630
+# c2: -346641
+# c3: -214680
+# c4: 20100
+# skew: 9.145
+# # side 1 lognorm 13.78, exp_E 11.98, alpha -1.09 (proj -1.80), 0 real root
+
+### root-optimized polynomial 15 ###
+n: 2496735491537104256118027770442801942257
+Y0: -498358637
+Y1: 53448257
+c0: -55596887568
+c1: 6010051594
+c2: 5272959
+c3: 589320
+c4: 20100
+skew: 41.318
+# side 1 lognorm 17.26, E 13.66, alpha -3.61 (proj -1.80), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.307e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.58, av. E 13.33
+
+### input polynomial 16 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1562717981
+# Y1: 51133403
+# c0: -16195723
+# c1: 46836422
+# c2: 1512419
+# c3: -207295
+# c4: 3960
+# skew: 13.439
+# # side 1 lognorm 13.32, exp_E 11.98, alpha -0.61 (proj -1.34), 2 real roots
+
+### root-optimized polynomial 16 ###
+n: 2496735491537104256118027770442801942257
+Y0: 1045085572
+Y1: 51133403
+c0: -1344651988491
+c1: -64334498989
+c2: 82729447
+c3: 600545
+c4: 3960
+skew: 146.834
+# side 1 lognorm 18.14, E 14.35, alpha -3.79 (proj -1.34), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.716e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.60, av. E 13.39
+
+### input polynomial 17 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -889915845
+# Y1: 27395383
+# c0: -85724893
+# c1: 336507944
+# c2: -10276818
+# c3: -7152
+# c4: 4200
+# skew: 30.410
+# # side 1 lognorm 14.64, exp_E 11.78, alpha -0.38 (proj -1.70), 2 real roots
+
+### root-optimized polynomial 17 ###
+n: 2496735491537104256118027770442801942257
+Y0: 260690241
+Y1: 27395383
+c0: -1137796442050
+c1: -120298794285
+c2: -21515936
+c3: 698448
+c4: 4200
+skew: 175.260
+# side 1 lognorm 18.53, E 14.14, alpha -4.39 (proj -1.82), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.987e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.61, av. E 13.43
+
+### input polynomial 18 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -863504976
+# Y1: 1429561
+# c0: 82490561
+# c1: 368546737
+# c2: -621882
+# c3: -5604
+# c4: 4500
+# skew: 31.426
+# # side 1 lognorm 14.76, exp_E 12.12, alpha -0.95 (proj -1.48), 2 real roots
+
+### root-optimized polynomial 18 ###
+n: 2496735491537104256118027770442801942257
+Y0: -863504976
+Y1: 1429561
+c0: -309915795823
+c1: 18254160
+c2: 807679
+c3: -5604
+c4: 4500
+skew: 96.207
+# side 1 lognorm 16.87, E 13.00, alpha -3.87 (proj -1.46), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.357e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.64, av. E 13.41
+
+### input polynomial 19 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -874230636
+# Y1: 48715543
+# c0: 256659629
+# c1: 244080341
+# c2: -14400414
+# c3: -1766
+# c4: 4380
+# skew: 26.465
+# # side 1 lognorm 14.55, exp_E 11.96, alpha -0.74 (proj -1.50), 4 real roots
+
+### root-optimized polynomial 19 ###
+n: 2496735491537104256118027770442801942257
+Y0: -679368464
+Y1: 48715543
+c0: -2247706033215
+c1: 162737097799
+c2: -111432212
+c3: 68314
+c4: 4380
+skew: 192.207
+# side 1 lognorm 18.82, E 14.72, alpha -4.10 (proj -1.50), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.553e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.65, av. E 13.47
+
+### input polynomial 20 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1306451947
+# Y1: 38501917
+# c0: 118704821
+# c1: 89194677
+# c2: -304687
+# c3: -182924
+# c4: 4140
+# skew: 17.912
+# # side 1 lognorm 13.64, exp_E 12.07, alpha -2.35 (proj -1.58), 2 real roots
+
+### root-optimized polynomial 20 ###
+n: 2496735491537104256118027770442801942257
+Y0: -497911690
+Y1: 38501917
+c0: -79195263843
+c1: 6186560168
+c2: -874459
+c3: 164836
+c4: 4140
+skew: 69.065
+# side 1 lognorm 16.72, E 13.53, alpha -3.19 (proj -1.46), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.407e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.67, av. E 13.48
+
+### input polynomial 21 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -908682532
+# Y1: 9275293
+# c0: 26975653
+# c1: 131959363
+# c2: -808562
+# c3: -81739
+# c4: 4440
+# skew: 21.760
+# # side 1 lognorm 13.97, exp_E 12.66, alpha 0.59 (proj -1.31), 2 real roots
+
+### root-optimized polynomial 21 ###
+n: 2496735491537104256118027770442801942257
+Y0: -574771984
+Y1: 9275293
+c0: -50103701775
+c1: 3236397479
+c2: -2936813
+c3: 557621
+c4: 4440
+skew: 62.007
+# side 1 lognorm 16.52, E 12.92, alpha -3.59 (proj -1.31), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.334e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.72, av. E 13.45
+
+### input polynomial 22 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -905006695
+# Y1: 11684863
+# c0: -48832523
+# c1: 117589159
+# c2: -939483
+# c3: -86220
+# c4: 4740
+# skew: 20.458
+# # side 1 lognorm 13.90, exp_E 12.73, alpha 1.18 (proj -1.18), 2 real roots
+
+### root-optimized polynomial 22 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1337346626
+Y1: 11684863
+c0: 240263354091
+c1: 11550271205
+c2: -80968196
+c3: -787740
+c4: 4740
+skew: 93.917
+# side 1 lognorm 16.94, E 13.21, alpha -3.74 (proj -1.06), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.289e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.76, av. E 13.44
+
+### input polynomial 23 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -979397169
+# Y1: 25101283
+# c0: 119182853
+# c1: 99810260
+# c2: -1844724
+# c3: -106380
+# c4: 4920
+# skew: 18.799
+# # side 1 lognorm 13.76, exp_E 12.20, alpha -0.69 (proj -1.56), 2 real roots
+
+### root-optimized polynomial 23 ###
+n: 2496735491537104256118027770442801942257
+Y0: -627979207
+Y1: 25101283
+c0: -543405911880
+c1: 21174441622
+c2: 24574519
+c3: 169140
+c4: 4920
+skew: 102.788
+# side 1 lognorm 17.62, E 13.67, alpha -3.94 (proj -1.21), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.407e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.78, av. E 13.45
+
+### input polynomial 24 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -841544310
+# Y1: 19418801
+# c0: -127352233
+# c1: 216707359
+# c2: -4933892
+# c3: -5256
+# c4: 5100
+# skew: 24.977
+# # side 1 lognorm 14.39, exp_E 12.20, alpha 0.01 (proj -1.24), 2 real roots
+
+### root-optimized polynomial 24 ###
+n: 2496735491537104256118027770442801942257
+Y0: -511424693
+Y1: 19418801
+c0: -1420252583472
+c1: 54167727661
+c2: 3641452
+c3: 341544
+c4: 5100
+skew: 133.990
+# side 1 lognorm 18.24, E 14.01, alpha -4.22 (proj -1.24), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.260e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.80, av. E 13.47
+
+### input polynomial 25 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -836917980
+# Y1: 8396753
+# c0: 313609097
+# c1: 359420650
+# c2: -3635171
+# c3: -1111
+# c4: 5100
+# skew: 29.815
+# # side 1 lognorm 14.75, exp_E 12.27, alpha -0.44 (proj -1.38), 2 real roots
+
+### root-optimized polynomial 25 ###
+n: 2496735491537104256118027770442801942257
+Y0: -47623198
+Y1: 8396753
+c0: 611685056295
+c1: -20867443419
+c2: 266433127
+c3: 1916489
+c4: 5100
+skew: 90.144
+# side 1 lognorm 18.05, E 13.53, alpha -4.52 (proj -1.38), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.930e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.82, av. E 13.47
+
+### input polynomial 26 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -701365783
+# Y1: 101679749
+# c0: -178763866
+# c1: -20181233
+# c2: 7033937
+# c3: 162582
+# c4: 30960
+# skew: 7.827
+# # side 1 lognorm 14.25, exp_E 12.27, alpha -1.30 (proj -1.99), 2 real roots
+
+### root-optimized polynomial 26 ###
+n: 2496735491537104256118027770442801942257
+Y0: 823830452
+Y1: 101679749
+c0: -241807255011
+c1: -29928341285
+c2: -7588937
+c3: 336697
+c4: 5160
+skew: 103.711
+# side 1 lognorm 17.70, E 14.50, alpha -3.20 (proj -1.30), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.517e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.83, av. E 13.51
+
+### input polynomial 27 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -846172392
+# Y1: 30854783
+# c0: 72264809
+# c1: 311174939
+# c2: -11444548
+# c3: -7885
+# c4: 5160
+# skew: 27.547
+# # side 1 lognorm 14.66, exp_E 12.27, alpha -1.34 (proj -1.23), 2 real roots
+
+### root-optimized polynomial 27 ###
+n: 2496735491537104256118027770442801942257
+Y0: -383350647
+Y1: 30854783
+c0: -72353897446
+c1: 6048858809
+c2: -4833373
+c3: 301715
+c4: 5160
+skew: 63.395
+# side 1 lognorm 16.82, E 13.52, alpha -3.30 (proj -1.23), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.545e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.85, av. E 13.51
+
+### input polynomial 28 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -756796560
+# Y1: 41563993
+# c0: 79467634
+# c1: -5698341
+# c2: 232085
+# c3: 67432
+# c4: 11040
+# skew: 9.594
+# # side 1 lognorm 13.31, exp_E 11.67, alpha -0.85 (proj -1.63), 0 real root
+
+### root-optimized polynomial 28 ###
+n: 2496735491537104256118027770442801942257
+Y0: 365431251
+Y1: 41563993
+c0: -54824412616
+c1: -5955768598
+c2: 47773515
+c3: 629876
+c4: 5520
+skew: 56.534
+# side 1 lognorm 16.70, E 13.91, alpha -2.79 (proj -1.58), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.157e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.84, av. E 13.53
+
+### input polynomial 29 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -34379588
+# Y1: 63502261
+# c0: 157164413
+# c1: -5438063
+# c2: -2476327
+# c3: 271153
+# c4: 5460
+# skew: 10.725
+# # side 1 lognorm 13.40, exp_E 11.70, alpha -1.83 (proj -1.69), 2 real roots
+
+### root-optimized polynomial 29 ###
+n: 2496735491537104256118027770442801942257
+Y0: 2124697286
+Y1: 63502261
+c0: -29076291811581
+c1: -867848027947
+c2: 63051839
+c3: 1013713
+c4: 5460
+skew: 315.100
+# side 1 lognorm 19.98, E 15.75, alpha -4.23 (proj -1.69), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.091e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.84, av. E 13.60
+
+### input polynomial 30 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: 349601004
+# Y1: 92851349
+# c0: 16898441
+# c1: -22167594
+# c2: -3724146
+# c3: 283092
+# c4: 5640
+# skew: 7.753
+# # side 1 lognorm 13.14, exp_E 11.76, alpha -0.62 (proj -1.39), 4 real roots
+
+### root-optimized polynomial 30 ###
+n: 2496735491537104256118027770442801942257
+Y0: 2113776635
+Y1: 92851349
+c0: -1611883536588
+c1: -68434160118
+c2: 117479687
+c3: 711732
+c4: 5640
+skew: 135.483
+# side 1 lognorm 18.32, E 14.27, alpha -4.06 (proj -1.27), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.591e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.84, av. E 13.62
+
+### input polynomial 31 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -831856865
+# Y1: 8276641
+# c0: -31330468
+# c1: 135749742
+# c2: -1304242
+# c3: -25147
+# c4: 5460
+# skew: 21.026
+# # side 1 lognorm 14.11, exp_E 12.52, alpha -1.08 (proj -1.69), 2 real roots
+
+### root-optimized polynomial 31 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1138092582
+Y1: 8276641
+c0: 425761367171
+c1: 7341292051
+c2: -36430895
+c3: -833227
+c4: 5460
+skew: 96.020
+# side 1 lognorm 17.18, E 12.58, alpha -4.60 (proj -1.69), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.522e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.86, av. E 13.59
+
+### input polynomial 32 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -830845059
+# Y1: 52605659
+# c0: 91931333
+# c1: 247229554
+# c2: -16018954
+# c3: -5576
+# c4: 5580
+# skew: 24.565
+# # side 1 lognorm 14.66, exp_E 12.19, alpha 0.15 (proj -1.32), 4 real roots
+
+### root-optimized polynomial 32 ###
+n: 2496735491537104256118027770442801942257
+Y0: 221268121
+Y1: 52605659
+c0: 140937176
+c1: -63842829
+c2: -2961514
+c3: 440824
+c4: 5580
+skew: 11.499
+# side 1 lognorm 13.66, E 13.38, alpha -0.29 (proj -1.32), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.730e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.87, av. E 13.58
+
+### input polynomial 33 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -817557372
+# Y1: 65969291
+# c0: -147434347
+# c1: 316383955
+# c2: -24567699
+# c3: -4485
+# c4: 5940
+# skew: 25.831
+# # side 1 lognorm 15.00, exp_E 12.08, alpha -1.04 (proj -1.64), 4 real roots
+
+### root-optimized polynomial 33 ###
+n: 2496735491537104256118027770442801942257
+Y0: -883526663
+Y1: 65969291
+c0: -679036852760
+c1: 51029897626
+c2: -24518604
+c3: -28245
+c4: 5940
+skew: 119.879
+# side 1 lognorm 18.16, E 14.74, alpha -3.41 (proj -1.64), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.537e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.87, av. E 13.62
+
+### input polynomial 34 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -840741298
+# Y1: 9619223
+# c0: -24559619
+# c1: 80227584
+# c2: -601111
+# c3: -70262
+# c4: 5760
+# skew: 17.024
+# # side 1 lognorm 13.73, exp_E 12.06, alpha -0.45 (proj -1.67), 2 real roots
+
+### root-optimized polynomial 34 ###
+n: 2496735491537104256118027770442801942257
+Y0: 207754009
+Y1: 9619223
+c0: -176332239980
+c1: -16881217064
+c2: 271599899
+c3: 2441098
+c4: 5760
+skew: 61.859
+# side 1 lognorm 17.70, E 13.13, alpha -4.57 (proj -1.67), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.398e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.88, av. E 13.60
+
+### input polynomial 35 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -979199806
+# Y1: 14592533
+# c0: -39760719
+# c1: 17231072
+# c2: 4981694
+# c3: -314423
+# c4: 6240
+# skew: 8.280
+# # side 1 lognorm 13.49, exp_E 12.08, alpha -0.43 (proj -1.41), 2 real roots
+
+### root-optimized polynomial 35 ###
+n: 2496735491537104256118027770442801942257
+Y0: 231980433
+Y1: 14592533
+c0: -921075235696
+c1: -58191300704
+c2: 228392126
+c3: 1757257
+c4: 6240
+skew: 113.070
+# side 1 lognorm 18.25, E 13.96, alpha -4.29 (proj -1.41), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.399e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.88, av. E 13.61
+
+### input polynomial 36 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -787965981
+# Y1: 13484477
+# c0: 54601169
+# c1: 312922444
+# c2: -5364951
+# c3: -10825
+# c4: 6660
+# skew: 25.857
+# # side 1 lognorm 14.72, exp_E 12.45, alpha 0.30 (proj -1.24), 2 real roots
+
+### root-optimized polynomial 36 ###
+n: 2496735491537104256118027770442801942257
+Y0: -5866315
+Y1: 13484477
+c0: 71540829232
+c1: 9168668796
+c2: -75090216
+c3: 1534295
+c4: 6660
+skew: 51.615
+# side 1 lognorm 17.46, E 13.99, alpha -3.47 (proj -1.24), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.601e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.90, av. E 13.62
+
+### input polynomial 37 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -767229892
+# Y1: 429383
+# c0: -231903215
+# c1: 148485748
+# c2: 405953
+# c3: -97467
+# c4: 7260
+# skew: 19.505
+# # side 1 lognorm 14.26, exp_E 13.07, alpha 0.08 (proj -1.29), 2 real roots
+
+### root-optimized polynomial 37 ###
+n: 2496735491537104256118027770442801942257
+Y0: -743184444
+Y1: 429383
+c0: -79796554123
+c1: -8917577485
+c2: 128364551
+c3: 1528773
+c4: 7260
+skew: 67.558
+# side 1 lognorm 17.19, E 13.36, alpha -3.83 (proj -1.29), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.019e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.93, av. E 13.62
+
+### input polynomial 38 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -771819516
+# Y1: 27070727
+# c0: -177262951
+# c1: 151195662
+# c2: -5087240
+# c3: -6314
+# c4: 7260
+# skew: 19.787
+# # side 1 lognorm 14.29, exp_E 11.74, alpha 1.54 (proj -1.84), 2 real roots
+
+### root-optimized polynomial 38 ###
+n: 2496735491537104256118027770442801942257
+Y0: -419900065
+Y1: 27070727
+c0: -16933684698
+c1: 1243568365
+c2: 2028154
+c3: 371206
+c4: 7260
+skew: 37.889
+# side 1 lognorm 16.03, E 12.43, alpha -3.60 (proj -1.84), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.525e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.93, av. E 13.59
+
+### input polynomial 39 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -723424373
+# Y1: 116848967
+# c0: -284081393
+# c1: -6923724
+# c2: 8543509
+# c3: 19286
+# c4: 14760
+# skew: 9.819
+# # side 1 lognorm 14.20, exp_E 12.44, alpha -1.02 (proj -1.76), 2 real roots
+
+### root-optimized polynomial 39 ###
+n: 2496735491537104256118027770442801942257
+Y0: -2125611977
+Y1: 116848967
+c0: -304374315828
+c1: 15552192022
+c2: 68725410
+c3: -344597
+c4: 7380
+skew: 78.912
+# side 1 lognorm 17.50, E 14.88, alpha -2.61 (proj -1.30), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.373e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.94, av. E 13.62
+
+### input polynomial 40 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -664831545
+# Y1: 25574177
+# c0: -22575326
+# c1: -18617627
+# c2: 1955143
+# c3: 212540
+# c4: 15600
+# skew: 7.062
+# # side 1 lognorm 13.25, exp_E 11.28, alpha -2.08 (proj -1.97), 2 real roots
+
+### root-optimized polynomial 40 ###
+n: 2496735491537104256118027770442801942257
+Y0: -511386483
+Y1: 25574177
+c0: -393766476760
+c1: 19457061453
+c2: 17362320
+c3: 293470
+c4: 7800
+skew: 85.109
+# side 1 lognorm 17.72, E 13.50, alpha -4.21 (proj -1.91), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.566e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.92, av. E 13.62
+
+### input polynomial 41 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -759505900
+# Y1: 9648029
+# c0: -59766403
+# c1: 164389615
+# c2: -2070260
+# c3: -14022
+# c4: 7680
+# skew: 20.071
+# # side 1 lognorm 14.36, exp_E 12.35, alpha -1.34 (proj -1.30), 2 real roots
+
+### root-optimized polynomial 41 ###
+n: 2496735491537104256118027770442801942257
+Y0: -788449987
+Y1: 9648029
+c0: 54620932176
+c1: 288691098
+c2: -11177371
+c3: -106182
+c4: 7680
+skew: 52.959
+# side 1 lognorm 16.28, E 12.77, alpha -3.51 (proj -1.53), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.119e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.93, av. E 13.60
+
+### input polynomial 42 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -794398263
+# Y1: 90521303
+# c0: -86718733
+# c1: 185230747
+# c2: -19974554
+# c3: -12583
+# c4: 7620
+# skew: 19.750
+# # side 1 lognorm 14.77, exp_E 12.61, alpha -0.58 (proj -1.25), 4 real roots
+
+### root-optimized polynomial 42 ###
+n: 2496735491537104256118027770442801942257
+Y0: 1830719524
+Y1: 90521303
+c0: -6251015328915
+c1: -309029828107
+c2: 17381245
+c3: 871337
+c4: 7620
+skew: 199.590
+# side 1 lognorm 19.40, E 15.74, alpha -3.65 (proj -1.25), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.065e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.95, av. E 13.65
+
+### input polynomial 43 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -758143673
+# Y1: 78496009
+# c0: 130306109
+# c1: 246238340
+# c2: -26890204
+# c3: -8292
+# c4: 8400
+# skew: 20.447
+# # side 1 lognorm 15.03, exp_E 12.01, alpha 0.60 (proj -1.82), 4 real roots
+
+### root-optimized polynomial 43 ###
+n: 2496735491537104256118027770442801942257
+Y0: 576288480
+Y1: 78496009
+c0: -349143449743
+c1: -47686242369
+c2: -12747496
+c3: 562908
+c4: 8400
+skew: 102.674
+# side 1 lognorm 18.17, E 14.81, alpha -3.35 (proj -1.93), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.468e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.95, av. E 13.67
+
+### input polynomial 44 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -760265174
+# Y1: 4650853
+# c0: -35922805
+# c1: 81686999
+# c2: 466029
+# c3: -147578
+# c4: 8340
+# skew: 14.796
+# # side 1 lognorm 13.87, exp_E 12.66, alpha -0.90 (proj -1.24), 2 real roots
+
+### root-optimized polynomial 44 ###
+n: 2496735491537104256118027770442801942257
+Y0: -681200673
+Y1: 4650853
+c0: -813938252596
+c1: 5019349907
+c2: 12051964
+c3: 419542
+c4: 8340
+skew: 101.153
+# side 1 lognorm 17.69, E 14.02, alpha -3.67 (proj -1.48), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.658e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.97, av. E 13.68
+
+### input polynomial 45 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -731958965
+# Y1: 16196027
+# c0: -1229319
+# c1: 13155355
+# c2: -318691
+# c3: -15900
+# c4: 26460
+# skew: 5.735
+# # side 1 lognorm 13.10, exp_E 10.80, alpha -2.53 (proj -2.30), 2 real roots
+
+### root-optimized polynomial 45 ###
+n: 2496735491537104256118027770442801942257
+Y0: 207410601
+Y1: 16196027
+c0: -67983696648
+c1: -7957648906
+c2: 530983349
+c3: 6122820
+c4: 26460
+skew: 26.603
+# side 1 lognorm 18.09, E 13.77, alpha -4.32 (proj -1.95), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.819e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.94, av. E 13.68
+
+### input polynomial 46 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -779432328
+# Y1: 19861043
+# c0: 120706601
+# c1: 146745077
+# c2: -3367008
+# c3: -108618
+# c4: 9240
+# skew: 17.684
+# # side 1 lognorm 14.26, exp_E 12.55, alpha -0.55 (proj -1.81), 2 real roots
+
+### root-optimized polynomial 46 ###
+n: 2496735491537104256118027770442801942257
+Y0: 193758779
+Y1: 19861043
+c0: -18412642376
+c1: -831774010
+c2: 292526973
+c3: 1702422
+c4: 9240
+skew: 17.915
+# side 1 lognorm 17.31, E 13.25, alpha -4.06 (proj -2.04), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.236e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.95, av. E 13.67
+
+### input polynomial 47 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -737816331
+# Y1: 38688983
+# c0: -352251127
+# c1: 189103244
+# c2: -8934726
+# c3: -11630
+# c4: 9000
+# skew: 19.884
+# # side 1 lognorm 14.55, exp_E 11.93, alpha 0.03 (proj -1.78), 2 real roots
+
+### root-optimized polynomial 47 ###
+n: 2496735491537104256118027770442801942257
+Y0: -350926501
+Y1: 38688983
+c0: -308442568668
+c1: 34478840248
+c2: -42572609
+c3: 348370
+c4: 9000
+skew: 90.162
+# side 1 lognorm 18.07, E 13.50, alpha -4.58 (proj -2.01), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.362e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.95, av. E 13.67
+
+### input polynomial 48 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: 115939846
+# Y1: 166840879
+# c0: -8902747
+# c1: -38034147
+# c2: 11248089
+# c3: 1244964
+# c4: 61320
+# skew: 3.377
+# # side 1 lognorm 14.53, exp_E 13.04, alpha -1.28 (proj -1.49), 2 real roots
+
+### root-optimized polynomial 48 ###
+n: 2496735491537104256118027770442801942257
+Y0: 1617507757
+Y1: 166840879
+c0: -1063821919510
+c1: -110358429177
+c2: -60837000
+c3: 493212
+c4: 8760
+skew: 134.531
+# side 1 lognorm 18.75, E 16.19, alpha -2.57 (proj -1.36), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=8.852e-07
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.97, av. E 13.72
+
+### input polynomial 49 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -741043922
+# Y1: 60497999
+# c0: 225415221
+# c1: 254405672
+# c2: -22267479
+# c3: -12117
+# c4: 9240
+# skew: 20.742
+# # side 1 lognorm 14.90, exp_E 12.21, alpha -0.35 (proj -1.54), 4 real roots
+
+### root-optimized polynomial 49 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1164529915
+Y1: 60497999
+c0: -1552609506448
+c1: 79909998653
+c2: 41201537
+c3: -270837
+c4: 9240
+skew: 122.560
+# side 1 lognorm 18.61, E 14.80, alpha -3.81 (proj -1.54), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.532e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.98, av. E 13.74
+
+### input polynomial 50 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -746591346
+# Y1: 10865689
+# c0: 42140987
+# c1: 163137053
+# c2: -1775211
+# c3: -128679
+# c4: 9780
+# skew: 18.026
+# # side 1 lognorm 14.37, exp_E 12.59, alpha -0.65 (proj -1.10), 2 real roots
+
+### root-optimized polynomial 50 ###
+n: 2496735491537104256118027770442801942257
+Y0: -735725657
+Y1: 10865689
+c0: -18925483152
+c1: -293978029
+c2: 8763121
+c3: -89559
+c4: 9780
+skew: 37.729
+# side 1 lognorm 15.88, E 14.13, alpha -1.75 (proj -1.10), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.372e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 11.99, av. E 13.75
+
+### input polynomial 51 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -736072430
+# Y1: 79446251
+# c0: -235669133
+# c1: 185429143
+# c2: -17264584
+# c3: -8891
+# c4: 9420
+# skew: 18.991
+# # side 1 lognorm 14.74, exp_E 12.58, alpha -0.13 (proj -1.24), 4 real roots
+
+### root-optimized polynomial 51 ###
+n: 2496735491537104256118027770442801942257
+Y0: -259394924
+Y1: 79446251
+c0: 2859617805
+c1: -30844951
+c2: -253728655
+c3: 217189
+c4: 9420
+skew: 7.517
+# side 1 lognorm 17.13, E 13.38, alpha -3.75 (proj -1.24), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.910e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.00, av. E 13.74
+
+### input polynomial 52 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -708968863
+# Y1: 6099347
+# c0: -105388211
+# c1: 190842606
+# c2: -1620830
+# c3: -16104
+# c4: 10020
+# skew: 19.357
+# # side 1 lognorm 14.56, exp_E 12.78, alpha 0.14 (proj -1.10), 2 real roots
+
+### root-optimized polynomial 52 ###
+n: 2496735491537104256118027770442801942257
+Y0: -702869516
+Y1: 6099347
+c0: -432883794375
+c1: 430442886
+c2: 28887713
+c3: 23976
+c4: 10020
+skew: 81.374
+# side 1 lognorm 17.43, E 13.90, alpha -3.53 (proj -1.22), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.683e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.02, av. E 13.74
+
+### input polynomial 53 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -690107922
+# Y1: 8156983
+# c0: -78203834
+# c1: -78397180
+# c2: 1205229
+# c3: 123386
+# c4: 20520
+# skew: 11.115
+# # side 1 lognorm 14.22, exp_E 12.40, alpha -0.59 (proj -1.82), 2 real roots
+
+### root-optimized polynomial 53 ###
+n: 2496735491537104256118027770442801942257
+Y0: -649323007
+Y1: 8156983
+c0: 75558981060
+c1: 9387970161
+c2: -124377709
+c3: 533786
+c4: 20520
+skew: 55.444
+# side 1 lognorm 17.44, E 13.13, alpha -4.31 (proj -1.82), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.046e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.02, av. E 13.73
+
+### input polynomial 54 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -723264123
+# Y1: 64496903
+# c0: 136615037
+# c1: 169557075
+# c2: -16206607
+# c3: -8028
+# c4: 9840
+# skew: 17.818
+# # side 1 lognorm 14.62, exp_E 12.37, alpha 0.11 (proj -1.39), 4 real roots
+
+### root-optimized polynomial 54 ###
+n: 2496735491537104256118027770442801942257
+Y0: 824661549
+Y1: 64496903
+c0: -444818575840
+c1: -33888295167
+c2: 81719320
+c3: 936612
+c4: 9840
+skew: 87.655
+# side 1 lognorm 18.02, E 14.32, alpha -3.70 (proj -1.97), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.739e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.03, av. E 13.74
+
+### input polynomial 55 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -708150622
+# Y1: 22496641
+# c0: 330217525
+# c1: 312351638
+# c2: -10254630
+# c3: -1048
+# c4: 9960
+# skew: 22.305
+# # side 1 lognorm 14.85, exp_E 12.03, alpha -2.33 (proj -1.72), 2 real roots
+
+### root-optimized polynomial 55 ###
+n: 2496735491537104256118027770442801942257
+Y0: 146721736
+Y1: 22496641
+c0: -99715211255
+c1: -16350242421
+c2: 75919338
+c3: 1512872
+c4: 9960
+skew: 63.723
+# side 1 lognorm 17.51, E 14.10, alpha -3.41 (proj -1.49), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.266e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.03, av. E 13.75
+
+### input polynomial 56 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -904473682
+# Y1: 23095409
+# c0: -3506729
+# c1: 90980789
+# c2: 1924558
+# c3: -371159
+# c4: 10440
+# skew: 13.011
+# # side 1 lognorm 14.03, exp_E 12.70, alpha 0.92 (proj -1.33), 2 real roots
+
+### root-optimized polynomial 56 ###
+n: 2496735491537104256118027770442801942257
+Y0: -73038958
+Y1: 23095409
+c0: 12411853883
+c1: -1224519701
+c2: 19925417
+c3: 1132201
+c4: 10440
+skew: 29.931
+# side 1 lognorm 16.16, E 12.15, alpha -4.01 (proj -1.33), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=4.002e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.04, av. E 13.72
+
+### input polynomial 57 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -700790538
+# Y1: 53775383
+# c0: 6945893
+# c1: 299867782
+# c2: -23052990
+# c3: -3368
+# c4: 10620
+# skew: 21.160
+# # side 1 lognorm 15.02, exp_E 12.54, alpha -0.14 (proj -1.28), 4 real roots
+
+### root-optimized polynomial 57 ###
+n: 2496735491537104256118027770442801942257
+Y0: 751144803
+Y1: 53775383
+c0: -314849735872
+c1: -20930719993
+c2: 130676848
+c3: 1143592
+c4: 10620
+skew: 72.515
+# side 1 lognorm 17.78, E 13.92, alpha -3.86 (proj -1.28), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.035e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.05, av. E 13.73
+
+### input polynomial 58 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -697135377
+# Y1: 9996251
+# c0: 294597791
+# c1: 272146480
+# c2: -3950297
+# c3: -11987
+# c4: 10740
+# skew: 21.212
+# # side 1 lognorm 14.81, exp_E 12.65, alpha 0.78 (proj -1.24), 2 real roots
+
+### root-optimized polynomial 58 ###
+n: 2496735491537104256118027770442801942257
+Y0: -607169118
+Y1: 9996251
+c0: -138377566705
+c1: 1941407247
+c2: 10941945
+c3: 374653
+c4: 10740
+skew: 59.583
+# side 1 lognorm 16.95, E 12.88, alpha -4.07 (proj -1.24), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.386e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.06, av. E 13.71
+
+### input polynomial 59 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -672155570
+# Y1: 6952969
+# c0: -43795736
+# c1: -41779741
+# c2: 2018717
+# c3: 295284
+# c4: 21240
+# skew: 8.541
+# # side 1 lognorm 13.81, exp_E 12.00, alpha -0.54 (proj -1.81), 2 real roots
+
+### root-optimized polynomial 59 ###
+n: 2496735491537104256118027770442801942257
+Y0: -588719942
+Y1: 6952969
+c0: 663594880704
+c1: -7548000059
+c2: 31000301
+c3: 1314804
+c4: 21240
+skew: 75.411
+# side 1 lognorm 18.15, E 13.60, alpha -4.55 (proj -1.62), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.643e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.06, av. E 13.71
+
+### input polynomial 60 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -886244427
+# Y1: 17669893
+# c0: -33656422
+# c1: 136952725
+# c2: 4038864
+# c3: -476400
+# c4: 10860
+# skew: 14.516
+# # side 1 lognorm 14.36, exp_E 13.36, alpha 0.35 (proj -1.03), 2 real roots
+
+### root-optimized polynomial 60 ###
+n: 2496735491537104256118027770442801942257
+Y0: -462166995
+Y1: 17669893
+c0: 201328736252
+c1: -2406103488
+c2: -187098599
+c3: 566160
+c4: 10860
+skew: 63.022
+# side 1 lognorm 16.93, E 13.22, alpha -3.71 (proj -1.26), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.051e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.08, av. E 13.70
+
+### input polynomial 61 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -697959795
+# Y1: 62027627
+# c0: -5097763
+# c1: 320799199
+# c2: -28466753
+# c3: -8754
+# c4: 11280
+# skew: 21.041
+# # side 1 lognorm 15.17, exp_E 12.27, alpha 0.05 (proj -1.62), 4 real roots
+
+### root-optimized polynomial 61 ###
+n: 2496735491537104256118027770442801942257
+Y0: -15655898
+Y1: 62027627
+c0: 17250676345
+c1: -67641311102
+c2: -144621609
+c3: 487566
+c4: 11280
+skew: 105.005
+# side 1 lognorm 18.48, E 14.46, alpha -4.02 (proj -1.62), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.665e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.08, av. E 13.71
+
+### input polynomial 62 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -838495798
+# Y1: 35769983
+# c0: 88544669
+# c1: 19391344
+# c2: 262471
+# c3: -212037
+# c4: 11820
+# skew: 9.842
+# # side 1 lognorm 13.48, exp_E 12.41, alpha -1.07 (proj -1.10), 0 real root
+
+### root-optimized polynomial 62 ###
+n: 2496735491537104256118027770442801942257
+Y0: 163063726
+Y1: 35769983
+c0: -27045039501
+c1: -6115717565
+c2: 38052643
+c3: 1111803
+c4: 11820
+skew: 43.918
+# side 1 lognorm 16.91, E 13.14, alpha -3.77 (proj -1.10), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.743e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.09, av. E 13.70
+
+### input polynomial 63 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -791593964
+# Y1: 22652633
+# c0: 51802957
+# c1: 85500323
+# c2: -608966
+# c3: -261425
+# c4: 12300
+# skew: 12.858
+# # side 1 lognorm 13.98, exp_E 12.48, alpha 0.02 (proj -1.50), 2 real roots
+
+### root-optimized polynomial 63 ###
+n: 2496735491537104256118027770442801942257
+Y0: 205121888
+Y1: 22652633
+c0: -26043990735
+c1: -2479100669
+c2: 175717633
+c3: 1903375
+c4: 12300
+skew: 26.147
+# side 1 lognorm 17.01, E 13.42, alpha -3.59 (proj -1.64), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.900e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.10, av. E 13.70
+
+### input polynomial 64 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -661967417
+# Y1: 22861451
+# c0: 249700893
+# c1: -1407452
+# c2: -227960
+# c3: 26556
+# c4: 12060
+# skew: 12.554
+# # side 1 lognorm 13.87, exp_E 12.46, alpha -0.10 (proj -1.41), 0 real root
+
+### root-optimized polynomial 64 ###
+n: 2496735491537104256118027770442801942257
+Y0: 161044819
+Y1: 22861451
+c0: 3522787248
+c1: -1006730560
+c2: -17888607
+c3: 1763196
+c4: 12060
+skew: 22.100
+# side 1 lognorm 15.72, E 13.33, alpha -2.40 (proj -1.66), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.017e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.10, av. E 13.69
+
+### input polynomial 65 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -750622096
+# Y1: 118929071
+# c0: -453819789
+# c1: 11031158
+# c2: 9729671
+# c3: -92904
+# c4: 36180
+# skew: 9.474
+# # side 1 lognorm 14.73, exp_E 12.59, alpha -2.69 (proj -2.15), 2 real roots
+
+### root-optimized polynomial 65 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1464196522
+Y1: 118929071
+c0: -150915023803
+c1: 10638479745
+c2: 138145894
+c3: -961224
+c4: 36180
+skew: 42.652
+# side 1 lognorm 17.85, E 14.56, alpha -3.29 (proj -1.68), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.578e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.11, av. E 13.71
+
+### input polynomial 66 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -683572232
+# Y1: 48718249
+# c0: -236818759
+# c1: 340315939
+# c2: -23049413
+# c3: -12282
+# c4: 12300
+# skew: 21.250
+# # side 1 lognorm 15.12, exp_E 12.71, alpha -1.19 (proj -1.16), 4 real roots
+
+### root-optimized polynomial 66 ###
+n: 2496735491537104256118027770442801942257
+Y0: -586135734
+Y1: 48718249
+c0: -650845086463
+c1: 54374339142
+c2: -22827905
+c3: 86118
+c4: 12300
+skew: 96.388
+# side 1 lognorm 18.46, E 15.43, alpha -3.03 (proj -1.16), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.469e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.12, av. E 13.73
+
+### input polynomial 67 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -706004693
+# Y1: 7949329
+# c0: -110528062
+# c1: 139732341
+# c2: -517420
+# c3: -184966
+# c4: 12000
+# skew: 15.916
+# # side 1 lognorm 14.34, exp_E 13.00, alpha -0.25 (proj -1.44), 2 real roots
+
+### root-optimized polynomial 67 ###
+n: 2496735491537104256118027770442801942257
+Y0: -443676836
+Y1: 7949329
+c0: -16874219835
+c1: -1814382933
+c2: 123173578
+c3: 1399034
+c4: 12000
+skew: 31.172
+# side 1 lognorm 16.69, E 13.36, alpha -3.33 (proj -1.44), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.004e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.13, av. E 13.73
+
+### input polynomial 68 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1129257026
+# Y1: 52376651
+# c0: -2970171
+# c1: 26570162
+# c2: 3052288
+# c3: -430522
+# c4: 12300
+# skew: 7.458
+# # side 1 lognorm 13.51, exp_E 11.98, alpha -0.55 (proj -1.53), 2 real roots
+
+### root-optimized polynomial 68 ###
+n: 2496735491537104256118027770442801942257
+Y0: -81724006
+Y1: 52376651
+c0: -41324346785
+c1: 26848798653
+c2: -98012334
+c3: 553478
+c4: 12300
+skew: 72.866
+# side 1 lognorm 18.01, E 14.13, alpha -3.88 (proj -1.53), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.955e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.13, av. E 13.73
+
+### input polynomial 69 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -679335321
+# Y1: 2865161
+# c0: -251285224
+# c1: 145443083
+# c2: -527247
+# c3: -51815
+# c4: 11940
+# skew: 16.864
+# # side 1 lognorm 14.45, exp_E 13.41, alpha 1.03 (proj -1.17), 2 real roots
+
+### root-optimized polynomial 69 ###
+n: 2496735491537104256118027770442801942257
+Y0: -690795965
+Y1: 2865161
+c0: -45046062468
+c1: -3126492222
+c2: 15566578
+c3: -242855
+c4: 11940
+skew: 50.321
+# side 1 lognorm 16.71, E 13.06, alpha -3.65 (proj -1.17), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.220e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.15, av. E 13.72
+
+### input polynomial 70 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -690940873
+# Y1: 93896893
+# c0: 325365500
+# c1: 240910025
+# c2: -38742561
+# c3: -7967
+# c4: 11940
+# skew: 15.152
+# # side 1 lognorm 15.36, exp_E 12.95, alpha -0.48 (proj -1.24), 4 real roots
+
+### root-optimized polynomial 70 ###
+n: 2496735491537104256118027770442801942257
+Y0: -409250194
+Y1: 93896893
+c0: -64779866483
+c1: 15033031950
+c2: -38169504
+c3: 135313
+c4: 11940
+skew: 62.143
+# side 1 lognorm 17.58, E 14.76, alpha -2.81 (proj -1.24), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.517e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.16, av. E 13.74
+
+### input polynomial 71 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -778438500
+# Y1: 20641021
+# c0: 91086197
+# c1: 112155683
+# c2: -1146371
+# c3: -262125
+# c4: 12420
+# skew: 14.171
+# # side 1 lognorm 14.16, exp_E 12.65, alpha -0.52 (proj -1.51), 2 real roots
+
+### root-optimized polynomial 71 ###
+n: 2496735491537104256118027770442801942257
+Y0: -262412975
+Y1: 20641021
+c0: 90055463472
+c1: -2839434564
+c2: -263205040
+c3: 979875
+c4: 12420
+skew: 44.524
+# side 1 lognorm 17.07, E 13.08, alpha -3.99 (proj -1.51), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.135e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.16, av. E 13.73
+
+### input polynomial 72 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -910284944
+# Y1: 103897751
+# c0: 154191989
+# c1: 69952726
+# c2: -8221598
+# c3: -600105
+# c4: 63600
+# skew: 7.610
+# # side 1 lognorm 14.46, exp_E 12.98, alpha -1.63 (proj -1.48), 2 real roots
+
+### root-optimized polynomial 72 ###
+n: 2496735491537104256118027770442801942257
+Y0: -910284944
+Y1: 103897751
+c0: -1650192411483
+c1: 189346860233
+c2: -112119349
+c3: -600105
+c4: 63600
+skew: 83.851
+# side 1 lognorm 19.81, E 15.84, alpha -3.97 (proj -1.40), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.100e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.18, av. E 13.76
+
+### input polynomial 73 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -575953978
+# Y1: 50800727
+# c0: 181980999
+# c1: -13199227
+# c2: 12613
+# c3: 89727
+# c4: 12720
+# skew: 10.981
+# # side 1 lognorm 13.76, exp_E 12.61, alpha -1.77 (proj -1.15), 0 real root
+
+### root-optimized polynomial 73 ###
+n: 2496735491537104256118027770442801942257
+Y0: 490861289
+Y1: 50800727
+c0: -96920583324
+c1: -9295247999
+c2: 90123261
+c3: 1158207
+c4: 12720
+skew: 51.204
+# side 1 lognorm 17.30, E 14.61, alpha -2.70 (proj -1.15), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.758e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.18, av. E 13.77
+
+### input polynomial 74 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -694393610
+# Y1: 5297183
+# c0: 161529817
+# c1: 31322750
+# c2: 1574001
+# c3: -250036
+# c4: 12540
+# skew: 11.684
+# # side 1 lognorm 13.91, exp_E 12.21, alpha -1.16 (proj -1.70), 0 real root
+
+### root-optimized polynomial 74 ###
+n: 2496735491537104256118027770442801942257
+Y0: -620233048
+Y1: 5297183
+c0: -274679282943
+c1: 2417961902
+c2: 5819529
+c3: 452204
+c4: 12540
+skew: 70.223
+# side 1 lognorm 17.35, E 12.70, alpha -4.65 (proj -1.70), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.683e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.18, av. E 13.76
+
+### input polynomial 75 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -666615350
+# Y1: 20250683
+# c0: 137222117
+# c1: 304442938
+# c2: -9365694
+# c3: -12676
+# c4: 13020
+# skew: 20.309
+# # side 1 lognorm 14.92, exp_E 12.36, alpha 1.10 (proj -1.60), 2 real roots
+
+### root-optimized polynomial 75 ###
+n: 2496735491537104256118027770442801942257
+Y0: -281852373
+Y1: 20250683
+c0: 3868604768
+c1: -533271258
+c2: 78865143
+c3: 976844
+c4: 13020
+skew: 20.861
+# side 1 lognorm 16.41, E 12.19, alpha -4.22 (proj -1.98), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.802e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.18, av. E 13.73
+
+### input polynomial 76 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -649781501
+# Y1: 85758163
+# c0: -50382568
+# c1: -13899309
+# c2: 2706745
+# c3: 14919
+# c4: 40140
+# skew: 5.818
+# # side 1 lognorm 13.74, exp_E 12.40, alpha -0.14 (proj -1.37), 2 real roots
+
+### root-optimized polynomial 76 ###
+n: 2496735491537104256118027770442801942257
+Y0: 122041966
+Y1: 85758163
+c0: 1855269675
+c1: 1240351567
+c2: -21046855
+c3: 486653
+c4: 13380
+skew: 24.444
+# side 1 lognorm 16.08, E 13.02, alpha -3.06 (proj -1.23), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.615e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.19, av. E 13.73
+
+### input polynomial 77 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -655995958
+# Y1: 9891019
+# c0: -78324389
+# c1: 83732956
+# c2: -1181090
+# c3: -52209
+# c4: 41220
+# skew: 9.328
+# # side 1 lognorm 14.51, exp_E 12.88, alpha 0.11 (proj -1.65), 2 real roots
+
+### root-optimized polynomial 77 ###
+n: 2496735491537104256118027770442801942257
+Y0: -616431882
+Y1: 9891019
+c0: 164215801551
+c1: -1315816766
+c2: -17632516
+c3: 607311
+c4: 41220
+skew: 45.579
+# side 1 lognorm 17.71, E 14.19, alpha -3.51 (proj -1.37), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.199e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.20, av. E 13.73
+
+### input polynomial 78 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -644033315
+# Y1: 5617901
+# c0: -55876863
+# c1: 67195008
+# c2: -583886
+# c3: -854
+# c4: 14520
+# skew: 12.190
+# # side 1 lognorm 14.02, exp_E 12.36, alpha -0.49 (proj -1.66), 2 real roots
+
+### root-optimized polynomial 78 ###
+n: 2496735491537104256118027770442801942257
+Y0: -615943810
+Y1: 5617901
+c0: -957418343
+c1: 3159506950
+c2: -26508201
+c3: 289546
+c4: 14520
+skew: 43.469
+# side 1 lognorm 16.60, E 12.28, alpha -4.33 (proj -1.89), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.823e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.20, av. E 13.71
+
+### input polynomial 79 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -651447950
+# Y1: 4946633
+# c0: -161019533
+# c1: 320307707
+# c2: -2402767
+# c3: -23478
+# c4: 14040
+# skew: 20.548
+# # side 1 lognorm 15.02, exp_E 11.54, alpha -1.15 (proj -2.27), 2 real roots
+
+### root-optimized polynomial 79 ###
+n: 2496735491537104256118027770442801942257
+Y0: -547568657
+Y1: 4946633
+c0: -1400875248912
+c1: 14531251882
+c2: 23374693
+c3: 1155882
+c4: 14040
+skew: 100.370
+# side 1 lognorm 18.28, E 13.36, alpha -4.92 (proj -2.27), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.198e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.19, av. E 13.71
+
+### input polynomial 80 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -649198824
+# Y1: 23699587
+# c0: 26705571
+# c1: 1213128
+# c2: 9094
+# c3: -110409
+# c4: 46080
+# skew: 5.226
+# # side 1 lognorm 13.45, exp_E 12.10, alpha -0.09 (proj -1.35), 0 real root
+
+### root-optimized polynomial 80 ###
+n: 2496735491537104256118027770442801942257
+Y0: 180286721
+Y1: 23699587
+c0: -26729761500
+c1: -3952314226
+c2: 398202910
+c3: 6340791
+c4: 46080
+skew: 18.363
+# side 1 lognorm 17.80, E 13.56, alpha -4.24 (proj -1.35), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.863e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.19, av. E 13.71
+
+### input polynomial 81 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -765778925
+# Y1: 24008003
+# c0: 74160647
+# c1: 21459616
+# c2: 1544061
+# c3: -320569
+# c4: 15060
+# skew: 9.039
+# # side 1 lognorm 13.69, exp_E 12.48, alpha -0.64 (proj -1.23), 0 real root
+
+### root-optimized polynomial 81 ###
+n: 2496735491537104256118027770442801942257
+Y0: -309626868
+Y1: 24008003
+c0: 183897125
+c1: -115466995
+c2: 39899591
+c3: 823991
+c4: 15060
+skew: 11.569
+# side 1 lognorm 15.56, E 13.01, alpha -2.56 (proj -1.23), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.186e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.19, av. E 13.70
+
+### input polynomial 82 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -663867628
+# Y1: 19686421
+# c0: 228848769
+# c1: 171947032
+# c2: -5089150
+# c3: -94804
+# c4: 15480
+# skew: 15.910
+# # side 1 lognorm 14.57, exp_E 12.33, alpha 0.01 (proj -1.53), 2 real roots
+
+### root-optimized polynomial 82 ###
+n: 2496735491537104256118027770442801942257
+Y0: 162962054
+Y1: 19686421
+c0: -217535542371
+c1: -27071925660
+c2: 166492287
+c3: 2505836
+c4: 15480
+skew: 64.642
+# side 1 lognorm 18.03, E 14.64, alpha -3.38 (proj -1.41), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.011e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.19, av. E 13.71
+
+### input polynomial 83 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -642690009
+# Y1: 81594761
+# c0: -195362617
+# c1: 327693625
+# c2: -38455309
+# c3: -8918
+# c4: 15780
+# skew: 18.651
+# # side 1 lognorm 15.43, exp_E 12.94, alpha 0.72 (proj -1.23), 4 real roots
+
+### root-optimized polynomial 83 ###
+n: 2496735491537104256118027770442801942257
+Y0: -71526682
+Y1: 81594761
+c0: -4543276171
+c1: 5276507500
+c2: -34003267
+c3: 432922
+c4: 15780
+skew: 38.734
+# side 1 lognorm 17.02, E 14.07, alpha -2.95 (proj -1.23), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.936e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.20, av. E 13.71
+
+### input polynomial 84 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -634956635
+# Y1: 29603269
+# c0: -40209713
+# c1: 299611872
+# c2: -13876936
+# c3: -9206
+# c4: 15780
+# skew: 18.843
+# # side 1 lognorm 15.00, exp_E 12.46, alpha 0.30 (proj -1.46), 2 real roots
+
+### root-optimized polynomial 84 ###
+n: 2496735491537104256118027770442801942257
+Y0: -427733752
+Y1: 29603269
+c0: -164548862127
+c1: 11183966266
+c2: 20172327
+c3: 432634
+c4: 15780
+skew: 56.741
+# side 1 lognorm 17.60, E 14.03, alpha -3.57 (proj -1.23), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.257e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.21, av. E 13.72
+
+### input polynomial 85 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -591475415
+# Y1: 27589781
+# c0: 83717789
+# c1: -10606872
+# c2: 687229
+# c3: 172888
+# c4: 31920
+# skew: 7.603
+# # side 1 lognorm 13.90, exp_E 11.96, alpha -0.67 (proj -1.94), 0 real root
+
+### root-optimized polynomial 85 ###
+n: 2496735491537104256118027770442801942257
+Y0: -481116291
+Y1: 27589781
+c0: -36288518812
+c1: 1848150872
+c2: 16707993
+c3: 341804
+c4: 15960
+skew: 37.194
+# side 1 lognorm 16.61, E 12.97, alpha -3.64 (proj -1.76), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.062e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.20, av. E 13.71
+
+### input polynomial 86 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -638185195
+# Y1: 9260809
+# c0: -111049998
+# c1: 151419237
+# c2: -1955638
+# c3: -98838
+# c4: 16440
+# skew: 15.095
+# # side 1 lognorm 14.54, exp_E 13.33, alpha -1.43 (proj -1.34), 2 real roots
+
+### root-optimized polynomial 86 ###
+n: 2496735491537104256118027770442801942257
+Y0: -239970408
+Y1: 9260809
+c0: 5776370993
+c1: -1505370260
+c2: 473286317
+c3: 2728842
+c4: 16440
+skew: 25.094
+# side 1 lognorm 17.95, E 13.78, alpha -4.17 (proj -1.57), 0 real root
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.971e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.71
+
+### input polynomial 87 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -641601072
+# Y1: 79661707
+# c0: 42698465
+# c1: 122121582
+# c2: -15816273
+# c3: -11907
+# c4: 16140
+# skew: 13.543
+# # side 1 lognorm 14.59, exp_E 12.80, alpha 0.81 (proj -1.09), 4 real roots
+
+### root-optimized polynomial 87 ###
+n: 2496735491537104256118027770442801942257
+Y0: 1190618189
+Y1: 79661707
+c0: -2302608511632
+c1: -152634283307
+c2: 114252211
+c3: 1472973
+c4: 16140
+skew: 122.998
+# side 1 lognorm 19.18, E 16.15, alpha -3.03 (proj -1.09), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.049e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.74
+
+### input polynomial 88 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -698902515
+# Y1: 76366957
+# c0: 142753667
+# c1: 28500402
+# c2: -4726342
+# c3: -66410
+# c4: 16620
+# skew: 9.941
+# # side 1 lognorm 13.61, exp_E 12.24, alpha 0.08 (proj -1.39), 2 real roots
+
+### root-optimized polynomial 88 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1768039913
+Y1: 76366957
+c0: -1936365616768
+c1: 78257065954
+c2: 246708869
+c3: -997130
+c4: 16620
+skew: 102.910
+# side 1 lognorm 18.84, E 15.62, alpha -3.22 (proj -1.16), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.210e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.76
+
+### input polynomial 89 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -582534219
+# Y1: 140773349
+# c0: -133872689
+# c1: -10197666
+# c2: 10297951
+# c3: 34118
+# c4: 34200
+# skew: 6.456
+# # side 1 lognorm 14.31, exp_E 12.48, alpha -1.42 (proj -1.83), 2 real roots
+
+### root-optimized polynomial 89 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1427174313
+Y1: 140773349
+c0: -754640218322
+c1: 74309464487
+c2: 17071027
+c3: -786682
+c4: 34200
+skew: 76.490
+# side 1 lognorm 18.98, E 14.41, alpha -4.57 (proj -1.83), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.509e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.23, av. E 13.77
+
+### input polynomial 90 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -633049337
+# Y1: 43091053
+# c0: 30446217
+# c1: 260727185
+# c2: -17886809
+# c3: -22944
+# c4: 17100
+# skew: 17.366
+# # side 1 lognorm 14.97, exp_E 11.81, alpha -1.43 (proj -2.12), 2 real roots
+
+### root-optimized polynomial 90 ###
+n: 2496735491537104256118027770442801942257
+Y0: 271862776
+Y1: 43091053
+c0: -270860138175
+c1: -42935383252
+c2: 25914319
+c3: 1413456
+c4: 17100
+skew: 77.776
+# side 1 lognorm 18.32, E 13.56, alpha -4.76 (proj -1.89), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.282e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.76
+
+### input polynomial 91 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -620852115
+# Y1: 6700153
+# c0: 5128866
+# c1: 50834165
+# c2: -272996
+# c3: -201942
+# c4: 52560
+# skew: 7.044
+# # side 1 lognorm 14.20, exp_E 12.29, alpha -2.00 (proj -1.91), 2 real roots
+
+### root-optimized polynomial 91 ###
+n: 2496735491537104256118027770442801942257
+Y0: -553850585
+Y1: 6700153
+c0: -161454427848
+c1: 2206072086
+c2: 6168197
+c3: 633486
+c4: 17520
+skew: 56.232
+# side 1 lognorm 17.27, E 12.96, alpha -4.31 (proj -1.59), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=3.404e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.76
+
+### input polynomial 92 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -1022605551
+# Y1: 73049371
+# c0: -1930591
+# c1: 16737748
+# c2: 1324026
+# c3: -393426
+# c4: 17580
+# skew: 5.832
+# # side 1 lognorm 13.14, exp_E 11.84, alpha 0.17 (proj -1.32), 2 real roots
+
+### root-optimized polynomial 92 ###
+n: 2496735491537104256118027770442801942257
+Y0: 876678095
+Y1: 73049371
+c0: -669965023728
+c1: -54628525970
+c2: 114990649
+c3: 1434894
+c4: 17580
+skew: 84.907
+# side 1 lognorm 18.53, E 15.20, alpha -3.33 (proj -1.09), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.368e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.77
+
+### input polynomial 93 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -643408258
+# Y1: 100296577
+# c0: -154426301
+# c1: 245673213
+# c2: -34538911
+# c3: -15082
+# c4: 16800
+# skew: 16.385
+# # side 1 lognorm 15.31, exp_E 12.20, alpha -1.67 (proj -1.96), 4 real roots
+
+### root-optimized polynomial 93 ###
+n: 2496735491537104256118027770442801942257
+Y0: -1846967182
+Y1: 100296577
+c0: -3066279334937
+c1: 165196134383
+c2: 80815818
+c3: -821482
+c4: 16800
+skew: 127.002
+# side 1 lognorm 19.28, E 15.40, alpha -3.88 (proj -1.72), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.191e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.79
+
+### input polynomial 94 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -591873445
+# Y1: 95903473
+# c0: -62304961
+# c1: -8851954
+# c2: 3077767
+# c3: 32150
+# c4: 35280
+# skew: 6.078
+# # side 1 lognorm 13.73, exp_E 11.84, alpha -0.32 (proj -1.89), 2 real roots
+
+### root-optimized polynomial 94 ###
+n: 2496735491537104256118027770442801942257
+Y0: 942582123
+Y1: 95903473
+c0: -302468850364
+c1: -30111401326
+c2: 77357260
+c3: 1145035
+c4: 17640
+skew: 69.537
+# side 1 lognorm 18.14, E 14.77, alpha -3.37 (proj -1.43), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.481e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.21, av. E 13.80
+
+### input polynomial 95 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -618482888
+# Y1: 8495089
+# c0: -50876821
+# c1: 54795405
+# c2: -617462
+# c3: -127695
+# c4: 52920
+# skew: 7.469
+# # side 1 lognorm 14.30, exp_E 12.46, alpha -0.19 (proj -1.84), 2 real roots
+
+### root-optimized polynomial 95 ###
+n: 2496735491537104256118027770442801942257
+Y0: -482561464
+Y1: 8495089
+c0: -440821999095
+c1: 8210358059
+c2: 22014403
+c3: 1086395
+c4: 17640
+skew: 69.679
+# side 1 lognorm 17.85, E 14.13, alpha -3.72 (proj -1.43), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.554e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.80
+
+### input polynomial 96 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -615361599
+# Y1: 39599849
+# c0: -71658694
+# c1: 216339895
+# c2: -13622864
+# c3: -11150
+# c4: 18120
+# skew: 16.127
+# # side 1 lognorm 14.85, exp_E 12.63, alpha 0.45 (proj -1.41), 2 real roots
+
+### root-optimized polynomial 96 ###
+n: 2496735491537104256118027770442801942257
+Y0: 57835834
+Y1: 39599849
+c0: -94012214535
+c1: -65215669398
+c2: -101570981
+c3: 1221010
+c4: 18120
+skew: 88.192
+# side 1 lognorm 18.60, E 13.62, alpha -4.98 (proj -1.64), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.254e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.80
+
+### input polynomial 97 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -948576308
+# Y1: 72851533
+# c0: 70861803
+# c1: 104645854
+# c2: -2989124
+# c3: -1002432
+# c4: 54000
+# skew: 8.082
+# # side 1 lognorm 14.57, exp_E 12.26, alpha -1.15 (proj -2.31), 2 real roots
+
+### root-optimized polynomial 97 ###
+n: 2496735491537104256118027770442801942257
+Y0: 71345154
+Y1: 72851533
+c0: -1367112495
+c1: -1651360893
+c2: 18412732
+c3: 2021568
+c4: 54000
+skew: 16.972
+# side 1 lognorm 16.51, E 13.07, alpha -3.44 (proj -1.97), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.688e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.79
+
+### input polynomial 98 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -691507206
+# Y1: 56074591
+# c0: 12751211
+# c1: 16012089
+# c2: -1153849
+# c3: -110284
+# c4: 18360
+# skew: 6.726
+# # side 1 lognorm 13.00, exp_E 11.51, alpha 0.21 (proj -1.49), 2 real roots
+
+### root-optimized polynomial 98 ###
+n: 2496735491537104256118027770442801942257
+Y0: -579358024
+Y1: 56074591
+c0: -1306412772639
+c1: 127617579558
+c2: -113524095
+c3: 36596
+c4: 18360
+skew: 110.894
+# side 1 lognorm 19.14, E 14.98, alpha -4.16 (proj -1.49), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.500e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.21, av. E 13.80
+
+### input polynomial 99 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: 74548633
+# Y1: 79899233
+# c0: 38209132
+# c1: -30582460
+# c2: -5722197
+# c3: 631118
+# c4: 18540
+# skew: 6.155
+# # side 1 lognorm 13.63, exp_E 12.42, alpha -1.45 (proj -1.25), 4 real roots
+
+### root-optimized polynomial 99 ###
+n: 2496735491537104256118027770442801942257
+Y0: 713742497
+Y1: 79899233
+c0: -731045915828
+c1: -81779807628
+c2: 16543995
+c3: 1224398
+c4: 18540
+skew: 94.851
+# side 1 lognorm 18.80, E 15.50, alpha -3.30 (proj -1.25), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.236e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.82
+
+### input polynomial 100 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -466629794
+# Y1: 43578149
+# c0: 32861447
+# c1: -23614534
+# c2: 5979056
+# c3: 709167
+# c4: 56340
+# skew: 5.508
+# # side 1 lognorm 14.26, exp_E 12.64, alpha -0.30 (proj -1.64), 0 real root
+
+### root-optimized polynomial 100 ###
+n: 2496735491537104256118027770442801942257
+Y0: 230620590
+Y1: 43578149
+c0: -163683207553
+c1: -30951575601
+c2: 27659721
+c3: 1438309
+c4: 18780
+skew: 67.338
+# side 1 lognorm 18.13, E 14.48, alpha -3.65 (proj -1.23), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.828e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.83
+
+### input polynomial 101 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -627836566
+# Y1: 93120991
+# c0: -153407059
+# c1: 224945478
+# c2: -29984514
+# c3: -17358
+# c4: 18540
+# skew: 15.785
+# # side 1 lognorm 15.20, exp_E 12.38, alpha -0.15 (proj -1.76), 4 real roots
+
+### root-optimized polynomial 101 ###
+n: 2496735491537104256118027770442801942257
+Y0: -162231611
+Y1: 93120991
+c0: -9665003040
+c1: 5613448939
+c2: -27463884
+c3: 353442
+c4: 18540
+skew: 37.843
+# side 1 lognorm 17.10, E 14.02, alpha -3.07 (proj -1.76), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.922e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.83
+
+### input polynomial 102 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -624172780
+# Y1: 46524551
+# c0: -237308523
+# c1: 274469351
+# c2: -19122431
+# c3: -31764
+# c4: 18720
+# skew: 17.329
+# # side 1 lognorm 15.06, exp_E 11.87, alpha -0.12 (proj -2.10), 2 real roots
+
+### root-optimized polynomial 102 ###
+n: 2496735491537104256118027770442801942257
+Y0: -577648229
+Y1: 46524551
+c0: -1044947620908
+c1: 84399116836
+c2: -19105403
+c3: 43116
+c4: 18720
+skew: 97.098
+# side 1 lognorm 18.89, E 14.22, alpha -4.67 (proj -2.10), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.915e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.83
+
+### input polynomial 103 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -625503467
+# Y1: 41275219
+# c0: 715831563
+# c1: 121066591
+# c2: -11068866
+# c3: -44415
+# c4: 19080
+# skew: 14.738
+# # side 1 lognorm 14.57, exp_E 13.31, alpha 0.86 (proj -1.35), 2 real roots
+
+### root-optimized polynomial 103 ###
+n: 2496735491537104256118027770442801942257
+Y0: 447652227
+Y1: 41275219
+c0: -82972710712
+c1: -4118289857
+c2: 351781777
+c3: 1939905
+c4: 19080
+skew: 31.394
+# side 1 lognorm 17.66, E 14.12, alpha -3.55 (proj -1.63), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.156e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.23, av. E 13.84
+
+### input polynomial 104 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -721535509
+# Y1: 18846337
+# c0: -5192769
+# c1: 8205858
+# c2: 4027670
+# c3: -493110
+# c4: 19200
+# skew: 4.422
+# # side 1 lognorm 13.33, exp_E 11.76, alpha -0.13 (proj -1.57), 2 real roots
+
+### root-optimized polynomial 104 ###
+n: 2496735491537104256118027770442801942257
+Y0: -344608769
+Y1: 18846337
+c0: -318555216472
+c1: 17662535057
+c2: 20521070
+c3: 1042890
+c4: 19200
+skew: 62.942
+# side 1 lognorm 18.02, E 14.91, alpha -3.11 (proj -1.57), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.934e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.85
+
+### input polynomial 105 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -610982860
+# Y1: 52377337
+# c0: -22772423
+# c1: 165564802
+# c2: -14020300
+# c3: -20351
+# c4: 19620
+# skew: 14.289
+# # side 1 lognorm 14.72, exp_E 12.80, alpha 1.42 (proj -1.25), 2 real roots
+
+### root-optimized polynomial 105 ###
+n: 2496735491537104256118027770442801942257
+Y0: -244341501
+Y1: 52377337
+c0: -247761651298
+c1: 53697265039
+c2: -113434065
+c3: 529009
+c4: 19620
+skew: 79.665
+# side 1 lognorm 18.61, E 15.39, alpha -3.22 (proj -1.25), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=1.407e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.23, av. E 13.86
+
+### input polynomial 106 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -788850715
+# Y1: 28497149
+# c0: -14418298
+# c1: 18620163
+# c2: 3866068
+# c3: -527918
+# c4: 19620
+# skew: 5.746
+# # side 1 lognorm 13.52, exp_E 12.08, alpha -0.79 (proj -1.48), 2 real roots
+
+### root-optimized polynomial 106 ###
+n: 2496735491537104256118027770442801942257
+Y0: -133416288
+Y1: 28497149
+c0: -20887638847
+c1: 5367873193
+c2: -27280692
+c3: 1277122
+c4: 19620
+skew: 35.320
+# side 1 lognorm 17.25, E 14.63, alpha -2.62 (proj -1.48), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.068e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.23, av. E 13.87
+
+### input polynomial 107 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -615863648
+# Y1: 63030977
+# c0: -114349583
+# c1: 155520688
+# c2: -14707238
+# c3: -23341
+# c4: 19620
+# skew: 14.099
+# # side 1 lognorm 14.73, exp_E 12.81, alpha 0.39 (proj -1.25), 4 real roots
+
+### root-optimized polynomial 107 ###
+n: 2496735491537104256118027770442801942257
+Y0: 203539053
+Y1: 63030977
+c0: -1290251536
+c1: -240927636
+c2: 67308120
+c3: 996899
+c4: 19620
+skew: 9.561
+# side 1 lognorm 15.95, E 14.29, alpha -1.65 (proj -1.25), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.156e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.23, av. E 13.87
+
+### input polynomial 108 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -596317742
+# Y1: 7753829
+# c0: -60816349
+# c1: 259152233
+# c2: -3355326
+# c3: -8882
+# c4: 19860
+# skew: 17.049
+# # side 1 lognorm 14.99, exp_E 12.70, alpha -0.01 (proj -1.46), 2 real roots
+
+### root-optimized polynomial 108 ###
+n: 2496735491537104256118027770442801942257
+Y0: -565302426
+Y1: 7753829
+c0: -57864829225
+c1: -3479053743
+c2: 60475282
+c3: 308878
+c4: 19860
+skew: 42.599
+# side 1 lognorm 16.99, E 13.38, alpha -3.61 (proj -1.46), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.944e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.24, av. E 13.87
+
+### input polynomial 109 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -679462706
+# Y1: 26218909
+# c0: -1447167
+# c1: 3683792
+# c2: 871340
+# c3: -237686
+# c4: 19380
+# skew: 3.551
+# # side 1 lognorm 12.28, exp_E 10.52, alpha 0.31 (proj -1.76), 2 real roots
+
+### root-optimized polynomial 109 ###
+n: 2496735491537104256118027770442801942257
+Y0: 107104564
+Y1: 26218909
+c0: -77866401015
+c1: -20151795770
+c2: 57912691
+c3: 2087914
+c4: 19380
+skew: 55.988
+# side 1 lognorm 17.84, E 13.80, alpha -4.04 (proj -1.53), 2 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=2.398e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.22, av. E 13.87
+
+### input polynomial 110 ###
+# n: 2496735491537104256118027770442801942257
+# Y0: -600150771
+# Y1: 16506229
+# c0: -108053383
+# c1: 223479777
+# c2: -6055594
+# c3: -22591
+# c4: 19860
+# skew: 16.137
+# # side 1 lognorm 14.87, exp_E 12.81, alpha 1.26 (proj -1.23), 2 real roots
+
+### root-optimized polynomial 110 ###
+n: 2496735491537104256118027770442801942257
+Y0: 60098389
+Y1: 16506229
+c0: 27323231980
+c1: -1953320826
+c2: -49197720
+c3: 3155009
+c4: 19860
+skew: 28.870
+# side 1 lognorm 16.67, E 12.41, alpha -4.25 (proj -1.23), 4 real roots
+# side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=4.231e-06
+### Best MurphyE so far is 4.749e-06, av. exp_E 12.23, av. E 13.85
+
+
+# Stat: total phase took 35.95s
+# Stat: rootsieve took 0s (fake placeholder, we lack RUSAGE_THREAD)
+# 0-th best polynomial found (revision 692ecb7):
+# n: 2496735491537104256118027770442801942257
+# Y0: 197150570
+# Y1: 63638117
+# c0: -85186479
+# c1: -38330143
+# c2: 45773675
+# c3: 567699
+# c4: 7560
+# skew: 3.646
+# # side 1 lognorm 15.44, E 11.48, alpha -3.96 (proj -1.91), 2 real roots
+# # side 1 MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12)=4.749e-06
+# Average exp_E: 12.23, average E: 13.85

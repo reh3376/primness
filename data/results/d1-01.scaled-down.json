@@ -1,0 +1,182 @@
+{
+  "alpha_applied": false,
+  "bounds": [
+    16384,
+    65536,
+    262144,
+    1048576
+  ],
+  "dickman": {
+    "method": "simpson-grid",
+    "steps_per_unit": 4096,
+    "u_max": 40
+  },
+  "elapsed_ms": 17567,
+  "evaluated": 5472915,
+  "hardware": {
+    "samples_file": "data/hardware/d1m-6933-1793746043299.jsonl",
+    "schema_version": "hardware-sample/1",
+    "summary": {
+      "cpu_active_ratio": {
+        "max": 0.9753766655921936,
+        "mean": 0.8995358427365621,
+        "min": 0.8292688131332397
+      },
+      "cpu_temp_c": {
+        "max": 77.02220153808594,
+        "mean": 73.33651275634766,
+        "min": 65.47821044921875
+      },
+      "duration_ms": 16580,
+      "gpu_active_ratio": {
+        "max": 0.05125799402594566,
+        "mean": 0.02356576273838679,
+        "min": 0.008591550402343273
+      },
+      "gpu_device_utilization_pct": {
+        "max": 2.0,
+        "mean": 0.6,
+        "min": 0.0
+      },
+      "gpu_share_of_total": {
+        "max": 0.12611210346221924,
+        "mean": 0.1253282308578491,
+        "min": 0.1231241226196289
+      },
+      "gpu_temp_c": {
+        "max": 67.17950439453125,
+        "mean": 61.84811528523763,
+        "min": 55.02176284790039
+      },
+      "memory_used_ratio": {
+        "max": 0.6209889650344849,
+        "mean": 0.6206172625223796,
+        "min": 0.6194659471511841
+      },
+      "power_all_w": {
+        "max": 65.14935302734375,
+        "mean": 57.23662287394206,
+        "min": 46.87042617797851
+      },
+      "samples": 15
+    }
+  },
+  "instance": "d1-01",
+  "n": "2496735491537104256118027770442801942257",
+  "n_digits": 40,
+  "polynomial": {
+    "algebraic": [
+      "-85186479",
+      "-38330143",
+      "45773675",
+      "567699",
+      "7560"
+    ],
+    "degree": 4,
+    "format": "cado",
+    "n": "2496735491537104256118027770442801942257",
+    "rational": [
+      "197150570",
+      "63638117"
+    ],
+    "schema_version": "instrument-polynomial/1",
+    "skew": "3.646",
+    "source": "cado-nfs"
+  },
+  "region": {
+    "a_max": 3000,
+    "a_min": -3000,
+    "b_max": 1500,
+    "b_min": 1,
+    "coprime_only": true,
+    "skip_zero": true
+  },
+  "results": [
+    {
+      "algebraic": {
+        "gap": 0.0027138680339547465,
+        "mean_u": 4.587970014626361,
+        "observed": 0.004164325592485906,
+        "observed_stderr": 0.000027526869725311908,
+        "predicted": 0.0014504575585311593,
+        "smooth": 22791
+      },
+      "b": 16384,
+      "both_smooth": 1794,
+      "rational": {
+        "gap": -0.022460177998314,
+        "mean_u": 2.626287548532939,
+        "observed": 0.08258542294188746,
+        "observed_stderr": 0.00011765900334730193,
+        "predicted": 0.10504560094020146,
+        "smooth": 451983
+      }
+    },
+    {
+      "algebraic": {
+        "gap": 0.00754894002098102,
+        "mean_u": 4.01447376279806,
+        "observed": 0.013204846046393923,
+        "observed_stderr": 0.000048794494541997625,
+        "predicted": 0.005655906025412902,
+        "smooth": 72269
+      },
+      "b": 65536,
+      "both_smooth": 10952,
+      "rational": {
+        "gap": -0.03281445728381999,
+        "mean_u": 2.298001604966324,
+        "observed": 0.1559494346248754,
+        "observed_stderr": 0.0001550839247530345,
+        "predicted": 0.18876389190869539,
+        "smooth": 853498
+      }
+    },
+    {
+      "algebraic": {
+        "gap": 0.015485189764137345,
+        "mean_u": 3.568421122487163,
+        "observed": 0.031008155617253327,
+        "observed_stderr": 0.00007409496151135294,
+        "predicted": 0.015522965853115982,
+        "smooth": 169705
+      },
+      "b": 262144,
+      "both_smooth": 41095,
+      "rational": {
+        "gap": -0.04184436010303727,
+        "mean_u": 2.042668093303396,
+        "observed": 0.24623568975582483,
+        "observed_stderr": 0.00018415517762689575,
+        "predicted": 0.2880800498588621,
+        "smooth": 1347627
+      }
+    },
+    {
+      "algebraic": {
+        "gap": 0.025479879640525664,
+        "mean_u": 3.2115790102384443,
+        "observed": 0.058883245948457084,
+        "observed_stderr": 0.00010062555116001371,
+        "predicted": 0.03340336630793142,
+        "smooth": 322263
+      },
+      "b": 1048576,
+      "both_smooth": 110465,
+      "rational": {
+        "gap": -0.044720744780455735,
+        "mean_u": 1.8384012839730566,
+        "observed": 0.3473004788124793,
+        "observed_stderr": 0.0002035166693122009,
+        "predicted": 0.392021223592935,
+        "smooth": 1900746
+      }
+    }
+  ],
+  "run_id": "d1m-6933-1793746043299",
+  "scale": "scaled-down",
+  "schema_version": "d1-measurement/1",
+  "skipped_zero": 0,
+  "threads": 18,
+  "ts_ms": 1793746060864
+}

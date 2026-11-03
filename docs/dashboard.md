@@ -16,6 +16,8 @@ cargo run --bin d1-measure -- --region 80 examples/demo.poly
 cargo run --bin d1_generate_instances
 ```
 
-Current harness output is marked `scale: toy`. The bench says so on the page. That is not the 40–80 digit protocol.
+Toy runs are marked `scale: toy`; instrument runs are `scaled-down` until the protocol's region is fixed. The bench says so on the page. Neither is the 40–80 digit protocol.
+
+Below the measurement table the page plots the hardware trace of the selected run from `$PRIMNESS_HARDWARE_DIR/<run_id>.jsonl` (`hardware-sample/1`, see `docs/hardware_telemetry.md`): utilization and memory in one chart, temperature and power in another, then min, mean and max.
 
 Each line has `ts_ms`, `run_id`, `source`, `kind` (`start`, `sample`, or `finish`), `scale`, `instance`, `b`, `evaluated`, `smooth`, `elapsed_ms`, `rate_per_s`, and `residues` (a string of `1` and `0` for the latest values). Gold cells in the strip are smooth values. The gold trace is density. The blue trace is the chunk rate, scaled to the fastest chunk in that run.

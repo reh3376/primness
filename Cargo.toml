@@ -30,6 +30,10 @@ path = "src/bin/d1_measure.rs"
 name = "d1_generate_instances"
 path = "src/bin/d1_generate_instances.rs"
 
+[[bin]]
+name = "hw-sample"
+path = "src/bin/hw_sample.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1

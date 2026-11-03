@@ -2,12 +2,20 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 17:15 EST
-- **Version**: 1.10
+- **Last Modified**: 2026-11-03 17:50 EST
+- **Version**: 1.11
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 17:50 EST
+- Pull request 21 is merged. This is the first change on `primness_dev01` after that merge.
+- CADO-NFS is built outside the tree (commit 692ecb7). `scripts/cado-polyselect.sh` selected a degree-4 polynomial for d1-01 (111 candidates, best MurphyE 4.749e-06) into `data/instruments/d1-01/cado.poly`.
+- The harness evaluates instrument polynomials in BigInt over a coprime rectangle, counts smooth values by trial division over sieved primes, and compares with Dickman ρ (Simpson grid; tests at ρ(1), ρ(2) = 1 − ln 2, and literature values). No Murphy α yet.
+- First scaled-down run on d1-01: `data/results/d1-01.scaled-down.json`. Algebraic side above the raw prediction at every bound (0.05888 vs 0.03340 at 2^20), rational side below. Not evidence for D1 until α is applied.
+- Hardware telemetry `hardware-sample/1` records every instrument run (macmon, ioreg, sysctl), with the summary in the result file and trend charts on the bench.
+- The required status check on the main ruleset is still to be applied by the owner.
 
 ### 2026-11-03 17:15 EST
 - Pull request 20 is merged. This is the first change on `primness_dev01` after that merge.

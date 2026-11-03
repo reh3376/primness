@@ -33,5 +33,16 @@ A third-party tree is copied in only when its license can sit beside `MIT OR Apa
 
 The record is `schemas/instrument-polynomial/1.json` (`$id` `instrument-polynomial/1`). `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. Degree in this version is 1 through 6. The D1 claim still requires an optimized degree-4 or degree-5 polynomial; this schema does not decide that.
 
+## Running CADO-NFS polynomial selection here
+
+CADO-NFS is built outside this tree at `~/external/cado-nfs` (commit recorded in each log) with `GMP=/opt/homebrew` and its own Python venv (`scripts/setup-venv.sh` there). Its `cado-nfs.py` driver has no parameter file within 3 digits of 40, so the ten instances use the `polyselect` and `polyselect_ropt` binaries directly:
+
+```sh
+NQ=1000 KEEP=40 ROPTEFFORT=5 sh scripts/cado-polyselect.sh d1-01 <N> 4 420 20000
+python3 scripts/cado-best-poly.py data/instruments/d1-01/ropt.polys data/instruments/d1-01/cado.poly
+```
+
+`scripts/cado-polyselect.sh` runs both stages under `hw-sample` and writes `data/instruments/<id>/`: `stage1.polys`, `ropt.polys`, `polyselect.log` (exact commands, CADO commit, instrument stderr) and `polyselect.hardware.json` (the `hardware-sample/1` finish record). `scripts/cado-best-poly.py` copies the candidate with the largest MurphyE to `cado.poly`, keeping the score only as a comment. The harness reads `cado.poly` with `--source cado-nfs` because the caller knows that program wrote it. Parameters follow `parameters/factor/params.c60` scaled down (degree 4, P = 420, incr 60); the MurphyE bounds and area (`Bf = Bg = 2^17`, area 1e12) only rank candidates.
+
 ## Integration rule
 Call these programs, or parse their polynomial files, to obtain candidate polynomials and relation sets. All smoothness density measurements, Dickman–de Bruijn comparisons, and falsifiable claims under D1 are performed by the Primness Rust harness.

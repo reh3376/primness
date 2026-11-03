@@ -58,17 +58,21 @@ impl Registry {
     }
 
     pub fn validate(&self, event: &Event) -> Result<(), String> {
-        let compiled = self.validators.get(&event.schema_version).ok_or_else(|| {
+        let value = serde_json::to_value(event).map_err(|err| err.to_string())?;
+        self.validate_value(&event.schema_version, &value)
+    }
+
+    /// Validate any JSON document against the schema whose `$id` is `schema_version`.
+    pub fn validate_value(&self, schema_version: &str, value: &Value) -> Result<(), String> {
+        let compiled = self.validators.get(schema_version).ok_or_else(|| {
             format!(
-                "unknown schema_version {}. Known: {}",
-                event.schema_version,
+                "unknown schema_version {schema_version}. Known: {}",
                 self.known()
             )
         })?;
-        let value = serde_json::to_value(event).map_err(|err| err.to_string())?;
-        match compiled.validator.validate(&value) {
+        match compiled.validator.validate(value) {
             Ok(()) => Ok(()),
-            Err(err) => Err(format!("{}: {err}", event.schema_version)),
+            Err(err) => Err(format!("{schema_version}: {err}")),
         }
     }
 

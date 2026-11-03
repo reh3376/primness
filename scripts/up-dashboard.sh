@@ -36,7 +36,7 @@ PG_PORT=$(env_get POSTGRES_PORT 5455)
 require_port "$DASH_PORT" primness-bench
 require_port "$PG_PORT" primness-db
 
-mkdir -p data/metrics
+mkdir -p data/metrics data/hardware
 export HOST_UID="$(id -u)"
 export HOST_GID="$(id -g)"
 docker compose up -d --build
