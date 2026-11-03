@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 17:50 EST
+**Last updated:** 2026-11-03 18:05 EST
 
 ## What this project is
 
@@ -27,7 +27,7 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 17:50 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-03 18:05 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
 - Development is on `primness_dev01`. Pull request 21 is merged.
 - D1 is the starting sub-claim. It has one scaled-down measurement, on d1-01 (`data/results/d1-01.scaled-down.json`), against the raw Dickman–de Bruijn prediction. No Murphy \(\alpha\) adjustment formula is written in this repository, so the rejection criterion has not been applied. Do not invent one; record a published definition first.
@@ -78,7 +78,7 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 
 `d1-measure` tries `primness::poly::parse_instrument` before the toy path.
 
-- Success runs the instrument path: F(a, b) and G(a, b) in BigInt over a in [−A, A], b in [1, B_MAX], gcd(a, b) = 1 (defaults 500 and 250; `--a-max`, `--b-max`), smoothness by trial division at every `--bounds` value (default 2^14, 2^16, 2^18, 2^20) from one largest-prime-factor pass, and the Dickman prediction as the mean of ρ(ln|F| / ln B). Events carry `scale` `scaled-down`. The result is a `d1-measurement/1` file (`--out`, default `data/results/<instance>-<run_id>.json`) with both sides, the gap, mean u, and the hardware summary. `--source` names the instrument only when the caller knows it; the file itself never does. `full` is not yet a reachable label: the protocol's region per digit length is not fixed.
+- Success runs the instrument path: F(a, b) and G(a, b) in BigInt over a in [−A, A], b in [1, B_MAX], gcd(a, b) = 1 (defaults 500 and 250; `--a-max`, `--b-max`), smoothness by trial division at every `--bounds` value (default 2^14, 2^16, 2^18, 2^20) from one largest-prime-factor pass, and the Dickman prediction as the mean of ρ(ln|F| / ln B). Events carry `scale` `scaled-down`. The result is a `d1-measurement/1` file (`--out`, default `data/results/<instance>-<run_id>.json`) with both sides, the gap, the binomial standard error, mean u, the implied size shift, and the hardware summary, plus CSV tables beside it (`tables` in the result: bounds, u_bins, rows, lpf_hist) and, with `--dump FILE`, one CSV row per value (gitignored). `scripts/d1_report.py <result.json>` writes `<stem>.report.md` and `<stem>.hardware.csv`. `--source` names the instrument only when the caller knows it; the file itself never does. `full` is not yet a reachable label: the protocol's region per digit length is not fixed.
 - `Error::NotInstrument` falls through to the toy path. [examples/demo.poly](../examples/demo.poly) is three integer lines (`1`, `-1`, `1`) and takes that path.
 - Any other parse error prints to stderr and exits 1. A file that has instrument keys plus a score key such as `MurphyE` is an error. The schema has no score field.
 

@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 17:50 EST
-- **Version**: 1.16
+- **Last Modified**: 2026-11-03 18:05 EST
+- **Version**: 1.17
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,7 +60,7 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 17:50 EST:
+As of 2026-11-03 18:05 EST:
 
 I am developing on `primness_dev01`. Pull request 21 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
 
@@ -71,6 +71,8 @@ The first scaled-down run on d1-01 (a in [−3000, 3000], b in [1, 1500], gcd 1;
 Every instrument run now records a `hardware-sample/1` trace (`docs/hardware_telemetry.md`): CPU and GPU activity, unified memory and the GPU's share of it, temperature, fans and power each second, from macmon and ioreg, validated against the schema, kept as JSON lines and in Postgres, summarized in the result file and plotted on the bench. The d1-01 run held the CPU at 0.90 active ratio on average and peaked at 77 °C; the GPU was idle; other processes held 12.5% of unified memory on the GPU throughout.
 
 The required status check on the main ruleset is not applied yet; I add that rule in the repository settings myself.
+
+Every measurement now writes its tables beside the result as CSV (per bound, per u bin, per b row, largest-prime-factor histogram, hardware trace) and `scripts/d1_report.py` writes a report from them; `data/results/d1-01.scaled-down.report.md` is the first. The tables show the algebraic excess rising with u, as a shift in ln|F| would, and an implied shift of about −4 that is the same at every bound; the two sides are close to independent. These are the facts the α step has to account for.
 
 The next measurement step is Murphy α in the harness, then the same run on d1-02 through d1-10, then a sieve over the region to reach the protocol's bounds.
 

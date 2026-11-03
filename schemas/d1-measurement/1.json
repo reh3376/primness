@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "d1-measurement/1",
   "title": "D1 smoothness measurement",
-  "description": "One run of the independent smoothness count on an instrument polynomial over a rectangular (a, b) region with gcd(a, b) = 1, compared with the Dickman-de Bruijn prediction, the mean over the region of rho(ln|F(a, b)| / ln B). observed_stderr is the binomial standard error sqrt(p(1-p)/n) of the observed density. Version 1 applies no adjustment: alpha_applied is always false. scale says how far the run is from the 40-80 digit protocol. The nested polynomial is an instrument-polynomial/1 record and is validated against that schema separately. hardware, when present, is the finish summary of the hardware-sample/1 trace recorded beside the run; the trace file holds the per-interval samples.",
+  "description": "One run of the independent smoothness count on an instrument polynomial over a rectangular (a, b) region with gcd(a, b) = 1, compared with the Dickman-de Bruijn prediction, the mean over the region of rho(ln|F(a, b)| / ln B). observed_stderr is the binomial standard error sqrt(p(1-p)/n) of the observed density. Version 1 applies no adjustment: alpha_applied is always false. scale says how far the run is from the 40-80 digit protocol. The nested polynomial is an instrument-polynomial/1 record and is validated against that schema separately. hardware, when present, is the finish summary of the hardware-sample/1 trace recorded beside the run; the trace file holds the per-interval samples. implied_alpha, when present, is the size shift alpha for which the mean of rho((ln|F| + alpha) / ln B) over the u bins equals the observed density; it is what a root-property correction would have to supply, not a Murphy alpha computation. tables lists the CSV files written beside the result; dump names the optional per-value CSV.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -202,6 +202,50 @@
           "type": "object"
         }
       }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path",
+          "columns",
+          "rows",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "columns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "dump": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "$defs": {
@@ -244,6 +288,9 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1
+        },
+        "implied_alpha": {
+          "type": "number"
         }
       }
     }

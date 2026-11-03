@@ -42,13 +42,14 @@ struct Options {
     threads: usize,
     hw_sample: bool,
     hw_interval_ms: u64,
+    dump: Option<PathBuf>,
 }
 
 fn usage() -> ! {
     eprintln!(
         "Usage: d1-measure [--a-max A] [--b-max B] [--bounds 2^14,2^16,2^18,2^20] \
          [--instance ID] [--source cado-nfs|msieve|yafu|unspecified] [--out FILE] \
-         [--threads N] [--no-hw-sample] [--hw-interval-ms N] [--region N] <poly-file>"
+         [--threads N] [--no-hw-sample] [--hw-interval-ms N] [--dump FILE] [--region N] <poly-file>"
     );
     std::process::exit(2);
 }
@@ -78,6 +79,7 @@ fn parse_options() -> Options {
             .unwrap_or(1),
         hw_sample: true,
         hw_interval_ms: hardware::DEFAULT_INTERVAL_MS,
+        dump: None,
     };
     let mut poly_path = None;
     let mut args = env::args().skip(1);
@@ -138,6 +140,7 @@ fn parse_options() -> Options {
                     .unwrap_or_else(|| usage());
             }
             "--no-hw-sample" => opts.hw_sample = false,
+            "--dump" => opts.dump = Some(PathBuf::from(args.next().unwrap_or_else(|| usage()))),
             "--hw-interval-ms" => {
                 opts.hw_interval_ms = args
                     .next()
@@ -183,7 +186,31 @@ fn main() {
 // ---------------------------------------------------------------------------
 // Instrument path
 
-/// Counts for one slice of the region. Vectors are indexed like `bounds`.
+/// u is binned in steps of U_BIN_WIDTH from 0 to U_BINS * U_BIN_WIDTH.
+const U_BIN_WIDTH: f64 = 0.1;
+const U_BINS: usize = 100;
+/// log2 of the largest prime factor is binned 0..=LPF_BINS-1; the last bin
+/// of each histogram counts values that were not smooth at the top bound.
+const LPF_BINS: usize = 33;
+
+#[derive(Clone, Copy, Default)]
+struct Bin {
+    count: u64,
+    smooth: u64,
+    rho_sum: f64,
+}
+
+#[derive(Clone, Copy, Default)]
+struct RowStat {
+    evaluated: u64,
+    alg_smooth: u64,
+    rat_smooth: u64,
+    both: u64,
+    ln_f_sum: f64,
+    ln_g_sum: f64,
+}
+
+/// Counts for one slice of the region. Outer vectors are indexed like `bounds`.
 struct Tally {
     evaluated: u64,
     skipped_zero: u64,
@@ -194,7 +221,13 @@ struct Tally {
     rat_pred: Vec<f64>,
     alg_u: Vec<f64>,
     rat_u: Vec<f64>,
+    alg_bins: Vec<Vec<Bin>>,
+    rat_bins: Vec<Vec<Bin>>,
+    rows: std::collections::BTreeMap<i64, RowStat>,
+    alg_lpf_hist: Vec<u64>,
+    rat_lpf_hist: Vec<u64>,
     residues: String,
+    dump: String,
 }
 
 impl Tally {
@@ -209,7 +242,13 @@ impl Tally {
             rat_pred: vec![0.0; k],
             alg_u: vec![0.0; k],
             rat_u: vec![0.0; k],
+            alg_bins: vec![vec![Bin::default(); U_BINS]; k],
+            rat_bins: vec![vec![Bin::default(); U_BINS]; k],
+            rows: std::collections::BTreeMap::new(),
+            alg_lpf_hist: vec![0; LPF_BINS],
+            rat_lpf_hist: vec![0; LPF_BINS],
             residues: String::new(),
+            dump: String::new(),
         }
     }
 
@@ -224,12 +263,44 @@ impl Tally {
             self.rat_pred[i] += other.rat_pred[i];
             self.alg_u[i] += other.alg_u[i];
             self.rat_u[i] += other.rat_u[i];
+            for j in 0..U_BINS {
+                self.alg_bins[i][j].count += other.alg_bins[i][j].count;
+                self.alg_bins[i][j].smooth += other.alg_bins[i][j].smooth;
+                self.alg_bins[i][j].rho_sum += other.alg_bins[i][j].rho_sum;
+                self.rat_bins[i][j].count += other.rat_bins[i][j].count;
+                self.rat_bins[i][j].smooth += other.rat_bins[i][j].smooth;
+                self.rat_bins[i][j].rho_sum += other.rat_bins[i][j].rho_sum;
+            }
+        }
+        for (b, row) in &other.rows {
+            let slot = self.rows.entry(*b).or_default();
+            slot.evaluated += row.evaluated;
+            slot.alg_smooth += row.alg_smooth;
+            slot.rat_smooth += row.rat_smooth;
+            slot.both += row.both;
+            slot.ln_f_sum += row.ln_f_sum;
+            slot.ln_g_sum += row.ln_g_sum;
+        }
+        for j in 0..LPF_BINS {
+            self.alg_lpf_hist[j] += other.alg_lpf_hist[j];
+            self.rat_lpf_hist[j] += other.rat_lpf_hist[j];
         }
         self.residues.push_str(&other.residues);
         if self.residues.len() > 64 {
             let drop = self.residues.len() - 64;
             self.residues.drain(..drop);
         }
+    }
+}
+
+fn u_bin(u: f64) -> usize {
+    ((u / U_BIN_WIDTH).floor().max(0.0) as usize).min(U_BINS - 1)
+}
+
+fn lpf_bin(lpf: Option<u64>) -> usize {
+    match lpf {
+        Some(l) => ((64 - l.max(1).leading_zeros()) as usize - 1).min(LPF_BINS - 2),
+        None => LPF_BINS - 1,
     }
 }
 
@@ -242,6 +313,7 @@ fn measure_rows(
     primes: &[u64],
     dickman: &Dickman,
     bounds: &[u64],
+    dump: bool,
 ) -> Tally {
     let b_top = *bounds.last().expect("bounds are non-empty");
     let top = bounds.len() - 1;
@@ -250,6 +322,7 @@ fn measure_rows(
     for &b in rows {
         let alg_pows = alg.powers_of_b(b);
         let rat_pows = rat.powers_of_b(b);
+        let mut row = RowStat::default();
         for a in -a_max..=a_max {
             if !coprime(a, b) {
                 continue;
@@ -265,6 +338,9 @@ fn measure_rows(
             let f_lpf = largest_prime_factor_if_smooth(f_mag, primes, b_top);
             let g_lpf = largest_prime_factor_if_smooth(g_mag, primes, b_top);
             tally.evaluated += 1;
+            row.evaluated += 1;
+            row.ln_f_sum += ln_f;
+            row.ln_g_sum += ln_g;
             for (i, &bound) in bounds.iter().enumerate() {
                 let f_smooth = f_lpf.is_some_and(|l| l <= bound);
                 let g_smooth = g_lpf.is_some_and(|l| l <= bound);
@@ -278,20 +354,89 @@ fn measure_rows(
                     tally.both[i] += 1;
                 }
                 let (u_f, u_g) = (ln_f / ln_bounds[i], ln_g / ln_bounds[i]);
-                tally.alg_pred[i] += dickman.rho(u_f);
-                tally.rat_pred[i] += dickman.rho(u_g);
+                let (rho_f, rho_g) = (dickman.rho(u_f), dickman.rho(u_g));
+                tally.alg_pred[i] += rho_f;
+                tally.rat_pred[i] += rho_g;
                 tally.alg_u[i] += u_f;
                 tally.rat_u[i] += u_g;
+                let bin = &mut tally.alg_bins[i][u_bin(u_f)];
+                bin.count += 1;
+                bin.smooth += u64::from(f_smooth);
+                bin.rho_sum += rho_f;
+                let bin = &mut tally.rat_bins[i][u_bin(u_g)];
+                bin.count += 1;
+                bin.smooth += u64::from(g_smooth);
+                bin.rho_sum += rho_g;
+                if i == top {
+                    row.alg_smooth += u64::from(f_smooth);
+                    row.rat_smooth += u64::from(g_smooth);
+                    row.both += u64::from(f_smooth && g_smooth);
+                }
             }
-            tally
-                .residues
-                .push(if f_lpf.is_some_and(|l| l <= bounds[top]) { '1' } else { '0' });
+            tally.alg_lpf_hist[lpf_bin(f_lpf)] += 1;
+            tally.rat_lpf_hist[lpf_bin(g_lpf)] += 1;
+            let f_top = f_lpf.is_some_and(|l| l <= b_top);
+            tally.residues.push(if f_top { '1' } else { '0' });
             if tally.residues.len() > 64 {
                 tally.residues.drain(..1);
             }
+            if dump {
+                use std::fmt::Write as _;
+                let _ = writeln!(
+                    tally.dump,
+                    "{a},{b},{ln_f:.6},{},{ln_g:.6},{}",
+                    f_lpf.unwrap_or(0),
+                    g_lpf.unwrap_or(0)
+                );
+            }
         }
+        tally.rows.insert(b, row);
     }
     tally
+}
+
+/// The size shift α such that the mean of ρ((ln|F| + α) / ln B) over the
+/// binned values equals the observed density. It is the shift a
+/// root-property correction would have to supply; it is not a Murphy α
+/// computation, which needs the prime-by-prime definition.
+fn implied_alpha(bins: &[Bin], ln_b: f64, observed: f64, dickman: &Dickman) -> Option<f64> {
+    let total: u64 = bins.iter().map(|bin| bin.count).sum();
+    if total == 0 || observed <= 0.0 {
+        return None;
+    }
+    let mean_rho = |alpha: f64| -> f64 {
+        bins.iter()
+            .enumerate()
+            .filter(|(_, bin)| bin.count > 0)
+            .map(|(j, bin)| {
+                let u_center = (j as f64 + 0.5) * U_BIN_WIDTH;
+                // A shift below size 1 means certainly smooth, so u is floored at 0.
+                bin.count as f64 * dickman.rho((u_center + alpha / ln_b).max(0.0))
+            })
+            .sum::<f64>()
+            / total as f64
+    };
+    // mean_rho decreases as alpha increases.
+    let (mut lo, mut hi) = (-40.0f64, 40.0f64);
+    if mean_rho(lo) < observed || mean_rho(hi) > observed {
+        return None;
+    }
+    for _ in 0..80 {
+        let mid = 0.5 * (lo + hi);
+        if mean_rho(mid) > observed {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    Some(0.5 * (lo + hi))
+}
+
+fn write_text(path: &Path, text: &str) -> Result<(), String> {
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).map_err(|err| format!("{}: {err}", parent.display()))?;
+    }
+    fs::write(path, text).map_err(|err| format!("{}: {err}", path.display()))
 }
 
 fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<(), String> {
@@ -368,6 +513,19 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     } else {
         None
     };
+    let mut dump_file = match &opts.dump {
+        Some(path) => {
+            if let Some(parent) = path.parent() {
+                fs::create_dir_all(parent).map_err(|err| format!("{}: {err}", parent.display()))?;
+            }
+            let mut file = fs::File::create(path).map_err(|err| format!("{}: {err}", path.display()))?;
+            use std::io::Write as _;
+            writeln!(file, "a,b,ln_f,lpf_f,ln_g,lpf_g").map_err(|err| err.to_string())?;
+            println!("per-value dump: {} (lpf 0 means not {b_top}-smooth)", path.display());
+            Some(file)
+        }
+        None => None,
+    };
 
     let mut total = Tally::new(bounds.len());
     let rows: Vec<i64> = (1..=b_max).collect();
@@ -375,13 +533,16 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     for batch in rows.chunks(threads * 4) {
         let batch_started = Instant::now();
         let per_thread = batch.len().div_ceil(threads).max(1);
+        let dump = dump_file.is_some();
         let tallies: Vec<Tally> = std::thread::scope(|scope| {
             let handles: Vec<_> = batch
                 .chunks(per_thread)
                 .map(|rows| {
                     let (alg, rat, primes, dickman, bounds) =
                         (&alg, &rat, &primes, &dickman, &bounds);
-                    scope.spawn(move || measure_rows(rows, a_max, alg, rat, primes, dickman, bounds))
+                    scope.spawn(move || {
+                        measure_rows(rows, a_max, alg, rat, primes, dickman, bounds, dump)
+                    })
                 })
                 .collect();
             handles
@@ -393,6 +554,11 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         for tally in &tallies {
             batch_evaluated += tally.evaluated;
             total.merge(tally);
+            if let Some(file) = dump_file.as_mut() {
+                use std::io::Write as _;
+                file.write_all(tally.dump.as_bytes())
+                    .map_err(|err| format!("dump: {err}"))?;
+            }
         }
         let secs = batch_started.elapsed().as_secs_f64().max(1e-9);
         sink.emit(&event(
@@ -444,28 +610,108 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
             (observed, stderr, predicted, observed - predicted, u / n)
         }
     };
+    let out = opts
+        .out
+        .clone()
+        .unwrap_or_else(|| PathBuf::from("data/results").join(format!("{instance}-{run_id}.json")));
+    let stem = out.with_extension("").display().to_string();
+    let table_path = |name: &str| PathBuf::from(format!("{stem}.{name}.csv"));
+
     let mut results = Vec::new();
+    let mut bounds_csv = String::from(
+        "b,side,smooth,observed,observed_stderr,predicted,gap,gap_stderr_units,mean_u,implied_alpha\n",
+    );
+    let mut bins_csv = String::from("b,side,u_lo,u_hi,count,smooth,observed,predicted,ratio\n");
     for (i, &b) in bounds.iter().enumerate() {
+        let ln_b = (b as f64).ln();
         let (ao, ae, ap, ag, au) = side(total.alg_smooth[i], total.alg_pred[i], total.alg_u[i]);
         let (ro, re, rp, rg, ru) = side(total.rat_smooth[i], total.rat_pred[i], total.rat_u[i]);
+        let a_alpha = implied_alpha(&total.alg_bins[i], ln_b, ao, &dickman);
+        let r_alpha = implied_alpha(&total.rat_bins[i], ln_b, ro, &dickman);
         println!(
             "{b:>9} | {:>8} {ao:>8.5} {ap:>8.5} {ag:>+8.5} {au:>6.2} | {:>8} {ro:>8.5} {rp:>8.5} {rg:>+8.5} {ru:>6.2} | {:>8}",
             total.alg_smooth[i], total.rat_smooth[i], total.both[i]
         );
         println!(
-            "{:>9} | observed stderr {ae:.5} (gap = {:+.1} stderr)          | observed stderr {re:.5} (gap = {:+.1} stderr)",
+            "{:>9} | stderr {ae:.5}, gap {:+.1} stderr, implied alpha {}      | stderr {re:.5}, gap {:+.1} stderr, implied alpha {}",
             "",
             if ae > 0.0 { ag / ae } else { 0.0 },
-            if re > 0.0 { rg / re } else { 0.0 }
+            a_alpha.map(|a| format!("{a:+.2}")).unwrap_or_else(|| "n/a".into()),
+            if re > 0.0 { rg / re } else { 0.0 },
+            r_alpha.map(|a| format!("{a:+.2}")).unwrap_or_else(|| "n/a".into()),
         );
-        results.push(json!({
-            "b": b,
-            "algebraic": {"smooth": total.alg_smooth[i], "observed": ao, "observed_stderr": ae, "predicted": ap, "gap": ag, "mean_u": au},
-            "rational": {"smooth": total.rat_smooth[i], "observed": ro, "observed_stderr": re, "predicted": rp, "gap": rg, "mean_u": ru},
-            "both_smooth": total.both[i],
-        }));
+        let mut alg_json = json!({"smooth": total.alg_smooth[i], "observed": ao, "observed_stderr": ae, "predicted": ap, "gap": ag, "mean_u": au});
+        let mut rat_json = json!({"smooth": total.rat_smooth[i], "observed": ro, "observed_stderr": re, "predicted": rp, "gap": rg, "mean_u": ru});
+        if let Some(alpha) = a_alpha {
+            alg_json["implied_alpha"] = json!(alpha);
+        }
+        if let Some(alpha) = r_alpha {
+            rat_json["implied_alpha"] = json!(alpha);
+        }
+        results.push(json!({"b": b, "algebraic": alg_json, "rational": rat_json, "both_smooth": total.both[i]}));
+        use std::fmt::Write as _;
+        for (name, sm, obs, err, pred, gap, mu, alpha) in [
+            ("algebraic", total.alg_smooth[i], ao, ae, ap, ag, au, a_alpha),
+            ("rational", total.rat_smooth[i], ro, re, rp, rg, ru, r_alpha),
+        ] {
+            let _ = writeln!(
+                bounds_csv,
+                "{b},{name},{sm},{obs:.7},{err:.7},{pred:.7},{gap:+.7},{:.2},{mu:.4},{}",
+                if err > 0.0 { gap / err } else { 0.0 },
+                alpha.map(|a| format!("{a:.4}")).unwrap_or_default()
+            );
+        }
+        for (name, bins) in [("algebraic", &total.alg_bins[i]), ("rational", &total.rat_bins[i])] {
+            for (j, bin) in bins.iter().enumerate() {
+                if bin.count == 0 {
+                    continue;
+                }
+                let observed = bin.smooth as f64 / bin.count as f64;
+                let predicted = bin.rho_sum / bin.count as f64;
+                let _ = writeln!(
+                    bins_csv,
+                    "{b},{name},{:.1},{:.1},{},{},{observed:.7},{predicted:.7},{}",
+                    j as f64 * U_BIN_WIDTH,
+                    (j + 1) as f64 * U_BIN_WIDTH,
+                    bin.count,
+                    bin.smooth,
+                    if predicted > 0.0 { format!("{:.4}", observed / predicted) } else { String::new() }
+                );
+            }
+        }
     }
-    println!("alpha_applied: false (no Murphy α definition is recorded in this repository)");
+    println!("alpha_applied: false (no Murphy α definition is recorded in this repository); implied alpha above is the size shift that would reconcile Dickman with the count, not a Murphy α computation");
+
+    let mut rows_csv = String::from(
+        "b,evaluated,alg_smooth,rat_smooth,both_smooth,alg_density,rat_density,mean_ln_f,mean_ln_g\n",
+    );
+    for (b, row) in &total.rows {
+        use std::fmt::Write as _;
+        let e = row.evaluated.max(1) as f64;
+        let _ = writeln!(
+            rows_csv,
+            "{b},{},{},{},{},{:.6},{:.6},{:.4},{:.4}",
+            row.evaluated,
+            row.alg_smooth,
+            row.rat_smooth,
+            row.both,
+            row.alg_smooth as f64 / e,
+            row.rat_smooth as f64 / e,
+            row.ln_f_sum / e,
+            row.ln_g_sum / e
+        );
+    }
+    let mut lpf_csv = String::from("side,log2_lpf_bin,count,share\n");
+    for (name, hist) in [("algebraic", &total.alg_lpf_hist), ("rational", &total.rat_lpf_hist)] {
+        use std::fmt::Write as _;
+        for (j, count) in hist.iter().enumerate() {
+            if *count == 0 {
+                continue;
+            }
+            let label = if j == LPF_BINS - 1 { "not_smooth".to_string() } else { j.to_string() };
+            let _ = writeln!(lpf_csv, "{name},{label},{count},{:.7}", *count as f64 / n.max(1.0));
+        }
+    }
 
     let hardware = sampler.and_then(|sampler| {
         let path = sampler.path.clone();
@@ -494,6 +740,27 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         }
     });
 
+    let tables = [
+        ("bounds", bounds_csv, "per bound and side: counts, observed and predicted density, gap, standard error, mean u, implied alpha"),
+        ("u_bins", bins_csv, "per bound, side and u bin of width 0.1: count, smooth, observed, predicted, observed/predicted"),
+        ("rows", rows_csv, "per b row at the top bound: counts, densities, mean ln|F| and ln|G|"),
+        ("lpf_hist", lpf_csv, "per side: values by floor(log2(largest prime factor)) at the top bound, plus not_smooth"),
+    ];
+    let mut table_records = Vec::new();
+    for (name, csv, description) in &tables {
+        let path = table_path(name);
+        write_text(&path, csv)?;
+        let header = csv.lines().next().unwrap_or("");
+        table_records.push(json!({
+            "name": name,
+            "path": path.to_string_lossy(),
+            "columns": header.split(',').collect::<Vec<_>>(),
+            "rows": csv.lines().count().saturating_sub(1),
+            "description": description,
+        }));
+        println!("wrote {}", path.display());
+    }
+
     let mut result = json!({
         "schema_version": RESULT_V1,
         "run_id": run_id,
@@ -512,20 +779,17 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         "dickman": {"method": dickman::METHOD, "steps_per_unit": dickman::STEPS_PER_UNIT, "u_max": dickman::U_MAX},
         "alpha_applied": false,
         "results": results,
+        "tables": table_records,
     });
     if let Some(hardware) = hardware {
         result["hardware"] = hardware;
     }
-    registry.validate_value(RESULT_V1, &result)?;
-    let out = opts
-        .out
-        .clone()
-        .unwrap_or_else(|| PathBuf::from("data/results").join(format!("{instance}-{run_id}.json")));
-    if let Some(parent) = out.parent() {
-        fs::create_dir_all(parent).map_err(|err| format!("{}: {err}", parent.display()))?;
+    if let Some(path) = &opts.dump {
+        result["dump"] = json!(path.to_string_lossy());
     }
+    registry.validate_value(RESULT_V1, &result)?;
     let text = serde_json::to_string_pretty(&result).map_err(|err| err.to_string())?;
-    fs::write(&out, text + "\n").map_err(|err| format!("{}: {err}", out.display()))?;
+    write_text(&out, &(text + "\n"))?;
     println!("wrote {}", out.display());
     Ok(())
 }

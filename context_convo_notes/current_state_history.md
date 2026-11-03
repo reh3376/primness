@@ -2,12 +2,16 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 17:50 EST
-- **Version**: 1.11
+- **Last Modified**: 2026-11-03 18:05 EST
+- **Version**: 1.12
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 18:05 EST
+- Every measurement writes CSV tables beside the result (bounds, u bins, rows, largest-prime-factor histogram, hardware trace) and `scripts/d1_report.py` writes a report. `data/results/d1-01.scaled-down.report.md` records the observations, the questions answered and the questions raised.
+- The implied size shift on d1-01 is −4.08 to −3.76 across bounds; the excess rises with u; the two sides are close to independent. No Murphy α yet.
 
 ### 2026-11-03 17:50 EST
 - Pull request 21 is merged. This is the first change on `primness_dev01` after that merge.
