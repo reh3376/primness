@@ -57,8 +57,6 @@ jobs:
             echo "This pull request continues work on the Primness project under Obstacle D."
             echo "All development occurs on \`primness_dev01\`; the repository owner reviews, approves, and merges."
             echo
-            echo "## Current State"
-            echo
             sh scripts/check-current-state.sh --print-section HEAD
             echo
             echo "## Relevant living documents"
