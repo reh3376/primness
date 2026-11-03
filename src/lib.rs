@@ -1,7 +1,10 @@
+pub mod alpha;
 pub mod db;
 pub mod dickman;
 pub mod eval;
+pub mod fp;
 pub mod hardware;
+pub mod linesieve;
 pub mod metrics;
 pub mod poly;
 pub mod primes;

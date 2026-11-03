@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 18:05 EST
-- **Version**: 1.17
+- **Last Modified**: 2026-11-03 18:29 EST
+- **Version**: 1.18
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,21 +60,19 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 18:05 EST:
+As of 2026-11-03 18:29 EST:
 
-I am developing on `primness_dev01`. Pull request 21 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 22 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
 
-I built CADO-NFS outside this tree (`~/external/cado-nfs`, commit 692ecb7) and ran its polynomial selection on d1-01 through `scripts/cado-polyselect.sh`: 111 root-optimized degree-4 candidates, the largest MurphyE 4.749e-06, kept as `data/instruments/d1-01/cado.poly` with the score only in a comment. The harness now evaluates the homogeneous algebraic and rational values in BigInt over a coprime rectangle, counts B-smooth values by trial division over a sieved prime list, and compares the observed density with the Dickman–de Bruijn prediction, the mean of ρ(ln|F| / ln B) over the region. ρ is tabulated by Simpson's rule on the integral equation; tests pin ρ(1) = 1, ρ(2) = 1 − ln 2 and the literature values at 3, 4, 5 and 10. No Murphy α is applied, because no definition of it is recorded in this repository yet.
+I recorded the Murphy α definition with its sources in `docs/murphy_alpha.md` and implemented it in the harness (`src/alpha.rs`): the expected p-adic valuation over coprime pairs, affine and projective parts, lifted exactly at repeated roots. For the d1-01 polynomial the harness computes α = -3.9640; the instrument's unread comment line says −3.96, and the shift the counts themselves ask for is −3.8 to −4.1. The result contract is now `d1-measurement/2`, which carries the raw, the α-adjusted and the local-density Dickman predictions side by side.
 
-The first scaled-down run on d1-01 (a in [−3000, 3000], b in [1, 1500], gcd 1; 5,472,915 values; 17.6 s on 18 threads) is `data/results/d1-01.scaled-down.json`. At B = 2^20 the algebraic side is 0.05888 observed against 0.03340 predicted, a gap of +0.02548 with a binomial standard error of 0.00010; the gaps at 2^14, 2^16 and 2^18 are also positive. The rational side is below its prediction at every bound. I do not read the algebraic excess as evidence for D1: the prediction carries no root-property correction, and the protocol compares against Dickman adjusted by the measured Murphy α. Computing α in the harness, from a definition recorded here, is the next step; only after that does the rejection criterion apply. The run is `scaled-down`: the protocol's region per digit length is not fixed, and trial division does not reach the protocol's bound 2^28.
+I replaced trial division with a line sieve (`src/fp.rs`, `src/linesieve.rs`, `docs/line_sieve.md`): roots of f mod p for every prime up to B, ln p marked at a ≡ r·b, candidates resieved and verified exactly. Its counts equal trial division's at every bound on d1-01, 35 times faster, and the protocol's 2^28 takes 40 seconds on the same region. Trial division stays behind `--method trial`.
 
-Every instrument run now records a `hardware-sample/1` trace (`docs/hardware_telemetry.md`): CPU and GPU activity, unified memory and the GPU's share of it, temperature, fans and power each second, from macmon and ioreg, validated against the schema, kept as JSON lines and in Postgres, summarized in the result file and plotted on the bench. The d1-01 run held the CPU at 0.90 active ratio on average and peaked at 77 °C; the GPU was idle; other processes held 12.5% of unified memory on the GPU throughout.
+The first measurement at the protocol's bounds is `data/results/d1-01.scaled-down.b28.json`. After my own α the algebraic side shows no excess over Dickman at any bound from 2^14 to 2^28: the gap is -2.8% of the density at 2^20 and -3.4% at 2^28, flat across u, a small deficit rather than the excess D1 claims. The local-density form errs the other way by a few percent. The baseline's own error is now larger than the Poisson noise, so before the rejection criterion can be applied across ten instances the noise term must include the baseline's uncertainty, or the baseline must be sharpened. I am running d1-02 through d1-10 now (`scripts/d1_run_all.sh`), and `scripts/d1_summary.py` will apply the criterion across them.
 
-The required status check on the main ruleset is not applied yet; I add that rule in the repository settings myself.
+Every result writes its CSV tables and a report beside it, every instrument run records a hardware trace, and the bench and the published dashboard show them.
 
-Every measurement now writes its tables beside the result as CSV (per bound, per u bin, per b row, largest-prime-factor histogram, hardware trace) and `scripts/d1_report.py` writes a report from them; `data/results/d1-01.scaled-down.report.md` is the first. The tables show the algebraic excess rising with u, as a shift in ln|F| would, and an implied shift of about −4 that is the same at every bound; the two sides are close to independent. These are the facts the α step has to account for.
-
-The next measurement step is Murphy α in the harness, then the same run on d1-02 through d1-10, then a sieve over the region to reach the protocol's bounds.
+The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -82,6 +80,7 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
+- Which Dickman approximation is the right baseline for the D1 comparison at u between 2 and 3: ρ(u + α/ln B), which the d1-01 counts undershoot by a few percent at 2^28, or the local density ρ(u) + ρ′(u)/ln B, which they overshoot by a few percent? The rejection criterion needs a baseline whose own error is below the measurement noise.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*

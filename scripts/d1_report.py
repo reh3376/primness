@@ -66,16 +66,29 @@ def main(argv):
     reg = res["region"]
     L(f"- Region: a in [{reg['a_min']}, {reg['a_max']}], b in [{reg['b_min']}, {reg['b_max']}], gcd(a, b) = 1; {fmt_int(n)} values evaluated, {fmt_int(res['skipped_zero'])} zero values skipped.")
     L(f"- Bounds B: {', '.join(str(b) for b in res['bounds'])} (2^{', 2^'.join(str(int(b).bit_length()-1) for b in res['bounds'])}).")
-    L(f"- {res['elapsed_ms']/1000:.1f} s on {res.get('threads', '?')} threads; Dickman table `{res['dickman']['method']}`, {res['dickman']['steps_per_unit']} steps per unit; alpha applied: {res['alpha_applied']}.")
+    L(f"- {res['elapsed_ms']/1000:.1f} s on {res.get('threads', '?')} threads; Dickman table `{res['dickman']['method']}`, {res['dickman']['steps_per_unit']} steps per unit.")
+    al = res.get("alpha")
+    if al:
+        L(f"- Murphy α computed here over primes ≤ {al['bound']} (`{al['definition']}`): algebraic {al['algebraic']:+.4f}, rational {al['rational']:+.4f}. The instrument's own α comment is not read.")
+    else:
+        L("- No α applied (result version 1).")
     L("")
     L("## Per-bound results")
     L("")
-    L("| B | side | smooth | observed | predicted (raw Dickman) | ratio | gap | gap / stderr | mean u | implied α |")
-    L("|---|---|---|---|---|---|---|---|---|---|")
-    for b in sorted(alg):
-        for name, r in (("algebraic", alg[b]), ("rational", rat[b])):
-            o, p = float(r["observed"]), float(r["predicted"])
-            L(f"| 2^{b.bit_length()-1} | {name} | {fmt_int(r['smooth'])} | {o:.5f} | {p:.5f} | {o/p if p else float('nan'):.2f} | {float(r['gap']):+.5f} | {float(r['gap_stderr_units']):+.0f} | {float(r['mean_u']):.2f} | {r['implied_alpha'] or 'n/a'} |")
+    v2 = "predicted_alpha" in bounds[0]
+    if v2:
+        L("| B | side | smooth | observed | raw Dickman | raw gap / se | α-adjusted | α gap / se | local density | local gap / se | mean u | α | implied α |")
+        L("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+        for b in sorted(alg):
+            for name, r in (("algebraic", alg[b]), ("rational", rat[b])):
+                L(f"| 2^{b.bit_length()-1} | {name} | {fmt_int(r['smooth'])} | {float(r['observed']):.5f} | {float(r['predicted']):.5f} | {float(r['gap_stderr_units']):+.0f} | {float(r['predicted_alpha']):.5f} | {float(r['gap_alpha_stderr_units']):+.1f} | {float(r['predicted_local']):.5f} | {float(r['gap_local_stderr_units']):+.0f} | {float(r['mean_u']):.2f} | {float(r['alpha']):+.3f} | {r['implied_alpha'] or 'n/a'} |")
+    else:
+        L("| B | side | smooth | observed | predicted (raw Dickman) | ratio | gap | gap / stderr | mean u | implied α |")
+        L("|---|---|---|---|---|---|---|---|---|---|")
+        for b in sorted(alg):
+            for name, r in (("algebraic", alg[b]), ("rational", rat[b])):
+                o, p = float(r["observed"]), float(r["predicted"])
+                L(f"| 2^{b.bit_length()-1} | {name} | {fmt_int(r['smooth'])} | {o:.5f} | {p:.5f} | {o/p if p else float('nan'):.2f} | {float(r['gap']):+.5f} | {float(r['gap_stderr_units']):+.0f} | {float(r['mean_u']):.2f} | {r['implied_alpha'] or 'n/a'} |")
     L("")
     L("## Observations")
     L("")
@@ -84,7 +97,14 @@ def main(argv):
     obs.append(f"The algebraic side is smoother than the raw Dickman prediction at every bound. The ratio observed/predicted runs from {ratios[max(ratios)]:.2f} at B = 2^{max(ratios).bit_length()-1} to {ratios[min(ratios)]:.2f} at B = 2^{min(ratios).bit_length()-1}; it grows as B shrinks and u grows.")
     alphas = [float(alg[b]["implied_alpha"]) for b in alg if alg[b]["implied_alpha"]]
     if alphas:
-        obs.append(f"The size shift that would reconcile Dickman with the algebraic count (implied α) is {min(alphas):+.2f} to {max(alphas):+.2f} across the four bounds, mean {statistics.mean(alphas):+.2f}, spread {max(alphas)-min(alphas):.2f}. A single shift explains all four bounds to within that spread, which is what a root-property correction would look like. CADO's comment line for this polynomial reports α = −3.96; that number was not used anywhere in the measurement.")
+        obs.append(f"The size shift that would reconcile raw Dickman with the algebraic count (implied α) is {min(alphas):+.2f} to {max(alphas):+.2f} across the four bounds, mean {statistics.mean(alphas):+.2f}, spread {max(alphas)-min(alphas):.2f}.")
+    if v2:
+        ag = [float(alg[b]["gap_alpha_stderr_units"]) for b in sorted(alg)]
+        rg = [float(rat[b]["gap_alpha_stderr_units"]) for b in sorted(rat)]
+        lg = [float(alg[b]["gap_local_stderr_units"]) for b in sorted(alg)]
+        rl = [float(rat[b]["gap_local_stderr_units"]) for b in sorted(rat)]
+        obs.append(f"With the Murphy α computed in the harness ({al['algebraic']:+.4f}), the algebraic gap to the α-adjusted Dickman prediction is {', '.join(f'{g:+.1f}' for g in ag)} standard errors at the four bounds (raw: {', '.join(f'{float(alg[b][chr(103)+chr(97)+chr(112)+chr(95)+chr(115)+chr(116)+chr(100)+chr(101)+chr(114)+chr(114)+chr(95)+chr(117)+chr(110)+chr(105)+chr(116)+chr(115)]):+.0f}' for b in sorted(alg))}). The root-property correction accounts for the raw excess; what remains is at the per-mille level of the density and changes sign across bounds. The implied shift from the data ({statistics.mean(alphas):+.2f} mean) and the computed α ({al['algebraic']:+.2f}) agree.")
+        obs.append(f"On the rational side the computed α is {al['rational']:+.4f} and the α-adjusted gap is still {', '.join(f'{g:+.0f}' for g in rg)} standard errors: the linear form's values are less often smooth than ρ(u + α/ln B) predicts by about {abs(statistics.mean(float(rat[b]['gap_alpha'])/float(rat[b]['observed']) for b in rat))*100:.0f}% of the density. The local-density form ρ(u) + ρ'(u)/ln B overshoots the other way ({', '.join(f'{g:+.0f}' for g in rl)} standard errors; algebraic side {', '.join(f'{g:+.0f}' for g in lg)}). The count sits between the two textbook approximations, which bounds how precisely Dickman itself can be trusted at u near 2 with B = 2^20: the model uncertainty here is of the order of the residual, not the Poisson noise.")
     ralphas = [float(rat[b]["implied_alpha"]) for b in rat if rat[b]["implied_alpha"]]
     if ralphas:
         obs.append(f"The rational side is less smooth than Dickman at every bound; its implied α is {min(ralphas):+.2f} to {max(ralphas):+.2f}. A linear form over coprime pairs is not a random integer of its size, and the correction has the opposite sign.")
@@ -115,14 +135,22 @@ def main(argv):
     L("")
     L("- Does the harness reproduce a Dickman-scale smoothness count on a real NFS polynomial? Yes: predicted densities are of the right order at all four bounds, and the counts are far above Poisson noise.")
     L("- Is the raw algebraic excess over Dickman statistically real on this region? Yes, by 100 to 250 standard errors.")
-    L("- Is that excess evidence for D1? No. It is the size and shape of a root-property (Murphy α) correction, which the prediction does not yet include. The implied α from the data is consistent across bounds and matches the instrument's own α estimate in sign and magnitude.")
+    if v2:
+        L("- Is that excess evidence for D1? No. Applying the Murphy α computed here removes it on the algebraic side; the residual is at the per-mille level and changes sign across bounds. D1 would need an excess that survives α, and on this instance there is none.")
+        L("- Is the rational side understood? Not fully. After α it is still below ρ(u + α/ln B) and above the local-density form; the Dickman approximation's own accuracy at u near 2 is the limiting factor, not the measurement.")
+    else:
+        L("- Is that excess evidence for D1? No. It is the size and shape of a root-property (Murphy α) correction, which the prediction does not yet include. The implied α from the data is consistent across bounds and matches the instrument's own α estimate in sign and magnitude.")
     L("- Do the algebraic and rational sides behave independently? See the both-sides observation above.")
     L("")
     L("## Questions this run raises")
     L("")
-    L("- What is the Murphy α of this polynomial computed in the harness from the recorded definition, and does the excess vanish once it is applied? That is the next step before the rejection criterion can be used.")
-    L("- Does the residual after α (if any) depend on u, on b, or on the sign of a? The u-bin and row tables are the inputs for that check.")
-    L("- Is the rational side's deficit fully explained by its own α and the coprimality condition?")
+    if v2:
+        L("- Which Dickman approximation is the right baseline for the D1 comparison at u near 2 to 4: ρ(u), the local density, or a second-order form? The residual on the rational side is a model residual, and the rejection criterion needs a baseline whose own error is below the noise.")
+        L("- Does the per-mille algebraic residual after α depend on u, on b, or on the sign of a? The u-bin and row tables hold the inputs.")
+    else:
+        L("- What is the Murphy α of this polynomial computed in the harness from the recorded definition, and does the excess vanish once it is applied? That is the next step before the rejection criterion can be used.")
+        L("- Does the residual after α (if any) depend on u, on b, or on the sign of a? The u-bin and row tables are the inputs for that check.")
+        L("- Is the rational side's deficit fully explained by its own α and the coprimality condition?")
     L("- How do the other nine instances compare at the same region, and does the implied α track CADO's reported α for each?")
     L("- What region and bounds define a `full` run for each digit length?")
     L("")

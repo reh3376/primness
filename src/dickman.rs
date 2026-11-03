@@ -103,6 +103,20 @@ impl Dickman {
         self.table[k] * (1.0 - t) + self.table[k + 1] * t
     }
 
+    /// ρ'(u) = −ρ(u − 1) / u for u > 1, and 0 on [0, 1].
+    pub fn rho_prime(&self, u: f64) -> f64 {
+        if u.is_nan() || u <= 1.0 {
+            return 0.0;
+        }
+        -self.rho(u - 1.0) / u
+    }
+
+    /// Local density of B-smooth integers near x, from d/dx of x·ρ(ln x / ln B):
+    /// ρ(u) + ρ'(u) / ln B. The raw ρ(u) is the density averaged over [1, x].
+    pub fn local_density(&self, u: f64, ln_b: f64) -> f64 {
+        (self.rho(u) + self.rho_prime(u) / ln_b).max(0.0)
+    }
+
     /// u = ln x / ln B for a value x given by its natural log.
     pub fn u(ln_value: f64, bound: u64) -> f64 {
         ln_value / (bound as f64).ln()
@@ -173,6 +187,19 @@ mod tests {
         close(d.rho(4.0), 0.0049109256, 1e-4);
         close(d.rho(5.0), 0.00035472470, 1e-4);
         close(d.rho(10.0), 2.7701718e-11, 1e-2);
+    }
+
+    #[test]
+    fn derivative_and_local_density() {
+        let d = table();
+        assert_eq!(d.rho_prime(0.5), 0.0);
+        assert!((d.rho_prime(1.5) + 1.0 / 1.5).abs() < 1e-12);
+        assert!((d.rho_prime(3.0) + d.rho(2.0) / 3.0).abs() < 1e-12);
+        let ln_b = (1u64 << 20) as f64;
+        let ln_b = ln_b.ln();
+        assert!(d.local_density(1.84, ln_b) < d.rho(1.84));
+        assert!((d.local_density(1.84, ln_b) - (d.rho(1.84) - 1.0 / (1.84 * ln_b))).abs() < 1e-12);
+        assert_eq!(d.local_density(0.5, ln_b), 1.0);
     }
 
     #[test]

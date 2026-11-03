@@ -1525,6 +1525,7 @@ version = "0.1.0"
 dependencies = [
  "jsonschema",
  "num-bigint",
+ "num-integer",
  "num-traits",
  "postgres",
  "serde",

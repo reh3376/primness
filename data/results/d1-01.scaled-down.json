@@ -1,5 +1,12 @@
 {
-  "alpha_applied": false,
+  "alpha": {
+    "algebraic": -3.9639942201371645,
+    "bound": 2000,
+    "definition": "docs/murphy_alpha.md",
+    "method": "murphy-expected-valuation",
+    "rational": 0.5694650072033852
+  },
+  "alpha_applied": true,
   "bounds": [
     16384,
     65536,
@@ -11,53 +18,52 @@
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "dump": "data/dumps/d1-01.scaled-down.values.csv",
-  "elapsed_ms": 17483,
+  "elapsed_ms": 17592,
   "evaluated": 5472915,
   "hardware": {
-    "samples_file": "data/hardware/d1m-8147-1793746784153.jsonl",
+    "samples_file": "data/hardware/d1m-9497-1793747698921.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.9586632251739502,
-        "mean": 0.8878666877746582,
-        "min": 0.822800874710083
+        "max": 0.9508300423622132,
+        "mean": 0.9018326838811238,
+        "min": 0.8473008871078491
       },
       "cpu_temp_c": {
-        "max": 76.18791198730469,
-        "mean": 72.16003189086913,
-        "min": 58.57278060913086
+        "max": 75.61759948730469,
+        "mean": 70.68933741251628,
+        "min": 58.12211990356445
       },
-      "duration_ms": 16485,
+      "duration_ms": 16585,
       "gpu_active_ratio": {
-        "max": 0.06933454424142838,
-        "mean": 0.04299810118973255,
-        "min": 0.024505911394953728
+        "max": 0.12890514731407166,
+        "mean": 0.10535922646522522,
+        "min": 0.08077403157949448
       },
       "gpu_device_utilization_pct": {
-        "max": 3.0,
-        "mean": 0.6666666666666666,
-        "min": 0.0
+        "max": 10.0,
+        "mean": 6.866666666666666,
+        "min": 5.0
       },
       "gpu_share_of_total": {
-        "max": 0.12961339950561523,
-        "mean": 0.12755666573842367,
-        "min": 0.12560820579528809
+        "max": 0.12918639183044434,
+        "mean": 0.12906657854715983,
+        "min": 0.12836003303527832
       },
       "gpu_temp_c": {
-        "max": 66.3413314819336,
-        "mean": 60.82775293986003,
-        "min": 52.735862731933594
+        "max": 64.36681365966797,
+        "mean": 58.21357854207357,
+        "min": 50.40680694580078
       },
       "memory_used_ratio": {
-        "max": 0.6267940998077393,
-        "mean": 0.6252674182256063,
-        "min": 0.6237292289733887
+        "max": 0.634575366973877,
+        "mean": 0.634104855855306,
+        "min": 0.633105993270874
       },
       "power_all_w": {
-        "max": 64.01715850830078,
-        "mean": 58.010022735595705,
-        "min": 52.38787078857422
+        "max": 65.74801635742188,
+        "mean": 60.16696599324544,
+        "min": 56.08684158325195
       },
       "samples": 15
     }
@@ -95,96 +101,136 @@
   "results": [
     {
       "algebraic": {
+        "alpha": -3.9639942201371645,
         "gap": 0.0027138680339547465,
+        "gap_alpha": 0.00013050619366652017,
+        "gap_local": 0.0011449837174950595,
         "implied_alpha": -4.080038961116953,
         "mean_u": 4.587970014626361,
         "observed": 0.004164325592485906,
         "observed_stderr": 0.000027526869725311908,
         "predicted": 0.0014504575585311593,
+        "predicted_alpha": 0.004033819398819386,
+        "predicted_local": 0.0030193418749908463,
         "smooth": 22791
       },
       "b": 16384,
       "both_smooth": 1794,
       "rational": {
+        "alpha": 0.5694650072033852,
         "gap": -0.022460177998314,
+        "gap_alpha": -0.011359091185049741,
+        "gap_local": 0.007234090357751757,
         "implied_alpha": 1.2094027361678474,
         "mean_u": 2.626287548532939,
         "observed": 0.08258542294188746,
         "observed_stderr": 0.00011765900334730193,
         "predicted": 0.10504560094020146,
+        "predicted_alpha": 0.0939445141269372,
+        "predicted_local": 0.0753513325841357,
         "smooth": 451983
       }
     },
     {
       "algebraic": {
+        "alpha": -3.9639942201371645,
         "gap": 0.00754894002098102,
+        "gap_alpha": 0.0000920646497441311,
+        "gap_local": 0.0027985060914538368,
         "implied_alpha": -3.987263797848371,
         "mean_u": 4.01447376279806,
         "observed": 0.013204846046393923,
         "observed_stderr": 0.000048794494541997625,
         "predicted": 0.005655906025412902,
+        "predicted_alpha": 0.013112781396649792,
+        "predicted_local": 0.010406339954940086,
         "smooth": 72269
       },
       "b": 65536,
       "both_smooth": 10952,
       "rational": {
+        "alpha": 0.5694650072033852,
         "gap": -0.03281445728381999,
+        "gap_alpha": -0.016769291948805054,
+        "gap_local": 0.010357232244292386,
         "implied_alpha": 1.2357624995795193,
         "mean_u": 2.298001604966324,
         "observed": 0.1559494346248754,
         "observed_stderr": 0.0001550839247530345,
         "predicted": 0.18876389190869539,
+        "predicted_alpha": 0.17271872657368045,
+        "predicted_local": 0.145592202380583,
         "smooth": 853498
       }
     },
     {
       "algebraic": {
+        "alpha": -3.9639942201371645,
         "gap": 0.015485189764137345,
+        "gap_alpha": -0.00030653449548287415,
+        "gap_local": 0.005077140348386994,
         "implied_alpha": -3.8962140679172714,
         "mean_u": 3.568421122487163,
         "observed": 0.031008155617253327,
         "observed_stderr": 0.00007409496151135294,
         "predicted": 0.015522965853115982,
+        "predicted_alpha": 0.0313146901127362,
+        "predicted_local": 0.025931015268866334,
         "smooth": 169705
       },
       "b": 262144,
       "both_smooth": 41095,
       "rational": {
+        "alpha": 0.5694650072033852,
         "gap": -0.04184436010303727,
+        "gap_alpha": -0.02132914863173674,
+        "gap_local": 0.01363632779064003,
         "implied_alpha": 1.188872473151421,
         "mean_u": 2.042668093303396,
         "observed": 0.24623568975582483,
         "observed_stderr": 0.00018415517762689575,
         "predicted": 0.2880800498588621,
+        "predicted_alpha": 0.26756483838756157,
+        "predicted_local": 0.2325993619651848,
         "smooth": 1347627
       }
     },
     {
       "algebraic": {
+        "alpha": -3.9639942201371645,
         "gap": 0.025479879640525664,
+        "gap_alpha": -0.0016903834593677974,
+        "gap_local": 0.0071371808206081785,
         "implied_alpha": -3.762270286927354,
         "mean_u": 3.2115790102384443,
         "observed": 0.058883245948457084,
         "observed_stderr": 0.00010062555116001371,
         "predicted": 0.03340336630793142,
+        "predicted_alpha": 0.06057362940782488,
+        "predicted_local": 0.051746065127848906,
         "smooth": 322263
       },
       "b": 1048576,
       "both_smooth": 110465,
       "rational": {
+        "alpha": 0.5694650072033852,
         "gap": -0.044720744780455735,
+        "gap_alpha": -0.022581463785724787,
+        "gap_local": 0.015867859941526063,
         "implied_alpha": 1.1622721384097332,
         "mean_u": 1.8384012839730566,
         "observed": 0.3473004788124793,
         "observed_stderr": 0.0002035166693122009,
         "predicted": 0.392021223592935,
+        "predicted_alpha": 0.36988194259820406,
+        "predicted_local": 0.3314326188709532,
         "smooth": 1900746
       }
     }
   ],
-  "run_id": "d1m-8147-1793746784153",
+  "run_id": "d1m-9497-1793747698921",
   "scale": "scaled-down",
-  "schema_version": "d1-measurement/1",
+  "schema_version": "d1-measurement/2",
   "skipped_zero": 0,
   "tables": [
     {
@@ -197,10 +243,17 @@
         "predicted",
         "gap",
         "gap_stderr_units",
+        "predicted_alpha",
+        "gap_alpha",
+        "gap_alpha_stderr_units",
+        "predicted_local",
+        "gap_local",
+        "gap_local_stderr_units",
         "mean_u",
+        "alpha",
         "implied_alpha"
       ],
-      "description": "per bound and side: counts, observed and predicted density, gap, standard error, mean u, implied alpha",
+      "description": "per bound and side: counts, observed density, raw, alpha-adjusted and local-density Dickman predictions, gaps in absolute and standard-error units, mean u, computed alpha, implied alpha",
       "name": "bounds",
       "path": "data/results/d1-01.scaled-down.bounds.csv",
       "rows": 8
@@ -215,9 +268,13 @@
         "smooth",
         "observed",
         "predicted",
-        "ratio"
+        "ratio",
+        "predicted_alpha",
+        "ratio_alpha",
+        "predicted_local",
+        "ratio_local"
       ],
-      "description": "per bound, side and u bin of width 0.1: count, smooth, observed, predicted, observed/predicted",
+      "description": "per bound, side and u bin of width 0.1: count, smooth, observed, raw, alpha-adjusted and local-density predictions, their ratios to observed",
       "name": "u_bins",
       "path": "data/results/d1-01.scaled-down.u_bins.csv",
       "rows": 176
@@ -253,5 +310,5 @@
     }
   ],
   "threads": 18,
-  "ts_ms": 1793746801636
+  "ts_ms": 1793747716509
 }

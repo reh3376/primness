@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 18:05 EST
+**Last updated:** 2026-11-03 18:29 EST
 
 ## What this project is
 
@@ -27,10 +27,10 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 18:05 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-03 18:29 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
-- Development is on `primness_dev01`. Pull request 21 is merged.
-- D1 is the starting sub-claim. It has one scaled-down measurement, on d1-01 (`data/results/d1-01.scaled-down.json`), against the raw Dickman–de Bruijn prediction. No Murphy \(\alpha\) adjustment formula is written in this repository, so the rejection criterion has not been applied. Do not invent one; record a published definition first.
+- Development is on `primness_dev01`. Pull request 22 is merged.
+- D1 is the starting sub-claim. d1-01 is measured at 2^14 to 2^20 (`data/results/d1-01.scaled-down.json`) and at the protocol's 2^20, 2^24, 2^28 (`data/results/d1-01.scaled-down.b28.json`) against raw, α-adjusted and local-density Dickman predictions. Murphy \(\alpha\) is defined in `docs/murphy_alpha.md` and computed in `src/alpha.rs`; do not read the instrument's α comment. After α there is no excess on d1-01. The rejection criterion across ten instances is `scripts/d1_summary.py`; its noise term does not yet include the baseline's own error.
 - The ten semiprimes in `data/d1_test_instances.md` are unchanged. Digit counts are 40, 44, 48, 52, 56, 60, 64, 68, 72, and 80. Their bit lengths, from those decimals, are 131 through 264. d1-10 is 264 bits and \(\log_{10}(N)\) is about 79.37.
 - The harness parses CADO and msieve polynomial files into `instrument-polynomial/1` and measures them (see the harness section below). `data/instruments/d1-01/cado.poly` is the only polynomial so far.
 - CADO-NFS is built outside this tree at `~/external/cado-nfs` (commit 692ecb7). [tools/README.md](../tools/README.md) records it as LGPL-2.1, so its source stays outside this tree and the scripts call its binaries. The same file records msieve as public domain and records that YAFU’s README and repository root do not state a license, so YAFU is not copied in.
@@ -61,7 +61,11 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 | [src/lib.rs](../src/lib.rs) | Modules `db`, `dickman`, `eval`, `hardware`, `metrics`, `poly`, `primes`, `schema`, `sieve`. |
 | [src/dickman.rs](../src/dickman.rs) | Dickman–de Bruijn ρ(u): exact on [0, 2], Simpson grid above (4096 steps per unit to u = 40). Tests pin ρ(1) = 1, ρ(2) = 1 − ln 2, and the literature values at 3, 4, 5, 10. No α. |
 | [src/eval.rs](../src/eval.rs) | Homogeneous BigInt evaluation F(a, b) = Σ c_i a^i b^(d−i), and `coprime`. |
-| [src/sieve.rs](../src/sieve.rs) | Primes up to B by a bit sieve; `largest_prime_factor_if_smooth` by trial division (BigUint, then u128, then u64 phases). |
+| [src/sieve.rs](../src/sieve.rs) | Primes up to B by a bit sieve; `largest_prime_factor_if_smooth` by trial division (BigUint, then u128, then u64 phases). Used by `--method trial` and by α. |
+| [src/alpha.rs](../src/alpha.rs) | Murphy α from [docs/murphy_alpha.md](murphy_alpha.md): expected p-adic valuation over coprime pairs, exact lifting. |
+| [src/fp.rs](../src/fp.rs) | Roots of f mod p (gcd with x^p − x, Cantor–Zassenhaus). |
+| [src/linesieve.rs](../src/linesieve.rs) | Line sieve with resieve verification ([docs/line_sieve.md](line_sieve.md)); the default smoothness method. |
+| [scripts/d1_run_all.sh](../scripts/d1_run_all.sh), [scripts/d1_summary.py](../scripts/d1_summary.py), [scripts/d1_report.py](../scripts/d1_report.py) | All instances end to end; the criterion across instances; the per-run report. |
 | [src/hardware.rs](../src/hardware.rs) | `hardware-sample/1` telemetry: macmon + ioreg + sysctl, JSONL trace, Postgres rows, summary. See [docs/hardware_telemetry.md](hardware_telemetry.md). |
 | [src/bin/hw_sample.rs](../src/bin/hw_sample.rs) | Binary `hw-sample`: records a trace while a command runs or for N samples. |
 | [scripts/cado-polyselect.sh](../scripts/cado-polyselect.sh), [scripts/cado-best-poly.py](../scripts/cado-best-poly.py) | CADO-NFS polynomial selection outside the tree, under the sampler; best candidate by MurphyE into `data/instruments/<id>/cado.poly`. |
@@ -124,9 +128,9 @@ The bench container is `primness-bench`, image built from [Dockerfile](../Docker
 
 ## Immediate next work
 
-1. Record a published definition of Murphy \(\alpha\) (Murphy 1999; Bai, Bouvier, Kruppa, Zimmermann 2016) in the repository, implement it in the harness for both sides over primes up to a stated bound, and apply it to the Dickman prediction. CADO's comment line reports \(\alpha = -3.96\) for the d1-01 polynomial; that is an instrument score and is not the measurement.
-2. Run `scripts/cado-polyselect.sh` and `d1-measure` on d1-02 through d1-10 at the same scaled-down region, with the hardware trace on. Compare the ten gaps with their standard errors.
-3. Replace trial division with a sieve over the region so the protocol's bounds \(2^{20}, 2^{24}, 2^{28}\) are reachable, and fix the protocol's region per digit length so a run can be labeled `full`. Then apply the rejection criterion in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md), record the result in a timestamped note, and update Current State.
+1. Finish d1-02 through d1-10 at both bound sets (`scripts/d1_run_all.sh`, then the protocol bounds), run `scripts/d1_summary.py`, and record the per-instance gaps after α.
+2. Settle the baseline: at u between 2 and 3 the counts fall between ρ(u + α/ln B) and the local-density form by a few percent, more than the Poisson noise. Either calibrate against random integers of the same sizes at the same bounds in this harness, or record a second-order Dickman form with its source, before applying the rejection criterion in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md).
+3. Fix the protocol's region per digit length so a run can be labeled `full`, then apply the criterion, record the result in a timestamped note, and update Current State.
 
 Do not start all ten instances at \(B = 2^{28}\) before one small external polynomial has been parsed. Do not run msieve NFS polynomial selection on these ten numbers with the 1.54 binary described above and expect an NFS polynomial.
 

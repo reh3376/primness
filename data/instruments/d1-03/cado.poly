@@ -1,0 +1,13 @@
+# Selected from data/instruments/d1-03/ropt.polys by scripts/cado-best-poly.py: largest MurphyE of 1830 root-optimized candidates.
+# polyselect_ropt command line: (692ecb7) /Users/reh3376/external/cado-nfs/build/Mac.lan/polyselect/polyselect_ropt -inputpolys data/instruments/d1-03/stage1.polys -ropteffort 5 -t 16 -Bf 131072 -Bg 131072 -area 1e12
+# MurphyE(Bf=1.311e+05,Bg=1.311e+05,area=1.000e+12) = 1.3170e-06  (instrument score; not used by the harness)
+# side 1 lognorm 19.22, E 14.17, alpha -5.05 (proj -1.82), 2 real roots
+n: 424433579087954844672319648102343586583383401621
+Y0: -33412475970
+Y1: 413866337
+c0: -189614658079
+c1: -6289556496
+c2: 1845205681
+c3: 5013234
+c4: 11760
+skew: 54.049

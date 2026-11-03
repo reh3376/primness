@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "d1-measurement/2",
+  "title": "D1 smoothness measurement",
+  "description": "Version 2 of the D1 smoothness measurement. Beside the raw Dickman prediction it carries the alpha-adjusted prediction, the mean of rho((ln|F| + alpha) / ln B), with alpha the Murphy root-property correction computed in the harness from docs/murphy_alpha.md over primes up to alpha.bound; alpha_applied is always true, and each side records its alpha. gap_alpha is observed minus the adjusted prediction and is the quantity the D1 rejection criterion applies to. implied_alpha is the size shift that reconciles the raw prediction with the count, kept for comparison with the computed alpha. tables lists the CSV files written beside the result; dump names the optional per-value CSV; hardware is the hardware-sample/1 finish summary. Version 1 stays as the contract of the first run without alpha. predicted_local is the alpha-adjusted local density of smooth integers near each value, rho(u) + rho'(u)/ln B, the derivative of x*rho(ln x/ln B); gap_local is observed minus that. smoothness names how B-smoothness was decided: trial-division over every prime up to B, or line-sieve with resieve verification, where a value whose repeated prime powers exceed slack_ln (in ln units) is counted as not smooth without verification (docs/line_sieve.md).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "ts_ms",
+    "elapsed_ms",
+    "instance",
+    "n",
+    "n_digits",
+    "polynomial",
+    "region",
+    "scale",
+    "bounds",
+    "evaluated",
+    "skipped_zero",
+    "dickman",
+    "alpha_applied",
+    "results",
+    "alpha",
+    "smoothness"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "d1-measurement/2"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "ts_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "elapsed_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "instance": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "n": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "n_digits": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "polynomial": {
+      "type": "object",
+      "required": [
+        "schema_version"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "instrument-polynomial/1"
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "a_min",
+        "a_max",
+        "b_min",
+        "b_max",
+        "coprime_only",
+        "skip_zero"
+      ],
+      "properties": {
+        "a_min": {
+          "type": "integer"
+        },
+        "a_max": {
+          "type": "integer"
+        },
+        "b_min": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "b_max": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "coprime_only": {
+          "const": true
+        },
+        "skip_zero": {
+          "const": true
+        }
+      }
+    },
+    "scale": {
+      "enum": [
+        "scaled-down",
+        "full"
+      ]
+    },
+    "bounds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 2
+      }
+    },
+    "evaluated": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "skipped_zero": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "threads": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dickman": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "steps_per_unit",
+        "u_max"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "simpson-grid"
+          ]
+        },
+        "steps_per_unit": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "u_max": {
+          "type": "integer",
+          "minimum": 2
+        }
+      }
+    },
+    "alpha_applied": {
+      "const": true
+    },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "b",
+          "algebraic",
+          "rational",
+          "both_smooth"
+        ],
+        "properties": {
+          "b": {
+            "type": "integer",
+            "minimum": 2
+          },
+          "algebraic": {
+            "$ref": "#/$defs/side"
+          },
+          "rational": {
+            "$ref": "#/$defs/side"
+          },
+          "both_smooth": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "samples_file",
+        "summary"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "hardware-sample/1"
+        },
+        "samples_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "object"
+        }
+      }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path",
+          "columns",
+          "rows",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "columns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "dump": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alpha": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "bound",
+        "algebraic",
+        "rational",
+        "definition"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "murphy-expected-valuation"
+          ]
+        },
+        "bound": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "algebraic": {
+          "type": "number"
+        },
+        "rational": {
+          "type": "number"
+        },
+        "definition": {
+          "const": "docs/murphy_alpha.md"
+        }
+      }
+    },
+    "smoothness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "slack_ln",
+        "factor_base_primes"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "trial-division",
+            "line-sieve"
+          ]
+        },
+        "slack_ln": {
+          "type": "number",
+          "minimum": 0
+        },
+        "factor_base_primes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "$defs": {
+    "side": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "smooth",
+        "observed",
+        "observed_stderr",
+        "predicted",
+        "gap",
+        "predicted_alpha",
+        "gap_alpha",
+        "predicted_local",
+        "gap_local",
+        "mean_u",
+        "alpha"
+      ],
+      "properties": {
+        "smooth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "observed": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "predicted": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gap": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "mean_u": {
+          "type": "number",
+          "minimum": 0
+        },
+        "observed_stderr": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "implied_alpha": {
+          "type": "number"
+        },
+        "predicted_alpha": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gap_alpha": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "alpha": {
+          "type": "number"
+        },
+        "predicted_local": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "gap_local": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}
