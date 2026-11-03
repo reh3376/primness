@@ -10,7 +10,7 @@ These tools are **not** part of the Primness runtime. They are external referenc
 
 ## msieve
 - Source: https://github.com/upiter/msieve (public domain).
-- Use: independent polynomial selection pipeline for 40–80 digit instances; relation format identical to CADO/GGNFS.
+- Use: NFS polynomial selection when the input is large enough for that binary. The v1.54 help text limits `-n` to 80+ digits. In the checkout outside this tree, `MIN_NFS_BITS` is 264, and `common/driver.c` enters NFS polynomial selection only when `mp_bits(n)` is greater than 264. The degree-4 parameter table in `gnfs/poly/poly_param.c` starts at log10(N) = 80. The ten proved semiprimes are 131 through 264 bits, so this binary takes the quadratic-sieve path for them. `write_poly` still emits `N`, `SKEW`, `R*`, and `A*` when NFS selection does run.
 - Output: `.poly` / `.fb` files and relation files.
 
 ## YAFU
