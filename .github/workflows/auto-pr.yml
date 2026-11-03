@@ -4,6 +4,10 @@
 # shell is authored by that shell's token, and GitHub blocks self-approval.
 # Do not open PRs by hand; this workflow is the only path.
 #
+# The job refuses to open or refresh a draft unless primness_roadmap.md has a
+# new Current State snapshot and current_state_history.md still holds the
+# previous one. See scripts/check-current-state.sh.
+#
 # Requires: Settings, Actions, General, "Allow GitHub Actions to create
 # and approve pull requests" enabled on the repository.
 
@@ -43,11 +47,9 @@ jobs:
             exit 0
           fi
 
-          existing=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number' || echo "")
-          if [ -n "$existing" ]; then
-            echo "PR #$existing already open for $BRANCH; nothing to do."
-            exit 0
-          fi
+          # A draft is opened or refreshed only when this push carries a new
+          # roadmap Current State and the previous snapshot is still in history.
+          sh scripts/check-current-state.sh origin/main HEAD
 
           {
             echo "Auto-opened from a push to \`$BRANCH\`."
@@ -55,11 +57,15 @@ jobs:
             echo "This pull request continues work on the Primness project under Obstacle D."
             echo "All development occurs on \`primness_dev01\`; the repository owner reviews, approves, and merges."
             echo
+            echo "## Current State"
+            echo
+            sh scripts/check-current-state.sh --print-section HEAD
+            echo
             echo "## Relevant living documents"
-            echo "- [primness_roadmap.md](https://github.com/reh3376/primness/blob/primness_dev01/primness_roadmap.md) — authoritative statement of the problem, constraints, obstacles, and current state"
-            echo "- [context_convo_notes/INDEX.md](https://github.com/reh3376/primness/blob/primness_dev01/context_convo_notes/INDEX.md) — index of timestamped notes"
-            echo "- [context_convo_notes/current_state_history.md](https://github.com/reh3376/primness/blob/primness_dev01/context_convo_notes/current_state_history.md) — history of current-state snapshots"
-            echo "- [tools/README.md](https://github.com/reh3376/primness/blob/primness_dev01/tools/README.md) — external measurement instruments (when present)"
+            echo "- [primness_roadmap.md](https://github.com/reh3376/primness/blob/$BRANCH/primness_roadmap.md) — authoritative statement of the problem, constraints, obstacles, and current state"
+            echo "- [context_convo_notes/INDEX.md](https://github.com/reh3376/primness/blob/$BRANCH/context_convo_notes/INDEX.md) — index of timestamped notes"
+            echo "- [context_convo_notes/current_state_history.md](https://github.com/reh3376/primness/blob/$BRANCH/context_convo_notes/current_state_history.md) — history of current-state snapshots"
+            echo "- [tools/README.md](https://github.com/reh3376/primness/blob/$BRANCH/tools/README.md) — external measurement instruments (when present)"
             echo
             echo "## Commits since main"
             echo
@@ -68,6 +74,13 @@ jobs:
             echo
             echo "Flip to Ready-for-review when the changes are ready for owner review."
           } > /tmp/pr-body.md
+
+          existing=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number' || echo "")
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --body-file /tmp/pr-body.md
+            echo "PR #$existing body refreshed with the current roadmap snapshot."
+            exit 0
+          fi
 
           title=$(git log -1 --pretty=format:'%s')
 

@@ -32,6 +32,7 @@ As of the latest update on the `primness_dev01` branch:
 - The first falsifiable prediction is written in `docs/d1_falsifiable_prediction.md`. It has not been measured.
 - The ten 40–80 digit semiprimes, with prime proofs, are in `data/d1_test_instances.md`.
 - The harness and the local bench still record toy smoothness runs. Those runs do not decide the claim.
+- Auto-PR refuses to open or refresh a draft unless `primness_roadmap.md` Current State is new and the previous snapshot remains in `context_convo_notes/current_state_history.md`.
 - Next concrete step: obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent smoothness count and Dickman comparison.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
