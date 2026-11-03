@@ -2,12 +2,18 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 16:48 EST
-- **Version**: 1.6
+- **Last Modified**: 2026-11-03 16:52 EST
+- **Version**: 1.7
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 16:52 EST
+- `docs/AGENT_ONBOARDING.md` was rewritten from the tree. It is the zero-context handoff.
+- The roadmap contains obstacles A–D and a placeholder line for E–H. It has no `open_questions` section and no Decision Log. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`.
+- `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
+- The harness, the ten proved semiprimes, and the msieve 264-bit gate are unchanged. The D1 prediction is still unmeasured.
 
 ### 2026-11-03 16:48 EST
 - Pull request 18 is merged. This branch matches that merge.

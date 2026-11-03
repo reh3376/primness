@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 16:48 EST
-- **Version**: 1.11
+- **Last Modified**: 2026-11-03 16:52 EST
+- **Version**: 1.12
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,15 +60,15 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 16:48 EST:
+As of 2026-11-03 16:52 EST:
 
-I am developing on `primness_dev01`. Pull request 18 is merged, and this branch matches that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 18 is merged. Draft pull request 19 is open. D1 is still my starting sub-claim under Obstacle D.
 
-The harness reads an external polynomial file into `instrument-polynomial/1`. `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. The file does not name the tool, so a parsed file stays `unspecified`. Degree in this version is 1 through 6. I have not measured smoothness on a polynomial from either tool, and I have not computed the Dickman comparison.
+I rewrote `docs/AGENT_ONBOARDING.md` from the tree so a new agent can start from that file. The roadmap contains obstacles A–D, a placeholder line for E–H, and this Current State. It has no `open_questions` section and no Decision Log. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`. `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
 
-CADO-NFS is LGPL-2.1, so its source is not in this repository. I have not installed it. msieve 1.54 is public domain. I built a checkout outside this tree. The stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. That checkout builds after the file includes `<sys/time.h>`. The binary is not in this repository. Its driver runs NFS polynomial selection only when the input has more than 264 bits. The degree-4 parameter table starts at log10(N) = 80. Every proved semiprime here has at most 264 bits. d1-10 is 264 bits, and log10(N) is about 79.37. I have not run polynomial selection. YAFU has no `LICENSE` file at the repository root, and its README does not state one, so I have not copied that tree in.
+The harness, the ten proved semiprimes, and the msieve size gate are unchanged from the 16:48 EST snapshot. I have not installed CADO-NFS. I have not measured smoothness on an external polynomial, and I have not computed the Dickman comparison.
 
-The ten proved semiprimes in `data/d1_test_instances.md` are unchanged. The next measurement step is one NFS polynomial per instance from CADO-NFS, invoked outside this tree, then the smoothness count and the Dickman comparison in the harness.
+The next measurement step is one NFS polynomial per instance from CADO-NFS, invoked outside this tree, then the smoothness count and the Dickman comparison in the harness.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
