@@ -1,0 +1,20 @@
+name: Sync README from living documents
+
+on:
+  push:
+    branches:
+      - primness_dev01
+    paths:
+      - 'primness_roadmap.md'
+      - 'context_convo_notes/current_state_history.md'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Placeholder for README regeneration
+        run: |
+          echo "README synchronization is currently performed manually in the same PR that updates the source documents."
+          echo "When a generation script is added, this job will regenerate README.md from primness_roadmap.md and the current-state history."
