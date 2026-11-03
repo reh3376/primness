@@ -2,12 +2,16 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 16:58 EST
-- **Version**: 1.8
+- **Last Modified**: 2026-11-03 17:01 EST
+- **Version**: 1.9
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 17:01 EST
+- Pull request 19 is merged. This branch matches that merge.
+- The `open_questions` section is empty. The D1 prediction is still unmeasured. The next step is one NFS polynomial per instance from CADO-NFS, outside this tree, then the smoothness count and the Dickman comparison.
 
 ### 2026-11-03 16:58 EST
 - The roadmap has an `open_questions` section. No questions are recorded in it yet.

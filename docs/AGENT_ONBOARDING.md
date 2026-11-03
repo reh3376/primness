@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 16:58 EST
+**Last updated:** 2026-11-03 17:01 EST
 
 ## What this project is
 
@@ -27,9 +27,9 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 16:58 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-03 17:01 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
-- Development is on `primness_dev01`. Pull request 18 is merged. Draft pull request 19 is open.
+- Development is on `primness_dev01`. Pull request 19 is merged, and this branch matches that merge.
 - D1 is the starting sub-claim. It has not been measured. The Dickman–de Bruijn comparison is not implemented. No Murphy \(\alpha\) adjustment formula is written in this repository. Do not invent one.
 - The ten semiprimes in `data/d1_test_instances.md` are unchanged. Digit counts are 40, 44, 48, 52, 56, 60, 64, 68, 72, and 80. Their bit lengths, from those decimals, are 131 through 264. d1-10 is 264 bits and \(\log_{10}(N)\) is about 79.37.
 - The harness parses CADO and msieve polynomial files into `instrument-polynomial/1`. A parsed file does not run the toy smoother and does not emit a measurement event.
