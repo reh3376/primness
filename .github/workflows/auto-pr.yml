@@ -1,9 +1,19 @@
-name: Auto PR
+# Opens a draft PR against main whenever a non-main branch is pushed.
+# The PR is authored by github-actions[bot], not by whoever pushed, so the
+# owner can formally approve it. A PR opened with `gh pr create` from a dev
+# shell is authored by that shell's token, and GitHub blocks self-approval.
+# Do not open PRs by hand; this workflow is the only path.
+#
+# Requires: Settings, Actions, General, "Allow GitHub Actions to create
+# and approve pull requests" enabled on the repository.
+
+name: auto-pr
 
 on:
   push:
-    branches:
-      - primness_dev01
+    branches-ignore:
+      - main
+      - "backup/**"
 
 permissions:
   contents: read
@@ -11,29 +21,47 @@ permissions:
 
 jobs:
   open-or-update-pr:
+    name: open or update draft PR
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
 
-      - name: Create or update PR
+      - name: open or update draft PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
         run: |
-          # Check if an open PR already exists from this branch
-          EXISTING=$(gh pr list --head primness_dev01 --base main --state open --json number --jq '.[0].number')
-          if [ -z "$EXISTING" ]; then
-            gh pr create \
-              --base main \
-              --head primness_dev01 \
-              --title "dev: updates from primness_dev01" \
-              --body "Automated pull request opened from the permanent development branch.
+          set -euo pipefail
 
-- All work occurs on \`primness_dev01\`.
-- The repository owner reviews, approves, and merges.
-- Direct commits to \`main\` remain blocked.
-
-This PR was created by the auto-PR workflow so that authorship is not the repository owner."
-          else
-            echo "PR #$EXISTING already open; no action needed."
+          # The dev branch is synced to main after each merge; that push has nothing to open.
+          git fetch -q origin main
+          ahead=$(git rev-list --count origin/main.."$GITHUB_SHA")
+          if [ "$ahead" -eq 0 ]; then
+            echo "$BRANCH has no commits beyond main; nothing to open."
+            exit 0
           fi
+
+          existing=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number' || echo "")
+          if [ -n "$existing" ]; then
+            echo "PR #$existing already open for $BRANCH; nothing to do."
+            exit 0
+          fi
+
+          {
+            echo "Auto-opened from a push to \`$BRANCH\`. Flip to Ready-for-review when this is done."
+            echo
+            echo "## Commits since main"
+            echo
+            git log --pretty=format:'- %h %s' origin/main..HEAD
+          } > /tmp/pr-body.md
+
+          title=$(git log -1 --pretty=format:'%s')
+
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "$title" \
+            --body-file /tmp/pr-body.md \
+            --draft
