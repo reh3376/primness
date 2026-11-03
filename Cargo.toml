@@ -1,0 +1,20 @@
+[package]
+name = "primness"
+version = "0.1.0"
+edition = "2021"
+description = "Primness: measurement harness and experimental kernels for Obstacle D / D1 (polynomial value smoothness)"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# Multiprecision and number-theory primitives (examples; exact versions to be pinned after measurement)
+num-bigint = "0.4"
+num-traits = "0.2"
+# Optional: rust-mp or similar for advanced poly arithmetic once the first protocol is running
+
+[[bin]]
+name = "d1-measure"
+path = "src/bin/d1_measure.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
