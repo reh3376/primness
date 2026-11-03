@@ -23,5 +23,15 @@ a,b:rat1,rat2,...:alg1,alg2,...
 ```
 Factors may omit primes < 1000; our harness must recompute or complete them for independent smoothness checks.
 
+## What may exist in this repo
+
+A third-party tree is copied in only when its license can sit beside `MIT OR Apache-2.0` and the copy does not become the D1 measurement. Instrument scores stay out of the harness.
+
+- CADO-NFS is LGPL-2.1 (repository `cado-nfs/cado-nfs`). Its source is not copied into this tree. The harness reads polynomial files it emits.
+- msieve's own Readme places that code in the public domain (Jason Papadopoulos; the checkout named above is `upiter/msieve`). The license would allow a copy. The numerical claim still has to be computed here, so the build stays outside this tree and CI does not compile it. The harness reads its factor-base polynomial (`N`, `SKEW`, `R*`, `A*`). On this Mac, the stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. A checkout outside this tree builds after that file includes `<sys/time.h>`. That binary is not in this repository, and polynomial selection has not been run.
+- YAFU's repository root has no `LICENSE` file, and `README.md` on `master` does not state one. As of YAFU 3.0 that tree also bundles msieve and GGNFS sieve binaries. It is not copied in. Polynomials it writes can be parsed when they use one of the two formats above; the record's `source` stays `unspecified` unless the caller names the tool.
+
+The record is `schemas/instrument-polynomial/1.json` (`$id` `instrument-polynomial/1`). `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. Degree in this version is 1 through 6. The D1 claim still requires an optimized degree-4 or degree-5 polynomial; this schema does not decide that.
+
 ## Integration rule
-No code from these projects is vendored. We call them (or parse their output files) only to obtain candidate polynomials and relation sets. All smoothness density measurements, Dickman–de Bruijn comparisons, and falsifiable claims under D1 are performed by the Primness Rust harness.
+Call these programs, or parse their polynomial files, to obtain candidate polynomials and relation sets. All smoothness density measurements, Dickman–de Bruijn comparisons, and falsifiable claims under D1 are performed by the Primness Rust harness.
