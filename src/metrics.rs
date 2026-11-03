@@ -1,3 +1,5 @@
+use crate::db::Store;
+use crate::schema::{Registry, V1};
 use serde::{Deserialize, Serialize};
 use std::fs::{self, File, OpenOptions};
 use std::io::{BufRead, BufReader, Write};
@@ -8,6 +10,8 @@ use std::time::{SystemTime, UNIX_EPOCH};
 /// One observation from a harness. A run is the sequence of events that share `run_id`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct Event {
+    #[serde(default = "default_schema_version")]
+    pub schema_version: String,
     pub ts_ms: u64,
     pub run_id: String,
     pub source: String,
@@ -36,6 +40,7 @@ pub struct SamplePoint {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct RunView {
     pub run_id: String,
+    pub schema_version: String,
     pub source: String,
     pub scale: String,
     pub instance: String,
@@ -54,6 +59,10 @@ pub struct RunView {
 #[derive(Debug, Clone, Serialize, PartialEq)]
 pub struct Snapshot {
     pub runs: Vec<RunView>,
+}
+
+fn default_schema_version() -> String {
+    V1.to_string()
 }
 
 pub fn now_ms() -> u64 {
@@ -75,6 +84,8 @@ pub fn density(smooth: u64, evaluated: u64) -> f64 {
 pub struct Sink {
     file: Option<File>,
     url: Option<String>,
+    registry: Option<Registry>,
+    db: Option<Store>,
 }
 
 impl Sink {
@@ -86,12 +97,28 @@ impl Sink {
             .open(&path)
             .map_err(|err| eprintln!("metrics file {}: {err}", path.display()))
             .ok();
-        Self { file, url }
+        let registry = Registry::from_env()
+            .map_err(|err| eprintln!("schema registry: {err}"))
+            .ok();
+        let db = std::env::var("PRIMNESS_DATABASE_URL")
+            .ok()
+            .filter(|url| !url.is_empty())
+            .and_then(|url| {
+                Store::connect(&url)
+                    .map_err(|err| eprintln!("metrics db: {err}"))
+                    .ok()
+            });
+        Self {
+            file,
+            url,
+            registry,
+            db,
+        }
     }
 
     pub fn from_env(run_id: &str) -> Self {
-        let dir = std::env::var("PRIMNESS_METRICS_DIR")
-            .unwrap_or_else(|_| "data/metrics".to_string());
+        let dir =
+            std::env::var("PRIMNESS_METRICS_DIR").unwrap_or_else(|_| "data/metrics".to_string());
         let url = std::env::var("PRIMNESS_METRICS_URL").ok();
         let dir_path = PathBuf::from(&dir);
         if let Err(err) = fs::create_dir_all(&dir_path) {
@@ -101,6 +128,15 @@ impl Sink {
     }
 
     pub fn emit(&mut self, event: &Event) {
+        if let Some(registry) = &self.registry {
+            if let Err(err) = registry.validate(event) {
+                eprintln!("event rejected by schema: {err}");
+                return;
+            }
+        } else {
+            eprintln!("event rejected: schema registry is not loaded");
+            return;
+        }
         if let Some(file) = self.file.as_mut() {
             if let Ok(line) = serde_json::to_string(event) {
                 if let Err(err) = writeln!(file, "{line}") {
@@ -113,6 +149,19 @@ impl Sink {
         if let Some(url) = &self.url {
             if let Err(err) = post_event(url, event) {
                 eprintln!("metrics post {url}: {err}");
+            }
+        }
+        if let Some(db) = self.db.as_mut() {
+            db.push(event);
+        }
+    }
+}
+
+impl Drop for Sink {
+    fn drop(&mut self) {
+        if let Some(db) = self.db.as_mut() {
+            if let Err(err) = db.flush() {
+                eprintln!("metrics db: {err}");
             }
         }
     }
@@ -150,6 +199,18 @@ fn parse_http_url(url: &str) -> Result<(String, u16, String), String> {
         return Err(format!("missing host in {url}"));
     }
     Ok((host, port, path))
+}
+
+pub fn load_snapshot(dir: &Path) -> Snapshot {
+    if let Ok(url) = std::env::var("PRIMNESS_DATABASE_URL") {
+        if !url.is_empty() {
+            match crate::db::load_snapshot(&url) {
+                Ok(snap) => return snap,
+                Err(err) => eprintln!("metrics db read: {err}; using files"),
+            }
+        }
+    }
+    load_dir(dir)
 }
 
 pub fn load_dir(dir: &Path) -> Snapshot {
@@ -197,6 +258,7 @@ pub fn group_runs(events: Vec<Event>) -> Vec<RunView> {
         } else {
             runs.push(RunView {
                 run_id: event.run_id.clone(),
+                schema_version: event.schema_version.clone(),
                 source: event.source.clone(),
                 scale: event.scale.clone(),
                 instance: event.instance.clone(),
@@ -215,6 +277,9 @@ pub fn group_runs(events: Vec<Event>) -> Vec<RunView> {
         };
         run.last_ms = event.ts_ms;
         run.last_kind = event.kind.clone();
+        if !event.schema_version.is_empty() {
+            run.schema_version = event.schema_version.clone();
+        }
         if !event.scale.is_empty() {
             run.scale = event.scale;
         }
@@ -255,6 +320,7 @@ mod tests {
 
     fn event(kind: &str, evaluated: u64, smooth: u64) -> Event {
         Event {
+            schema_version: crate::schema::V1.into(),
             ts_ms: 1_000 + evaluated,
             run_id: "run-a".into(),
             source: "d1-measure".into(),
@@ -266,7 +332,11 @@ mod tests {
             smooth,
             elapsed_ms: evaluated,
             rate_per_s: 1000.0,
-            residues: if kind == "sample" { "1100".into() } else { String::new() },
+            residues: if kind == "sample" {
+                "1100".into()
+            } else {
+                String::new()
+            },
         }
     }
 
@@ -283,6 +353,7 @@ mod tests {
         assert_eq!(runs[0].samples[0].density, 0.4);
         assert_eq!(runs[0].residues, "1100");
         assert_eq!(runs[0].last_kind, "finish");
+        assert_eq!(runs[0].schema_version, crate::schema::V1);
     }
 
     #[test]

@@ -1,16 +1,43 @@
-# Local measurement bench. Published only on the host loopback.
-# Start with scripts/up-dashboard.sh, which refuses the port if it is already taken.
+# Local measurement bench and Primness Postgres. Loopback only.
+# Start with scripts/up-dashboard.sh. It refuses a port that another process holds.
+# Database files live in the named volume primness-pg and survive container replacement.
 services:
+  db:
+    image: postgres:16-alpine
+    container_name: primness-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-primness}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-primness}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5455}:5432"
+    volumes:
+      - primness-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-primness} -d ${POSTGRES_DB:-primness}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
   bench:
     build: .
     image: primness-bench
     container_name: primness-bench
     user: "${HOST_UID}:${HOST_GID}"
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - "127.0.0.1:${PRIMNESS_DASHBOARD_PORT:-9477}:${PRIMNESS_DASHBOARD_PORT:-9477}"
     environment:
       PRIMNESS_DASHBOARD_PORT: "${PRIMNESS_DASHBOARD_PORT:-9477}"
       PRIMNESS_METRICS_DIR: /var/primness/metrics
+      PRIMNESS_SCHEMAS_DIR: /schemas
+      PRIMNESS_DATABASE_URL: postgres://${POSTGRES_USER:-primness}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-primness}
     volumes:
       - ./data/metrics:/var/primness/metrics
     restart: unless-stopped
+
+volumes:
+  primness-pg:

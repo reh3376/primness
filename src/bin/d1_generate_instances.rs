@@ -8,7 +8,10 @@ use std::time::Instant;
 
 fn main() {
     println!("D1 instance generator");
-    let _target: usize = env::args().nth(1).and_then(|s| s.parse().ok()).unwrap_or(40);
+    let _target: usize = env::args()
+        .nth(1)
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(40);
 
     let pairs = [
         (1000000007u64, 1000000009u64),
@@ -20,6 +23,7 @@ fn main() {
     let run_id = format!("d1g-{}-{}", std::process::id(), metrics::now_ms());
     let mut sink = Sink::from_env(&run_id);
     sink.emit(&Event {
+        schema_version: primness::schema::V1.into(),
         ts_ms: metrics::now_ms(),
         run_id: run_id.clone(),
         source: "d1-generate".into(),
@@ -50,6 +54,7 @@ fn main() {
             produced as f64 / (elapsed_ms as f64 / 1000.0)
         };
         sink.emit(&Event {
+            schema_version: primness::schema::V1.into(),
             ts_ms: metrics::now_ms(),
             run_id: run_id.clone(),
             source: "d1-generate".into(),
@@ -66,6 +71,7 @@ fn main() {
     }
     let elapsed_ms = started.elapsed().as_millis() as u64;
     sink.emit(&Event {
+        schema_version: primness::schema::V1.into(),
         ts_ms: metrics::now_ms(),
         run_id,
         source: "d1-generate".into(),

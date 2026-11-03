@@ -159,9 +159,7 @@ fn main() {
             since_count = 0;
         }
         let density = metrics::density(smooth, evaluated);
-        println!(
-            "B={bound:<4}  observed density: {density:.3}  ({smooth}/{evaluated})"
-        );
+        println!("B={bound:<4}  observed density: {density:.3}  ({smooth}/{evaluated})");
     }
 
     let elapsed_ms = started.elapsed().as_millis() as u64;
@@ -223,6 +221,7 @@ fn event(
     residues: &str,
 ) -> Event {
     Event {
+        schema_version: primness::schema::V1.into(),
         ts_ms: metrics::now_ms(),
         run_id: run_id.to_string(),
         source: "d1-measure".into(),

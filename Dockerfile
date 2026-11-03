@@ -4,11 +4,18 @@ ENV CARGO_PROFILE_RELEASE_LTO=false
 ENV CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
-RUN cargo build --release --bin primness-dashboard
+COPY bench ./bench
+COPY schemas ./schemas
+RUN cargo build --release -p primness-bench --bin primness-dashboard
 
 FROM debian:bookworm-slim
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates libssl3 \
+    && rm -rf /var/lib/apt/lists/*
 COPY --from=build /src/target/release/primness-dashboard /usr/local/bin/primness-dashboard
+COPY --from=build /src/schemas /schemas
 ENV PRIMNESS_DASHBOARD_PORT=9477
 ENV PRIMNESS_METRICS_DIR=/var/primness/metrics
+ENV PRIMNESS_SCHEMAS_DIR=/schemas
 EXPOSE 9477
 ENTRYPOINT ["primness-dashboard"]
