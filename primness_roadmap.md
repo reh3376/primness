@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 16:52 EST
-- **Version**: 1.12
+- **Last Modified**: 2026-11-03 16:58 EST
+- **Version**: 1.13
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,11 +60,11 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 16:52 EST:
+As of 2026-11-03 16:58 EST:
 
 I am developing on `primness_dev01`. Pull request 18 is merged. Draft pull request 19 is open. D1 is still my starting sub-claim under Obstacle D.
 
-I rewrote `docs/AGENT_ONBOARDING.md` from the tree so a new agent can start from that file. The roadmap contains obstacles A–D, a placeholder line for E–H, and this Current State. It has no `open_questions` section and no Decision Log. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`. `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
+The roadmap now has an `open_questions` section after this snapshot. I have no questions recorded in it yet. The roadmap still has no Decision Log. Obstacles A–D are written here, and E–H remain the placeholder line. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`. `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
 
 The harness, the ten proved semiprimes, and the msieve size gate are unchanged from the 16:48 EST snapshot. I have not installed CADO-NFS. I have not measured smoothness on an external polynomial, and I have not computed the Dickman comparison.
 
@@ -73,5 +73,9 @@ The next measurement step is one NFS polynomial per instance from CADO-NFS, invo
 Full history in `context_convo_notes/current_state_history.md`.
 
 ---
+
+## open_questions
+
+I have none recorded yet.
 
 *Living base document for the Primness project.*

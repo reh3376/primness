@@ -34,7 +34,7 @@ As of the latest update on the `primness_dev01` branch:
 - The harness and the local bench still record toy smoothness runs. Those runs do not decide the claim.
 - Auto-PR refuses to open or refresh a draft unless this branch satisfies the current-state contract named by `primness_roadmap.md`. That contract is `schemas/current-state/1.json`. The previous snapshot remains in `context_convo_notes/current_state_history.md`.
 - The harness parses CADO and msieve polynomial files (`instrument-polynomial/1`). Those tools are not vendored: CADO-NFS is LGPL-2.1, and YAFU does not state a license in its README or a root LICENSE file. A local msieve 1.54 checkout outside this tree builds after `common/util.c` includes `<sys/time.h>`. That binary enters NFS polynomial selection only above 264 bits. Every proved semiprime is at or below 264 bits.
-- `docs/AGENT_ONBOARDING.md` is the zero-context handoff. The roadmap has no `open_questions` section and no Decision Log. `context_convo_notes/INDEX.md` omits the note files from 13:06 through 14:44.
+- `docs/AGENT_ONBOARDING.md` is the zero-context handoff. The roadmap has an `open_questions` section, and that list is empty. It has no Decision Log. `context_convo_notes/INDEX.md` omits the note files from 13:06 through 14:44.
 - Next concrete step: obtain one NFS polynomial per instance from CADO-NFS, invoked outside this tree, then run the independent smoothness count and Dickman comparison.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.

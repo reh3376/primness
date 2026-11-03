@@ -2,12 +2,17 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 16:52 EST
-- **Version**: 1.7
+- **Last Modified**: 2026-11-03 16:58 EST
+- **Version**: 1.8
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 16:58 EST
+- The roadmap has an `open_questions` section. No questions are recorded in it yet.
+- The roadmap still has no Decision Log. Obstacles E–H remain a placeholder line.
+- The harness, the ten proved semiprimes, and the msieve 264-bit gate are unchanged. The D1 prediction is still unmeasured.
 
 ### 2026-11-03 16:52 EST
 - `docs/AGENT_ONBOARDING.md` was rewritten from the tree. It is the zero-context handoff.

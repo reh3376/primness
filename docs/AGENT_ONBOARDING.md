@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 16:52 EST
+**Last updated:** 2026-11-03 16:58 EST
 
 ## What this project is
 
@@ -10,11 +10,11 @@ Primness is integer-factorization research. The target, in [primness_roadmap.md]
 
 The crate license field in [Cargo.toml](../Cargo.toml) is `MIT OR Apache-2.0`. There is no separate `LICENSE` file.
 
-Active constraints live at the top of the roadmap: Rust for numerical kernels, a Python sidecar only where an ML library is required, no quantum hardware, and no specialized hardware unless obstacle H is forced. The roadmap names obstacles A–D in full. Obstacle D names sub-claims D1–D5 in one sentence. The full D1–D5 text and the choice of D1 are in [context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md](../context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md). The line for obstacles E–H is a placeholder. This repository has no `open_questions` section and no Decision Log. Do not add those by guessing their contents.
+Active constraints live at the top of the roadmap: Rust for numerical kernels, a Python sidecar only where an ML library is required, no quantum hardware, and no specialized hardware unless obstacle H is forced. The roadmap names obstacles A–D in full. Obstacle D names sub-claims D1–D5 in one sentence. The full D1–D5 text and the choice of D1 are in [context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md](../context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md). The line for obstacles E–H is a placeholder. The roadmap has an `open_questions` section, and that list is empty. Add a question there only when it is actually open. The roadmap has no Decision Log. Do not invent one.
 
 ## Read these first
 
-- [primness_roadmap.md](../primness_roadmap.md) — problem, active constraints, obstacles A–D, and `## Current State`.
+- [primness_roadmap.md](../primness_roadmap.md) — problem, active constraints, obstacles A–D, `## Current State`, and `## open_questions`.
 - [context_convo_notes/current_state_history.md](../context_convo_notes/current_state_history.md) — earlier Current State snapshots. Newest `###` heading first. Leave every previous heading in place.
 - [README.md](../README.md) — landing page. Update it in the same change as Current State.
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — branch and pull-request process.
@@ -27,7 +27,7 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 16:52 EST. The scientific facts below are the 16:48 EST snapshot, which that later stamp carries forward:
+Current State is stamped 2026-11-03 16:58 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
 - Development is on `primness_dev01`. Pull request 18 is merged. Draft pull request 19 is open.
 - D1 is the starting sub-claim. It has not been measured. The Dickman–de Bruijn comparison is not implemented. No Murphy \(\alpha\) adjustment formula is written in this repository. Do not invent one.
@@ -126,7 +126,7 @@ Do not start all ten instances at \(B = 2^{28}\) before one small external polyn
 
 ## Handoff checklist
 
-- [ ] Read `## Current State` in `primness_roadmap.md` and the newest heading in `context_convo_notes/current_state_history.md`.
+- [ ] Read `## Current State` and `## open_questions` in `primness_roadmap.md`, and the newest heading in `context_convo_notes/current_state_history.md`.
 - [ ] Read `docs/d1_falsifiable_prediction.md`, `data/d1_test_instances.md`, `docs/hardware.md`, `docs/dashboard.md`, and `tools/README.md`.
 - [ ] Confirm the local branch is `primness_dev01` and matches the remote you intend to continue.
 - [ ] Treat `context_convo_notes/INDEX.md` as incomplete. List the directory.
