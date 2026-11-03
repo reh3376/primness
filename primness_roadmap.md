@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 12:42 EST
-- **Version**: 1.6
+- **Last Modified**: 2026-11-03 15:58 EST
+- **Version**: 1.7
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
 - **Repository**: https://github.com/reh3376/primness (public; development on `primness_dev01` only; PRs required to `main`)
@@ -59,13 +59,15 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 12:42 EST:
+As of 2026-11-03 15:58 EST:
 
-- PR #1 merged to main.
-- Development branch `primness_dev01` is permanent and protected.
-- Auto-PR workflow prepared (activates after this file reaches main).
-- D1 selected as starting sub-claim under Obstacle D.
-- Next step: formulate and measure the first falsifiable prediction under D1.
+I am developing on `primness_dev01`. Pull request 14 is merged, and this branch matches that merge. D1 is still my starting sub-claim under Obstacle D.
+
+I have written the first falsifiable prediction in `docs/d1_falsifiable_prediction.md`. I have not measured it. The smoothness harness and the local bench still record toy runs, and those runs do not decide the claim.
+
+I replaced the ten placeholders in `data/d1_test_instances.md` with products of two primes of equal digit length, from 40 through 80 digits. Primes of at most 24 digits are proved by deterministic Miller-Rabin below the Sorenson–Webster bound ψ_13. Larger primes are proved by Pocklington’s criterion from one such prime factor of p−1. I do not have a published deterministic Miller-Rabin base set that covers a 40-digit prime, so I did not treat Miller-Rabin as a proof at that size.
+
+The next step is to obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent smoothness count and the Dickman comparison in the harness. I have not started that.
 
 Full history in `context_convo_notes/current_state_history.md`.
 

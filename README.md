@@ -29,11 +29,12 @@ As of the latest update on the `primness_dev01` branch:
 
 - Obstacle D has been decomposed into five precise, testable sub-claims (D1–D5).
 - D1 (polynomial value smoothness relative to the Dickman–de Bruijn model) is the selected starting point.
-- Documentation conventions are in place (Active Constraints, Decision Log, Falsifiable Prediction templates, open_questions subsection, timestamped notes under `context_convo_notes/`).
-- Public repository established with branch protection on `main`.
-- Next concrete step: formulate and measure the first falsifiable prediction under D1 on 40–80 digit instances.
+- The first falsifiable prediction is written in `docs/d1_falsifiable_prediction.md`. It has not been measured.
+- The ten 40–80 digit semiprimes, with prime proofs, are in `data/d1_test_instances.md`.
+- The harness and the local bench still record toy smoothness runs. Those runs do not decide the claim.
+- Next concrete step: obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent smoothness count and Dickman comparison.
 
-Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md` (to be added in a subsequent commit).
+Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
 
 ## Documentation Maintenance
 
