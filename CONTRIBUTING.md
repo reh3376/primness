@@ -11,7 +11,8 @@ The `main` branch is protected: direct pushes are blocked, pull requests require
 ## Process
 
 1. Work on `primness_dev01` or a short-lived feature branch.
-2. Open a pull request against `main`.
-3. The owner (reh3376) reviews, approves, and merges.
+2. Update `## Current State` in `primness_roadmap.md`, record that snapshot in `context_convo_notes/current_state_history.md` without removing the previous heading, and update `README.md` in the same change.
+3. Push the branch. `.github/workflows/auto-pr.yml` opens or refreshes the draft pull request only after `scripts/check-current-state.sh` passes. Do not open the pull request by hand.
+4. The owner (reh3376) reviews, approves, and merges.
 
 This ensures a clean, auditable history for the living roadmap, experimental code, and documentation.

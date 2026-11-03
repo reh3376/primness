@@ -2,12 +2,17 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 15:58 EST
-- **Version**: 1.2
+- **Last Modified**: 2026-11-03 16:06 EST
+- **Version**: 1.3
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 16:06 EST
+- Pull request 15 is merged.
+- Auto-PR opens or refreshes a draft only after `primness_roadmap.md` Current State changes and this file keeps the previous snapshot heading plus the new one.
+- The D1 prediction is still unmeasured. The ten proved semiprimes remain in `data/d1_test_instances.md`. The next measurement step is the external polynomials and the Dickman comparison.
 
 ### 2026-11-03 15:58 EST
 - Current State in `primness_roadmap.md` advanced from the 12:42 EST snapshot.

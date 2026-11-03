@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 15:58 EST
-- **Version**: 1.7
+- **Last Modified**: 2026-11-03 16:06 EST
+- **Version**: 1.8
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
 - **Repository**: https://github.com/reh3376/primness (public; development on `primness_dev01` only; PRs required to `main`)
@@ -59,15 +59,15 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 15:58 EST:
+As of 2026-11-03 16:06 EST:
 
-I am developing on `primness_dev01`. Pull request 14 is merged, and this branch matches that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 15 is merged, and this branch matches that merge. D1 is still my starting sub-claim under Obstacle D.
 
-I have written the first falsifiable prediction in `docs/d1_falsifiable_prediction.md`. I have not measured it. The smoothness harness and the local bench still record toy runs, and those runs do not decide the claim.
+Auto-PR now refuses to open or refresh a draft unless this Current State section has changed since `main`. The new snapshot needs its own `As of` stamp, the roadmap metadata `Last Modified` changes with it, and `context_convo_notes/current_state_history.md` keeps both the new `###` heading and the previous one. `README.md` is updated in the same pull request. The check is `scripts/check-current-state.sh`.
 
-I replaced the ten placeholders in `data/d1_test_instances.md` with products of two primes of equal digit length, from 40 through 80 digits. Primes of at most 24 digits are proved by deterministic Miller-Rabin below the Sorenson–Webster bound ψ_13. Larger primes are proved by Pocklington’s criterion from one such prime factor of p−1. I do not have a published deterministic Miller-Rabin base set that covers a 40-digit prime, so I did not treat Miller-Rabin as a proof at that size.
+I have written the first falsifiable prediction in `docs/d1_falsifiable_prediction.md`. I have not measured it. The ten 40–80 digit semiprimes are proved in `data/d1_test_instances.md`. The smoothness harness and the local bench still record toy runs, and those runs do not decide the claim.
 
-The next step is to obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent smoothness count and the Dickman comparison in the harness. I have not started that.
+The next measurement step is unchanged: obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent smoothness count and the Dickman comparison in the harness. I have not started that.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
