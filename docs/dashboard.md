@@ -2,9 +2,13 @@
 
 Local view of data collection and measurement rate. It does not gate CI or decide whether a D1 claim holds.
 
-The page is served by the `primness-bench` container at `http://127.0.0.1:$PRIMNESS_DASHBOARD_PORT/` from the gitignored `.env` (default 9477). The port is loopback only. `scripts/up-dashboard.sh` checks that port is free before `docker compose up`.
+The page is Leptos server-rendered HTML from the `primness-bench` package (`bench/`, binary `primness-dashboard`). The measurement crate does not compile the UI. The `primness-bench` container serves it at `http://127.0.0.1:$PRIMNESS_DASHBOARD_PORT/` (default 9477, loopback only). `scripts/up-dashboard.sh` checks that port, and the Postgres port, before `docker compose up`. The page reloads itself every 2 seconds.
 
-Harnesses append JSON lines under `data/metrics/`, which the container reads. A run can also `POST` the same JSON to `http://127.0.0.1:9477/api/ingest` by setting `PRIMNESS_METRICS_URL`. `PRIMNESS_METRICS_DIR` overrides the directory. The default is `data/metrics`.
+Postgres is the record of a run. The login and host port are `POSTGRES_*` and `PRIMNESS_DATABASE_URL` in the gitignored `.env`. The database files stay in the Docker volume `primness-pg`. Migrations live in `db/migrations/` and `scripts/apply-migrations.sh` applies each file once.
+
+Harnesses still append JSON lines under `data/metrics/` so a run is not lost when Postgres is down. When `PRIMNESS_DATABASE_URL` is set they also insert into `events`. The bench reads Postgres, and falls back to those files if the database cannot be reached. A run can also `POST` the same JSON to `/api/ingest` by setting `PRIMNESS_METRICS_URL`.
+
+Collection is governed by JSON Schema files under `schemas/`. The current contract is `schemas/measurement-event/1.json` (`$id` `measurement-event/1`). A new version is a new file. The sink and `/api/ingest` reject an event whose `schema_version` is unknown or whose JSON does not match that file. The measurement itself still finishes. `scripts/apply-migrations.sh` stores each schema document in `schema_documents`, and the bench registers the same documents when it starts.
 
 ```sh
 scripts/up-dashboard.sh
