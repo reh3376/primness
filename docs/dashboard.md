@@ -8,7 +8,7 @@ Postgres is the record of a run. The login and host port are `POSTGRES_*` and `P
 
 Harnesses still append JSON lines under `data/metrics/` so a run is not lost when Postgres is down. When `PRIMNESS_DATABASE_URL` is set they also insert into `events`. The bench reads Postgres, and falls back to those files if the database cannot be reached. A run can also `POST` the same JSON to `/api/ingest` by setting `PRIMNESS_METRICS_URL`.
 
-Collection is governed by JSON Schema files under `schemas/`. The current contract is `schemas/measurement-event/1.json` (`$id` `measurement-event/1`). A new version is a new file. The sink and `/api/ingest` reject an event whose `schema_version` is unknown or whose JSON does not match that file. The measurement itself still finishes. `scripts/apply-migrations.sh` stores each schema document in `schema_documents`, and the bench registers the same documents when it starts.
+Collection is governed by JSON Schema files under `schemas/`. The measurement contract is `schemas/measurement-event/1.json` (`$id` `measurement-event/1`). A new version is a new file. The sink and `/api/ingest` reject an event whose `schema_version` is unknown or whose JSON does not match that file. The measurement itself still finishes. `scripts/apply-migrations.sh` stores each schema document in `schema_documents`, and the bench registers the same documents when it starts. The roadmap snapshot gate is a separate contract, `schemas/current-state/1.json` (`$id` `current-state/1`). It is not a measurement event.
 
 ```sh
 scripts/up-dashboard.sh

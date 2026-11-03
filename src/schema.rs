@@ -139,4 +139,35 @@ mod tests {
         let err = registry.validate(&event).unwrap_err();
         assert!(err.contains("unknown schema_version"), "{err}");
     }
+
+    #[test]
+    fn current_state_contract_consts_satisfy_its_schema() {
+        let registry = Registry::from_env().unwrap();
+        let document = registry
+            .documents()
+            .into_iter()
+            .find(|(id, _)| id == "current-state/1")
+            .map(|(_, document)| document)
+            .expect("current-state/1 is loaded");
+        let instance = instance_from_consts(&document);
+        let validator = jsonschema::validator_for(&document).expect("schema compiles");
+        validator
+            .validate(&instance)
+            .unwrap_or_else(|err| panic!("{err}"));
+    }
+
+    fn instance_from_consts(schema: &Value) -> Value {
+        let properties = schema
+            .get("properties")
+            .and_then(Value::as_object)
+            .expect("properties");
+        let mut object = serde_json::Map::new();
+        for (key, property) in properties {
+            let constant = property
+                .get("const")
+                .unwrap_or_else(|| panic!("{key} has no const"));
+            object.insert(key.clone(), constant.clone());
+        }
+        Value::Object(object)
+    }
 }
