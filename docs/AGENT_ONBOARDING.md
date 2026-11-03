@@ -24,7 +24,7 @@ External tools (CADO-NFS, msieve, YAFU) are measurement instruments only. Their 
 - PR descriptions are detailed and reference living documents.
 - CI (`.github/workflows/ci.yml`) runs `cargo check` and `cargo test` on PRs; checks remain dynamic and non-brittle.
 - Rust core + Python sidecar (as needed for ML). Instance generator and measurement harness (`d1_generate_instances`, `d1_measure`) are at toy/scaling stage.
-- First falsifiable prediction under D1 is written; real 40–80 digit runs have not yet been executed.
+- First falsifiable prediction under D1 is written. The ten semiprimes are proved in `data/d1_test_instances.md`. The smoothness runs on those instances have not been executed.
 - Primary hardware: Mac M5 Max. All measurements must respect this machine or be explicitly marked scaled-down.
 
 ## Workflow rules (must be followed)
@@ -39,16 +39,14 @@ External tools (CADO-NFS, msieve, YAFU) are measurement instruments only. Their 
 
 ## Key directories and files
 - `src/bin/` — Rust binaries (`d1_measure.rs`, `d1_generate_instances.rs`).
-- `data/d1_test_instances.md` — skeleton of 10 hard test semiprimes (placeholders still present).
+- `data/d1_test_instances.md` — ten proved 40–80 digit semiprimes and their prime certificates.
 - `docs/` — prediction, hardware, this onboarding doc.
 - `context_convo_notes/` — all historical notes and INDEX.
 - `.github/workflows/` — auto-pr.yml and ci.yml.
 
 ## Immediate next work under D1
-1. Complete prime generation and primality verification at 40–80 digits.
-2. Replace placeholders in `data/d1_test_instances.md`.
-3. Parse external polynomials and run the independent B-smooth density count + Dickman comparison inside the harness.
-4. Apply the rejection criterion; record the result in a timestamped note and update Current State.
+1. Parse external polynomials and run the independent B-smooth density count and Dickman comparison inside the harness.
+2. Apply the rejection criterion; record the result in a timestamped note and update Current State.
 
 ## Integrations already in place
 - GitHub Actions auto-PR and CI.

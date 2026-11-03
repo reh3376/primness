@@ -1,22 +1,61 @@
 # D1 Test Instances (40–80 decimal digits)
 
-Hard balanced semiprimes N = p · q with no special algebraic form. Used for the first falsifiable prediction under Obstacle D / D1. External tools supply only the polynomials; the Primness harness computes independent B-smooth densities.
+Hard balanced semiprimes N = p · q with no chosen special algebraic form. Used for the first falsifiable prediction under Obstacle D / D1. External tools supply only the polynomials; the Primness harness computes independent B-smooth densities.
 
-| ID | Digits | N (decimal) | Notes |
+| ID | Digits | N (decimal) | Proof |
 |----|--------|-------------|-------|
-| d1-01 | 40 | 1234567890123456789012345678901234567890 | placeholder; replace with genuine hard semiprime |
-| d1-02 | 44 | ... | placeholder |
-| d1-03 | 48 | ... | placeholder |
-| d1-04 | 52 | ... | placeholder |
-| d1-05 | 56 | ... | placeholder |
-| d1-06 | 60 | ... | placeholder |
-| d1-07 | 64 | ... | placeholder |
-| d1-08 | 68 | ... | placeholder |
-| d1-09 | 72 | ... | placeholder |
-| d1-10 | 80 | ... | placeholder |
+| d1-01 | 40 | 2496735491537104256118027770442801942257 | p and q proved; see Certificates |
+| d1-02 | 44 | 34196556383643653206019886096920333670223121 | p and q proved; see Certificates |
+| d1-03 | 48 | 424433579087954844672319648102343586583383401621 | p and q proved; see Certificates |
+| d1-04 | 52 | 7207331474174701617755650687608447771387324303818153 | p and q proved; see Certificates |
+| d1-05 | 56 | 18522232267509299209705046990231537033051891877979136219 | p and q proved; see Certificates |
+| d1-06 | 60 | 198118143882013772952352169517898475793589445419425448847093 | p and q proved; see Certificates |
+| d1-07 | 64 | 3258035263491970955880402144617408578473026505405038107572029521 | p and q proved; see Certificates |
+| d1-08 | 68 | 51519698046176307703244466352875624135368812372386207710802456814907 | p and q proved; see Certificates |
+| d1-09 | 72 | 114207336846583579297609496351703492944409979899292933328148191857856423 | p and q proved; see Certificates |
+| d1-10 | 80 | 23693996807380684422304442117439241381084549362704252827648788159651106456803727 | p and q proved; see Certificates |
 
-**Generation rule**  
-Each N is the product of two primes of roughly equal size, verified prime by deterministic Miller-Rabin or equivalent, and free of SNFS-friendly algebraic structure. Actual values will be generated and substituted before the first measurement run.
+**Generation rule**
 
-**Next**  
+Each N is the product of two primes with the same number of decimal digits, and N has the digit count in the table. A prime of at most 24 digits is proved by Miller-Rabin on the bases 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, and 41. Sorenson and Webster, *Mathematics of Computation* 86 (2017), proved that the smallest strong pseudoprime to those bases is ψ_13 = 3317044064679887385961981. Every smaller integer that passes is prime. A larger prime N is proved by Pocklington’s criterion: a prime F divides N−1, F² > N, and a witness a satisfies a^{N−1} ≡ 1 (mod N) and gcd(a^{(N−1)/F} − 1, N) = 1. That F is proved by the Miller-Rabin test above.
+
+The repository does not define a test for SNFS-friendly algebraic structure. These factors are random primes of equal length. They were not chosen as Cunningham numbers or another special form. That is not a proof that no SNFS polynomial exists.
+
+**Certificates**
+
+Each factor line is `id role decimal mr` or `id role decimal pocklington F witness`.
+
+d1-01 n 2496735491537104256118027770442801942257
+d1-01 p 96611258310095370253 mr
+d1-01 q 25843111198523831669 mr
+d1-02 n 34196556383643653206019886096920333670223121
+d1-02 p 4319186713664781522601 mr
+d1-02 q 7917360061201952148521 mr
+d1-03 n 424433579087954844672319648102343586583383401621
+d1-03 p 963692768103387672750019 mr
+d1-03 q 440424161243078266639559 mr
+d1-04 n 7207331474174701617755650687608447771387324303818153
+d1-04 p 98562408244394972457701753 pocklington 70252165721083 2
+d1-04 q 73124547203670489847738801 pocklington 49056535896887 2
+d1-05 n 18522232267509299209705046990231537033051891877979136219
+d1-05 p 2784963801257017755229341631 pocklington 366807974130727 2
+d1-05 q 6650798211146991487589797349 pocklington 759263123792219 2
+d1-06 n 198118143882013772952352169517898475793589445419425448847093
+d1-06 p 952377285891440178427561357981 pocklington 1575774311531269 2
+d1-06 q 208024851933099246301052996153 pocklington 7528929636630583 2
+d1-07 n 3258035263491970955880402144617408578473026505405038107572029521
+d1-07 p 33271837477719539916358335791033 pocklington 98448798587096281 2
+d1-07 q 97921711287322551257936254626137 pocklington 37964609845568573 2
+d1-08 n 51519698046176307703244466352875624135368812372386207710802456814907
+d1-08 p 6307664047193618980172946172575091 pocklington 166993672554085561 2
+d1-08 q 8167793601673863502741058074461977 pocklington 903576027113430821 2
+d1-09 n 114207336846583579297609496351703492944409979899292933328148191857856423
+d1-09 p 871694678249055659739183950423113213 pocklington 9908594251619125477 2
+d1-09 q 131017591017061259067841554182669171 pocklington 4970233837941654047 2
+d1-10 n 23693996807380684422304442117439241381084549362704252827648788159651106456803727
+d1-10 p 3884425374764615066181797521634766309683 pocklington 797305131022325858759 2
+d1-10 q 6099743082029596731273545744241486153269 pocklington 437353658801397326621 2
+
+**Next**
+
 Obtain one polynomial per instance from CADO-NFS and one from msieve, then run the independent evaluation inside `d1_measure`.
