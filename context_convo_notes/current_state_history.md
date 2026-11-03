@@ -2,12 +2,29 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 16:40 EST
-- **Version**: 1.5
+- **Last Modified**: 2026-11-03 16:58 EST
+- **Version**: 1.8
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 16:58 EST
+- The roadmap has an `open_questions` section. No questions are recorded in it yet.
+- The roadmap still has no Decision Log. Obstacles E–H remain a placeholder line.
+- The harness, the ten proved semiprimes, and the msieve 264-bit gate are unchanged. The D1 prediction is still unmeasured.
+
+### 2026-11-03 16:52 EST
+- `docs/AGENT_ONBOARDING.md` was rewritten from the tree. It is the zero-context handoff.
+- The roadmap contains obstacles A–D and a placeholder line for E–H. It has no `open_questions` section and no Decision Log. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`.
+- `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
+- The harness, the ten proved semiprimes, and the msieve 264-bit gate are unchanged. The D1 prediction is still unmeasured.
+
+### 2026-11-03 16:48 EST
+- Pull request 18 is merged. This branch matches that merge.
+- msieve 1.54, built outside this tree, runs NFS polynomial selection only when the input has more than 264 bits. The degree-4 parameter table starts at log10(N) = 80. All ten proved semiprimes are at or below 264 bits, so that binary does not select an NFS polynomial for them.
+- CADO-NFS remains the external source for those polynomials. It is not installed. Its LGPL-2.1 source stays outside this repository.
+- The D1 prediction is still unmeasured.
 
 ### 2026-11-03 16:40 EST
 - The harness parses CADO and msieve polynomial files into `instrument-polynomial/1`. `format` and `source` are closed lists. Instrument scores are not fields. A parsed file stays `source` `unspecified`.

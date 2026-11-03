@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 16:40 EST
-- **Version**: 1.10
+- **Last Modified**: 2026-11-03 16:58 EST
+- **Version**: 1.13
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,18 +60,22 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 16:40 EST:
+As of 2026-11-03 16:58 EST:
 
-I am developing on `primness_dev01`. Pull requests 16 and 17 are merged. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 18 is merged. Draft pull request 19 is open. D1 is still my starting sub-claim under Obstacle D.
 
-The harness reads an external polynomial file into `instrument-polynomial/1`. `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. The file does not name the tool, so a parsed file stays `unspecified`. Degree in this version is 1 through 6. I have not measured smoothness on a polynomial from either tool, and I have not computed the Dickman comparison.
+The roadmap now has an `open_questions` section after this snapshot. I have no questions recorded in it yet. The roadmap still has no Decision Log. Obstacles A–D are written here, and E–H remain the placeholder line. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`. `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
 
-CADO-NFS is LGPL-2.1, so its source is not in this repository. msieve is public domain. I built a checkout outside this tree. The stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. That checkout builds after the file includes `<sys/time.h>`. The binary is not in this repository, and I have not run polynomial selection. YAFU has no `LICENSE` file at the repository root, and its README does not state one, so I have not copied that tree in.
+The harness, the ten proved semiprimes, and the msieve size gate are unchanged from the 16:48 EST snapshot. I have not installed CADO-NFS. I have not measured smoothness on an external polynomial, and I have not computed the Dickman comparison.
 
-The ten proved semiprimes in `data/d1_test_instances.md` are unchanged. The next measurement step is one polynomial per instance from CADO-NFS and one from msieve, then the smoothness count and the Dickman comparison in the harness.
+The next measurement step is one NFS polynomial per instance from CADO-NFS, invoked outside this tree, then the smoothness count and the Dickman comparison in the harness.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
 ---
+
+## open_questions
+
+I have none recorded yet.
 
 *Living base document for the Primness project.*
