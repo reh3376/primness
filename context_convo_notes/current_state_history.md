@@ -2,12 +2,19 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 18:05 EST
-- **Version**: 1.12
+- **Last Modified**: 2026-11-03 18:29 EST
+- **Version**: 1.13
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 18:29 EST
+- Pull request 22 is merged. This is the first change on `primness_dev01` after that merge.
+- Murphy α is recorded (`docs/murphy_alpha.md`) and computed in the harness: -3.9640 for the d1-01 polynomial. Result contract `d1-measurement/2` carries raw, α-adjusted and local-density predictions.
+- The line sieve replaces trial division (exact agreement on d1-01, 35 times faster); d1-01 measured at 2^20, 2^24, 2^28 in 40 s.
+- After α the algebraic side shows no excess over Dickman at any bound; the residual is a deficit of a few percent at the larger bounds, flat in u. The baseline's own error now exceeds the Poisson noise.
+- d1-02 through d1-10 are running; `scripts/d1_summary.py` applies the criterion across instances.
 
 ### 2026-11-03 18:05 EST
 - Every measurement writes CSV tables beside the result (bounds, u bins, rows, largest-prime-factor histogram, hardware trace) and `scripts/d1_report.py` writes a report. `data/results/d1-01.scaled-down.report.md` records the observations, the questions answered and the questions raised.

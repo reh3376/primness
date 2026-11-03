@@ -13,9 +13,12 @@
 // Toy path. A file of plain integer coefficients (examples/demo.poly) keeps
 // the earlier u64 demo so the bench has something to show. It is `toy`.
 
+use num_bigint::BigUint;
 use num_traits::Zero;
+use primness::alpha;
 use primness::dickman::{self, Dickman};
 use primness::eval::{coprime, Homogeneous};
+use primness::linesieve::{self, FactorBase};
 use primness::hardware::{self, Sampler};
 use primness::metrics::{self, Event, Sink};
 use primness::poly::{self, Source};
@@ -27,7 +30,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
-pub const RESULT_V1: &str = "d1-measurement/1";
+pub const RESULT_V2: &str = "d1-measurement/2";
 const SCALE: &str = "scaled-down";
 
 struct Options {
@@ -43,13 +46,15 @@ struct Options {
     hw_sample: bool,
     hw_interval_ms: u64,
     dump: Option<PathBuf>,
+    alpha_bound: u64,
+    sieve: bool,
 }
 
 fn usage() -> ! {
     eprintln!(
         "Usage: d1-measure [--a-max A] [--b-max B] [--bounds 2^14,2^16,2^18,2^20] \
          [--instance ID] [--source cado-nfs|msieve|yafu|unspecified] [--out FILE] \
-         [--threads N] [--no-hw-sample] [--hw-interval-ms N] [--dump FILE] [--region N] <poly-file>"
+         [--threads N] [--no-hw-sample] [--hw-interval-ms N] [--dump FILE] [--alpha-bound N] [--method sieve|trial] [--region N] <poly-file>"
     );
     std::process::exit(2);
 }
@@ -80,6 +85,8 @@ fn parse_options() -> Options {
         hw_sample: true,
         hw_interval_ms: hardware::DEFAULT_INTERVAL_MS,
         dump: None,
+        alpha_bound: alpha::DEFAULT_BOUND,
+        sieve: true,
     };
     let mut poly_path = None;
     let mut args = env::args().skip(1);
@@ -141,6 +148,21 @@ fn parse_options() -> Options {
             }
             "--no-hw-sample" => opts.hw_sample = false,
             "--dump" => opts.dump = Some(PathBuf::from(args.next().unwrap_or_else(|| usage()))),
+            "--method" => {
+                let text = args.next().unwrap_or_else(|| usage());
+                opts.sieve = match text.as_str() {
+                    "sieve" => true,
+                    "trial" => false,
+                    _ => usage(),
+                };
+            }
+            "--alpha-bound" => {
+                opts.alpha_bound = args
+                    .next()
+                    .and_then(|v| v.parse().ok())
+                    .filter(|n| *n >= 2)
+                    .unwrap_or_else(|| usage());
+            }
             "--hw-interval-ms" => {
                 opts.hw_interval_ms = args
                     .next()
@@ -198,6 +220,8 @@ struct Bin {
     count: u64,
     smooth: u64,
     rho_sum: f64,
+    rho_alpha_sum: f64,
+    local_sum: f64,
 }
 
 #[derive(Clone, Copy, Default)]
@@ -219,6 +243,10 @@ struct Tally {
     both: Vec<u64>,
     alg_pred: Vec<f64>,
     rat_pred: Vec<f64>,
+    alg_pred_alpha: Vec<f64>,
+    rat_pred_alpha: Vec<f64>,
+    alg_pred_local: Vec<f64>,
+    rat_pred_local: Vec<f64>,
     alg_u: Vec<f64>,
     rat_u: Vec<f64>,
     alg_bins: Vec<Vec<Bin>>,
@@ -240,6 +268,10 @@ impl Tally {
             both: vec![0; k],
             alg_pred: vec![0.0; k],
             rat_pred: vec![0.0; k],
+            alg_pred_alpha: vec![0.0; k],
+            rat_pred_alpha: vec![0.0; k],
+            alg_pred_local: vec![0.0; k],
+            rat_pred_local: vec![0.0; k],
             alg_u: vec![0.0; k],
             rat_u: vec![0.0; k],
             alg_bins: vec![vec![Bin::default(); U_BINS]; k],
@@ -261,15 +293,23 @@ impl Tally {
             self.both[i] += other.both[i];
             self.alg_pred[i] += other.alg_pred[i];
             self.rat_pred[i] += other.rat_pred[i];
+            self.alg_pred_alpha[i] += other.alg_pred_alpha[i];
+            self.rat_pred_alpha[i] += other.rat_pred_alpha[i];
+            self.alg_pred_local[i] += other.alg_pred_local[i];
+            self.rat_pred_local[i] += other.rat_pred_local[i];
             self.alg_u[i] += other.alg_u[i];
             self.rat_u[i] += other.rat_u[i];
             for j in 0..U_BINS {
                 self.alg_bins[i][j].count += other.alg_bins[i][j].count;
                 self.alg_bins[i][j].smooth += other.alg_bins[i][j].smooth;
                 self.alg_bins[i][j].rho_sum += other.alg_bins[i][j].rho_sum;
+                self.alg_bins[i][j].rho_alpha_sum += other.alg_bins[i][j].rho_alpha_sum;
+                self.alg_bins[i][j].local_sum += other.alg_bins[i][j].local_sum;
                 self.rat_bins[i][j].count += other.rat_bins[i][j].count;
                 self.rat_bins[i][j].smooth += other.rat_bins[i][j].smooth;
                 self.rat_bins[i][j].rho_sum += other.rat_bins[i][j].rho_sum;
+                self.rat_bins[i][j].rho_alpha_sum += other.rat_bins[i][j].rho_alpha_sum;
+                self.rat_bins[i][j].local_sum += other.rat_bins[i][j].local_sum;
             }
         }
         for (b, row) in &other.rows {
@@ -304,15 +344,134 @@ fn lpf_bin(lpf: Option<u64>) -> usize {
     }
 }
 
+enum Method<'a> {
+    Trial { primes: &'a [u64] },
+    Sieve { alg_fb: &'a FactorBase, rat_fb: &'a FactorBase, slack: f64 },
+}
+
+struct ValueRow {
+    a: i64,
+    ln_f: f64,
+    f_lpf: Option<u64>,
+    ln_g: f64,
+    g_lpf: Option<u64>,
+}
+
+/// Every coprime, non-zero position of row b with its logs and largest
+/// prime factors (None when not smooth at the top bound).
+fn row_values(
+    method: &Method,
+    b: i64,
+    a_max: i64,
+    alg: &Homogeneous,
+    rat: &Homogeneous,
+    b_top: u64,
+    skipped_zero: &mut u64,
+) -> Vec<ValueRow> {
+    let alg_pows = alg.powers_of_b(b);
+    let rat_pows = rat.powers_of_b(b);
+    match method {
+        Method::Trial { primes } => {
+            let mut out = Vec::new();
+            for a in -a_max..=a_max {
+                if !coprime(a, b) {
+                    continue;
+                }
+                let f = alg.eval_with_powers(a, &alg_pows);
+                let g = rat.eval_with_powers(a, &rat_pows);
+                if f.is_zero() || g.is_zero() {
+                    *skipped_zero += 1;
+                    continue;
+                }
+                let (f_mag, g_mag) = (f.magnitude(), g.magnitude());
+                out.push(ValueRow {
+                    a,
+                    ln_f: dickman::ln_biguint(f_mag),
+                    f_lpf: largest_prime_factor_if_smooth(f_mag, primes, b_top),
+                    ln_g: dickman::ln_biguint(g_mag),
+                    g_lpf: largest_prime_factor_if_smooth(g_mag, primes, b_top),
+                });
+            }
+            out
+        }
+        Method::Sieve { alg_fb, rat_fb, slack } => {
+            let len = (2 * a_max + 1) as usize;
+            // (index, a, |F|, |G|, ln|F|, ln|G|) for the positions that count.
+            let mut vals: Vec<(usize, i64, BigUint, BigUint, f64, f64)> = Vec::with_capacity(len);
+            for j in 0..len {
+                let a = j as i64 - a_max;
+                if !coprime(a, b) {
+                    continue;
+                }
+                let f = alg.eval_with_powers(a, &alg_pows);
+                let g = rat.eval_with_powers(a, &rat_pows);
+                if f.is_zero() || g.is_zero() {
+                    *skipped_zero += 1;
+                    continue;
+                }
+                let (f_mag, g_mag) = (f.magnitude().clone(), g.magnitude().clone());
+                let (ln_f, ln_g) = (dickman::ln_biguint(&f_mag), dickman::ln_biguint(&g_mag));
+                vals.push((j, a, f_mag, g_mag, ln_f, ln_g));
+            }
+            let mut acc_f = vec![0u16; len];
+            let mut acc_g = vec![0u16; len];
+            linesieve::sieve_row(alg_fb, b, a_max, &mut acc_f);
+            linesieve::sieve_row(rat_fb, b, a_max, &mut acc_g);
+            let mut cand_f = vec![false; len];
+            let mut cand_g = vec![false; len];
+            for (j, _, _, _, ln_f, ln_g) in &vals {
+                cand_f[*j] = acc_f[*j] as f64 / linesieve::LOG_SCALE >= ln_f - slack;
+                cand_g[*j] = acc_g[*j] as f64 / linesieve::LOG_SCALE >= ln_g - slack;
+            }
+            let hits_f = linesieve::resieve_row(alg_fb, b, a_max, &cand_f);
+            let hits_g = linesieve::resieve_row(rat_fb, b, a_max, &cand_g);
+            let (mut kf, mut kg) = (0usize, 0usize);
+            let mut ps = Vec::new();
+            let mut out = Vec::with_capacity(vals.len());
+            for (j, a, f_mag, g_mag, ln_f, ln_g) in vals {
+                let f_lpf = if cand_f[j] {
+                    ps.clear();
+                    while kf < hits_f.len() && (hits_f[kf].0 as usize) < j {
+                        kf += 1;
+                    }
+                    while kf < hits_f.len() && hits_f[kf].0 as usize == j {
+                        ps.push(hits_f[kf].1);
+                        kf += 1;
+                    }
+                    linesieve::verify(&f_mag, &ps)
+                } else {
+                    None
+                };
+                let g_lpf = if cand_g[j] {
+                    ps.clear();
+                    while kg < hits_g.len() && (hits_g[kg].0 as usize) < j {
+                        kg += 1;
+                    }
+                    while kg < hits_g.len() && hits_g[kg].0 as usize == j {
+                        ps.push(hits_g[kg].1);
+                        kg += 1;
+                    }
+                    linesieve::verify(&g_mag, &ps)
+                } else {
+                    None
+                };
+                out.push(ValueRow { a, ln_f, f_lpf, ln_g, g_lpf });
+            }
+            out
+        }
+    }
+}
+
 #[allow(clippy::too_many_arguments)]
 fn measure_rows(
     rows: &[i64],
     a_max: i64,
     alg: &Homogeneous,
     rat: &Homogeneous,
-    primes: &[u64],
+    method: &Method,
     dickman: &Dickman,
     bounds: &[u64],
+    alphas: (f64, f64),
     dump: bool,
 ) -> Tally {
     let b_top = *bounds.last().expect("bounds are non-empty");
@@ -320,23 +479,10 @@ fn measure_rows(
     let ln_bounds: Vec<f64> = bounds.iter().map(|&b| (b as f64).ln()).collect();
     let mut tally = Tally::new(bounds.len());
     for &b in rows {
-        let alg_pows = alg.powers_of_b(b);
-        let rat_pows = rat.powers_of_b(b);
         let mut row = RowStat::default();
-        for a in -a_max..=a_max {
-            if !coprime(a, b) {
-                continue;
-            }
-            let f = alg.eval_with_powers(a, &alg_pows);
-            let g = rat.eval_with_powers(a, &rat_pows);
-            if f.is_zero() || g.is_zero() {
-                tally.skipped_zero += 1;
-                continue;
-            }
-            let (f_mag, g_mag) = (f.magnitude(), g.magnitude());
-            let (ln_f, ln_g) = (dickman::ln_biguint(f_mag), dickman::ln_biguint(g_mag));
-            let f_lpf = largest_prime_factor_if_smooth(f_mag, primes, b_top);
-            let g_lpf = largest_prime_factor_if_smooth(g_mag, primes, b_top);
+        let values = row_values(method, b, a_max, alg, rat, b_top, &mut tally.skipped_zero);
+        for v in values {
+            let (a, ln_f, ln_g, f_lpf, g_lpf) = (v.a, v.ln_f, v.ln_g, v.f_lpf, v.g_lpf);
             tally.evaluated += 1;
             row.evaluated += 1;
             row.ln_f_sum += ln_f;
@@ -355,18 +501,32 @@ fn measure_rows(
                 }
                 let (u_f, u_g) = (ln_f / ln_bounds[i], ln_g / ln_bounds[i]);
                 let (rho_f, rho_g) = (dickman.rho(u_f), dickman.rho(u_g));
+                let u_f_alpha = ((ln_f + alphas.0) / ln_bounds[i]).max(0.0);
+                let u_g_alpha = ((ln_g + alphas.1) / ln_bounds[i]).max(0.0);
+                let rho_f_alpha = dickman.rho(u_f_alpha);
+                let rho_g_alpha = dickman.rho(u_g_alpha);
+                let local_f = dickman.local_density(u_f_alpha, ln_bounds[i]);
+                let local_g = dickman.local_density(u_g_alpha, ln_bounds[i]);
                 tally.alg_pred[i] += rho_f;
                 tally.rat_pred[i] += rho_g;
+                tally.alg_pred_alpha[i] += rho_f_alpha;
+                tally.rat_pred_alpha[i] += rho_g_alpha;
+                tally.alg_pred_local[i] += local_f;
+                tally.rat_pred_local[i] += local_g;
                 tally.alg_u[i] += u_f;
                 tally.rat_u[i] += u_g;
                 let bin = &mut tally.alg_bins[i][u_bin(u_f)];
                 bin.count += 1;
                 bin.smooth += u64::from(f_smooth);
                 bin.rho_sum += rho_f;
+                bin.rho_alpha_sum += rho_f_alpha;
+                bin.local_sum += local_f;
                 let bin = &mut tally.rat_bins[i][u_bin(u_g)];
                 bin.count += 1;
                 bin.smooth += u64::from(g_smooth);
                 bin.rho_sum += rho_g;
+                bin.rho_alpha_sum += rho_g_alpha;
+                bin.local_sum += local_g;
                 if i == top {
                     row.alg_smooth += u64::from(f_smooth);
                     row.rat_smooth += u64::from(g_smooth);
@@ -481,15 +641,46 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
             .collect::<Vec<_>>()
             .join(", ")
     );
-    let primes = primes_up_to(b_top);
-    println!(
-        "primes up to {b_top}: {} (sieved in {} ms)",
-        primes.len(),
-        started.elapsed().as_millis()
-    );
     let dickman = Dickman::new();
     let alg = Homogeneous::new(&poly.algebraic);
     let rat = Homogeneous::new(&poly.rational);
+    let threads = opts.threads.max(1);
+    let mut primes: Vec<u64> = Vec::new();
+    let mut factor_bases: Option<(FactorBase, FactorBase)> = None;
+    let smoothness = if opts.sieve {
+        let alg_fb = FactorBase::build(alg.coefficients(), b_top, threads);
+        let rat_fb = FactorBase::build(rat.coefficients(), b_top, threads);
+        let slack = linesieve::default_slack(b_top);
+        println!(
+            "line sieve: {} primes up to {b_top}, {} algebraic roots, {} rational roots, candidate slack {slack:.2} in ln (factor bases built in {} ms; docs/line_sieve.md)",
+            alg_fb.len(),
+            alg_fb.total_roots(),
+            rat_fb.total_roots(),
+            started.elapsed().as_millis()
+        );
+        let record = json!({"method": "line-sieve", "slack_ln": slack, "factor_base_primes": alg_fb.len()});
+        factor_bases = Some((alg_fb, rat_fb));
+        record
+    } else {
+        primes = primes_up_to(b_top);
+        println!(
+            "trial division: {} primes up to {b_top} (sieved in {} ms)",
+            primes.len(),
+            started.elapsed().as_millis()
+        );
+        json!({"method": "trial-division", "slack_ln": 0.0, "factor_base_primes": primes.len()})
+    };
+    let method = match &factor_bases {
+        Some((alg_fb, rat_fb)) => Method::Sieve { alg_fb, rat_fb, slack: linesieve::default_slack(b_top) },
+        None => Method::Trial { primes: &primes },
+    };
+    let alpha_f = alpha::alpha(alg.coefficients(), opts.alpha_bound);
+    let alpha_g = alpha::alpha(rat.coefficients(), opts.alpha_bound);
+    println!(
+        "Murphy alpha over primes <= {}: algebraic {alpha_f:+.4}, rational {alpha_g:+.4} (docs/murphy_alpha.md; computed here, not read from the instrument)",
+        opts.alpha_bound
+    );
+    let alphas = (alpha_f, alpha_g);
 
     let run_id = format!("d1m-{}-{}", std::process::id(), metrics::now_ms());
     let mut sink = Sink::from_env(&run_id);
@@ -529,7 +720,6 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
 
     let mut total = Tally::new(bounds.len());
     let rows: Vec<i64> = (1..=b_max).collect();
-    let threads = opts.threads.max(1);
     for batch in rows.chunks(threads * 4) {
         let batch_started = Instant::now();
         let per_thread = batch.len().div_ceil(threads).max(1);
@@ -538,10 +728,9 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
             let handles: Vec<_> = batch
                 .chunks(per_thread)
                 .map(|rows| {
-                    let (alg, rat, primes, dickman, bounds) =
-                        (&alg, &rat, &primes, &dickman, &bounds);
+                    let (alg, rat, method, dickman, bounds) = (&alg, &rat, &method, &dickman, &bounds);
                     scope.spawn(move || {
-                        measure_rows(rows, a_max, alg, rat, primes, dickman, bounds, dump)
+                        measure_rows(rows, a_max, alg, rat, method, dickman, bounds, alphas, dump)
                     })
                 })
                 .collect();
@@ -599,15 +788,45 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         "rat_pred", "rat_gap", "u_rat", "both_sm"
     );
     let n = total.evaluated as f64;
-    // (observed, binomial standard error, predicted, gap, mean u)
-    let side = |smooth: u64, pred: f64, u: f64| -> (f64, f64, f64, f64, f64) {
+    struct SideStats {
+        observed: f64,
+        stderr: f64,
+        predicted: f64,
+        gap: f64,
+        predicted_alpha: f64,
+        gap_alpha: f64,
+        predicted_local: f64,
+        gap_local: f64,
+        mean_u: f64,
+    }
+    let side = |smooth: u64, pred: f64, pred_alpha: f64, pred_local: f64, u: f64| -> SideStats {
         if n == 0.0 {
-            (0.0, 0.0, 0.0, 0.0, 0.0)
-        } else {
-            let observed = smooth as f64 / n;
-            let stderr = (observed * (1.0 - observed) / n).sqrt();
-            let predicted = pred / n;
-            (observed, stderr, predicted, observed - predicted, u / n)
+            return SideStats {
+                observed: 0.0,
+                stderr: 0.0,
+                predicted: 0.0,
+                gap: 0.0,
+                predicted_alpha: 0.0,
+                gap_alpha: 0.0,
+                predicted_local: 0.0,
+                gap_local: 0.0,
+                mean_u: 0.0,
+            };
+        }
+        let observed = smooth as f64 / n;
+        let predicted = pred / n;
+        let predicted_alpha = pred_alpha / n;
+        let predicted_local = pred_local / n;
+        SideStats {
+            observed,
+            stderr: (observed * (1.0 - observed) / n).sqrt(),
+            predicted,
+            gap: observed - predicted,
+            predicted_alpha,
+            gap_alpha: observed - predicted_alpha,
+            predicted_local,
+            gap_local: observed - predicted_local,
+            mean_u: u / n,
         }
     };
     let out = opts
@@ -616,49 +835,68 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         .unwrap_or_else(|| PathBuf::from("data/results").join(format!("{instance}-{run_id}.json")));
     let stem = out.with_extension("").display().to_string();
     let table_path = |name: &str| PathBuf::from(format!("{stem}.{name}.csv"));
+    let units = |gap: f64, err: f64| if err > 0.0 { gap / err } else { 0.0 };
 
+    println!(
+        "{:>9} | {:>8} {:>8} {:>8} {:>8} {:>8} {:>8} {:>6} | {:>8} {:>8} {:>8} {:>8} {:>8} {:>8} {:>6} | {:>8}",
+        "B", "alg_sm", "alg_obs", "raw_prd", "raw_gap", "alf_prd", "alf_gap", "u_alg",
+        "rat_sm", "rat_obs", "raw_prd", "raw_gap", "alf_prd", "alf_gap", "u_rat", "both_sm"
+    );
     let mut results = Vec::new();
     let mut bounds_csv = String::from(
-        "b,side,smooth,observed,observed_stderr,predicted,gap,gap_stderr_units,mean_u,implied_alpha\n",
+        "b,side,smooth,observed,observed_stderr,predicted,gap,gap_stderr_units,predicted_alpha,gap_alpha,gap_alpha_stderr_units,predicted_local,gap_local,gap_local_stderr_units,mean_u,alpha,implied_alpha\n",
     );
-    let mut bins_csv = String::from("b,side,u_lo,u_hi,count,smooth,observed,predicted,ratio\n");
+    let mut bins_csv = String::from(
+        "b,side,u_lo,u_hi,count,smooth,observed,predicted,ratio,predicted_alpha,ratio_alpha,predicted_local,ratio_local\n",
+    );
     for (i, &b) in bounds.iter().enumerate() {
         let ln_b = (b as f64).ln();
-        let (ao, ae, ap, ag, au) = side(total.alg_smooth[i], total.alg_pred[i], total.alg_u[i]);
-        let (ro, re, rp, rg, ru) = side(total.rat_smooth[i], total.rat_pred[i], total.rat_u[i]);
-        let a_alpha = implied_alpha(&total.alg_bins[i], ln_b, ao, &dickman);
-        let r_alpha = implied_alpha(&total.rat_bins[i], ln_b, ro, &dickman);
+        let a = side(total.alg_smooth[i], total.alg_pred[i], total.alg_pred_alpha[i], total.alg_pred_local[i], total.alg_u[i]);
+        let r = side(total.rat_smooth[i], total.rat_pred[i], total.rat_pred_alpha[i], total.rat_pred_local[i], total.rat_u[i]);
+        let a_implied = implied_alpha(&total.alg_bins[i], ln_b, a.observed, &dickman);
+        let r_implied = implied_alpha(&total.rat_bins[i], ln_b, r.observed, &dickman);
         println!(
-            "{b:>9} | {:>8} {ao:>8.5} {ap:>8.5} {ag:>+8.5} {au:>6.2} | {:>8} {ro:>8.5} {rp:>8.5} {rg:>+8.5} {ru:>6.2} | {:>8}",
-            total.alg_smooth[i], total.rat_smooth[i], total.both[i]
+            "{b:>9} | {:>8} {:>8.5} {:>8.5} {:>+8.5} {:>8.5} {:>+8.5} {:>6.2} | {:>8} {:>8.5} {:>8.5} {:>+8.5} {:>8.5} {:>+8.5} {:>6.2} | {:>8}",
+            total.alg_smooth[i], a.observed, a.predicted, a.gap, a.predicted_alpha, a.gap_alpha, a.mean_u,
+            total.rat_smooth[i], r.observed, r.predicted, r.gap, r.predicted_alpha, r.gap_alpha, r.mean_u,
+            total.both[i]
         );
         println!(
-            "{:>9} | stderr {ae:.5}, gap {:+.1} stderr, implied alpha {}      | stderr {re:.5}, gap {:+.1} stderr, implied alpha {}",
+            "{:>9} | stderr {:.5}; raw gap {:+.1} se; alpha gap {:+.1} se; local gap {:+.1} se (pred {:.5}); implied alpha {}  | stderr {:.5}; raw gap {:+.1} se; alpha gap {:+.1} se; local gap {:+.1} se (pred {:.5}); implied alpha {}",
             "",
-            if ae > 0.0 { ag / ae } else { 0.0 },
-            a_alpha.map(|a| format!("{a:+.2}")).unwrap_or_else(|| "n/a".into()),
-            if re > 0.0 { rg / re } else { 0.0 },
-            r_alpha.map(|a| format!("{a:+.2}")).unwrap_or_else(|| "n/a".into()),
+            a.stderr, units(a.gap, a.stderr), units(a.gap_alpha, a.stderr), units(a.gap_local, a.stderr), a.predicted_local,
+            a_implied.map(|x| format!("{x:+.2}")).unwrap_or_else(|| "n/a".into()),
+            r.stderr, units(r.gap, r.stderr), units(r.gap_alpha, r.stderr), units(r.gap_local, r.stderr), r.predicted_local,
+            r_implied.map(|x| format!("{x:+.2}")).unwrap_or_else(|| "n/a".into()),
         );
-        let mut alg_json = json!({"smooth": total.alg_smooth[i], "observed": ao, "observed_stderr": ae, "predicted": ap, "gap": ag, "mean_u": au});
-        let mut rat_json = json!({"smooth": total.rat_smooth[i], "observed": ro, "observed_stderr": re, "predicted": rp, "gap": rg, "mean_u": ru});
-        if let Some(alpha) = a_alpha {
-            alg_json["implied_alpha"] = json!(alpha);
-        }
-        if let Some(alpha) = r_alpha {
-            rat_json["implied_alpha"] = json!(alpha);
-        }
+        let side_json = |s: &SideStats, smooth: u64, alpha_value: f64, implied: Option<f64>| {
+            let mut v = json!({
+                "smooth": smooth, "observed": s.observed, "observed_stderr": s.stderr,
+                "predicted": s.predicted, "gap": s.gap,
+                "predicted_alpha": s.predicted_alpha, "gap_alpha": s.gap_alpha,
+                "predicted_local": s.predicted_local, "gap_local": s.gap_local,
+                "mean_u": s.mean_u, "alpha": alpha_value,
+            });
+            if let Some(x) = implied {
+                v["implied_alpha"] = json!(x);
+            }
+            v
+        };
+        let alg_json = side_json(&a, total.alg_smooth[i], alpha_f, a_implied);
+        let rat_json = side_json(&r, total.rat_smooth[i], alpha_g, r_implied);
         results.push(json!({"b": b, "algebraic": alg_json, "rational": rat_json, "both_smooth": total.both[i]}));
         use std::fmt::Write as _;
-        for (name, sm, obs, err, pred, gap, mu, alpha) in [
-            ("algebraic", total.alg_smooth[i], ao, ae, ap, ag, au, a_alpha),
-            ("rational", total.rat_smooth[i], ro, re, rp, rg, ru, r_alpha),
+        for (name, s, smooth, alpha_value, implied) in [
+            ("algebraic", &a, total.alg_smooth[i], alpha_f, a_implied),
+            ("rational", &r, total.rat_smooth[i], alpha_g, r_implied),
         ] {
             let _ = writeln!(
                 bounds_csv,
-                "{b},{name},{sm},{obs:.7},{err:.7},{pred:.7},{gap:+.7},{:.2},{mu:.4},{}",
-                if err > 0.0 { gap / err } else { 0.0 },
-                alpha.map(|a| format!("{a:.4}")).unwrap_or_default()
+                "{b},{name},{smooth},{:.7},{:.7},{:.7},{:+.7},{:.2},{:.7},{:+.7},{:.2},{:.7},{:+.7},{:.2},{:.4},{:.4},{}",
+                s.observed, s.stderr, s.predicted, s.gap, units(s.gap, s.stderr),
+                s.predicted_alpha, s.gap_alpha, units(s.gap_alpha, s.stderr),
+                s.predicted_local, s.gap_local, units(s.gap_local, s.stderr), s.mean_u, alpha_value,
+                implied.map(|x| format!("{x:.4}")).unwrap_or_default()
             );
         }
         for (name, bins) in [("algebraic", &total.alg_bins[i]), ("rational", &total.rat_bins[i])] {
@@ -668,19 +906,27 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
                 }
                 let observed = bin.smooth as f64 / bin.count as f64;
                 let predicted = bin.rho_sum / bin.count as f64;
+                let predicted_alpha = bin.rho_alpha_sum / bin.count as f64;
+                let predicted_local = bin.local_sum / bin.count as f64;
+                let ratio = |p: f64| if p > 0.0 { format!("{:.4}", observed / p) } else { String::new() };
                 let _ = writeln!(
                     bins_csv,
-                    "{b},{name},{:.1},{:.1},{},{},{observed:.7},{predicted:.7},{}",
+                    "{b},{name},{:.1},{:.1},{},{},{observed:.7},{predicted:.7},{},{predicted_alpha:.7},{},{predicted_local:.7},{}",
                     j as f64 * U_BIN_WIDTH,
                     (j + 1) as f64 * U_BIN_WIDTH,
                     bin.count,
                     bin.smooth,
-                    if predicted > 0.0 { format!("{:.4}", observed / predicted) } else { String::new() }
+                    ratio(predicted),
+                    ratio(predicted_alpha),
+                    ratio(predicted_local)
                 );
             }
         }
     }
-    println!("alpha_applied: false (no Murphy α definition is recorded in this repository); implied alpha above is the size shift that would reconcile Dickman with the count, not a Murphy α computation");
+    println!(
+        "alpha_applied: true (Murphy alpha from docs/murphy_alpha.md over primes <= {}); implied alpha is the size shift that would reconcile raw Dickman with the count, for comparison with the computed alpha",
+        opts.alpha_bound
+    );
 
     let mut rows_csv = String::from(
         "b,evaluated,alg_smooth,rat_smooth,both_smooth,alg_density,rat_density,mean_ln_f,mean_ln_g\n",
@@ -741,8 +987,8 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     });
 
     let tables = [
-        ("bounds", bounds_csv, "per bound and side: counts, observed and predicted density, gap, standard error, mean u, implied alpha"),
-        ("u_bins", bins_csv, "per bound, side and u bin of width 0.1: count, smooth, observed, predicted, observed/predicted"),
+        ("bounds", bounds_csv, "per bound and side: counts, observed density, raw, alpha-adjusted and local-density Dickman predictions, gaps in absolute and standard-error units, mean u, computed alpha, implied alpha"),
+        ("u_bins", bins_csv, "per bound, side and u bin of width 0.1: count, smooth, observed, raw, alpha-adjusted and local-density predictions, their ratios to observed"),
         ("rows", rows_csv, "per b row at the top bound: counts, densities, mean ln|F| and ln|G|"),
         ("lpf_hist", lpf_csv, "per side: values by floor(log2(largest prime factor)) at the top bound, plus not_smooth"),
     ];
@@ -762,7 +1008,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     }
 
     let mut result = json!({
-        "schema_version": RESULT_V1,
+        "schema_version": RESULT_V2,
         "run_id": run_id,
         "ts_ms": metrics::now_ms(),
         "elapsed_ms": elapsed_ms,
@@ -777,7 +1023,9 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         "skipped_zero": total.skipped_zero,
         "threads": threads,
         "dickman": {"method": dickman::METHOD, "steps_per_unit": dickman::STEPS_PER_UNIT, "u_max": dickman::U_MAX},
-        "alpha_applied": false,
+        "alpha_applied": true,
+        "smoothness": smoothness,
+        "alpha": {"method": alpha::METHOD, "bound": opts.alpha_bound, "algebraic": alpha_f, "rational": alpha_g, "definition": "docs/murphy_alpha.md"},
         "results": results,
         "tables": table_records,
     });
@@ -787,7 +1035,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     if let Some(path) = &opts.dump {
         result["dump"] = json!(path.to_string_lossy());
     }
-    registry.validate_value(RESULT_V1, &result)?;
+    registry.validate_value(RESULT_V2, &result)?;
     let text = serde_json::to_string_pretty(&result).map_err(|err| err.to_string())?;
     write_text(&out, &(text + "\n"))?;
     println!("wrote {}", out.display());
