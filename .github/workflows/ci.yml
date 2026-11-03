@@ -1,12 +1,17 @@
 name: CI
 
+# Runs on every push. The check is recorded on the commit, so the pull
+# request that carries that commit shows it, and the main ruleset requires
+# it. There is no pull_request trigger: Auto-PR opens each draft as
+# github-actions[bot] with GITHUB_TOKEN, and GitHub records a pull_request
+# run for that event with no jobs, then marks it failed when the pull
+# request is merged. primness_dev01 is always strictly ahead of main, so
+# the head commit is exactly what main receives.
+
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
-      - primness_dev01
+      - "**"
 
 permissions:
   contents: read
@@ -25,7 +30,7 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Check
-        run: cargo check --all-targets
+        run: cargo check --workspace --all-targets
 
       - name: Test
-        run: cargo test --all-targets
+        run: cargo test --workspace --all-targets

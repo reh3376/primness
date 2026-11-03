@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 17:01 EST
+**Last updated:** 2026-11-03 17:15 EST
 
 ## What this project is
 
@@ -27,9 +27,9 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 17:01 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-03 17:15 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
-- Development is on `primness_dev01`. Pull request 19 is merged, and this branch matches that merge.
+- Development is on `primness_dev01`. Pull request 20 is merged.
 - D1 is the starting sub-claim. It has not been measured. The Dickman–de Bruijn comparison is not implemented. No Murphy \(\alpha\) adjustment formula is written in this repository. Do not invent one.
 - The ten semiprimes in `data/d1_test_instances.md` are unchanged. Digit counts are 40, 44, 48, 52, 56, 60, 64, 68, 72, and 80. Their bit lengths, from those decimals, are 131 through 264. d1-10 is 264 bits and \(\log_{10}(N)\) is about 79.37.
 - The harness parses CADO and msieve polynomial files into `instrument-polynomial/1`. A parsed file does not run the toy smoother and does not emit a measurement event.
@@ -48,7 +48,7 @@ The repository does not define an SNFS-structure test. The instance file says th
 5. The owner reviews, approves, and merges. Do not self-approve or merge.
 6. After the merge, fast-forward `primness_dev01` to `origin/main` and push. Auto-PR exits without opening a pull request when `origin/main..HEAD` is empty.
 
-[.github/workflows/ci.yml](../.github/workflows/ci.yml) runs `cargo check --all-targets` and `cargo test --all-targets` on pull requests to `main` and on pushes to `primness_dev01`. The workspace members are the root crate and `bench`, so the dashboard binary is in that test run. [.github/workflows/sync-readme.yml](../.github/workflows/sync-readme.yml) only prints that README updates are still manual.
+[.github/workflows/ci.yml](../.github/workflows/ci.yml) runs `cargo check --workspace --all-targets` and `cargo test --workspace --all-targets` on every push. There is no `pull_request` trigger: the check recorded on the head commit is what the pull request shows, and the main ruleset requires that `Rust check and test` check. The workspace members are the root crate and `bench`, so the dashboard binary is in that test run. [.github/workflows/sync-readme.yml](../.github/workflows/sync-readme.yml) only prints that README updates are still manual.
 
 Before a push, run `sh scripts/check-current-state.sh origin/main HEAD`. The gate compares git commits, so the Current State edit has to be committed first.
 
@@ -114,7 +114,7 @@ Leave `PRIMNESS_METRICS_URL` unset in a process that already has `PRIMNESS_DATAB
 
 Postgres is `postgres:16-alpine`, container `primness-db`, volume `primness-pg`, database and user `primness`, host port `127.0.0.1:5455`, in-network host `db:5432`. `scripts/apply-migrations.sh` applies `db/migrations/*.sql` once, then upserts every schema `$id` into `schema_documents`. Local access is `docker exec primness-db psql -U primness -d primness`. Compose fails if `POSTGRES_PASSWORD` is unset.
 
-The bench container is `primness-bench`, image built from [Dockerfile](../Dockerfile), which copies `schemas/` at build time. A schema file added later is inside the container only after `scripts/up-dashboard.sh` rebuilds the image. The host migration script registers the host `schemas/` tree without that rebuild. The page is `http://127.0.0.1:9477/` by default, loopback only, and it reloads every 2 seconds. `scripts/up-dashboard.sh` refuses a port that another process holds.
+The bench container is `primness-bench`, image built from [Dockerfile](../Dockerfile), which copies `schemas/` at build time. A schema file added later is inside the container only after `scripts/up-dashboard.sh` rebuilds the image. The host migration script registers the host `schemas/` tree without that rebuild. The page is `http://127.0.0.1:9477/` by default, loopback only, and it reloads every 2 seconds. The binary binds `PRIMNESS_DASHBOARD_HOST`, default `127.0.0.1`; the container sets `0.0.0.0` behind its loopback port mapping. `scripts/up-dashboard.sh` refuses a port that another process holds.
 
 ## Immediate next work
 

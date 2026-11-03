@@ -9,6 +9,10 @@ use std::path::{Path, PathBuf};
 use std::time::Duration;
 
 fn main() {
+    let host = std::env::var("PRIMNESS_DASHBOARD_HOST")
+        .ok()
+        .filter(|value| !value.trim().is_empty())
+        .unwrap_or_else(|| "127.0.0.1".to_string());
     let port: u16 = std::env::var("PRIMNESS_DASHBOARD_PORT")
         .ok()
         .and_then(|value| value.parse().ok())
@@ -21,12 +25,12 @@ fn main() {
     }
     register_schemas();
 
-    let listener = TcpListener::bind(("0.0.0.0", port)).unwrap_or_else(|err| {
-        eprintln!("TCP {port} is not available: {err}");
+    let listener = TcpListener::bind((host.as_str(), port)).unwrap_or_else(|err| {
+        eprintln!("TCP {host}:{port} is not available: {err}");
         std::process::exit(1);
     });
     eprintln!(
-        "Primness bench listening on {port}, reading {}",
+        "Primness bench listening on {host}:{port}, reading {}",
         dir.display()
     );
 
