@@ -1,2 +1,5 @@
 /target/
 /data/metrics/*.jsonl
+.env
+.env.*
+!.env.example
