@@ -2,7 +2,7 @@
 
 Local view of data collection and measurement rate. It does not gate CI or decide whether a D1 claim holds.
 
-The page is served by the `primness-bench` container at http://127.0.0.1:9477/. The port is loopback only. `scripts/up-dashboard.sh` checks that TCP 9477 is free before `docker compose up`.
+The page is served by the `primness-bench` container at `http://127.0.0.1:$PRIMNESS_DASHBOARD_PORT/` from the gitignored `.env` (default 9477). The port is loopback only. `scripts/up-dashboard.sh` checks that port is free before `docker compose up`.
 
 Harnesses append JSON lines under `data/metrics/`, which the container reads. A run can also `POST` the same JSON to `http://127.0.0.1:9477/api/ingest` by setting `PRIMNESS_METRICS_URL`. `PRIMNESS_METRICS_DIR` overrides the directory. The default is `data/metrics`.
 
