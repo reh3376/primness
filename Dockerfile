@@ -15,6 +15,8 @@ RUN apt-get update \
 COPY --from=build /src/target/release/primness-dashboard /usr/local/bin/primness-dashboard
 COPY --from=build /src/schemas /schemas
 ENV PRIMNESS_DASHBOARD_PORT=9477
+# The container must accept the published port; compose maps it to 127.0.0.1 on the host.
+ENV PRIMNESS_DASHBOARD_HOST=0.0.0.0
 ENV PRIMNESS_METRICS_DIR=/var/primness/metrics
 ENV PRIMNESS_SCHEMAS_DIR=/schemas
 EXPOSE 9477

@@ -32,6 +32,9 @@ services:
       - "127.0.0.1:${PRIMNESS_DASHBOARD_PORT:-9477}:${PRIMNESS_DASHBOARD_PORT:-9477}"
     environment:
       PRIMNESS_DASHBOARD_PORT: "${PRIMNESS_DASHBOARD_PORT:-9477}"
+      # Inside the container the bench must listen on all interfaces so the
+      # published port reaches it. The mapping above keeps it on 127.0.0.1.
+      PRIMNESS_DASHBOARD_HOST: 0.0.0.0
       PRIMNESS_METRICS_DIR: /var/primness/metrics
       PRIMNESS_SCHEMAS_DIR: /schemas
       PRIMNESS_DATABASE_URL: postgres://${POSTGRES_USER:-primness}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-primness}

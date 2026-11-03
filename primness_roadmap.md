@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 17:01 EST
-- **Version**: 1.14
+- **Last Modified**: 2026-11-03 17:15 EST
+- **Version**: 1.15
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,9 +60,11 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 17:01 EST:
+As of 2026-11-03 17:15 EST:
 
-I am developing on `primness_dev01`. Pull request 19 is merged, and this branch matches that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 20 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
+
+This change is CI and bench housekeeping from a review of pull requests 11 through 20. CI now runs on every push with `--workspace`, so the `bench` crate is checked and tested; before this it was not. The `pull_request` trigger is gone: Auto-PR opens each draft as github-actions[bot], and GitHub recorded a jobless `pull_request` run for each opening and marked it failed at merge, which is why pull requests 15 through 20 show a red check on their first commit. The push run on the same commit was green each time. The main ruleset now requires the `Rust check and test` check on the head commit. The bench binary binds `PRIMNESS_DASHBOARD_HOST`, default 127.0.0.1; the container sets 0.0.0.0 behind its loopback port mapping. The ten proved semiprimes were rechecked by an independent standard-library Python script outside this tree: products, digit counts, Miller-Rabin below ψ_13, and every Pocklington condition hold.
 
 The roadmap now has an `open_questions` section after this snapshot. I have no questions recorded in it yet. The roadmap still has no Decision Log. Obstacles A–D are written here, and E–H remain the placeholder line. Sub-claims D1–D5 are in `context_convo_notes/2026-11-03_1205_obstacle_D_subclaims.md`. `context_convo_notes/INDEX.md` lists notes through 15:58 EST and omits the note files from 13:06 through 14:44.
 

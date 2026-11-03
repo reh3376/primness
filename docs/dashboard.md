@@ -2,7 +2,7 @@
 
 Local view of data collection and measurement rate. It does not gate CI or decide whether a D1 claim holds.
 
-The page is Leptos server-rendered HTML from the `primness-bench` package (`bench/`, binary `primness-dashboard`). The measurement crate does not compile the UI. The `primness-bench` container serves it at `http://127.0.0.1:$PRIMNESS_DASHBOARD_PORT/` (default 9477, loopback only). `scripts/up-dashboard.sh` checks that port, and the Postgres port, before `docker compose up`. The page reloads itself every 2 seconds.
+The page is Leptos server-rendered HTML from the `primness-bench` package (`bench/`, binary `primness-dashboard`). The measurement crate does not compile the UI. The `primness-bench` container serves it at `http://127.0.0.1:$PRIMNESS_DASHBOARD_PORT/` (default 9477, loopback only). The binary binds `PRIMNESS_DASHBOARD_HOST`, default `127.0.0.1`; the container sets `0.0.0.0` so the loopback port mapping can reach it. `scripts/up-dashboard.sh` checks that port, and the Postgres port, before `docker compose up`. The page reloads itself every 2 seconds.
 
 Postgres is the record of a run. The login and host port are `POSTGRES_*` and `PRIMNESS_DATABASE_URL` in the gitignored `.env`. The database files stay in the Docker volume `primness-pg`. Migrations live in `db/migrations/` and `scripts/apply-migrations.sh` applies each file once.
 

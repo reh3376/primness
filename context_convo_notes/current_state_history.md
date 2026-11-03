@@ -2,12 +2,18 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 17:01 EST
-- **Version**: 1.9
+- **Last Modified**: 2026-11-03 17:15 EST
+- **Version**: 1.10
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 17:15 EST
+- Pull request 20 is merged. This is the first change on `primness_dev01` after that merge.
+- CI runs on every push with `--workspace`; the `bench` crate is now in the check and test run. The `pull_request` trigger is removed because Auto-PR's bot-opened drafts produced jobless failed runs on pull requests 15 through 20. The main ruleset requires the `Rust check and test` check.
+- The bench binds `PRIMNESS_DASHBOARD_HOST` (default 127.0.0.1); the container sets 0.0.0.0 behind a loopback port mapping.
+- The ten semiprime certificates were rechecked independently. The D1 prediction is still unmeasured.
 
 ### 2026-11-03 17:01 EST
 - Pull request 19 is merged. This branch matches that merge.
