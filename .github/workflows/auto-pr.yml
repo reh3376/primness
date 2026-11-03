@@ -50,11 +50,23 @@ jobs:
           fi
 
           {
-            echo "Auto-opened from a push to \`$BRANCH\`. Flip to Ready-for-review when this is done."
+            echo "Auto-opened from a push to \`$BRANCH\`."
+            echo
+            echo "This pull request continues work on the Primness project under Obstacle D."
+            echo "All development occurs on \`primness_dev01\`; the repository owner reviews, approves, and merges."
+            echo
+            echo "## Relevant living documents"
+            echo "- [primness_roadmap.md](https://github.com/reh3376/primness/blob/primness_dev01/primness_roadmap.md) — authoritative statement of the problem, constraints, obstacles, and current state"
+            echo "- [context_convo_notes/INDEX.md](https://github.com/reh3376/primness/blob/primness_dev01/context_convo_notes/INDEX.md) — index of timestamped notes"
+            echo "- [context_convo_notes/current_state_history.md](https://github.com/reh3376/primness/blob/primness_dev01/context_convo_notes/current_state_history.md) — history of current-state snapshots"
+            echo "- [tools/README.md](https://github.com/reh3376/primness/blob/primness_dev01/tools/README.md) — external measurement instruments (when present)"
             echo
             echo "## Commits since main"
             echo
             git log --pretty=format:'- %h %s' origin/main..HEAD
+            echo
+            echo
+            echo "Flip to Ready-for-review when the changes are ready for owner review."
           } > /tmp/pr-body.md
 
           title=$(git log -1 --pretty=format:'%s')
