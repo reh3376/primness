@@ -1,0 +1,8 @@
+# x^2 - 1: reducible, product of cyclotomic polynomials
+n: 1000003
+skew: 1.0
+c0: -1
+c1: 0
+c2: 1
+Y0: -2
+Y1: 1

@@ -2,12 +2,18 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 18:29 EST
-- **Version**: 1.13
+- **Last Modified**: 2026-11-03 19:28 EST
+- **Version**: 1.14
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-03 19:28 EST
+- Pull request 23 is merged. This is the first change on `primness_dev01` after that merge.
+- All ten instances measured at 2^14–2^20 and 2^20–2^28 with their own CADO polynomial and harness-computed α. Residual after α averages +21.7% at 2^14, +12.9% at 2^16, +6.7% at 2^18, +3.3% at 2^20, -0.3% at 2^24, -1.7% at 2^28; its sign is set by u. Criterion verdict split; read as baseline error, not as evidence either way.
+- Structure ladder: x^n − 1 shows the excess that survives α (+83% for n = 6); irreducible toy quartics fall below, ordered roughly by Galois group. The harness distinguishes the three shapes.
+- Next: calibrate the baseline with random integers in this harness; state the criterion's weighting; test A4 polynomials.
 
 ### 2026-11-03 18:29 EST
 - Pull request 22 is merged. This is the first change on `primness_dev01` after that merge.

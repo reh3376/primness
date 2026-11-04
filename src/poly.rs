@@ -1,6 +1,6 @@
 //! Polynomial files emitted by external NFS instruments.
 //!
-//! Version `instrument-polynomial/1` names the closed lists. The file
+//! Version `instrument-polynomial/2` names the closed lists (version 1, degree at most 6, stays on disk). The file
 //! identifies its format. It does not identify which program wrote it, so
 //! the source stays `unspecified` unless the caller sets one.
 
@@ -10,8 +10,8 @@ use serde_json::{Map, Value};
 use std::collections::BTreeMap;
 use std::fmt;
 
-pub const V1: &str = "instrument-polynomial/1";
-pub const MAX_DEGREE: u32 = 6;
+pub const V1: &str = "instrument-polynomial/2";
+pub const MAX_DEGREE: u32 = 12;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Format {
@@ -427,7 +427,7 @@ mod tests {
     use serde_json::Value;
 
     fn schema() -> Value {
-        serde_json::from_str(include_str!("../schemas/instrument-polynomial/1.json"))
+        serde_json::from_str(include_str!("../schemas/instrument-polynomial/2.json"))
             .expect("schema json")
     }
 

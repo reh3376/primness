@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "instrument-polynomial/2",
+  "title": "Instrument polynomial",
+  "description": "One NFS polynomial pair read from an external instrument file. Version 1 stores the integer coefficients and the skew text. It has no field for an instrument score. format and source are closed lists. degree runs from 1 through 12 (version 1 stopped at 6; the cyclotomic family x^n - 1 needs more); the D1 claim still requires degree 4 or 5, which is not decided by this file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "format",
+    "source",
+    "n",
+    "algebraic",
+    "rational",
+    "degree"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "instrument-polynomial/2"
+    },
+    "format": {
+      "enum": [
+        "cado",
+        "msieve-fb"
+      ]
+    },
+    "source": {
+      "enum": [
+        "cado-nfs",
+        "msieve",
+        "yafu",
+        "unspecified"
+      ]
+    },
+    "n": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$"
+    },
+    "skew": {
+      "type": "string",
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$"
+    },
+    "algebraic": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 13,
+      "items": {
+        "type": "string",
+        "pattern": "^-?(?:0|[1-9][0-9]*)$"
+      }
+    },
+    "rational": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^-?(?:0|[1-9][0-9]*)$"
+      }
+    },
+    "degree": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    }
+  }
+}

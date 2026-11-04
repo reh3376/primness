@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write a readable report from a d1-measurement/1 result and its CSV tables.
+"""Write a readable report from a d1-measurement result (versions 1 to 3) and its CSV tables.
 
     scripts/d1_report.py data/results/d1-01.scaled-down.json
 
