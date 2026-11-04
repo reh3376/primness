@@ -30,7 +30,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
-pub const RESULT_V2: &str = "d1-measurement/2";
+pub const RESULT_V3: &str = "d1-measurement/3";
 const SCALE: &str = "scaled-down";
 
 struct Options {
@@ -1008,7 +1008,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     }
 
     let mut result = json!({
-        "schema_version": RESULT_V2,
+        "schema_version": RESULT_V3,
         "run_id": run_id,
         "ts_ms": metrics::now_ms(),
         "elapsed_ms": elapsed_ms,
@@ -1035,7 +1035,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     if let Some(path) = &opts.dump {
         result["dump"] = json!(path.to_string_lossy());
     }
-    registry.validate_value(RESULT_V2, &result)?;
+    registry.validate_value(RESULT_V3, &result)?;
     let text = serde_json::to_string_pretty(&result).map_err(|err| err.to_string())?;
     write_text(&out, &(text + "\n"))?;
     println!("wrote {}", out.display());

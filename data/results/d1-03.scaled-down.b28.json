@@ -1,0 +1,286 @@
+{
+  "alpha": {
+    "algebraic": -5.050578972215043,
+    "bound": 2000,
+    "definition": "docs/murphy_alpha.md",
+    "method": "murphy-expected-valuation",
+    "rational": 0.5694650072033851
+  },
+  "alpha_applied": true,
+  "bounds": [
+    1048576,
+    16777216,
+    268435456
+  ],
+  "dickman": {
+    "method": "simpson-grid",
+    "steps_per_unit": 4096,
+    "u_max": 40
+  },
+  "elapsed_ms": 45118,
+  "evaluated": 5472915,
+  "hardware": {
+    "samples_file": "data/hardware/d1m-18821-1793748713918.jsonl",
+    "schema_version": "hardware-sample/1",
+    "summary": {
+      "cpu_active_ratio": {
+        "max": 0.9995473027229308,
+        "mean": 0.9818675897338174,
+        "min": 0.9407817125320436
+      },
+      "cpu_temp_c": {
+        "max": 89.02960205078125,
+        "mean": 86.90170877630061,
+        "min": 85.43914794921875
+      },
+      "duration_ms": 23709,
+      "gpu_active_ratio": {
+        "max": 0.3981150090694427,
+        "mean": 0.10091108456254005,
+        "min": 0.05287686735391617
+      },
+      "gpu_device_utilization_pct": {
+        "max": 85.0,
+        "mean": 4.7272727272727275,
+        "min": 0.0
+      },
+      "gpu_share_of_total": {
+        "max": 0.1307283639907837,
+        "mean": 0.12830895727330988,
+        "min": 0.12515747547149658
+      },
+      "gpu_temp_c": {
+        "max": 91.76544189453124,
+        "mean": 81.69636084816672,
+        "min": 78.34244537353516
+      },
+      "memory_used_ratio": {
+        "max": 0.628930926322937,
+        "mean": 0.6269092559814453,
+        "min": 0.6243119239807129
+      },
+      "power_all_w": {
+        "max": 51.495357513427734,
+        "mean": 47.249524029818446,
+        "min": 39.113014221191406
+      },
+      "samples": 22
+    }
+  },
+  "instance": "d1-03",
+  "n": "424433579087954844672319648102343586583383401621",
+  "n_digits": 48,
+  "polynomial": {
+    "algebraic": [
+      "-189614658079",
+      "-6289556496",
+      "1845205681",
+      "5013234",
+      "11760"
+    ],
+    "degree": 4,
+    "format": "cado",
+    "n": "424433579087954844672319648102343586583383401621",
+    "rational": [
+      "-33412475970",
+      "413866337"
+    ],
+    "schema_version": "instrument-polynomial/1",
+    "skew": "54.049",
+    "source": "cado-nfs"
+  },
+  "region": {
+    "a_max": 3000,
+    "a_min": -3000,
+    "b_max": 1500,
+    "b_min": 1,
+    "coprime_only": true,
+    "skip_zero": true
+  },
+  "results": [
+    {
+      "algebraic": {
+        "alpha": -5.050578972215043,
+        "gap": 0.016087052122747064,
+        "gap_alpha": 0.00036625501193372073,
+        "gap_local": 0.0047511397651924595,
+        "implied_alpha": -5.120490992065125,
+        "mean_u": 3.696357717056058,
+        "observed": 0.02877260107273729,
+        "observed_stderr": 0.00007145632446216836,
+        "predicted": 0.012685548949990227,
+        "predicted_alpha": 0.02840634606080357,
+        "predicted_local": 0.02402146130754483,
+        "smooth": 157470
+      },
+      "b": 1048576,
+      "both_smooth": 31231,
+      "rational": {
+        "alpha": 0.5694650072033851,
+        "gap": -0.030509679323358047,
+        "gap_alpha": -0.015705337600909808,
+        "gap_local": 0.009522392004794489,
+        "implied_alpha": 1.2205996995796986,
+        "mean_u": 2.203407477975903,
+        "observed": 0.19005666998299808,
+        "observed_stderr": 0.00016771021777942135,
+        "predicted": 0.22056634930635613,
+        "predicted_alpha": 0.2057620075839079,
+        "predicted_local": 0.1805342779782036,
+        "smooth": 1040164
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.050578972215043,
+        "gap": 0.03711082668038569,
+        "gap_alpha": -0.000991680854394203,
+        "gap_local": 0.008712180985094867,
+        "implied_alpha": -4.933738641142218,
+        "mean_u": 3.0802980975467165,
+        "observed": 0.08284817140408722,
+        "observed_stderr": 0.00011782914604785189,
+        "predicted": 0.04573734472370153,
+        "predicted_alpha": 0.08383985225848142,
+        "predicted_local": 0.07413599041899235,
+        "smooth": 453421
+      },
+      "b": 16777216,
+      "both_smooth": 164437,
+      "rational": {
+        "alpha": 0.5694650072033851,
+        "gap": -0.037460989227949104,
+        "gap_alpha": -0.0189686840262846,
+        "gap_local": 0.013205665891194207,
+        "implied_alpha": 1.3457966272718251,
+        "mean_u": 1.8361728983132508,
+        "observed": 0.35541790800697615,
+        "observed_stderr": 0.0002045970744344187,
+        "predicted": 0.39287889723492525,
+        "predicted_alpha": 0.37438659203326075,
+        "predicted_local": 0.34221224211578194,
+        "smooth": 1945172
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.050578972215043,
+        "gap": 0.059896648034830094,
+        "gap_alpha": -0.0035429134007285423,
+        "gap_local": 0.011576790557299127,
+        "implied_alpha": -4.830303393189919,
+        "mean_u": 2.6402555121828986,
+        "observed": 0.1661226238668059,
+        "observed_stderr": 0.0001590948549672568,
+        "predicted": 0.10622597583197581,
+        "predicted_alpha": 0.16966553726753444,
+        "predicted_local": 0.15454583330950677,
+        "smooth": 909175
+      },
+      "b": 268435456,
+      "both_smooth": 466871,
+      "rational": {
+        "alpha": 0.5694650072033851,
+        "gap": -0.03751122480112756,
+        "gap_alpha": -0.019019045489104935,
+        "gap_local": 0.013155127258666965,
+        "implied_alpha": 1.083784052408936,
+        "mean_u": 1.573862484268503,
+        "observed": 0.5095180539072871,
+        "observed_stderr": 0.00021368889343058298,
+        "predicted": 0.5470292787084147,
+        "predicted_alpha": 0.528537099396392,
+        "predicted_local": 0.49636292664862014,
+        "smooth": 2788549
+      }
+    }
+  ],
+  "run_id": "d1m-18821-1793748713918",
+  "scale": "scaled-down",
+  "schema_version": "d1-measurement/2",
+  "skipped_zero": 0,
+  "smoothness": {
+    "factor_base_primes": 14630843,
+    "method": "line-sieve",
+    "slack_ln": 39.816242111356935
+  },
+  "tables": [
+    {
+      "columns": [
+        "b",
+        "side",
+        "smooth",
+        "observed",
+        "observed_stderr",
+        "predicted",
+        "gap",
+        "gap_stderr_units",
+        "predicted_alpha",
+        "gap_alpha",
+        "gap_alpha_stderr_units",
+        "predicted_local",
+        "gap_local",
+        "gap_local_stderr_units",
+        "mean_u",
+        "alpha",
+        "implied_alpha"
+      ],
+      "description": "per bound and side: counts, observed density, raw, alpha-adjusted and local-density Dickman predictions, gaps in absolute and standard-error units, mean u, computed alpha, implied alpha",
+      "name": "bounds",
+      "path": "data/results/d1-03.scaled-down.b28.bounds.csv",
+      "rows": 6
+    },
+    {
+      "columns": [
+        "b",
+        "side",
+        "u_lo",
+        "u_hi",
+        "count",
+        "smooth",
+        "observed",
+        "predicted",
+        "ratio",
+        "predicted_alpha",
+        "ratio_alpha",
+        "predicted_local",
+        "ratio_local"
+      ],
+      "description": "per bound, side and u bin of width 0.1: count, smooth, observed, raw, alpha-adjusted and local-density predictions, their ratios to observed",
+      "name": "u_bins",
+      "path": "data/results/d1-03.scaled-down.b28.u_bins.csv",
+      "rows": 95
+    },
+    {
+      "columns": [
+        "b",
+        "evaluated",
+        "alg_smooth",
+        "rat_smooth",
+        "both_smooth",
+        "alg_density",
+        "rat_density",
+        "mean_ln_f",
+        "mean_ln_g"
+      ],
+      "description": "per b row at the top bound: counts, densities, mean ln|F| and ln|G|",
+      "name": "rows",
+      "path": "data/results/d1-03.scaled-down.b28.rows.csv",
+      "rows": 1500
+    },
+    {
+      "columns": [
+        "side",
+        "log2_lpf_bin",
+        "count",
+        "share"
+      ],
+      "description": "per side: values by floor(log2(largest prime factor)) at the top bound, plus not_smooth",
+      "name": "lpf_hist",
+      "path": "data/results/d1-03.scaled-down.b28.lpf_hist.csv",
+      "rows": 48
+    }
+  ],
+  "threads": 18,
+  "ts_ms": 1793748738564
+}

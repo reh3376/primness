@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 18:29 EST
+**Last updated:** 2026-11-03 19:28 EST
 
 ## What this project is
 
@@ -27,10 +27,10 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 18:29 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-03 19:28 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
-- Development is on `primness_dev01`. Pull request 22 is merged.
-- D1 is the starting sub-claim. d1-01 is measured at 2^14 to 2^20 (`data/results/d1-01.scaled-down.json`) and at the protocol's 2^20, 2^24, 2^28 (`data/results/d1-01.scaled-down.b28.json`) against raw, α-adjusted and local-density Dickman predictions. Murphy \(\alpha\) is defined in `docs/murphy_alpha.md` and computed in `src/alpha.rs`; do not read the instrument's α comment. After α there is no excess on d1-01. The rejection criterion across ten instances is `scripts/d1_summary.py`; its noise term does not yet include the baseline's own error.
+- Development is on `primness_dev01`. Pull request 23 is merged.
+- D1 is the starting sub-claim. d1-01 is measured at 2^14 to 2^20 (`data/results/d1-01.scaled-down.json`) and at the protocol's 2^20, 2^24, 2^28 (`data/results/d1-01.scaled-down.b28.json`) against raw, α-adjusted and local-density Dickman predictions. Murphy \(\alpha\) is defined in `docs/murphy_alpha.md` and computed in `src/alpha.rs`; do not read the instrument's α comment. All ten instances are measured (`data/results/summary.all-bounds.csv`, `scripts/d1_summary.py`). The residual after α changes sign with u, which is the baseline's finite-B error; do not read the split criterion verdict as a result. `data/results/patterns.scaled-down.csv` and `data/results/fixtures/` hold the structure ladder (x^n − 1 and five Galois-group quartics) on the same region.
 - The ten semiprimes in `data/d1_test_instances.md` are unchanged. Digit counts are 40, 44, 48, 52, 56, 60, 64, 68, 72, and 80. Their bit lengths, from those decimals, are 131 through 264. d1-10 is 264 bits and \(\log_{10}(N)\) is about 79.37.
 - The harness parses CADO and msieve polynomial files into `instrument-polynomial/1` and measures them (see the harness section below). `data/instruments/d1-01/cado.poly` is the only polynomial so far.
 - CADO-NFS is built outside this tree at `~/external/cado-nfs` (commit 692ecb7). [tools/README.md](../tools/README.md) records it as LGPL-2.1, so its source stays outside this tree and the scripts call its binaries. The same file records msieve as public domain and records that YAFU’s README and repository root do not state a license, so YAFU is not copied in.
@@ -70,7 +70,7 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 | [src/bin/hw_sample.rs](../src/bin/hw_sample.rs) | Binary `hw-sample`: records a trace while a command runs or for N samples. |
 | [scripts/cado-polyselect.sh](../scripts/cado-polyselect.sh), [scripts/cado-best-poly.py](../scripts/cado-best-poly.py) | CADO-NFS polynomial selection outside the tree, under the sampler; best candidate by MurphyE into `data/instruments/<id>/cado.poly`. |
 | [src/primes.rs](../src/primes.rs) | Primality proofs for the instance generator. |
-| [src/poly.rs](../src/poly.rs) | Parser for external polynomial files. Version constant `instrument-polynomial/1`. `MAX_DEGREE` is 6. |
+| [src/poly.rs](../src/poly.rs) | Parser for external polynomial files. Version constant `instrument-polynomial/1`. `MAX_DEGREE` is 12. |
 | [src/schema.rs](../src/schema.rs) | Loads every `schemas/**/*.json`. Measurement events use `$id` `measurement-event/1`. |
 | [src/metrics.rs](../src/metrics.rs) | Validates an event, then appends JSONL, optionally POSTs it, and inserts it when Postgres connects. |
 | [src/db.rs](../src/db.rs) | Postgres store. Inserts use `ON CONFLICT (run_id, schema_version, kind, b, evaluated, elapsed_ms) DO NOTHING`. |
@@ -86,7 +86,7 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 - `Error::NotInstrument` falls through to the toy path. [examples/demo.poly](../examples/demo.poly) is three integer lines (`1`, `-1`, `1`) and takes that path.
 - Any other parse error prints to stderr and exits 1. A file that has instrument keys plus a score key such as `MurphyE` is an error. The schema has no score field.
 
-[schemas/instrument-polynomial/1.json](../schemas/instrument-polynomial/1.json) is draft 2020-12 with `additionalProperties: false`. `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. `degree` is an integer from 1 through 6. The D1 claim still wants an optimized degree-4 or degree-5 polynomial. Parsing a degree outside that pair does not make it the claim. Coefficients are decimal strings. `skew` is optional text. Synthetic fixtures, not polynomials for the ten instances: [examples/instrument_cado.poly](../examples/instrument_cado.poly), [examples/instrument_msieve.fb](../examples/instrument_msieve.fb).
+[schemas/instrument-polynomial/2.json](../schemas/instrument-polynomial/2.json) (version 1 stays beside it) is draft 2020-12 with `additionalProperties: false`. `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. `degree` is an integer from 1 through 12 in version 2 (version 1 stopped at 6). The D1 claim still wants an optimized degree-4 or degree-5 polynomial. Parsing a degree outside that pair does not make it the claim. Coefficients are decimal strings. `skew` is optional text. Synthetic fixtures, not polynomials for the ten instances: [examples/instrument_cado.poly](../examples/instrument_cado.poly), [examples/instrument_msieve.fb](../examples/instrument_msieve.fb).
 
 ### Toy harness
 
@@ -128,9 +128,10 @@ The bench container is `primness-bench`, image built from [Dockerfile](../Docker
 
 ## Immediate next work
 
-1. Finish d1-02 through d1-10 at both bound sets (`scripts/d1_run_all.sh`, then the protocol bounds), run `scripts/d1_summary.py`, and record the per-instance gaps after α.
-2. Settle the baseline: at u between 2 and 3 the counts fall between ρ(u + α/ln B) and the local-density form by a few percent, more than the Poisson noise. Either calibrate against random integers of the same sizes at the same bounds in this harness, or record a second-order Dickman form with its source, before applying the rejection criterion in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md).
-3. Fix the protocol's region per digit length so a run can be labeled `full`, then apply the criterion, record the result in a timestamped note, and update Current State.
+1. Calibrate the baseline in this harness: sample random integers with the same size distribution as the values of each run, count their smoothness at the same bounds (trial division is fine at the sample sizes needed), and compare the count against ρ, the α-shifted ρ and the local-density form by u. Record the calibration as its own schema and note.
+2. State in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md) whether the criterion's mean gap is absolute or relative to the prediction, with a reason, then re-run `scripts/d1_summary.py` against the calibrated baseline.
+3. Test the A4 lever on one instance: select polynomials with square discriminant and measure the residual after α against the generic selection.
+4. Fix the protocol's region per digit length so a run can be labeled `full`.
 
 Do not start all ten instances at \(B = 2^{28}\) before one small external polynomial has been parsed. Do not run msieve NFS polynomial selection on these ten numbers with the 1.54 binary described above and expect an NFS polynomial.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize every d1-measurement/2 result under data/results and apply the
+"""Summarize every d1-measurement/2 or /3 result under data/results and apply the
 D1 rejection criterion from docs/d1_falsifiable_prediction.md.
 
     scripts/d1_summary.py [--suffix scaled-down] [--out data/results/summary]
@@ -33,7 +33,7 @@ def main(argv):
     results = []
     for f in files:
         r = json.loads(Path(f).read_text())
-        if r.get("schema_version") != "d1-measurement/2":
+        if r.get("schema_version") not in ("d1-measurement/2", "d1-measurement/3"):
             continue
         results.append((Path(f).name.split(".")[0], r))
     if not results:

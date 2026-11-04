@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 18:29 EST
-- **Version**: 1.18
+- **Last Modified**: 2026-11-03 19:28 EST
+- **Version**: 1.19
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,17 +60,15 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 18:29 EST:
+As of 2026-11-03 19:28 EST:
 
-I am developing on `primness_dev01`. Pull request 22 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 23 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
 
-I recorded the Murphy α definition with its sources in `docs/murphy_alpha.md` and implemented it in the harness (`src/alpha.rs`): the expected p-adic valuation over coprime pairs, affine and projective parts, lifted exactly at repeated roots. For the d1-01 polynomial the harness computes α = -3.9640; the instrument's unread comment line says −3.96, and the shift the counts themselves ask for is −3.8 to −4.1. The result contract is now `d1-measurement/2`, which carries the raw, the α-adjusted and the local-density Dickman predictions side by side.
+All ten instances are measured. Each has a CADO-NFS degree-4 polynomial selected outside this tree, a Murphy α computed here, and two runs on the same region: 2^14 to 2^20 and the protocol's 2^20, 2^24, 2^28, with the line sieve and the hardware trace. The residual after α, as a share of the prediction, averages +21.7% at 2^14, +12.9% at 2^16, +6.7% at 2^18, +3.3% at 2^20, -0.3% at 2^24, -1.7% at 2^28. Its sign is set by u, not by the instance: small instances sit below the α-adjusted prediction, large ones above it, and every instance drifts the same way as B grows. `scripts/d1_summary.py` applies the written criterion per bound and gets a split verdict, rejected at 2^20 and not at the others, with the absolute-gap weighting that the prediction document does not specify. I do not read either verdict as evidence for or against D1 yet: a residual that depends only on u is the finite-B error of the Dickman baseline, which at these bounds is of the same size as the residual.
 
-I replaced trial division with a line sieve (`src/fp.rs`, `src/linesieve.rs`, `docs/line_sieve.md`): roots of f mod p for every prime up to B, ln p marked at a ≡ r·b, candidates resieved and verified exactly. Its counts equal trial division's at every bound on d1-01, 35 times faster, and the protocol's 2^28 takes 40 seconds on the same region. Trial division stays behind `--method trial`.
+I also ran a ladder of structured polynomials on the same region. The reducible x^n − 1 family shows the excess that survives α, up to +83% for x^6 − 1, which at the same mean u as d1-01 is smooth eleven times as often; that is the special number field sieve's advantage and is closed to a hard N because a reducible polynomial factors N. Five irreducible quartics with different Galois groups all fall below the α-adjusted prediction, roughly in the order of how many primes can divide their values. The harness now tells three shapes apart, and D1 needs an irreducible polynomial with the first. None of the ten has it.
 
-The first measurement at the protocol's bounds is `data/results/d1-01.scaled-down.b28.json`. After my own α the algebraic side shows no excess over Dickman at any bound from 2^14 to 2^28: the gap is -2.8% of the density at 2^20 and -3.4% at 2^28, flat across u, a small deficit rather than the excess D1 claims. The local-density form errs the other way by a few percent. The baseline's own error is now larger than the Poisson noise, so before the rejection criterion can be applied across ten instances the noise term must include the baseline's uncertainty, or the baseline must be sharpened. I am running d1-02 through d1-10 now (`scripts/d1_run_all.sh`), and `scripts/d1_summary.py` will apply the criterion across them.
-
-Every result writes its CSV tables and a report beside it, every instrument run records a hardware trace, and the bench and the published dashboard show them.
+The next step is to calibrate the baseline inside this harness, by counting the smoothness of random integers of the same sizes at the same bounds, and then to re-apply the criterion with relative gaps and a stated weighting. After that, the A4 lever: polynomials with square discriminant for one instance.
 
 The required status check on the main ruleset is still to be applied in the repository settings.
 
@@ -80,7 +78,9 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
-- Which Dickman approximation is the right baseline for the D1 comparison at u between 2 and 3: ρ(u + α/ln B), which the d1-01 counts undershoot by a few percent at 2^28, or the local density ρ(u) + ρ′(u)/ln B, which they overshoot by a few percent? The rejection criterion needs a baseline whose own error is below the measurement noise.
+- Which Dickman approximation is the right baseline for the D1 comparison at u between 2 and 5? Across ten instances the residual after α changes sign with u, from about −3% at u near 3 to about +20% at u near 5, between the plain ρ(u + α/ln B) and the local-density form. The rejection criterion needs a baseline whose own error is below the measurement noise, which points to an empirical calibration in this harness.
+- Does the criterion in `docs/d1_falsifiable_prediction.md` mean the absolute gap, which weights the dense small instances most, or the relative gap? The verdict differs.
+- Does the residual after α track the Galois group of the polynomial on real selected polynomials, as it does on the toy quartics (A4 least, V4 most)?
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*
