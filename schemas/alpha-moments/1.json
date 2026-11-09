@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alpha-moments/1",
+  "title": "Murphy alpha and the excess variance alpha2 of instrument polynomials",
+  "description": "For each instrument polynomial file, both sides' Murphy alpha (docs/murphy_alpha.md: the shift of the mean log of the small-prime part relative to a random integer, Sum (1/(p-1) - E[v_p]) ln p over primes up to bound) and alpha2 (docs/baseline_calibration.md: the excess variance of that log, Sum (Var[v_p(F)] - Var[v_p(n)]) ln^2 p over the same primes, primes taken as independent). Both come from the exact p-adic valuation distribution over coprime pairs computed by lifting roots mod p in src/alpha.rs. alpha2 is the quantity a second-order Dickman correction needs: a spread in the effective size raises the mean smoothness probability by about alpha2 rho''(u) / (2 ln^2 B) relative to rho(u) because rho is convex.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ts_ms",
+    "bound",
+    "method",
+    "definition",
+    "polynomials",
+    "tables"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "alpha-moments/1"
+    },
+    "ts_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bound": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "method": {
+      "const": "murphy-valuation-moments"
+    },
+    "definition": {
+      "const": "docs/baseline_calibration.md"
+    },
+    "polynomials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "instance",
+          "path",
+          "degree",
+          "n_digits",
+          "algebraic",
+          "rational"
+        ],
+        "properties": {
+          "instance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "degree": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "n_digits": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "algebraic": {
+            "$ref": "#/$defs/side"
+          },
+          "rational": {
+            "$ref": "#/$defs/side"
+          }
+        }
+      }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path",
+          "columns",
+          "rows",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "columns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "side": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alpha",
+        "alpha2"
+      ],
+      "properties": {
+        "alpha": {
+          "type": "number"
+        },
+        "alpha2": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

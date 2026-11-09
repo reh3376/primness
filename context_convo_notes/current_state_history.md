@@ -2,12 +2,18 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-03 19:28 EST
-- **Version**: 1.14
+- **Last Modified**: 2026-11-09 10:05 EST
+- **Version**: 1.15
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-09 10:05 EST
+- Pull request 24 is merged. This is the first change on `primness_dev01` after that merge.
+- The Dickman baseline is measured in the harness (`d1-baseline`, `d1-baseline/1`): consecutive integers at 101 sizes follow the de Bruijn local form ρ + γρ′/ln B to a fraction of a percent; ρ(u) overstates their smoothness by 6–13% at these bounds, the derivative form understates it.
+- Against that baseline the ten instances sit above the α-adjusted prediction at every bound (+44% at 2^14 to +4.2% at 2^28). The second-order term α₂ (excess variance of the log small-prime part, `src/alpha.rs`, `d1-alpha`, `alpha-moments/1`) closes 75–87% of it; the rational side is exact to 0.1%. Criterion not rejected at any bound; not read as evidence for D1.
+- Criterion weighting proposed (`docs/baseline_calibration.md` §6). Next: the exact small-prime part per value against the baseline's conditional density.
 
 ### 2026-11-03 19:28 EST
 - Pull request 23 is merged. This is the first change on `primness_dev01` after that merge.

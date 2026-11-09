@@ -27,9 +27,10 @@ Active constraints live at the top of the roadmap: Rust for numerical kernels, a
 
 ## Current state a new agent must not miss
 
-Current State is stamped 2026-11-03 19:28 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
+Current State is stamped 2026-11-09 10:05 EST. The scientific facts below are carried forward from the 16:48 EST snapshot:
 
-- Development is on `primness_dev01`. Pull request 23 is merged.
+- Development is on `primness_dev01`. Pull request 24 is merged.
+- The Dickman baseline is measured (`d1-baseline`, `data/results/baseline.consecutive.json`, `docs/baseline_calibration.md`): integers without structure follow ρ(u) + γρ′(u)/ln B, not ρ(u) and not the harness's `predicted_local`. `scripts/d1_calibrate.py` re-applies the baseline and the second-order term α₂ (`d1-alpha`, `data/results/alpha_moments.json`) to every instance; read `data/results/summary.calibrated.md` before the α-only summaries. Most of the residual after α is α₂; what remains (+0.5% at 2^28) is open, not evidence.
 - D1 is the starting sub-claim. d1-01 is measured at 2^14 to 2^20 (`data/results/d1-01.scaled-down.json`) and at the protocol's 2^20, 2^24, 2^28 (`data/results/d1-01.scaled-down.b28.json`) against raw, α-adjusted and local-density Dickman predictions. Murphy \(\alpha\) is defined in `docs/murphy_alpha.md` and computed in `src/alpha.rs`; do not read the instrument's α comment. All ten instances are measured (`data/results/summary.all-bounds.csv`, `scripts/d1_summary.py`). The residual after α changes sign with u, which is the baseline's finite-B error; do not read the split criterion verdict as a result. `data/results/patterns.scaled-down.csv` and `data/results/fixtures/` hold the structure ladder (x^n − 1 and five Galois-group quartics) on the same region.
 - The ten semiprimes in `data/d1_test_instances.md` are unchanged. Digit counts are 40, 44, 48, 52, 56, 60, 64, 68, 72, and 80. Their bit lengths, from those decimals, are 131 through 264. d1-10 is 264 bits and \(\log_{10}(N)\) is about 79.37.
 - The harness parses CADO and msieve polynomial files into `instrument-polynomial/1` and measures them (see the harness section below). `data/instruments/d1-01/cado.poly` is the only polynomial so far.
@@ -62,9 +63,10 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 | [src/dickman.rs](../src/dickman.rs) | Dickman–de Bruijn ρ(u): exact on [0, 2], Simpson grid above (4096 steps per unit to u = 40). Tests pin ρ(1) = 1, ρ(2) = 1 − ln 2, and the literature values at 3, 4, 5, 10. No α. |
 | [src/eval.rs](../src/eval.rs) | Homogeneous BigInt evaluation F(a, b) = Σ c_i a^i b^(d−i), and `coprime`. |
 | [src/sieve.rs](../src/sieve.rs) | Primes up to B by a bit sieve; `largest_prime_factor_if_smooth` by trial division (BigUint, then u128, then u64 phases). Used by `--method trial` and by α. |
-| [src/alpha.rs](../src/alpha.rs) | Murphy α from [docs/murphy_alpha.md](murphy_alpha.md): expected p-adic valuation over coprime pairs, exact lifting. |
+| [src/alpha.rs](../src/alpha.rs) | Murphy α from [docs/murphy_alpha.md](murphy_alpha.md): expected p-adic valuation over coprime pairs, exact lifting. Also the second moment (`valuation_moments`) and α₂ ([docs/baseline_calibration.md](baseline_calibration.md) §4). |
 | [src/fp.rs](../src/fp.rs) | Roots of f mod p (gcd with x^p − x, Cantor–Zassenhaus). |
-| [src/linesieve.rs](../src/linesieve.rs) | Line sieve with resieve verification ([docs/line_sieve.md](line_sieve.md)); the default smoothness method. |
+| [src/linesieve.rs](../src/linesieve.rs) | Line sieve with resieve verification ([docs/line_sieve.md](line_sieve.md)); the default smoothness method. `sieve_range`/`resieve_range` sieve an arbitrary window of a row (used for consecutive integers). |
+| [src/bin/d1_baseline.rs](../src/bin/d1_baseline.rs), [src/bin/d1_alpha.rs](../src/bin/d1_alpha.rs), [scripts/d1_calibrate.py](../scripts/d1_calibrate.py) | Binary `d1-baseline` (consecutive-integer baseline, `d1-baseline/1`); binary `d1-alpha` (α and α₂ per instrument, `alpha-moments/1`); the calibrated comparison and the criterion under both weightings. |
 | [scripts/d1_run_all.sh](../scripts/d1_run_all.sh), [scripts/d1_summary.py](../scripts/d1_summary.py), [scripts/d1_report.py](../scripts/d1_report.py) | All instances end to end; the criterion across instances; the per-run report. |
 | [src/hardware.rs](../src/hardware.rs) | `hardware-sample/1` telemetry: macmon + ioreg + sysctl, JSONL trace, Postgres rows, summary. See [docs/hardware_telemetry.md](hardware_telemetry.md). |
 | [src/bin/hw_sample.rs](../src/bin/hw_sample.rs) | Binary `hw-sample`: records a trace while a command runs or for N samples. |
@@ -110,9 +112,11 @@ Do not call a random-base Miller-Rabin test, an OpenSSL prime, or a Baillie-PSW 
 
 ### Schemas and collection
 
-Three schema files:
+Schema files (every data-collection schema requires `schema_version`, a `const` equal to its `$id`):
 
 - [schemas/measurement-event/1.json](../schemas/measurement-event/1.json) — `$id` `measurement-event/1`. `kind` is `start`, `sample`, or `finish`. `scale` is `toy`, `scaled-down`, or `full`.
+- [schemas/d1-measurement/3.json](../schemas/d1-measurement/3.json) (1 and 2 stay beside it) — an instrument run's result. [schemas/hardware-sample/1.json](../schemas/hardware-sample/1.json) — one telemetry sample.
+- [schemas/d1-baseline/1.json](../schemas/d1-baseline/1.json) — the consecutive-integer baseline. [schemas/alpha-moments/1.json](../schemas/alpha-moments/1.json) — α and α₂ per instrument polynomial.
 - [schemas/instrument-polynomial/1.json](../schemas/instrument-polynomial/1.json) — not a measurement event.
 - [schemas/current-state/1.json](../schemas/current-state/1.json) — the Auto-PR gate, not a measurement event.
 
@@ -128,8 +132,8 @@ The bench container is `primness-bench`, image built from [Dockerfile](../Docker
 
 ## Immediate next work
 
-1. Calibrate the baseline in this harness: sample random integers with the same size distribution as the values of each run, count their smoothness at the same bounds (trial division is fine at the sample sizes needed), and compare the count against ρ, the α-shifted ρ and the local-density form by u. Record the calibration as its own schema and note.
-2. State in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md) whether the criterion's mean gap is absolute or relative to the prediction, with a reason, then re-run `scripts/d1_summary.py` against the calibrated baseline.
+1. Replace the α expansion with the exact small-prime part: for every value compute s(F) by trial division over the primes up to the α bound, and compare its smoothness with the baseline's conditional density Q_B(X/s) of B-smooth integers among those with no prime factor below that bound, which `d1-baseline` can tabulate from the same consecutive integers by binning on the cofactor's size ([docs/baseline_calibration.md](baseline_calibration.md) §5). A gap that survives is structure at primes between the α bound and B.
+2. Adopt or amend the criterion weighting proposed in [docs/baseline_calibration.md](baseline_calibration.md) §6 in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md); that file is the author's and has not been edited.
 3. Test the A4 lever on one instance: select polynomials with square discriminant and measure the residual after α against the generic selection.
 4. Fix the protocol's region per digit length so a run can be labeled `full`.
 

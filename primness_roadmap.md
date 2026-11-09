@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-03 19:28 EST
-- **Version**: 1.19
+- **Last Modified**: 2026-11-09 10:05 EST
+- **Version**: 1.20
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,15 +60,17 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-03 19:28 EST:
+As of 2026-11-09 10:05 EST:
 
-I am developing on `primness_dev01`. Pull request 23 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 24 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
 
-All ten instances are measured. Each has a CADO-NFS degree-4 polynomial selected outside this tree, a Murphy α computed here, and two runs on the same region: 2^14 to 2^20 and the protocol's 2^20, 2^24, 2^28, with the line sieve and the hardware trace. The residual after α, as a share of the prediction, averages +21.7% at 2^14, +12.9% at 2^16, +6.7% at 2^18, +3.3% at 2^20, -0.3% at 2^24, -1.7% at 2^28. Its sign is set by u, not by the instance: small instances sit below the α-adjusted prediction, large ones above it, and every instance drifts the same way as B grows. `scripts/d1_summary.py` applies the written criterion per bound and gets a split verdict, rejected at 2^20 and not at the others, with the absolute-gap weighting that the prediction document does not specify. I do not read either verdict as evidence for or against D1 yet: a residual that depends only on u is the finite-B error of the Dickman baseline, which at these bounds is of the same size as the residual.
+The baseline is now measured, not assumed. `d1-baseline` sieves consecutive integers near 101 sizes from 5 × 10^8 to 10^52, 16.8 million at each, with the same line sieve as the instrument runs, and compares their smoothness at the protocol's bounds with three Dickman forms. Integers without structure follow the de Bruijn local form ρ(u) + γρ′(u)/ln B to a fraction of a percent from 2^16 up (1.7% at 2^14); ρ(u) itself overstates their smoothness by 6 to 13 percent at these bounds, and the derivative form the harness carried as the local density understates it by about as much. `docs/baseline_calibration.md` records the derivation and the run.
 
-I also ran a ladder of structured polynomials on the same region. The reducible x^n − 1 family shows the excess that survives α, up to +83% for x^6 − 1, which at the same mean u as d1-01 is smooth eleven times as often; that is the special number field sieve's advantage and is closed to a hard N because a reducible polynomial factors N. Five irreducible quartics with different Galois groups all fall below the α-adjusted prediction, roughly in the order of how many primes can divide their values. The harness now tells three shapes apart, and D1 needs an irreducible polynomial with the first. None of the ten has it.
+Against that baseline, re-applied per u bin by `scripts/d1_calibrate.py`, the algebraic side of all ten instances sits above the α-adjusted prediction at every bound, +44% at 2^14 falling to +4.2% at 2^28, and the sign no longer changes with u. The shape of what remains is a second-order term of the α heuristic itself: α fixes the mean of the log small-prime part and not its spread, and ρ is convex, so the spread raises the smoothness by about α₂ ρ″/(2ρ ln² B), with α₂ the excess variance of that log computed from the polynomial by the same root lifting as α (`src/alpha.rs`, `d1-alpha`, `alpha-moments/1`). The variance each instance's gap implies is nearly the same at all six bounds and close to its computed α₂ (d1-01: 5.5 to 7.4 against 6.3). With α₂ applied the mean gap is +11% at 2^14, +2.8% at 2^20, +1.2% at 2^24 and +0.5% at 2^28, two standard deviations of the spread across instances at 2^28; on the rational side, where the model should be exact, it is +0.11%, +0.04% and −0.01% at the protocol bounds. The criterion rejects at no bound under either weighting, and I do not read that as evidence for D1: three quarters to seven eighths of the gap after α was the heuristic's own second-order term.
 
-The next step is to calibrate the baseline inside this harness, by counting the smoothness of random integers of the same sizes at the same bounds, and then to re-apply the criterion with relative gaps and a stated weighting. After that, the A4 lever: polynomials with square discriminant for one instance.
+The criterion's weighting is proposed in `docs/baseline_calibration.md` section 6 (relative gap, de Bruijn baseline with α and α₂, noise the larger of Poisson and the instance spread) and left for me to adopt in the prediction document.
+
+The next step replaces the expansion altogether: compute the exact small-prime part of every value and compare its smoothness with the baseline's conditional density for cofactors of that size, which `d1-baseline` can tabulate from the same consecutive integers. A gap that survives that is structure at primes between the α bound and B and the first evidence for D1; a gap that vanishes closes the α chapter.
 
 The required status check on the main ruleset is still to be applied in the repository settings.
 
@@ -78,9 +80,8 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
-- Which Dickman approximation is the right baseline for the D1 comparison at u between 2 and 5? Across ten instances the residual after α changes sign with u, from about −3% at u near 3 to about +20% at u near 5, between the plain ρ(u + α/ln B) and the local-density form. The rejection criterion needs a baseline whose own error is below the measurement noise, which points to an empirical calibration in this harness.
-- Does the criterion in `docs/d1_falsifiable_prediction.md` mean the absolute gap, which weights the dense small instances most, or the relative gap? The verdict differs.
-- Does the residual after α track the Galois group of the polynomial on real selected polynomials, as it does on the toy quartics (A4 least, V4 most)?
+- What carries the gap that remains after the measured baseline and α₂: +1.2% at 2^24 and +0.5% at 2^28 on the algebraic side, positive for eight of ten instances, with implied variances 10 to 50 percent above the computed α₂ for most instances? The candidates are the third moment of the small-prime part, the independence and random-cofactor approximations inside α, and structure at primes between the α bound and B. The exact small-prime measurement in `docs/baseline_calibration.md` section 5 separates them.
+- Does the residual after α and α₂ track the Galois group of the polynomial on real selected polynomials, as the toy quartics suggested for α alone (A4 least, V4 most)? The toy ladder has not been re-read against the measured baseline, and the reducible x^n − 1 family is outside the second-order expansion's regime.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*

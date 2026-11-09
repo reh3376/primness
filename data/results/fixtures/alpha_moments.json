@@ -1,0 +1,221 @@
+{
+  "bound": 2000,
+  "definition": "docs/baseline_calibration.md",
+  "method": "murphy-valuation-moments",
+  "polynomials": [
+    {
+      "algebraic": {
+        "alpha": 0.9000415461033935,
+        "alpha2": -3.7612669850484868
+      },
+      "degree": 4,
+      "instance": "a4",
+      "n_digits": 7,
+      "path": "data/results/fixtures/a4.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": 1.694464480326417,
+        "alpha2": -4.540960606343328
+      },
+      "degree": 4,
+      "instance": "c4",
+      "n_digits": 7,
+      "path": "data/results/fixtures/c4.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": 2.198173419412513,
+        "alpha2": -5.835047633592657
+      },
+      "degree": 4,
+      "instance": "d4",
+      "n_digits": 7,
+      "path": "data/results/fixtures/d4.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": 1.5757515090820593,
+        "alpha2": -3.344332243461976
+      },
+      "degree": 4,
+      "instance": "s4",
+      "n_digits": 7,
+      "path": "data/results/fixtures/s4.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": 2.634642331004176,
+        "alpha2": -7.574626813488578
+      },
+      "degree": 4,
+      "instance": "v4",
+      "n_digits": 7,
+      "path": "data/results/fixtures/v4.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -16.616564635480042,
+        "alpha2": 70.70519200961148
+      },
+      "degree": 10,
+      "instance": "x10m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x10m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -27.202832638518018,
+        "alpha2": 113.2371520914055
+      },
+      "degree": 12,
+      "instance": "x12m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x12m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.909211189106449,
+        "alpha2": 26.370280953311365
+      },
+      "degree": 2,
+      "instance": "x2m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x2m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -4.997835323723076,
+        "alpha2": 24.288656008897405
+      },
+      "degree": 3,
+      "instance": "x3m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x3m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -11.590936987247344,
+        "alpha2": 50.52223167238582
+      },
+      "degree": 4,
+      "instance": "x4m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x4m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -4.784211715983411,
+        "alpha2": 23.691117393955242
+      },
+      "degree": 5,
+      "instance": "x5m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x5m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -17.043811850959354,
+        "alpha2": 72.66234073695277
+      },
+      "degree": 6,
+      "instance": "x6m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x6m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -4.050969744811188,
+        "alpha2": 22.104117075259193
+      },
+      "degree": 7,
+      "instance": "x7m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x7m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -16.004435859756388,
+        "alpha2": 71.20608682705621
+      },
+      "degree": 8,
+      "instance": "x8m1",
+      "n_digits": 7,
+      "path": "data/results/fixtures/x8m1.poly",
+      "rational": {
+        "alpha": 0.5694650072033852,
+        "alpha2": -0.8802147676970151
+      }
+    }
+  ],
+  "schema_version": "alpha-moments/1",
+  "tables": [
+    {
+      "columns": [
+        "instance",
+        "side",
+        "degree",
+        "n_digits",
+        "alpha",
+        "alpha2"
+      ],
+      "description": "per polynomial and side: Murphy alpha and the excess variance alpha2 of the log small-prime part, over primes up to bound",
+      "name": "alpha_moments",
+      "path": "data/results/fixtures/alpha_moments.csv",
+      "rows": 28
+    }
+  ],
+  "ts_ms": 1794236019674
+}
