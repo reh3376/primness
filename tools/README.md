@@ -31,7 +31,7 @@ A third-party tree is copied in only when its license can sit beside `MIT OR Apa
 - msieve's own Readme places that code in the public domain (Jason Papadopoulos; the checkout named above is `upiter/msieve`). The license would allow a copy. The numerical claim still has to be computed here, so the build stays outside this tree and CI does not compile it. The harness reads its factor-base polynomial (`N`, `SKEW`, `R*`, `A*`). On this Mac, the stock Apple clang build stops because `gettimeofday` is undeclared in `common/util.c`. A checkout outside this tree builds after that file includes `<sys/time.h>`. That binary is not in this repository, and polynomial selection has not been run.
 - YAFU's repository root has no `LICENSE` file, and `README.md` on `master` does not state one. As of YAFU 3.0 that tree also bundles msieve and GGNFS sieve binaries. It is not copied in. Polynomials it writes can be parsed when they use one of the two formats above; the record's `source` stays `unspecified` unless the caller names the tool.
 
-The record is `schemas/instrument-polynomial/1.json` (`$id` `instrument-polynomial/1`). `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. Degree in this version is 1 through 6. The D1 claim still requires an optimized degree-4 or degree-5 polynomial; this schema does not decide that.
+The record is `schemas/instrument-polynomial/1.json` (`$id` `instrument-polynomial/1`). `format` is `cado` or `msieve-fb`. `source` is `cado-nfs`, `msieve`, `yafu`, or `unspecified`. Degree in version 2 is 1 through 12 (version 1 stopped at 6). The D1 claim still requires an optimized degree-4 or degree-5 polynomial; this schema does not decide that.
 
 ## Running CADO-NFS polynomial selection here
 

@@ -1,0 +1,10 @@
+# x^4 + 8x + 12: irreducible, Galois group A4 (square discriminant)
+n: 1000003
+skew: 1.0
+c0: 12
+c1: 8
+c2: 0
+c3: 0
+c4: 1
+Y0: -2
+Y1: 1

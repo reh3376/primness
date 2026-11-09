@@ -1,0 +1,10 @@
+# x^4 - 2: irreducible, Galois group dihedral of order 8
+n: 1000003
+skew: 1.0
+c0: -2
+c1: 0
+c2: 0
+c3: 0
+c4: 1
+Y0: -2
+Y1: 1
