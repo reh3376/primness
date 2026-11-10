@@ -242,16 +242,16 @@ def region_eta(t, ln_a_max, ln_b_max):
     return e - t[6] if t[5] >= ln_a_max else e
 
 
-def first_order(qb, bins, tail, b, width, rough, omega, a_max, b_max, density=True):
-    """The exact first-order term of the primes in (rough, B], as an absolute
-    number of smooth values: sum over values and primes of eta_p R(c/p)/R(c)
-    (Q(c/p) - Q(c)), with eta_p for the region (region_eta). `density` False
-    sets R(c/p)/R(c) to 1."""
+def first_order_by_bin(qb, bins, tail, b, width, rough, omega, a_max, b_max, density=True):
+    """The exact first-order term of the primes in (rough, B] per cofactor
+    bin, as the change in a value's smooth probability: {bin: sum over primes
+    of eta_p R(c/p)/R(c) (Q(c/p) - Q(c))} at the bin's mean ln c, with eta_p
+    for the region (region_eta). `density` False sets R(c/p)/R(c) to 1."""
     ln_y, ln_b = math.log(rough), math.log(b)
     jump = math.ceil(ln_b / width - 1e-9)
     q = q_function(qb, b, width, width / 8)
     tb = [(t[0], region_eta(t, math.log(a_max), math.log(b_max))) for t in root_tail_bins(tail, b)]
-    total = 0.0
+    out = {}
     for k, n, x, _ in bins:
         if k < jump or k not in qb or qb[k][0] == 0:
             continue  # below B every cofactor is smooth, and so is every c/p
@@ -266,8 +266,15 @@ def first_order(qb, bins, tail, b, width, rough, omega, a_max, b_max, density=Tr
             if qz is None:
                 continue
             s += eta * (omega(z / ln_y) / w0 if density else 1.0) * (qz - q0)
-        total += n * s
-    return total
+        out[k] = s
+    return out
+
+
+def first_order(qb, bins, tail, b, width, rough, omega, a_max, b_max, density=True):
+    """The exact first-order term over all of a side's values, as an absolute
+    number of smooth values (first_order_by_bin weighted by the bin counts)."""
+    s = first_order_by_bin(qb, bins, tail, b, width, rough, omega, a_max, b_max, density)
+    return sum(n * s[k] for k, n, _, _ in bins if k in s)
 
 
 def mean_std(xs):

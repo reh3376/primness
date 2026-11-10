@@ -2,12 +2,19 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-10 13:05 EST
-- **Version**: 1.18
+- **Last Modified**: 2026-11-10 13:45 EST
+- **Version**: 1.19
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-10 13:45 EST
+- Pull request 27 is merged. This is the first change on `primness_dev01` after that merge.
+- D5 (smooth clusters) tested on the ten D1 instances under a prediction written first (`docs/d5_falsifiable_prediction.md`): per-value probability from the conditional baseline and the root-count term; tiles 2 × 2 to 50 × 50 and 64 sectors; split-half held-out lift.
+- Rejected: largest algebraic lift +1.5 errors (5 × 5 at 2^24), 11 of 18 negative; −0.11% ± 0.15% on 50 × 50 tiles at 2^28. Tiles scatter as counting noise (χ² per tile 0.98–1.00 on fine tiles); split-half correlations at zero.
+- Unexplained: rational sectors scatter less than counting noise (χ² 0.79–0.87); hints that whole-region counting noise is an upper bound.
+- D1 verdict drafted in `docs/d1_falsifiable_prediction.md` for the author. Next: the verdict, then D2–D4 or a larger-scale check.
 
 ### 2026-11-10 13:05 EST
 - Pull request 26 is merged. This is the first change on `primness_dev01` after that merge.

@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:13 EST
-- **Last Modified**: 2026-11-10 13:05 EST
-- **Version**: 1.9
+- **Last Modified**: 2026-11-10 13:45 EST
+- **Version**: 1.10
 - **Tags**: index, documentation, context
 - **Related Files**: primness_roadmap.md, current_state_history.md
 
@@ -23,5 +23,6 @@
 | 2026-11-10 04:10 | Conditional baseline Q_B(c) tabulated by cofactor size from the consecutive integers (`d1-baseline/2`) | obstacle-D, D1, baseline, conditional-density, cofactor | [2026-11-10_0410_conditional_baseline_cofactor.md](2026-11-10_0410_conditional_baseline_cofactor.md) |
 | 2026-11-10 05:15 | Exact small-prime measurement on the ten instances: control at zero, no mean excess, per-polynomial deviations follow the α tail | obstacle-D, D1, conditional-density, alpha-tail, null-result | [2026-11-10_0515_exact_small_prime_measurement.md](2026-11-10_0515_exact_small_prime_measurement.md) |
 | 2026-11-10 13:05 | Exact first-order term of the primes between 2000 and B from root counts to 2^28: per-instance deviations explained, residuals at the noise | obstacle-D, D1, root-counts, alpha-tail, null-result | [2026-11-10_1305_exact_first_order_term.md](2026-11-10_1305_exact_first_order_term.md) |
+| 2026-11-10 13:45 | D5 smooth clusters tested on the ten D1 instances: no locatable excess, tiles at counting noise; D1 verdict drafted | obstacle-D, D5, D1, smooth-clusters, null-result | [2026-11-10_1345_d5_smooth_clusters.md](2026-11-10_1345_d5_smooth_clusters.md) |
 
 Update this table whenever a new timestamped note is added to the directory.
