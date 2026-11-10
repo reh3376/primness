@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:13 EST
-- **Last Modified**: 2026-11-10 05:15 EST
-- **Version**: 1.8
+- **Last Modified**: 2026-11-10 13:05 EST
+- **Version**: 1.9
 - **Tags**: index, documentation, context
 - **Related Files**: primness_roadmap.md, current_state_history.md
 
@@ -22,5 +22,6 @@
 | 2026-11-09 10:05 | Dickman baseline measured on consecutive integers (de Bruijn local form); second-order term α₂ explains most of the residual after α | obstacle-D, D1, baseline, dickman, murphy-alpha, de-bruijn | [2026-11-09_1005_baseline_calibration_alpha2.md](2026-11-09_1005_baseline_calibration_alpha2.md) |
 | 2026-11-10 04:10 | Conditional baseline Q_B(c) tabulated by cofactor size from the consecutive integers (`d1-baseline/2`) | obstacle-D, D1, baseline, conditional-density, cofactor | [2026-11-10_0410_conditional_baseline_cofactor.md](2026-11-10_0410_conditional_baseline_cofactor.md) |
 | 2026-11-10 05:15 | Exact small-prime measurement on the ten instances: control at zero, no mean excess, per-polynomial deviations follow the α tail | obstacle-D, D1, conditional-density, alpha-tail, null-result | [2026-11-10_0515_exact_small_prime_measurement.md](2026-11-10_0515_exact_small_prime_measurement.md) |
+| 2026-11-10 13:05 | Exact first-order term of the primes between 2000 and B from root counts to 2^28: per-instance deviations explained, residuals at the noise | obstacle-D, D1, root-counts, alpha-tail, null-result | [2026-11-10_1305_exact_first_order_term.md](2026-11-10_1305_exact_first_order_term.md) |
 
 Update this table whenever a new timestamped note is added to the directory.

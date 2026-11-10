@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "root-tail/1",
+  "title": "Root counts of instrument polynomials at the primes between the rough bound and B",
+  "description": "For each instrument polynomial file and side, the projective root counts r_p of the homogeneous form at every prime p in (from, bound], summed in bins of ln p (src/bin/d1_tail.rs). Over coprime pairs a value is divisible by p with probability r_p/(p+1) against 1/p for an integer; eta_p = (r_p p - p - 1)/(p^2 - 1) is that excess scaled by p/(p-1), the quantity the exact first-order term of docs/baseline_calibration.md section 9 needs. A region whose b stays below p never meets the root at infinity; there eta_p^aff = (r_p^aff - 1)/(p - 1) over the affine roots alone is the excess (table column eta_affine). Likewise a region whose |a| stays below p meets the root 0 only at (0, 1); eta_zero sums 1/(p - 1) over the primes at which 0 is a root, the amount that removes from eta_affine. alpha_tail = -Sum eta_p ln p equals Murphy alpha over the same primes wherever p divides neither the discriminant nor the leading coefficient.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ts_ms",
+    "from",
+    "bound",
+    "bin_width",
+    "method",
+    "definition",
+    "primes",
+    "threads",
+    "duration_ms",
+    "polynomials",
+    "tables"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "root-tail/1"
+    },
+    "ts_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "from": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "bound": {
+      "type": "integer",
+      "minimum": 3,
+      "maximum": 4294967296
+    },
+    "bin_width": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "method": {
+      "const": "projective-root-count"
+    },
+    "definition": {
+      "const": "docs/baseline_calibration.md"
+    },
+    "primes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "threads": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "polynomials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "instance",
+          "path",
+          "degree",
+          "n_digits",
+          "algebraic",
+          "rational"
+        ],
+        "properties": {
+          "instance": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "degree": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "n_digits": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "algebraic": {
+            "$ref": "#/$defs/side"
+          },
+          "rational": {
+            "$ref": "#/$defs/side"
+          }
+        }
+      }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path",
+          "columns",
+          "rows",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "columns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "side": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alpha_tail",
+        "roots_per_prime"
+      ],
+      "properties": {
+        "alpha_tail": {
+          "type": "number"
+        },
+        "roots_per_prime": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

@@ -48,16 +48,7 @@ fn run() -> Result<(), String> {
         }
     }
     if files.is_empty() {
-        let mut dirs: Vec<PathBuf> = fs::read_dir(&instruments)
-            .map_err(|err| format!("{}: {err}", instruments.display()))?
-            .filter_map(|e| e.ok().map(|e| e.path()))
-            .filter(|p| p.join("cado.poly").is_file())
-            .collect();
-        dirs.sort();
-        for dir in dirs {
-            let id = dir.file_name().and_then(|s| s.to_str()).unwrap_or("instrument").to_string();
-            files.push((id, dir.join("cado.poly")));
-        }
+        files = poly::instrument_files(&instruments)?;
     }
     if files.is_empty() {
         return Err(format!("no polynomial files under {}", instruments.display()));

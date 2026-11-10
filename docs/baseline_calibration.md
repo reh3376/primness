@@ -113,7 +113,7 @@ The mean is within one standard error of zero at every bound. The +1.2% at 2^24 
 
 The individual instances are not at zero. At 2^28 d1-08 is +1.72% (8.9 standard errors) and d1-09 is −1.18% (6.6); six of ten are beyond 2.9. The deviations have both signs and they have a known cause.
 
-**The α tail.** The split removes the primes up to 2000 exactly. At a prime p between 2000 and B the polynomial has n_p roots, a random integer has one, and n_p varies from prime to prime. The first-order effect is the size shift α(B) − α(2000), which is zero on average over polynomials and has a spread of 0.048 across the ten. `d1-alpha --bound` computes it (the root enumeration in `src/alpha.rs` now uses the roots mod p in place of a scan of every residue, with identical results at 2000 and 2^14; α at 2^28 was not computed, and the tail at 2^24 stands in for it). The gap that shift predicts is exp(slope × tail) − 1, with the slope d ln(prediction)/d ln c read from the table.
+**The α tail.** The split removes the primes up to 2000 exactly. At a prime p between 2000 and B the polynomial has n_p roots, a random integer has one, and n_p varies from prime to prime. The first-order effect is the size shift α(B) − α(2000), which is zero on average over polynomials and has a spread of 0.048 across the ten. `d1-alpha --bound` computes it to 2^24 (the root enumeration in `src/alpha.rs` now uses the roots mod p in place of a scan of every residue, with identical results at 2000 and 2^14), and the root counts of section 9 give it at every bound to 2^28. The gap that shift predicts is exp(slope × tail) − 1, with the slope d ln(prediction)/d ln c read from the table.
 
 | algebraic side | 2^14 | 2^16 | 2^18 | 2^20 | 2^24 | 2^28 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -121,12 +121,46 @@ The individual instances are not at zero. At 2^28 d1-08 is +1.72% (8.9 standard 
 | regression slope | 3.37 | 3.07 | 2.52 | 2.42 | 2.08 | 1.53 |
 | spread of the gap across instances | 4.92% | 3.45% | 2.32% | 2.03% | 1.32% | 0.76% |
 | spread after the tail | 3.62% | 2.51% | 1.48% | 1.30% | 0.72% | 0.29% |
-| mean gap after the tail | −0.35% | +0.90% | +0.48% | +0.47% | +0.27% | +0.10% |
+| mean gap after the tail | −0.35% | +0.90% | +0.48% | +0.47% | +0.27% | +0.09% |
 | its standard error | 1.15% | 0.79% | 0.47% | 0.41% | 0.23% | 0.09% |
 
-The sign and the order of every instance's deviation follow its tail (d1-08 has the most negative tail, −0.094, and the largest excess; d1-09 the most positive, +0.085, and the largest deficit). The tail's prediction is too small by the regression slope, 1.5 at 2^28 rising to 3.4 at 2^14. I have not computed why. The likely reason is that a size shift is the wrong first-order form for a prime of this size: removing one prime p near B changes the cofactor by ln p, which is of the order of ln B and not small against the scale on which Q varies, so the exact first-order term is Σ (n_p − 1)/p × (Q_B(c/p)/Q_B(c) − 1) and exceeds its linearization. That sum can be computed from the root counts and this table, and it is the next check.
+The sign and the order of every instance's deviation follow its tail (d1-08 has the most negative tail, −0.094, and the largest excess; d1-09 the most positive, +0.085, and the largest deficit). The tail's prediction is too small by the regression slope, 1.5 at 2^28 rising to 3.4 at 2^14. Section 9 shows why: a size shift is the wrong first-order form for primes of this size, and the exact first-order term, computed from the root counts and this table, has a slope of 1.
 
-**Reading.** After the exact small-prime measurement the algebraic values of these ten polynomials are smooth as often as rough integers of their cofactor's size, on average, to +0.16% ± 0.24% at 2^28 and +0.35% ± 0.42% at 2^24. What each polynomial shows beyond that is its own root counts between 2000 and B, the continuation of α, with both signs. This is not evidence for D1. The claim's rejection threshold (a mean gap below two standard deviations of the noise) is met at every bound under the relative weighting of section 6. One thing is still open: the mean after the tail is positive at five of six bounds, by about one standard error each, and those bounds share their values, so the five are not independent.
+**Reading.** After the exact small-prime measurement the algebraic values of these ten polynomials are smooth as often as rough integers of their cofactor's size, on average, to +0.16% ± 0.24% at 2^28 and +0.35% ± 0.42% at 2^24. What each polynomial shows beyond that is its own root counts between 2000 and B, the continuation of α, with both signs. This is not evidence for D1. The claim's rejection threshold (a mean gap below two standard deviations of the noise) is met at every bound under the relative weighting of section 6. Section 9 removes the root counts between 2000 and B exactly and finds nothing left.
+
+## 9. The exact first-order term of the primes between y and B
+
+**The term.** Over coprime pairs a prime p divides F(a, b) with probability r_p/(p + 1), where r_p counts the roots of the homogeneous form in P^1(F_p); an integer is divisible with probability 1/p. Among the y-rough integers near a size c, the fraction divisible by p is R(c/p)/(p R(c)), where R is the density of y-rough integers near a size, ω(ln x / ln y)/ln y with Buchstab's ω. Give the multiples of p the weight that makes their probability r_p/(p + 1), and the rest the weight that keeps the total, and the smooth density of the cofactors of size c moves, to first order in that change, by
+
+    η_p · R(c/p)/R(c) · (Q_B(c/p) − Q_B(c)),    η_p = (r_p p − p − 1)/(p² − 1).
+
+The prediction gains the sum of this over the primes in (y, B] and over the values (`first_order` in `scripts/d1_conditional.py`). Q_B(c/p) is read from the table at ln c − ln p; nothing is linearized in ln p. The size shift of section 8 is the linearization: Q_B(c/p)/Q_B(c) − 1 ≈ −(d ln Q/d ln c) ln p, and −Σ η_p ln p is α's tail exactly at the primes that divide neither the discriminant nor the leading coefficient. For a prime of the size of B, ln p is not small against the scale on which Q varies and e^x − 1 exceeds x: across the ten instances the exact term is 2.8 times the linear prediction at 2^14 and 1.5 times at 2^28, which is the regression slope section 8 left open. The density ratio R(c/p)/R(c) is within half a percent of 1 wherever c/p is above about y³, and it moves no gap by more than 1.1% at 2^14 or 0.004% at 2^28. Products of two η's, the second order, are neglected.
+
+**The region.** The probability r_p/(p + 1) gives every point of P^1(F_p) the same weight, which a sieve region does only for a prime small against it. The region here has 1 ≤ b ≤ 1500 and |a| ≤ 3000, and every prime above y = 2000 exceeds 1500, so the root at infinity (b ≡ 0) is never met; above 3000 the root 0 (a ≡ 0) is met only at (0, 1). The comparison drops both where the region cannot reach them: η_p becomes (r_p^aff − 1)/(p − 1) over the affine roots, less 1/(p − 1) where 0 is a root above 3000. The first matters where a leading coefficient has a prime above 2000, which here is the rational side of d1-08 (2143, 2549), d1-09 (3709, 4243) and d1-10 (11621, 19013): −0.52% at 2^14 and −0.08% at 2^28 for d1-08. Primes above 3000 divide the constant coefficient of eight algebraic and five rational polynomials, and dropping the root 0 moves no gap by more than 0.064%. Other roots of small height, u/v with u and v small, are met less often than 1/p once p is large against the region over |(u, v)|; they are not modelled, and the χ² below says they do not matter at this precision.
+
+**The root counts.** `d1-tail` counts r_p at all 14,630,540 primes in (2000, 2^28] for both sides of the ten polynomials, in 22 s on 18 threads: the degree of gcd(x^p − x, f mod p), with x^p computed in fixed arrays of machine words (`fp::count_roots`, tested against the root finder at every prime to 20,000 and against evaluation at every point of P^1(F_p) to 400), plus the point at infinity when p divides the leading coefficient. It writes, per side and per bin of ln p of width ln 2/64, the primes, Σ r_p, Σ η_p, Σ η_p ln p, the sum over the affine roots alone and the sum for the root 0 (`root-tail/1`, `data/results/root_tail.{json,csv}`). Its α tail, −Σ η_p ln p, agrees with `d1-alpha`'s α(2^24) − α(2000) to 4 × 10⁻¹³ on five algebraic sides and all ten rational ones, and to 2.4 × 10⁻⁶ at most on the others, where primes dividing the discriminant add higher powers of p to α but not to the probability that p divides a value. α at 2^28 is now computed: no tail moves by more than 0.002 between 2^24 and 2^28.
+
+**Result.** The algebraic side, the gap before and after the term:
+
+| algebraic side | 2^14 | 2^16 | 2^18 | 2^20 | 2^24 | 2^28 |
+|---|---:|---:|---:|---:|---:|---:|
+| correlation of the gap with the term | +0.96 | +0.94 | +0.98 | +0.95 | +0.99 | +0.99 |
+| regression slope of the gap on the term | 1.19 | 1.10 | 1.05 | 1.11 | 1.19 | 1.01 |
+| spread of the gap across instances | 4.92% | 3.45% | 2.32% | 2.03% | 1.32% | 0.76% |
+| spread after the term | 1.64% | 1.18% | 0.42% | 0.64% | 0.29% | 0.13% |
+| mean per-instance noise | 3.10% | 1.52% | 0.83% | 0.50% | 0.24% | 0.14% |
+| χ² of the ten gaps about zero, before | 50.3 | 57.6 | 69.4 | 103.4 | 207.5 | 191.2 |
+| χ² of the ten gaps about zero, after | 6.5 | 4.5 | 5.3 | 8.3 | 13.2 | 7.2 |
+| mean gap after the term (spread / √10) | +0.09% ± 0.52% | +0.73% ± 0.37% | +0.25% ± 0.13% | +0.29% ± 0.20% | +0.17% ± 0.09% | +0.03% ± 0.04% |
+| mean weighted by 1/noise², after | +0.31% ± 0.32% | +0.02% ± 0.19% | +0.11% ± 0.13% | −0.03% ± 0.09% | +0.05% ± 0.05% | −0.01% ± 0.03% |
+
+At 2^28 d1-08 goes from +1.72% (8.9σ) to +0.14% (0.7σ) and d1-09 from −1.18% (−6.6σ) to +0.11% (0.6σ). After the term no instance is beyond 2.1σ at any bound.
+
+The rational control is unchanged by the term except where the region drops the root at infinity, and stays at zero: χ² after the term 8.6, 12.5, 19.1, 12.2, 6.4 and 3.3 on ten, weighted mean within 0.02% of zero at every bound (±0.06% at 2^14, ±0.01% at 2^28).
+
+The per-instance noise differs fifty-fold between instances (the rational side of d1-01 has 0.05%, of d1-10 2.9%), so the χ², not the plain spread, says whether the gaps are noise, and the summary reports it with the weighted mean beside the plain one. The plain mean after the term is within two standard errors of zero at every bound (2.0 at 2^16, 1.9 at 2^24); the weighted mean, the better estimate when the noise varies this much, is within one standard error at every bound.
+
+**Reading.** The algebraic values of these ten polynomials are smooth exactly as often as their root counts at every prime up to B say: the primes up to 2000 through the exact split, the primes between 2000 and B through this term. After both, the ten residuals are counting noise at every bound, and the weighted mean is −0.01% ± 0.03% at 2^28 and +0.05% ± 0.05% at 2^24. At this scale the smoothness of an optimized polynomial's values is its root properties, which α summarizes and this measurement computes prime by prime, and nothing else to 0.03–0.05% at the protocol's upper bounds. There is nothing left for D1 to explain on these instances. Recording that as the verdict in `docs/d1_falsifiable_prediction.md` is the author's decision.
 
 ## Files
 
@@ -136,8 +170,10 @@ The sign and the order of every instance's deviation follow its tail (d1-08 has 
 | `src/linesieve.rs` | `sieve_range` and `resieve_range`: the row sieve over an arbitrary window, used for the interval. |
 | `src/cofactor.rs` | The split n = s·c, the bin rule, and grouped trial division by the small primes. |
 | `src/bin/d1_measure.rs` | Per value: the cofactor bin; table `cofactor` in `d1-measurement/4`. |
-| `scripts/d1_conditional.py` | Sum of Q_B over each instance's cofactors, the gaps, and the α tail; writes `data/results/summary.conditional.{csv,md}`. |
-| `data/results/alpha_moments.b{14,16,18,20,24}.{json,csv}` | α at the larger bounds, for the tail. |
+| `scripts/d1_conditional.py` | Sum of Q_B over each instance's cofactors, the gaps, the α tail, and the exact first-order term of the primes between 2000 and B; writes `data/results/summary.conditional.{csv,md}`. |
+| `src/bin/d1_tail.rs`, `src/fp.rs` | Binary `d1-tail`: the root counts of every instrument polynomial at every prime in (2000, 2^28], summed by bin of ln p; result `root-tail/1`. `fp::count_roots` counts the roots without finding them. |
+| `data/results/root_tail.{json,csv}` | The root counts and η sums to 2^28, for the first-order term and the α tail. |
+| `data/results/alpha_moments.b{14,16,18,20,24}.{json,csv}` | α at the larger bounds from `d1-alpha`; the root counts reproduce them. |
 | `src/alpha.rs` | `affine_moments`, `projective_moments`, `valuation_moments`, `random_valuation_variance`, `alpha2`. |
 | `src/bin/d1_alpha.rs` | α and α₂ for every instrument polynomial; result `alpha-moments/1`. |
 | `scripts/d1_calibrate.py` | Baseline check, calibrated predictions, second-order term, implied variance, the criterion under both weightings. |

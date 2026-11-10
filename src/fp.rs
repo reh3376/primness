@@ -239,6 +239,88 @@ pub fn vanishes_mod_p(f: &[BigInt], p: u64) -> bool {
     reduce(f, p).is_empty()
 }
 
+/// The largest degree `x_pow_p_word` handles.
+const WORD_DEGREE: usize = 8;
+
+/// x^p mod m over F_p, for a monic m of degree 2..=WORD_DEGREE and p < 2^32:
+/// the value `powmod_poly(&[0, 1], p, m, p)` gives, computed in fixed arrays
+/// with every product in one machine word.
+fn x_pow_p_word(m: &[u64], p: u64) -> Vec<u64> {
+    let d = m.len() - 1;
+    debug_assert!((2..=WORD_DEGREE).contains(&d) && p < 1 << 32);
+    // x^d ≡ Σ_{i<d} neg[i] x^i (mod m).
+    let mut neg = [0u64; WORD_DEGREE];
+    for i in 0..d {
+        neg[i] = (p - m[i]) % p;
+    }
+    // Left to right over the bits of p; the top bit gives x itself.
+    let mut r = [0u64; WORD_DEGREE];
+    r[1] = 1;
+    let top = 63 - p.leading_zeros();
+    for bit in (0..top).rev() {
+        let mut t = [0u64; 2 * WORD_DEGREE - 1];
+        for i in 0..d {
+            if r[i] == 0 {
+                continue;
+            }
+            for j in 0..d {
+                t[i + j] = (t[i + j] + r[i] * r[j] % p) % p;
+            }
+        }
+        // Products of two residues below 2^32 and a residue added stay below 2^64.
+        for k in (d..=2 * d - 2).rev() {
+            let c = t[k];
+            if c != 0 {
+                for i in 0..d {
+                    t[k - d + i] = (t[k - d + i] + c * neg[i]) % p;
+                }
+            }
+        }
+        r[..d].copy_from_slice(&t[..d]);
+        if (p >> bit) & 1 == 1 {
+            let c = r[d - 1];
+            for i in (1..d).rev() {
+                r[i] = r[i - 1];
+            }
+            r[0] = 0;
+            if c != 0 {
+                for i in 0..d {
+                    r[i] = (r[i] + c * neg[i]) % p;
+                }
+            }
+        }
+    }
+    let mut out = r[..d].to_vec();
+    trim(&mut out);
+    out
+}
+
+/// The number of distinct roots in F_p of f, given reduced mod p (`reduce`):
+/// the degree of gcd(x^p − x, f). It equals `roots_mod_p(f, p).len()` without
+/// separating the roots, and for p < 2^32 and degree up to 8 it raises x to
+/// the p-th power in fixed arrays, fast enough for every prime up to 2^28
+/// (`d1-tail`). A constant, the zero polynomial included, has none.
+pub fn count_roots(fp: &[u64], p: u64) -> usize {
+    let mut f = fp.to_vec();
+    trim(&mut f);
+    if f.len() <= 1 {
+        return 0;
+    }
+    if f.len() == 2 {
+        return 1;
+    }
+    if p < BRUTE_FORCE_BELOW {
+        return (0..p).filter(|&x| eval(&f, x, p) == 0).count();
+    }
+    let fm = monic(f, p);
+    let xp = if p < 1 << 32 && fm.len() - 1 <= WORD_DEGREE {
+        x_pow_p_word(&fm, p)
+    } else {
+        powmod_poly(&[0, 1], p, &fm, p)
+    };
+    gcd(&sub(&xp, &[0, 1], p), &fm, p).len() - 1
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -286,5 +368,45 @@ mod tests {
         let g = poly(&[-1, 0, 0, 0, 1]);
         assert_eq!(roots_mod_p(&g, 1_000_000_009).len(), 4);
         assert_eq!(roots_mod_p(&g, 1_000_000_007).len(), 2);
+    }
+
+    #[test]
+    fn word_powering_matches_the_general_one() {
+        let primes = crate::sieve::primes_up_to(1 << 20);
+        let mut seed = 12_345u64;
+        for &p in primes.iter().filter(|&&p| p >= BRUTE_FORCE_BELOW).step_by(997).chain([4_294_967_291u64].iter()) {
+            for d in 2..=WORD_DEGREE {
+                let mut m: Vec<u64> = (0..d)
+                    .map(|_| {
+                        seed = seed.wrapping_mul(6_364_136_223_846_793_005).wrapping_add(1_442_695_040_888_963_407);
+                        (seed >> 33) % p
+                    })
+                    .collect();
+                m.push(1);
+                assert_eq!(x_pow_p_word(&m, p), powmod_poly(&[0, 1], p, &m, p), "p={p} m={m:?}");
+            }
+        }
+    }
+
+    #[test]
+    fn counted_roots_match_the_roots_found() {
+        let polys = [
+            poly(&[24, -50, 35, -10, 1]),
+            poly(&[-1, 0, 0, 0, 1]),
+            poly(&[1, 0, 1]),
+            poly(&[-85186479, -38330143, 45773675, 567699, 7560]),
+            poly(&[197150570, 63638117]),
+            poly(&[0, 0, 1]),
+            poly(&[7, 0, 0, 0, 0, 3]),
+            poly(&[3, 1, 4, 1, 5, 9, 2, 6, 5, 3]),
+        ];
+        let primes = crate::sieve::primes_up_to(20_000);
+        for f in &polys {
+            for &p in primes.iter().chain([1_000_003u64, 268_435_399, 4_294_967_291].iter()) {
+                assert_eq!(count_roots(&reduce(f, p), p), roots_mod_p(f, p).len(), "f={f:?} p={p}");
+            }
+        }
+        assert_eq!(count_roots(&[], 7), 0);
+        assert_eq!(count_roots(&[5], 7), 0);
     }
 }
