@@ -7,22 +7,32 @@
 //! ρ(u), ρ(u) + ρ'(u)/ln B, and ρ(u) + γ ρ'(u)/ln B. Integers in a short
 //! interval near X have no polynomial structure, so their smoothness is the
 //! quantity Murphy's α heuristic compares a polynomial value against.
+//!
+//! The same pass tabulates the conditional baseline: every integer n in the
+//! interval is split as n = s·c with s its part made of primes up to the rough
+//! bound y (the α bound) and c the cofactor, which has no prime factor up to y.
+//! Binned on ln c and pooled over the sizes, the counts give Q_B(c), the
+//! density of B-smooth integers among the y-rough integers of size c.
 //! docs/baseline_calibration.md records the definitions and the use.
 
 use num_bigint::{BigInt, BigUint};
-use num_traits::One;
+use num_traits::{One, ToPrimitive, Zero};
+use primness::alpha;
 use primness::dickman::{self, Dickman};
 use primness::hardware::{self, Sampler};
 use primness::linesieve::{self, FactorBase};
 use primness::metrics::{self, Event, Sink};
 use primness::schema::Registry;
+use primness::sieve::primes_up_to;
 use serde_json::json;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
-pub const RESULT_V1: &str = "d1-baseline/1";
+pub const RESULT_V2: &str = "d1-baseline/2";
+/// Largest prime power the small-prime sieve walks; a position it still divides is finished exactly.
+const POWER_CAP: u64 = 1 << 62;
 const SCALE: &str = "scaled-down";
 const METHOD: &str = "consecutive-integers";
 /// Euler–Mascheroni constant, the coefficient of ρ'(u)/ln B in the de Bruijn local density.
@@ -35,6 +45,8 @@ struct Options {
     ln_x_step: f64,
     length: u64,
     chunk: u64,
+    rough_bound: u64,
+    cofactor_bin: f64,
     threads: usize,
     out: PathBuf,
     hw_sample: bool,
@@ -44,7 +56,7 @@ struct Options {
 fn usage() -> ! {
     eprintln!(
         "Usage: d1-baseline [--bounds 2^14,2^16,2^18,2^20,2^24,2^28] [--ln-x MIN:MAX:STEP] \
-         [--length 2^24] [--chunk 2^20] [--threads N] [--out FILE] [--no-hw-sample] [--hw-interval-ms N]"
+         [--length 2^24] [--chunk 2^20] [--rough-bound 2000] [--cofactor-bin 0.25] [--threads N] [--out FILE] [--no-hw-sample] [--hw-interval-ms N]"
     );
     std::process::exit(2);
 }
@@ -67,6 +79,8 @@ fn parse_options() -> Options {
         ln_x_step: 1.0,
         length: 1 << 24,
         chunk: 1 << 20,
+        rough_bound: alpha::DEFAULT_BOUND,
+        cofactor_bin: 0.25,
         threads: std::thread::available_parallelism()
             .map(|n| n.get())
             .unwrap_or(1),
@@ -102,6 +116,8 @@ fn parse_options() -> Options {
             }
             "--length" => opts.length = args.next().and_then(|v| parse_count(&v)).filter(|n| *n >= 2).unwrap_or_else(|| usage()),
             "--chunk" => opts.chunk = args.next().and_then(|v| parse_count(&v)).filter(|n| *n >= 1).unwrap_or_else(|| usage()),
+            "--rough-bound" => opts.rough_bound = args.next().and_then(|v| parse_count(&v)).filter(|n| *n >= 2).unwrap_or_else(|| usage()),
+            "--cofactor-bin" => opts.cofactor_bin = args.next().and_then(|v| v.parse().ok()).filter(|w: &f64| w.is_finite() && *w >= 0.01).unwrap_or_else(|| usage()),
             "--threads" => opts.threads = args.next().and_then(|v| v.parse().ok()).filter(|n| *n >= 1).unwrap_or_else(|| usage()),
             "--out" => opts.out = PathBuf::from(args.next().unwrap_or_else(|| usage())),
             "--no-hw-sample" => opts.hw_sample = false,
@@ -126,23 +142,144 @@ fn integer_near_exp(t: f64) -> BigUint {
     BigUint::from(mantissa) << shift
 }
 
+/// The cofactor split: the primes up to the rough bound and the ln c bins.
+struct Cofactor {
+    primes: Vec<u64>,
+    bin_width: f64,
+    bins: usize,
+}
+
+/// Counts per ln c bin: the integers whose cofactor falls in the bin, the sum
+/// of their ln c, and the smooth ones per bound (row-major, bins × bounds).
+struct CofactorTally {
+    count: Vec<u64>,
+    sum_ln_c: Vec<f64>,
+    smooth: Vec<u64>,
+}
+
+impl CofactorTally {
+    fn new(bins: usize, bounds: usize) -> Self {
+        CofactorTally { count: vec![0; bins], sum_ln_c: vec![0.0; bins], smooth: vec![0; bins * bounds] }
+    }
+
+    fn add(&mut self, other: &CofactorTally) {
+        for (a, b) in self.count.iter_mut().zip(&other.count) {
+            *a += b;
+        }
+        for (a, b) in self.sum_ln_c.iter_mut().zip(&other.sum_ln_c) {
+            *a += b;
+        }
+        for (a, b) in self.smooth.iter_mut().zip(&other.smooth) {
+            *a += b;
+        }
+    }
+}
+
 struct SizeTally {
     smooth: Vec<u64>,
     candidates: u64,
+    cofactor: CofactorTally,
+}
+
+impl SizeTally {
+    fn new(bins: usize, bounds: usize) -> Self {
+        SizeTally { smooth: vec![0; bounds], candidates: 0, cofactor: CofactorTally::new(bins, bounds) }
+    }
+
+    fn add(&mut self, other: &SizeTally) {
+        for (a, b) in self.smooth.iter_mut().zip(&other.smooth) {
+            *a += b;
+        }
+        self.candidates += other.candidates;
+        self.cofactor.add(&other.cofactor);
+    }
+}
+
+/// ln of the part of n made of the given primes, by division.
+fn small_part_ln_exact(n: &BigUint, primes: &[u64]) -> f64 {
+    let mut n = n.clone();
+    let mut total = 0.0;
+    for &p in primes {
+        while (&n % p).is_zero() {
+            n /= p;
+            total += (p as f64).ln();
+        }
+    }
+    total
+}
+
+/// ln s(n) for the integers n = base + j, j in [0, len), where s(n) is the
+/// part of n made of the given primes with their full multiplicity. Every
+/// prime power up to POWER_CAP is walked; a position the last power still
+/// divides is finished by division, so the result is exact up to rounding.
+fn small_part_logs(base: &BigUint, len: usize, primes: &[u64]) -> Vec<f32> {
+    let mut logs = vec![0f32; len];
+    let mut capped: Vec<usize> = Vec::new();
+    for &p in primes {
+        let ln_p = (p as f64).ln() as f32;
+        let mut q = p;
+        loop {
+            let r = (base % q).to_u64().expect("a remainder below 2^64");
+            let start = (q - r) % q;
+            // The multiples of p·q are among the multiples of q, so none lies in the range either.
+            if start >= len as u64 {
+                break;
+            }
+            let last = q > POWER_CAP / p;
+            let mut j = start;
+            while j < len as u64 {
+                logs[j as usize] += ln_p;
+                if last {
+                    capped.push(j as usize);
+                }
+                j += q;
+            }
+            if last {
+                break;
+            }
+            q *= p;
+        }
+    }
+    capped.sort_unstable();
+    capped.dedup();
+    for j in capped {
+        let n = base + BigUint::from(j as u64);
+        if !n.is_zero() {
+            logs[j] = small_part_ln_exact(&n, primes) as f32;
+        }
+    }
+    logs
 }
 
 /// Sieve the positions [a_lo, a_lo + len) of f(x) = x + X at b = 1, where
-/// position j holds the integer X + a_lo + j, and count the smooth ones per bound.
-fn sieve_chunk(fb: &FactorBase, x: &BigUint, a_lo: i64, len: usize, ln_x: f64, slack: f64, bounds: &[u64]) -> SizeTally {
+/// position j holds the integer X + a_lo + j, count the smooth ones per bound,
+/// and tally every integer and every smooth one by the size of its cofactor.
+#[allow(clippy::too_many_arguments)]
+fn sieve_chunk(fb: &FactorBase, x: &BigUint, a_lo: i64, len: usize, ln_x: f64, slack: f64, bounds: &[u64], cof: &Cofactor) -> SizeTally {
     let base = (BigInt::from(x.clone()) + BigInt::from(a_lo))
         .to_biguint()
         .expect("the interval stays above zero");
+    let mut tally = SizeTally::new(cof.bins, bounds.len());
+
+    // The cofactor bin of every integer: ln c = ln n − ln s(n).
+    let small = small_part_logs(&base, len, &cof.primes);
+    let inv_x = 1.0 / x.to_f64().expect("X fits a float");
+    let mut bin = vec![0u16; len];
+    for j in 0..len {
+        let ln_n = ln_x + ((a_lo + j as i64) as f64 * inv_x).ln_1p();
+        let ln_c = (ln_n - small[j] as f64).max(0.0);
+        // A cofactor is 1 or exceeds the rough bound; rounding must not lift a 1 out of bin 0.
+        let k = if ln_c < 0.5 { 0 } else { ((ln_c / cof.bin_width) as usize).min(cof.bins - 1) };
+        bin[j] = k as u16;
+        tally.cofactor.count[k] += 1;
+        tally.cofactor.sum_ln_c[k] += if k == 0 && ln_c < 0.5 { 0.0 } else { ln_c };
+    }
+
     let mut acc = vec![0u16; len];
     linesieve::sieve_range(fb, 1, a_lo, &mut acc);
     let threshold = ln_x - slack;
     let candidate: Vec<bool> = acc.iter().map(|&s| s as f64 / linesieve::LOG_SCALE >= threshold).collect();
     let hits = linesieve::resieve_range(fb, 1, a_lo, &candidate);
-    let mut tally = SizeTally { smooth: vec![0; bounds.len()], candidates: 0 };
     let mut k = 0usize;
     let mut ps = Vec::new();
     for (j, &is_candidate) in candidate.iter().enumerate() {
@@ -160,9 +297,11 @@ fn sieve_chunk(fb: &FactorBase, x: &BigUint, a_lo: i64, len: usize, ln_x: f64, s
         }
         let value = &base + BigUint::from(j as u64);
         if let Some(lpf) = linesieve::verify(&value, &ps) {
+            let row = bin[j] as usize * bounds.len();
             for (i, &b) in bounds.iter().enumerate() {
                 if lpf <= b {
                     tally.smooth[i] += 1;
+                    tally.cofactor.smooth[row + i] += 1;
                 }
             }
         }
@@ -206,6 +345,13 @@ fn run(opts: &Options) -> Result<(), String> {
     let half = length / 2;
     let chunk = opts.chunk.min(length) as usize;
     let threads = opts.threads.max(1);
+    // Bins of ln c from 0 to past the largest size; the last bin takes anything beyond.
+    let bins = ((opts.ln_x_max + 1.0) / opts.cofactor_bin).ceil() as usize + 1;
+    if bins > u16::MAX as usize {
+        return Err("too many cofactor bins: widen --cofactor-bin".into());
+    }
+    let cof = Cofactor { primes: primes_up_to(opts.rough_bound), bin_width: opts.cofactor_bin, bins };
+    let mut cofactor = CofactorTally::new(bins, bounds.len());
 
     let mut sizes = Vec::new();
     let mut t = opts.ln_x_min;
@@ -240,7 +386,7 @@ fn run(opts: &Options) -> Result<(), String> {
         None
     };
     println!(
-        "baseline: {} sizes, ln X {}..{} step {}, {} consecutive integers each, bounds {:?}, slack {:.2}, {} threads",
+        "baseline: {} sizes, ln X {}..{} step {}, {} consecutive integers each, bounds {:?}, slack {:.2}, cofactors rough to {} in bins of {}, {} threads",
         sizes.len(),
         opts.ln_x_min,
         opts.ln_x_max,
@@ -248,6 +394,8 @@ fn run(opts: &Options) -> Result<(), String> {
         length,
         bounds,
         slack,
+        opts.rough_bound,
+        opts.cofactor_bin,
         threads
     );
 
@@ -274,15 +422,11 @@ fn run(opts: &Options) -> Result<(), String> {
             let handles: Vec<_> = chunks
                 .chunks(per_thread)
                 .map(|mine| {
-                    let (fb, x, bounds) = (&fb, x, bounds.as_slice());
+                    let (fb, x, bounds, cof) = (&fb, x, bounds.as_slice(), &cof);
                     scope.spawn(move || {
-                        let mut acc = SizeTally { smooth: vec![0; bounds.len()], candidates: 0 };
+                        let mut acc = SizeTally::new(cof.bins, bounds.len());
                         for &(a_lo, len) in mine {
-                            let t = sieve_chunk(fb, x, a_lo, len, ln_x, slack, bounds);
-                            for i in 0..bounds.len() {
-                                acc.smooth[i] += t.smooth[i];
-                            }
-                            acc.candidates += t.candidates;
+                            acc.add(&sieve_chunk(fb, x, a_lo, len, ln_x, slack, bounds, cof));
                         }
                         acc
                     })
@@ -297,6 +441,7 @@ fn run(opts: &Options) -> Result<(), String> {
                 smooth[i] += t.smooth[i];
             }
             candidates += t.candidates;
+            cofactor.add(&t.cofactor);
         }
         total_evaluated += length;
         total_smooth_top += smooth[bounds.len() - 1];
@@ -379,6 +524,38 @@ fn run(opts: &Options) -> Result<(), String> {
     let points_path = PathBuf::from(format!("{stem}.points.csv"));
     write_text(&points_path, &points)?;
     println!("wrote {}", points_path.display());
+    // The conditional baseline: per ln c bin and bound, pooled over the sizes.
+    let nb = bounds.len();
+    let mut cof_csv = String::from(
+        "ln_c_lo,ln_c_hi,b,count,mean_ln_c,u,smooth,observed,observed_stderr,debruijn_local,ratio_debruijn\n",
+    );
+    let mut bins_filled = 0usize;
+    let mut cofactor_total = 0u64;
+    for k in 0..bins {
+        let count = cofactor.count[k];
+        if count == 0 {
+            continue;
+        }
+        bins_filled += 1;
+        cofactor_total += count;
+        let (lo, hi) = (k as f64 * opts.cofactor_bin, (k + 1) as f64 * opts.cofactor_bin);
+        let mean = cofactor.sum_ln_c[k] / count as f64;
+        for (i, &b) in bounds.iter().enumerate() {
+            let smooth = cofactor.smooth[k * nb + i];
+            let u = mean / ln_bounds[i];
+            let observed = smooth as f64 / count as f64;
+            let stderr = (observed * (1.0 - observed) / count as f64).sqrt();
+            let debruijn = (dickman.rho(u) + EULER_GAMMA * dickman.rho_prime(u) / ln_bounds[i]).clamp(0.0, 1.0);
+            let ratio = if debruijn > 0.0 { observed / debruijn } else { f64::NAN };
+            cof_csv.push_str(&format!(
+                "{lo:.4},{hi:.4},{b},{count},{mean:.6},{u:.6},{smooth},{observed:.9},{stderr:.9},{debruijn:.9},{ratio:.6}\n"
+            ));
+        }
+    }
+    let cofactor_path = PathBuf::from(format!("{stem}.cofactor.csv"));
+    write_text(&cofactor_path, &cof_csv)?;
+    println!("wrote {} ({} bins of ln c)", cofactor_path.display(), bins_filled);
+    let cof_header = cof_csv.lines().next().unwrap_or("");
     let header = points.lines().next().unwrap_or("");
     let tables = vec![json!({
         "name": "points",
@@ -386,9 +563,15 @@ fn run(opts: &Options) -> Result<(), String> {
         "columns": header.split(',').collect::<Vec<_>>(),
         "rows": points.lines().count().saturating_sub(1),
         "description": "per size X and bound B: u = ln X / ln B, count of consecutive integers, smooth count, observed density and its Poisson standard error, rho(u), the derivative form rho + rho'/ln B, the de Bruijn local form rho + gamma rho'/ln B, and observed over each",
+    }), json!({
+        "name": "cofactor",
+        "path": cofactor_path.to_string_lossy(),
+        "columns": cof_header.split(',').collect::<Vec<_>>(),
+        "rows": cof_csv.lines().count().saturating_sub(1),
+        "description": "the conditional baseline, pooled over the sizes: per bin [ln_c_lo, ln_c_hi) of the cofactor c = n / s(n), with s(n) the part of n made of primes up to rough_bound, and per bound B: the count of integers whose cofactor falls in the bin, their mean ln c, u = mean ln c / ln B, the count of those that are B-smooth, the observed density Q_B(c) and its Poisson standard error, and for reference the unconditional de Bruijn local form at u with observed over it. Bin 0 holds the integers with c = 1",
     })];
     let mut result = json!({
-        "schema_version": RESULT_V1,
+        "schema_version": RESULT_V2,
         "run_id": run_id,
         "ts_ms": metrics::now_ms(),
         "elapsed_ms": elapsed_ms,
@@ -402,13 +585,22 @@ fn run(opts: &Options) -> Result<(), String> {
         "dickman": {"method": dickman::METHOD, "steps_per_unit": dickman::STEPS_PER_UNIT, "u_max": dickman::U_MAX},
         "euler_gamma": EULER_GAMMA,
         "smoothness": {"method": "line-sieve", "slack_ln": slack, "factor_base_primes": factor_base_primes},
+        "cofactor": {
+            "rough_bound": opts.rough_bound,
+            "small_primes": cof.primes.len(),
+            "power_cap": POWER_CAP,
+            "bin_width": opts.cofactor_bin,
+            "bins": bins,
+            "bins_filled": bins_filled,
+            "count": cofactor_total,
+        },
         "results": results,
         "tables": tables,
     });
     if let Some(hardware) = hardware {
         result["hardware"] = hardware;
     }
-    registry.validate_value(RESULT_V1, &result)?;
+    registry.validate_value(RESULT_V2, &result)?;
     let text = serde_json::to_string_pretty(&result).map_err(|err| err.to_string())?;
     write_text(&opts.out, &(text + "\n"))?;
     println!(
@@ -432,7 +624,6 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use num_traits::Zero;
     use primness::sieve::{largest_prime_factor_if_smooth, primes_up_to};
 
     #[test]
@@ -457,13 +648,27 @@ mod tests {
         let ln_x = dickman::ln_biguint(&x);
         let slack = linesieve::default_slack(b_top);
         let primes = primes_up_to(b_top);
+        let cof = Cofactor { primes: primes_up_to(50), bin_width: 0.25, bins: 140 };
         // Three chunks at different offsets, as the run splits an interval.
         for &(a_lo, len) in &[(-30_000i64, 20_000usize), (-10_000, 10_000), (0, 15_000)] {
-            let t = sieve_chunk(&fb, &x, a_lo, len, ln_x, slack, &bounds);
+            let t = sieve_chunk(&fb, &x, a_lo, len, ln_x, slack, &bounds, &cof);
             let base = (BigInt::from(x.clone()) + BigInt::from(a_lo)).to_biguint().unwrap();
             let mut expected = vec![0u64; bounds.len()];
+            let mut exp_count = vec![0u64; cof.bins];
+            let mut exp_smooth = vec![0u64; cof.bins * bounds.len()];
             for j in 0..len {
                 let v = &base + BigUint::from(j as u64);
+                // The cofactor by division, binned as the tally bins it.
+                let ln_c = dickman::ln_biguint(&v) - small_part_ln_exact(&v, &cof.primes);
+                let k = if ln_c < 0.5 { 0 } else { (ln_c / cof.bin_width) as usize };
+                exp_count[k] += 1;
+                if let Some(lpf) = largest_prime_factor_if_smooth(&v, &primes, b_top) {
+                    for (i, &b) in bounds.iter().enumerate() {
+                        if lpf <= b {
+                            exp_smooth[k * bounds.len() + i] += 1;
+                        }
+                    }
+                }
                 if let Some(lpf) = largest_prime_factor_if_smooth(&v, &primes, b_top) {
                     for (i, &b) in bounds.iter().enumerate() {
                         if lpf <= b {
@@ -473,7 +678,37 @@ mod tests {
                 }
             }
             assert_eq!(t.smooth, expected, "a_lo={a_lo}");
+            assert_eq!(t.cofactor.count.iter().sum::<u64>(), len as u64);
+            assert_eq!(t.cofactor.count, exp_count, "a_lo={a_lo}");
+            assert_eq!(t.cofactor.smooth, exp_smooth, "a_lo={a_lo}");
+            for i in 0..bounds.len() {
+                let by_bin: u64 = (0..cof.bins).map(|k| t.cofactor.smooth[k * bounds.len() + i]).sum();
+                assert_eq!(by_bin, expected[i]);
+            }
+            let mean_ln_c = t.cofactor.sum_ln_c.iter().sum::<f64>() / len as f64;
+            assert!(mean_ln_c > 20.0 && mean_ln_c < 30.0);
             assert!(expected[2] > 0);
         }
+    }
+
+    #[test]
+    fn small_part_logs_agree_with_division() {
+        let primes = primes_up_to(2000);
+        // 2^70 lies inside the range, past the power cap, and 3^45 inside the second.
+        let bases = [
+            (BigUint::one() << 70u32) - BigUint::from(1000u32),
+            BigUint::from(3u32).pow(45) - BigUint::from(7u32),
+            integer_near_exp(60.0),
+        ];
+        for base in &bases {
+            let logs = small_part_logs(base, 5000, &primes);
+            for (j, &got) in logs.iter().enumerate() {
+                let n = base + BigUint::from(j as u64);
+                let want = small_part_ln_exact(&n, &primes);
+                assert!((got as f64 - want).abs() < 1e-4, "j={j} got={got} want={want}");
+            }
+        }
+        let at = small_part_logs(&bases[0], 1001, &primes)[1000] as f64;
+        assert!((at - 70.0 * 2f64.ln()).abs() < 1e-4);
     }
 }

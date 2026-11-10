@@ -1,0 +1,357 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "d1-baseline/2",
+  "title": "D1 baseline calibration: smoothness of consecutive integers, unconditional and by cofactor",
+  "description": "The empirical Dickman baseline for the D1 comparison (docs/baseline_calibration.md). For each size on a grid of ln X the harness sieves the consecutive integers in [X - length/2, X + length/2) with the same line sieve the instrument runs use (f(x) = x + X, b = 1), decides B-smoothness exactly for every candidate, and records for every bound B the observed density, its Poisson standard error, and three Dickman forms at u = ln X / ln B: rho(u), the derivative form rho(u) + rho'(u)/ln B, and the de Bruijn local form rho(u) + gamma rho'(u)/ln B with gamma the Euler-Mascheroni constant. Integers in a short interval near X carry no polynomial structure, so their smoothness is what Murphy's alpha heuristic says a polynomial value of size X e^alpha behaves like; the ratio observed/rho(u) is the finite-B correction the baseline needs. The one approximation is the line sieve's (docs/line_sieve.md): a value whose repeated prime powers exceed slack_ln (ln units) is counted as not smooth. Version 2 adds the conditional baseline from the same pass: every integer n of every interval is split as n = s c, with s the part of n made of primes up to cofactor.rough_bound (with full multiplicity) and c the cofactor, which has no prime factor up to that bound; the integers and the B-smooth ones among them are counted per bin of ln c, pooled over the sizes. The table named cofactor holds the counts, which give Q_B(c), the density of B-smooth integers among the rough integers of size c. For a fixed s the cofactors of the integers of an interval are exactly the rough integers of the interval divided by s, so pooling over s and over the sizes introduces no bias.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "ts_ms",
+    "elapsed_ms",
+    "scale",
+    "method",
+    "bounds",
+    "sizes",
+    "interval_length",
+    "chunk",
+    "threads",
+    "dickman",
+    "euler_gamma",
+    "smoothness",
+    "cofactor",
+    "results",
+    "tables"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "d1-baseline/2"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "ts_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "elapsed_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scale": {
+      "enum": [
+        "scaled-down",
+        "full"
+      ]
+    },
+    "method": {
+      "const": "consecutive-integers"
+    },
+    "bounds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "integer",
+        "minimum": 2
+      }
+    },
+    "sizes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ln_x_min",
+        "ln_x_max",
+        "ln_x_step",
+        "count"
+      ],
+      "properties": {
+        "ln_x_min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ln_x_max": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ln_x_step": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "interval_length": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "chunk": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "threads": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dickman": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "steps_per_unit",
+        "u_max"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "simpson-grid"
+          ]
+        },
+        "steps_per_unit": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "u_max": {
+          "type": "integer",
+          "minimum": 2
+        }
+      }
+    },
+    "euler_gamma": {
+      "type": "number",
+      "minimum": 0.5772,
+      "maximum": 0.5773
+    },
+    "smoothness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "slack_ln",
+        "factor_base_primes"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "line-sieve"
+          ]
+        },
+        "slack_ln": {
+          "type": "number",
+          "minimum": 0
+        },
+        "factor_base_primes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "cofactor": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The cofactor split behind the table named cofactor.",
+      "required": [
+        "rough_bound",
+        "small_primes",
+        "power_cap",
+        "bin_width",
+        "bins",
+        "bins_filled",
+        "count"
+      ],
+      "properties": {
+        "rough_bound": {
+          "type": "integer",
+          "minimum": 2,
+          "description": "Primes up to this bound make up the small part s(n); the cofactor has none of them."
+        },
+        "small_primes": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of primes up to rough_bound."
+        },
+        "power_cap": {
+          "type": "integer",
+          "minimum": 2,
+          "description": "Largest prime power the small-prime sieve walks; a position it still divides is finished by exact division."
+        },
+        "bin_width": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Width of the ln c bins. Bin k covers [k bin_width, (k+1) bin_width); bin 0 holds c = 1."
+        },
+        "bins": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bins_filled": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Bins with at least one integer; the table has one row per filled bin and bound."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Integers tallied over all bins; equals the sum of results[].count."
+        }
+      }
+    },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "x",
+          "ln_x",
+          "x_digits",
+          "count",
+          "bounds"
+        ],
+        "properties": {
+          "x": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$"
+          },
+          "ln_x": {
+            "type": "number",
+            "minimum": 0
+          },
+          "x_digits": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "bounds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "b",
+                "u",
+                "smooth",
+                "observed",
+                "observed_stderr",
+                "rho",
+                "local",
+                "debruijn_local"
+              ],
+              "properties": {
+                "b": {
+                  "type": "integer",
+                  "minimum": 2
+                },
+                "u": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "smooth": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "observed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "observed_stderr": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "rho": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "local": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "debruijn_local": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "path",
+          "columns",
+          "rows",
+          "description"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "columns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "samples_file",
+        "summary"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "hardware-sample/1"
+        },
+        "samples_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

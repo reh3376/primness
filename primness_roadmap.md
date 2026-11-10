@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-09 10:05 EST
-- **Version**: 1.20
+- **Last Modified**: 2026-11-10 04:10 EST
+- **Version**: 1.21
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,19 +60,19 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-09 10:05 EST:
+As of 2026-11-10 04:10 EST:
 
-I am developing on `primness_dev01`. Pull request 24 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 25 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
 
-The baseline is now measured, not assumed. `d1-baseline` sieves consecutive integers near 101 sizes from 5 × 10^8 to 10^52, 16.8 million at each, with the same line sieve as the instrument runs, and compares their smoothness at the protocol's bounds with three Dickman forms. Integers without structure follow the de Bruijn local form ρ(u) + γρ′(u)/ln B to a fraction of a percent from 2^16 up (1.7% at 2^14); ρ(u) itself overstates their smoothness by 6 to 13 percent at these bounds, and the derivative form the harness carried as the local density understates it by about as much. `docs/baseline_calibration.md` records the derivation and the run.
+The baseline is measured (`docs/baseline_calibration.md`): integers without structure follow the de Bruijn local form ρ(u) + γρ′(u)/ln B, and against it, with α and the second-order term α₂ applied, the algebraic side of the ten instances sits +11% above the prediction at 2^14, +2.8% at 2^20, +1.2% at 2^24 and +0.5% at 2^28. The criterion rejects at no bound and I do not read that as evidence for D1.
 
-Against that baseline, re-applied per u bin by `scripts/d1_calibrate.py`, the algebraic side of all ten instances sits above the α-adjusted prediction at every bound, +44% at 2^14 falling to +4.2% at 2^28, and the sign no longer changes with u. The shape of what remains is a second-order term of the α heuristic itself: α fixes the mean of the log small-prime part and not its spread, and ρ is convex, so the spread raises the smoothness by about α₂ ρ″/(2ρ ln² B), with α₂ the excess variance of that log computed from the polynomial by the same root lifting as α (`src/alpha.rs`, `d1-alpha`, `alpha-moments/1`). The variance each instance's gap implies is nearly the same at all six bounds and close to its computed α₂ (d1-01: 5.5 to 7.4 against 6.3). With α₂ applied the mean gap is +11% at 2^14, +2.8% at 2^20, +1.2% at 2^24 and +0.5% at 2^28, two standard deviations of the spread across instances at 2^28; on the rational side, where the model should be exact, it is +0.11%, +0.04% and −0.01% at the protocol bounds. The criterion rejects at no bound under either weighting, and I do not read that as evidence for D1: three quarters to seven eighths of the gap after α was the heuristic's own second-order term.
+The first half of the measurement that replaces the expansion is done. `d1-baseline` now splits every one of its 1.69 × 10^9 consecutive integers into the part made of primes up to 2000, the α bound, and a cofactor c with no such prime, and counts the integers and the B-smooth ones per bin of ln c, 0.25 wide, pooled over the 101 sizes. The quotient is Q_B(c), the density of B-smooth integers among rough integers of size c, with no independence assumption and no expansion behind it. The result is `d1-baseline/2` with the table `data/results/baseline.consecutive.cofactor.csv`; section 7 of the calibration document records the definition and the run. At every bound the bins sum exactly to the unconditional smooth counts, and the unconditional table is unchanged.
 
-The criterion's weighting is proposed in `docs/baseline_calibration.md` section 6 (relative gap, de Bruijn baseline with α and α₂, noise the larger of Poisson and the instance spread) and left for me to adopt in the prediction document.
+Three things in the table matter for the comparison. Rough integers are far less often smooth than integers of their size: 0.64 to 0.31 of the de Bruijn value at 2^28 for ln c from 25 to 70. At the small bounds Q is banded, with bins that hold no smooth integer at all, so the table has to be read per bin. And the Poisson error per bin is 0.07% to 0.75% at 2^28 over that range but 2% at ln c = 70 for 2^24 and worse below, against a gap of 0.5% and 1.2% to resolve; a longer interval may be needed for the upper sizes.
 
-The next step replaces the expansion altogether: compute the exact small-prime part of every value and compare its smoothness with the baseline's conditional density for cofactors of that size, which `d1-baseline` can tabulate from the same consecutive integers. A gap that survives that is structure at primes between the α bound and B and the first evidence for D1; a gap that vanishes closes the α chapter.
+The next step is the instrument side: `d1-measure` computes the exact small-prime part of every value by the same definition, sums Q_B over the cofactors, and compares the sum with the observed count on the ten instances. A gap that survives is structure at primes between the α bound and B and the first evidence for D1; a gap that vanishes closes the α chapter.
 
-The required status check on the main ruleset is still to be applied in the repository settings.
+The criterion's weighting proposed in `docs/baseline_calibration.md` section 6 is still for me to adopt in the prediction document. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -80,8 +80,9 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
-- What carries the gap that remains after the measured baseline and α₂: +1.2% at 2^24 and +0.5% at 2^28 on the algebraic side, positive for eight of ten instances, with implied variances 10 to 50 percent above the computed α₂ for most instances? The candidates are the third moment of the small-prime part, the independence and random-cofactor approximations inside α, and structure at primes between the α bound and B. The exact small-prime measurement in `docs/baseline_calibration.md` section 5 separates them.
+- What carries the gap that remains after the measured baseline and α₂: +1.2% at 2^24 and +0.5% at 2^28 on the algebraic side, positive for eight of ten instances, with implied variances 10 to 50 percent above the computed α₂ for most instances? The candidates are the third moment of the small-prime part, the independence and random-cofactor approximations inside α, and structure at primes between the α bound and B. The exact small-prime measurement in `docs/baseline_calibration.md` section 5 separates them; its baseline half, the table Q_B(c), exists (section 7).
 - Does the residual after α and α₂ track the Galois group of the polynomial on real selected polynomials, as the toy quartics suggested for α alone (A4 least, V4 most)? The toy ladder has not been re-read against the measured baseline, and the reducible x^n − 1 family is outside the second-order expansion's regime.
+- Is the conditional table precise enough at the upper cofactor sizes? Per bin the Poisson error is 2% at ln c = 70 for 2^24 and 8.7% for 2^20. The instrument sum averages over many bins; whether that reaches the 0.5% to 1.2% gap is not computed until the instrument side exists. `--length 2^26` would multiply the counts by four.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*

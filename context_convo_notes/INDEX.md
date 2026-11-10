@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:13 EST
-- **Last Modified**: 2026-11-09 10:05 EST
-- **Version**: 1.6
+- **Last Modified**: 2026-11-10 04:10 EST
+- **Version**: 1.7
 - **Tags**: index, documentation, context
 - **Related Files**: primness_roadmap.md, current_state_history.md
 
@@ -20,5 +20,6 @@
 | 2026-11-03 18:29 | Murphy α recorded and applied; line sieve; d1-01 at 2^20–2^28: no excess survives α | obstacle-D, D1, murphy-alpha, line-sieve, protocol-bounds | [2026-11-03_1829_alpha_sieve_protocol_bounds.md](2026-11-03_1829_alpha_sieve_protocol_bounds.md) |
 | 2026-11-03 19:28 | All ten instances after α at 2^14–2^28; criterion applied; x^n − 1 family and Galois ladder | obstacle-D, D1, D2, criterion, galois | [2026-11-03_1928_ten_instances_and_structure_ladder.md](2026-11-03_1928_ten_instances_and_structure_ladder.md) |
 | 2026-11-09 10:05 | Dickman baseline measured on consecutive integers (de Bruijn local form); second-order term α₂ explains most of the residual after α | obstacle-D, D1, baseline, dickman, murphy-alpha, de-bruijn | [2026-11-09_1005_baseline_calibration_alpha2.md](2026-11-09_1005_baseline_calibration_alpha2.md) |
+| 2026-11-10 04:10 | Conditional baseline Q_B(c) tabulated by cofactor size from the consecutive integers (`d1-baseline/2`) | obstacle-D, D1, baseline, conditional-density, cofactor | [2026-11-10_0410_conditional_baseline_cofactor.md](2026-11-10_0410_conditional_baseline_cofactor.md) |
 
 Update this table whenever a new timestamped note is added to the directory.
