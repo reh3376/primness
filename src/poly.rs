@@ -9,6 +9,8 @@ use num_traits::Zero;
 use serde_json::{Map, Value};
 use std::collections::BTreeMap;
 use std::fmt;
+use std::fs;
+use std::path::{Path, PathBuf};
 
 pub const V1: &str = "instrument-polynomial/2";
 pub const MAX_DEGREE: u32 = 12;
@@ -79,6 +81,24 @@ impl InstrumentPolynomial {
         object.insert("degree".into(), Value::from(self.degree()));
         Value::Object(object)
     }
+}
+
+/// Every `<dir>/<id>/cado.poly` as (id, path), ordered by id: the instrument
+/// polynomials `d1-alpha` and `d1-tail` read when no file is named.
+pub fn instrument_files(dir: &Path) -> Result<Vec<(String, PathBuf)>, String> {
+    let mut dirs: Vec<PathBuf> = fs::read_dir(dir)
+        .map_err(|err| format!("{}: {err}", dir.display()))?
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.join("cado.poly").is_file())
+        .collect();
+    dirs.sort();
+    Ok(dirs
+        .into_iter()
+        .map(|d| {
+            let id = d.file_name().and_then(|s| s.to_str()).unwrap_or("instrument").to_string();
+            (id, d.join("cado.poly"))
+        })
+        .collect())
 }
 
 fn coeff_array(coeffs: &[BigInt]) -> Value {

@@ -1,0 +1,176 @@
+{
+  "bin_width": 0.010830424696249145,
+  "bound": 268435456,
+  "definition": "docs/baseline_calibration.md",
+  "duration_ms": 22208,
+  "from": 2000,
+  "method": "projective-root-count",
+  "polynomials": [
+    {
+      "algebraic": {
+        "alpha_tail": 0.01704185180094038,
+        "roots_per_prime": 1.000276818217236
+      },
+      "degree": 4,
+      "instance": "d1-01",
+      "n_digits": 40,
+      "path": "data/instruments/d1-01/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.01665896591722278,
+        "roots_per_prime": 1.0001964384089719
+      },
+      "degree": 4,
+      "instance": "d1-02",
+      "n_digits": 44,
+      "path": "data/instruments/d1-02/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.0261862443210305,
+        "roots_per_prime": 1.000273947509798
+      },
+      "degree": 4,
+      "instance": "d1-03",
+      "n_digits": 48,
+      "path": "data/instruments/d1-03/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.022539957295405345,
+        "roots_per_prime": 1.0004314946680026
+      },
+      "degree": 4,
+      "instance": "d1-04",
+      "n_digits": 52,
+      "path": "data/instruments/d1-04/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.026607820350772804,
+        "roots_per_prime": 0.9999697892217239
+      },
+      "degree": 4,
+      "instance": "d1-05",
+      "n_digits": 56,
+      "path": "data/instruments/d1-05/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.039556321037483126,
+        "roots_per_prime": 1.0002993054255003
+      },
+      "degree": 4,
+      "instance": "d1-06",
+      "n_digits": 60,
+      "path": "data/instruments/d1-06/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.012666642701730174,
+        "roots_per_prime": 0.9999735484814641
+      },
+      "degree": 4,
+      "instance": "d1-07",
+      "n_digits": 64,
+      "path": "data/instruments/d1-07/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.09352192953868402,
+        "roots_per_prime": 1.000012986533648
+      },
+      "degree": 4,
+      "instance": "d1-08",
+      "n_digits": 68,
+      "path": "data/instruments/d1-08/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.08445962171115833,
+        "roots_per_prime": 0.9999676020160568
+      },
+      "degree": 4,
+      "instance": "d1-09",
+      "n_digits": 72,
+      "path": "data/instruments/d1-09/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.023995808424111906,
+        "roots_per_prime": 0.999817915128218
+      },
+      "degree": 4,
+      "instance": "d1-10",
+      "n_digits": 80,
+      "path": "data/instruments/d1-10/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    }
+  ],
+  "primes": 14630540,
+  "schema_version": "root-tail/1",
+  "tables": [
+    {
+      "columns": [
+        "instance",
+        "side",
+        "bin",
+        "ln_p_lo",
+        "ln_p_hi",
+        "primes",
+        "mean_ln_p",
+        "roots",
+        "eta",
+        "eta_ln_p",
+        "eta_affine",
+        "eta_zero"
+      ],
+      "description": "per polynomial, side and bin of ln p over the primes in (from, bound]: the primes, the mean ln p, the sum of the projective root counts r_p, the sum of eta_p = (r_p p - p - 1)/(p^2 - 1), the sum of eta_p ln p, and the sum of eta_p^aff = (r_p^aff - 1)/(p - 1) over the affine roots alone, for a region whose b never reaches p, and the sum of 1/(p - 1) over the primes at which 0 is a root, which a region whose |a| never reaches p meets only at (0, 1)",
+      "name": "root_tail",
+      "path": "data/results/root_tail.csv",
+      "rows": 21820
+    }
+  ],
+  "threads": 18,
+  "ts_ms": 1794333492889
+}

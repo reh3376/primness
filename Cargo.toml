@@ -43,6 +43,10 @@ path = "src/bin/d1_baseline.rs"
 name = "d1-alpha"
 path = "src/bin/d1_alpha.rs"
 
+[[bin]]
+name = "d1-tail"
+path = "src/bin/d1_tail.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1

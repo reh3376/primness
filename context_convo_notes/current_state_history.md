@@ -2,12 +2,19 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-10 05:15 EST
-- **Version**: 1.17
+- **Last Modified**: 2026-11-10 13:05 EST
+- **Version**: 1.18
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-10 13:05 EST
+- Pull request 26 is merged. This is the first change on `primness_dev01` after that merge.
+- `d1-tail` counts the projective roots of both sides at all 14.6 million primes in (2000, 2^28] in 22 s (`root-tail/1`); its α tail matches `d1-alpha` to 4 × 10⁻¹³ at unramified primes and gives α at 2^28.
+- The exact first-order term η_p R(c/p)/R(c) (Q_B(c/p) − Q_B(c)) over those primes explains the per-instance deviations: regression slope 1.01–1.19 (linear tail: 1.5–3.4); χ² of the ten algebraic gaps about zero 50–208 before, 4.5–13.2 on ten after. Weighted mean after: +0.05% ± 0.05% at 2^24, −0.01% ± 0.03% at 2^28. Rational control at zero.
+- Region cases: the root at infinity (b ≤ 1500 < p) and the root 0 (|a| ≤ 3000 < p) are dropped; the first moves the rational side of d1-08 by −0.52% at 2^14.
+- No evidence for D1, nothing left over. Next: the verdict in the prediction document (author's), then another sub-claim or a larger-scale check.
 
 ### 2026-11-10 05:15 EST
 - The exact small-prime measurement is done: `d1-measure` bins every value by its cofactor (`d1-measurement/4`), `scripts/d1_conditional.py` sums the tabulated Q_B over the values. Bins are now an eighth of a bit so power-of-two bounds are bin edges (Q jumps at c = B).

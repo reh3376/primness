@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-10 05:15 EST
-- **Version**: 1.22
+- **Last Modified**: 2026-11-10 13:05 EST
+- **Version**: 1.23
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,21 +60,19 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-10 05:15 EST:
+As of 2026-11-10 13:05 EST:
 
-I am developing on `primness_dev01`. Pull request 25 is merged, and this change follows the conditional-baseline table on the branch. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 26 is merged, and this change follows the conditional-baseline comparison on the branch. D1 is still my starting sub-claim under Obstacle D.
 
-The measurement that replaces the α expansion is done, and it finds no excess. `d1-baseline` tabulates Q_B(c), the density of B-smooth integers among integers with no prime factor up to 2000, by the size of c, from 1.69 × 10^9 consecutive integers (`d1-baseline/2`). `d1-measure` divides every polynomial value by its part made of the primes up to 2000 and bins the cofactor the same way (`d1-measurement/4`). `scripts/d1_conditional.py` sums Q_B over the values of each instance. The prediction uses no α, no α₂ and no Dickman function. Sections 7 and 8 of `docs/baseline_calibration.md` record the method, and `data/results/summary.conditional.md` the numbers.
+The exact first-order term of the primes between 2000 and B is computed, and with it nothing is left on the algebraic side. `d1-tail` counts the projective roots of both sides of the ten polynomials at all 14.6 million primes in (2000, 2^28] in 22 s (`root-tail/1`, `fp::count_roots`). Its α tail agrees with `d1-alpha` to 4 × 10⁻¹³ wherever no prime divides the discriminant, and it gives α at 2^28, which was not computed before. `scripts/d1_conditional.py` adds to each value's prediction the sum over those primes of η_p R(c/p)/R(c) (Q_B(c/p) − Q_B(c)), with η_p = (r_p p − p − 1)/(p² − 1) from the root counts, Q_B from the conditional table and R the density of rough integers. Section 9 of `docs/baseline_calibration.md` derives the term and records the result.
 
-The rational side is the control, because a linear polynomial has one root at every prime. Its mean gap over the ten instances is +0.02% at 2^24 and −0.02% at 2^28, inside the noise at every bound. On the algebraic side the mean gap is +0.57% ± 0.64% at 2^20, +0.35% ± 0.42% at 2^24 and +0.16% ± 0.24% at 2^28, the error being the spread across instances. Most of the +1.2% and +0.5% left after α and α₂ was the expansion's truncation.
+The term accounts for the deviations of single instances. The regression slope of the gap on it is 1.01 to 1.19; the linear α tail's was 1.5 to 3.4, because removing a prime near B changes Q by e^x − 1 and not by x, and x is of order one there. The χ² of the ten algebraic gaps about zero falls from 50–208 to 4.5–13.2 on ten, which is counting noise at every bound: at 2^28 d1-08 goes from +1.72% to +0.14% and d1-09 from −1.18% to +0.11%. The mean after the term, weighted by each instance's noise, is +0.05% ± 0.05% at 2^24 and −0.01% ± 0.03% at 2^28; the plain mean is within two standard errors of zero at every bound. The rational control stays at zero.
 
-Single instances are not at zero: d1-08 is +1.72% at 2^28, d1-09 is −1.18%, each more than six standard errors. Those deviations follow the tail of α over the primes between 2000 and B, which is zero on average over polynomials: the correlation across instances is 0.93 to 0.98 at every bound, and removing the tail's first-order prediction cuts the spread at 2^28 from 0.76% to 0.29% and leaves a mean of +0.10% ± 0.09%. The first-order prediction is too small by a factor of 1.5 at 2^28 and 3.4 at 2^14. I expect that to be the linearization, since one prime near B changes the cofactor by an amount of the order of ln B, but I have not computed it.
+Two details of the region mattered for the control. With b ≤ 1500 a prime above 2000 never meets the root at infinity, and with |a| ≤ 3000 a prime above 3000 meets the root 0 only at (0, 1); the term drops both. The first moves the rational side of d1-08, whose leading coefficient has the primes 2143 and 2549, by −0.52% at 2^14. And the instances' noise differs fifty-fold, so the summary now gives the χ² about zero and the noise-weighted mean beside the plain one.
 
-I read this as no evidence for D1 on these ten instances at this scale. The rejection threshold in the prediction document is met at every bound under the relative weighting proposed in section 6 of the calibration document; that weighting and the verdict are still mine to adopt in `docs/d1_falsifiable_prediction.md`.
+I read this as no evidence for D1, with nothing left over: the values of these ten polynomials are as smooth as their root counts at every prime up to B make them, to 0.03–0.05% at the protocol's upper bounds. The verdict and the criterion's weighting are still mine to record in `docs/d1_falsifiable_prediction.md`.
 
-Two choices in the build mattered. The bins are an eighth of a bit wide so that every power-of-two bound is a bin edge, because Q jumps at c = B; the first table, in bins of 0.25, put −0.11% on the control at 2^28. And α's root enumeration now uses the roots mod p, which made α at 2^24 a four-minute computation; α at 2^28 is not computed and the tail at 2^24 stands in for it.
-
-The next step is a decision: compute the exact first-order term of the primes between 2000 and B from the root counts and close D1 at this scale, or move to another sub-claim. The required status check on the main ruleset is still to be applied in the repository settings.
+The next step is a decision: record the verdict and move to another sub-claim, or first test whether the closure holds at a larger scale. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -82,9 +80,8 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
-- Why is the α tail's first-order prediction too small, by 1.5 at 2^28 rising to 3.4 at 2^14, when it orders the instances almost perfectly? The candidate is the linearization: the exact first-order term is Σ (n_p − 1)/p × (Q_B(c/p)/Q_B(c) − 1) over the primes between 2000 and B. It needs the root counts per prime and the table, and it would say whether anything is left per polynomial.
-- Is the mean gap after the tail real? It is positive at five of six bounds by about one standard error each (+0.10% ± 0.09% at 2^28), on values the bounds share. More instances, or a larger region per instance, would decide it; the exact first-order term might remove it.
-- Does the residual track the Galois group of the polynomial on real selected polynomials, as the toy quartics suggested for α alone (A4 least, V4 most)? The α tail is a sum over primes of root-count fluctuations, whose variance the Galois group fixes, so the question now has a concrete form.
+- Does the closure hold at a larger scale? These are 40–80 digit numbers with B up to 2^28 and a region with b ≤ 1500. At the sizes the success criterion needs, the region reaches past the primes it sieves and the special roots of section 9 stop mattering, but the first-order term's convexity grows with u. One larger instance at the protocol's bounds would show whether the residual stays at the noise.
+- Does the spread of the α tail across polynomials follow the Galois group, as the toy quartics suggested for α alone (A4 least, V4 most)? It is now the whole of what a polynomial does beyond the small primes, so the question is about root statistics and no longer a candidate for D1.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*
