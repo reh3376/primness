@@ -100,9 +100,9 @@ impl FactorBase {
     }
 }
 
-/// Walk the hits of every prime on row b. `acc` has one slot per a in
-/// [−a_max, a_max]; `visit(index, prime_index)` is called for each hit.
-fn walk_row<F: FnMut(usize, usize)>(fb: &FactorBase, b: i64, a_max: i64, len: usize, mut visit: F) {
+/// Walk the hits of every prime on row b over the positions a = a_lo + j,
+/// j in [0, len); `visit(index, prime_index)` is called for each hit.
+fn walk_range<F: FnMut(usize, usize)>(fb: &FactorBase, b: i64, a_lo: i64, len: usize, mut visit: F) {
     for i in 0..fb.len() {
         let p = fb.primes[i] as u64;
         let b_mod = b.rem_euclid(p as i64) as u64;
@@ -114,7 +114,8 @@ fn walk_row<F: FnMut(usize, usize)>(fb: &FactorBase, b: i64, a_max: i64, len: us
             }
             continue;
         }
-        let shift = (a_max as u64) % p;
+        // a ≡ r·b (mod p) and a = a_lo + j give j ≡ r·b − a_lo (mod p).
+        let shift = (-a_lo).rem_euclid(p as i64) as u64;
         for &r in fb.roots_of(i) {
             let start = ((r as u64 * b_mod + shift) % p) as usize;
             let mut j = start;
@@ -124,6 +125,12 @@ fn walk_row<F: FnMut(usize, usize)>(fb: &FactorBase, b: i64, a_max: i64, len: us
             }
         }
     }
+}
+
+/// Walk the hits of every prime on row b. `acc` has one slot per a in
+/// [−a_max, a_max]; `visit(index, prime_index)` is called for each hit.
+fn walk_row<F: FnMut(usize, usize)>(fb: &FactorBase, b: i64, a_max: i64, len: usize, visit: F) {
+    walk_range(fb, b, -a_max, len, visit);
 }
 
 /// Add ln p (scaled) at every position p divides on row b.
@@ -138,6 +145,28 @@ pub fn sieve_row(fb: &FactorBase, b: i64, a_max: i64, acc: &mut [u16]) {
 pub fn resieve_row(fb: &FactorBase, b: i64, a_max: i64, candidate: &[bool]) -> Vec<(u32, u32)> {
     let mut hits = Vec::new();
     walk_row(fb, b, a_max, candidate.len(), |j, i| {
+        if candidate[j] {
+            hits.push((j as u32, fb.primes[i]));
+        }
+    });
+    hits.sort_unstable();
+    hits
+}
+
+/// Add ln p (scaled) at every position p divides on row b, for the
+/// positions a = a_lo + j with j in [0, acc.len()).
+pub fn sieve_range(fb: &FactorBase, b: i64, a_lo: i64, acc: &mut [u16]) {
+    let len = acc.len();
+    walk_range(fb, b, a_lo, len, |j, i| {
+        acc[j] = acc[j].saturating_add(fb.logs[i]);
+    });
+}
+
+/// The primes hitting each candidate position of the range starting at
+/// a_lo, as (position, prime) pairs sorted by position.
+pub fn resieve_range(fb: &FactorBase, b: i64, a_lo: i64, candidate: &[bool]) -> Vec<(u32, u32)> {
+    let mut hits = Vec::new();
+    walk_range(fb, b, a_lo, candidate.len(), |j, i| {
         if candidate[j] {
             hits.push((j as u32, fb.primes[i]));
         }
@@ -238,6 +267,58 @@ mod tests {
                 }
             }
             assert!(agree > 10_000);
+        }
+    }
+
+    #[test]
+    fn range_sieve_matches_row_sieve_and_marks_consecutive_integers() {
+        let f = poly(&[-85186479, -38330143, 45773675, 567699, 7560]);
+        let fb = FactorBase::build(&f, 1 << 10, 2);
+        let a_max = 700i64;
+        let mut whole = vec![0u16; (2 * a_max + 1) as usize];
+        sieve_row(&fb, 17, a_max, &mut whole);
+        // The window a in [−100, 299] of the same row, sieved as a range.
+        let mut part = vec![0u16; 400];
+        sieve_range(&fb, 17, -100, &mut part);
+        assert_eq!(&whole[600..1000], &part[..]);
+        let cand = vec![true; 400];
+        let hits = resieve_range(&fb, 17, -100, &cand);
+        let whole_cand = vec![true; whole.len()];
+        let whole_hits: Vec<(u32, u32)> = resieve_row(&fb, 17, a_max, &whole_cand)
+            .into_iter()
+            .filter(|&(j, _)| (600..1000).contains(&(j as usize)))
+            .map(|(j, p)| (j - 600, p))
+            .collect();
+        assert_eq!(hits, whole_hits);
+
+        // x + X with b = 1: position j holds the integer X + a_lo + j, and
+        // the marks are exactly the primes dividing it.
+        let x0 = BigInt::parse_bytes(b"123456789012345678901234567890", 10).unwrap();
+        let g = vec![x0.clone(), BigInt::from(1)];
+        let gb = FactorBase::build(&g, 1 << 10, 2);
+        let a_lo = 5_000i64;
+        let len = 3000usize;
+        let mut acc = vec![0u16; len];
+        sieve_range(&gb, 1, a_lo, &mut acc);
+        let cand = vec![true; len];
+        let hits = resieve_range(&gb, 1, a_lo, &cand);
+        let mut k = 0usize;
+        for j in 0..len {
+            let n = (&x0 + BigInt::from(a_lo + j as i64)).magnitude().clone();
+            let mut expected = Vec::new();
+            for &p in &gb.primes {
+                if (&n % BigUint::from(p)).is_zero() {
+                    expected.push(p);
+                }
+            }
+            let mut got = Vec::new();
+            while k < hits.len() && hits[k].0 as usize == j {
+                got.push(hits[k].1);
+                k += 1;
+            }
+            assert_eq!(got, expected, "j={j}");
+            let sum: f64 = expected.iter().map(|&p| (p as f64).ln()).sum();
+            assert!(((acc[j] as f64 / LOG_SCALE) - sum).abs() < 0.02 * expected.len().max(1) as f64, "j={j}");
         }
     }
 

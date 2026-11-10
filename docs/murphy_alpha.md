@@ -29,3 +29,5 @@ B_α = 2000 by default, the value CADO-NFS uses for ranking; it is recorded in e
 ## What α does not do
 
 It corrects the size of the values for their small-prime content; it does not change the distribution of large prime factors. A residual gap between the α-adjusted Dickman prediction and the count is what the D1 claim is about. The rejection criterion in `docs/d1_falsifiable_prediction.md` applies to that residual.
+
+α is the first moment of the log small-prime part. Its second moment, the excess variance α₂ = Σ (Var[v_p(F)] − Var[v_p(n)]) ln² p, is computed by the same lifting (`valuation_moments`, `alpha2` in `src/alpha.rs`, binary `d1-alpha`) and enters the prediction as the convexity term α₂ ρ″/(2ρ ln² B). `docs/baseline_calibration.md` derives it, measures the baseline it corrects, and shows it accounts for most of the residual after α on the ten instances.

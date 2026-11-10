@@ -35,6 +35,14 @@ path = "src/bin/d1_generate_instances.rs"
 name = "hw-sample"
 path = "src/bin/hw_sample.rs"
 
+[[bin]]
+name = "d1-baseline"
+path = "src/bin/d1_baseline.rs"
+
+[[bin]]
+name = "d1-alpha"
+path = "src/bin/d1_alpha.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1
