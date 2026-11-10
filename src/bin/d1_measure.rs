@@ -619,9 +619,11 @@ fn measure_rows(
                 use std::fmt::Write as _;
                 let _ = writeln!(
                     tally.dump,
-                    "{a},{b},{ln_f:.6},{},{ln_g:.6},{}",
+                    "{a},{b},{ln_f:.6},{},{ln_g:.6},{},{:.6},{:.6}",
                     f_lpf.unwrap_or(0),
-                    g_lpf.unwrap_or(0)
+                    g_lpf.unwrap_or(0),
+                    v.ln_sf,
+                    v.ln_sg
                 );
             }
         }
@@ -797,8 +799,12 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
             }
             let mut file = fs::File::create(path).map_err(|err| format!("{}: {err}", path.display()))?;
             use std::io::Write as _;
-            writeln!(file, "a,b,ln_f,lpf_f,ln_g,lpf_g").map_err(|err| err.to_string())?;
-            println!("per-value dump: {} (lpf 0 means not {b_top}-smooth)", path.display());
+            writeln!(file, "a,b,ln_f,lpf_f,ln_g,lpf_g,ln_sf,ln_sg").map_err(|err| err.to_string())?;
+            println!(
+                "per-value dump: {} (lpf 0 means not {b_top}-smooth; ln_sf, ln_sg: the part made of the primes up to {})",
+                path.display(),
+                cof.small.bound
+            );
             Some(file)
         }
         None => None,

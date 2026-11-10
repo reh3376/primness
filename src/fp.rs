@@ -321,6 +321,95 @@ pub fn count_roots(fp: &[u64], p: u64) -> usize {
     gcd(&sub(&xp, &[0, 1], p), &fm, p).len() - 1
 }
 
+fn derivative(f: &[u64], p: u64) -> Vec<u64> {
+    let mut out: Vec<u64> = f.iter().enumerate().skip(1).map(|(i, &c)| mulmod(c, i as u64 % p, p)).collect();
+    trim(&mut out);
+    out
+}
+
+/// The degrees of the irreducible factors of f mod p, ascending, by
+/// distinct-degree factorization. None when p divides the leading
+/// coefficient or f mod p has a repeated factor: the pattern then says
+/// nothing about how f factors over Q.
+pub fn factor_degrees(f: &[BigInt], p: u64) -> Option<Vec<usize>> {
+    let mut f = f.to_vec();
+    while f.len() > 1 && f.last().is_some_and(num_traits::Zero::is_zero) {
+        f.pop();
+    }
+    let degree = f.len() - 1;
+    let fp = reduce(&f, p);
+    if degree < 1 || fp.len() != degree + 1 {
+        return None;
+    }
+    let mut rest = monic(fp, p);
+    if gcd(&rest, &derivative(&rest, p), p).len() != 1 {
+        return None;
+    }
+    let mut out = Vec::new();
+    let mut h = vec![0, 1];
+    let mut d = 1;
+    while rest.len() - 1 >= 2 * d {
+        // h = x^(p^d) mod rest; gcd(h − x, rest) is the product of the factors of degree d.
+        h = powmod_poly(&h, p, &rest, p);
+        let g = gcd(&sub(&h, &[0, 1], p), &rest, p);
+        let dg = g.len() - 1;
+        if dg > 0 {
+            out.extend(std::iter::repeat(d).take(dg / d));
+            rest = monic(divide_exact(&rest, &g, p), p);
+            h = rem(&h, &rest, p);
+        }
+        d += 1;
+    }
+    if rest.len() > 1 {
+        out.push(rest.len() - 1);
+    }
+    Some(out)
+}
+
+/// A certificate that f is irreducible over Q, from the factor degrees of f
+/// modulo the primes up to `max_p`. A factor of f over Q of degree k would
+/// reduce, modulo every prime that keeps f's degree and squarefreeness, to a
+/// product of some of the factors there, so k would be a sum of some of
+/// their degrees at every such prime. The certificate is the list of primes
+/// (with their degrees) that leave no proper k; None when the primes up to
+/// `max_p` do not suffice (x^4 + 1, irreducible but split into quadratics at
+/// every prime, is never certified).
+pub fn certify_irreducible(f: &[BigInt], max_p: u64) -> Option<Vec<(u64, Vec<usize>)>> {
+    let degree = degree_of(f);
+    if degree < 1 || degree >= 128 {
+        return None;
+    }
+    if degree == 1 {
+        return Some(Vec::new());
+    }
+    // Bit k set: a factor of degree k is still possible.
+    let mut possible: u128 = ((1u128 << degree) - 1) & !1;
+    let mut used = Vec::new();
+    for p in crate::sieve::primes_up_to(max_p) {
+        let Some(degrees) = factor_degrees(f, p) else { continue };
+        let mut sums: u128 = 1;
+        for &k in &degrees {
+            sums |= sums << k;
+        }
+        if possible & !sums != 0 {
+            possible &= sums;
+            used.push((p, degrees));
+            if possible == 0 {
+                return Some(used);
+            }
+        }
+    }
+    None
+}
+
+fn degree_of(f: &[BigInt]) -> usize {
+    let mut d = f.len().saturating_sub(1);
+    while d > 0 && num_traits::Zero::is_zero(&f[d]) {
+        d -= 1;
+    }
+    d
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -408,5 +497,48 @@ mod tests {
         }
         assert_eq!(count_roots(&[], 7), 0);
         assert_eq!(count_roots(&[5], 7), 0);
+    }
+
+    #[test]
+    fn factor_degrees_are_the_factorization_mod_p() {
+        // x^4 − 1 = (x − 1)(x + 1)(x^2 + 1): four linear factors when p ≡ 1 (mod 4).
+        let f = poly(&[-1, 0, 0, 0, 1]);
+        assert_eq!(factor_degrees(&f, 5), Some(vec![1, 1, 1, 1]));
+        assert_eq!(factor_degrees(&f, 7), Some(vec![1, 1, 2]));
+        assert_eq!(factor_degrees(&f, 2), None, "repeated factor mod 2");
+        assert_eq!(factor_degrees(&poly(&[1, 0, 1]), 3), Some(vec![2]));
+        assert_eq!(factor_degrees(&poly(&[1, 0, 3]), 3), None, "p divides the leading coefficient");
+        assert_eq!(factor_degrees(&poly(&[1, -2, 1]), 101), None, "(x − 1)^2");
+        // x^4 − 2 is irreducible mod 5 (2 is not a square mod 5, and so not a fourth power).
+        assert_eq!(factor_degrees(&poly(&[-2, 0, 0, 0, 1]), 5), Some(vec![4]));
+        // The degrees sum to the degree, and the linear ones are the roots.
+        let polys = [
+            poly(&[-85186479, -38330143, 45773675, 567699, 7560]),
+            poly(&[3, 1, 4, 1, 5, 9, 2, 6, 5, 3]),
+            poly(&[24, -50, 35, -10, 1]),
+        ];
+        for f in &polys {
+            for p in crate::sieve::primes_up_to(3000) {
+                if let Some(d) = factor_degrees(f, p) {
+                    assert_eq!(d.iter().sum::<usize>(), f.len() - 1, "f={f:?} p={p}");
+                    assert_eq!(d.iter().filter(|&&k| k == 1).count(), roots_mod_p(f, p).len(), "f={f:?} p={p}");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn irreducibility_is_certified_only_when_true() {
+        // Irreducible, with primes that keep it whole.
+        assert!(certify_irreducible(&poly(&[-2, 0, 0, 0, 1]), 10_000).is_some());
+        assert!(certify_irreducible(&poly(&[-85186479, -38330143, 45773675, 567699, 7560]), 10_000).is_some());
+        assert!(certify_irreducible(&poly(&[3, 1, 4, 1, 5, 9, 2, 6, 5, 3]), 10_000).is_some());
+        // Reducible: never certified.
+        assert!(certify_irreducible(&poly(&[3, 0, 4, 0, 1]), 10_000).is_none(), "(x^2 + 1)(x^2 + 3)");
+        assert!(certify_irreducible(&poly(&[-1, 0, 1, -1, 1]), 10_000).is_none(), "(x − 1)(x^3 + x + 1)");
+        assert!(certify_irreducible(&poly(&[-2, -2, -1, 1, 1]), 10_000).is_none(), "(x^2 + x + 1)(x^2 − 2)");
+        assert!(certify_irreducible(&poly(&[-1, 0, 1, 0, 0]), 10_000).is_none(), "(x − 1)(x + 1), trailing zeros");
+        // Irreducible but split into quadratics at every prime: not certified.
+        assert!(certify_irreducible(&poly(&[1, 0, 0, 0, 1]), 10_000).is_none(), "x^4 + 1");
     }
 }

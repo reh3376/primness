@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-10 13:05 EST
-- **Version**: 1.23
+- **Last Modified**: 2026-11-10 16:45 EST
+- **Version**: 1.25
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,19 +60,17 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-10 13:05 EST:
+As of 2026-11-10 16:45 EST:
 
-I am developing on `primness_dev01`. Pull request 26 is merged, and this change follows the conditional-baseline comparison on the branch. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 28, which holds D5 and the draft D1 verdict, is still open, and this change follows it on the same branch. It tests the first part of D2, several number fields that share the rational side. That is the multiple number field sieve.
 
-The exact first-order term of the primes between 2000 and B is computed, and with it nothing is left on the algebraic side. `d1-tail` counts the projective roots of both sides of the ten polynomials at all 14.6 million primes in (2000, 2^28] in 22 s (`root-tail/1`, `fp::count_roots`). Its α tail agrees with `d1-alpha` to 4 × 10⁻¹³ wherever no prime divides the discriminant, and it gives α at 2^28, which was not computed before. `scripts/d1_conditional.py` adds to each value's prediction the sum over those primes of η_p R(c/p)/R(c) (Q_B(c/p) − Q_B(c)), with η_p = (r_p p − p − 1)/(p² − 1) from the root counts, Q_B from the conditional table and R the density of rough integers. Section 9 of `docs/baseline_calibration.md` derives the term and records the result.
+I wrote the prediction before measuring (`docs/d2_falsifiable_prediction.md`). For each instance, three rotations f + v·g of the instrument polynomial join it and share its rational side G. Each rotation has 0 < |v| ≤ 16, is chosen by mean size plus α, and is certified irreducible. Every value gets the smooth probability D1 ended with. The claim was that values the NFS combines are jointly smooth more often than the product of their probabilities says: G with any field, or two fields, at the same (a, b). The control pairs each instance's fields with the next instance's.
 
-The term accounts for the deviations of single instances. The regression slope of the gap on it is 1.01 to 1.19; the linear α tail's was 1.5 to 3.4, because removing a prime near B changes Q by e^x − 1 and not by x, and x is of order one there. The χ² of the ten algebraic gaps about zero falls from 50–208 to 4.5–13.2 on ten, which is counting noise at every bound: at 2^28 d1-08 goes from +1.72% to +0.14% and d1-09 from −1.18% to +0.11%. The mean after the term, weighted by each instance's noise, is +0.05% ± 0.05% at 2^24 and −0.01% ± 0.03% at 2^28; the plain mean is within two standard errors of zero at every bound. The rational control stays at zero.
+D2 part 1 is rejected. The largest criterion value is +1.4 errors, for two fields at 2^24. At 2^28 the joint excess is −0.01% ± 0.03% for G with a field and −0.02% ± 0.06% for two fields. The standard pair (F_0, G) of the ordinary NFS is −0.03% ± 0.05%. At 2^28 the four fields give 3.2 times the relations of one, exactly what their individual probabilities predict. That is the known MNFS gain, which lowers the constant and not the exponent.
 
-Two details of the region mattered for the control. With b ≤ 1500 a prime above 2000 never meets the root at infinity, and with |a| ≤ 3000 a prime above 3000 meets the root 0 only at (0, 1); the term drops both. The first moves the rational side of d1-08, whose leading coefficient has the primes 2143 and 2549, by −0.52% at 2^14. And the instances' noise differs fifty-fold, so the summary now gives the χ² about zero and the noise-weighted mean beside the plain one.
+The thirty rotated fields were never root-optimized, yet they are as smooth as their sizes and root counts say (χ² 32.7 on thirty at 2^28). D1's closure therefore holds on forty polynomials. The method and result are in `docs/d2_multiple_fields.md`. The new tools are `d2-fields` and `d2-joint`, plus an irreducibility certificate in `src/fp.rs`.
 
-I read this as no evidence for D1, with nothing left over: the values of these ten polynomials are as smooth as their root counts at every prime up to B make them, to 0.03–0.05% at the protocol's upper bounds. The verdict and the criterion's weighting are still mine to record in `docs/d1_falsifiable_prediction.md`.
-
-The next step is a decision: record the verdict and move to another sub-claim, or first test whether the closure holds at a larger scale. The required status check on the main ruleset is still to be applied in the repository settings.
+The next step is mine. I need to decide on the D1 verdict draft. Then I choose among the other forms of D2 (a degree-5 or degree-6 field for the same N, or sieving in dimension 3), D3, D4, or a larger-scale check. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -81,6 +79,7 @@ Full history in `context_convo_notes/current_state_history.md`.
 ## open_questions
 
 - Does the closure hold at a larger scale? These are 40–80 digit numbers with B up to 2^28 and a region with b ≤ 1500. At the sizes the success criterion needs, the region reaches past the primes it sieves and the special roots of section 9 stop mattering, but the first-order term's convexity grows with u. One larger instance at the protocol's bounds would show whether the residual stays at the noise.
+- Why do the rational side's sectors scatter less than counting noise when its tiles do not? The χ² per sector is 0.79 to 0.87 at 2^16 through 2^28, and 0.35 for the largest sectors of d1-02 (`docs/d5_smooth_clusters.md`). Independent draws let the number of values each smaller prime divides vary, and a region fixes those numbers. The answer would also say how far counting noise overstates the noise of a whole region, and so D1's per-instance errors.
 - Does the spread of the α tail across polynomials follow the Galois group, as the toy quartics suggested for α alone (A4 least, V4 most)? It is now the whole of what a polynomial does beyond the small primes, so the question is about root statistics and no longer a candidate for D1.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 

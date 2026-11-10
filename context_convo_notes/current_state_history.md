@@ -2,12 +2,25 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-10 13:05 EST
-- **Version**: 1.18
+- **Last Modified**: 2026-11-10 16:45 EST
+- **Version**: 1.20
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-10 16:45 EST
+- Pull request 28 (D5, the D1 verdict draft) is still open; this change follows it on `primness_dev01`.
+- D2 part 1, several number fields sharing the rational side (MNFS), is tested under a prediction written first (`docs/d2_falsifiable_prediction.md`). Per instance there are three rotations f + v·g (0 < |v| ≤ 16, best by mean ln|F| + α, certified irreducible; `d2-fields`). The test is joint smoothness of G with each field and of pairs of fields against the product of their probabilities (`d2-joint`, exact variance), with the next instance's fields as the control.
+- Rejected: the largest criterion value is +1.4 errors. At 2^28, R is −0.01% ± 0.03% for the cross pairs and −0.02% ± 0.06% for the algebraic pairs; the standard pair (F_0, G) is −0.03% ± 0.05%. Four fields give 3.2× the relations at 2^28, as independence predicts.
+- The thirty rotated fields are at their prediction (χ² 32.7/30 at 2^28), so D1's closure holds on forty polynomials. Next: the D1 verdict, then higher-degree D2, D3, D4 or a larger-scale check.
+
+### 2026-11-10 13:45 EST
+- Pull request 27 is merged. This is the first change on `primness_dev01` after that merge.
+- D5 (smooth clusters) tested on the ten D1 instances under a prediction written first (`docs/d5_falsifiable_prediction.md`): per-value probability from the conditional baseline and the root-count term; tiles 2 × 2 to 50 × 50 and 64 sectors; split-half held-out lift.
+- Rejected: largest algebraic lift +1.5 errors (5 × 5 at 2^24), 11 of 18 negative; −0.11% ± 0.15% on 50 × 50 tiles at 2^28. Tiles scatter as counting noise (χ² per tile 0.98–1.00 on fine tiles); split-half correlations at zero.
+- Unexplained: rational sectors scatter less than counting noise (χ² 0.79–0.87); hints that whole-region counting noise is an upper bound.
+- D1 verdict drafted in `docs/d1_falsifiable_prediction.md` for the author. Next: the verdict, then D2–D4 or a larger-scale check.
 
 ### 2026-11-10 13:05 EST
 - Pull request 26 is merged. This is the first change on `primness_dev01` after that merge.

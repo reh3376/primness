@@ -47,6 +47,14 @@ path = "src/bin/d1_alpha.rs"
 name = "d1-tail"
 path = "src/bin/d1_tail.rs"
 
+[[bin]]
+name = "d2-fields"
+path = "src/bin/d2_fields.rs"
+
+[[bin]]
+name = "d2-joint"
+path = "src/bin/d2_joint.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1
