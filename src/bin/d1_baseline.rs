@@ -18,6 +18,7 @@
 use num_bigint::{BigInt, BigUint};
 use num_traits::{One, ToPrimitive, Zero};
 use primness::alpha;
+use primness::cofactor;
 use primness::dickman::{self, Dickman};
 use primness::hardware::{self, Sampler};
 use primness::linesieve::{self, FactorBase};
@@ -56,7 +57,7 @@ struct Options {
 fn usage() -> ! {
     eprintln!(
         "Usage: d1-baseline [--bounds 2^14,2^16,2^18,2^20,2^24,2^28] [--ln-x MIN:MAX:STEP] \
-         [--length 2^24] [--chunk 2^20] [--rough-bound 2000] [--cofactor-bin 0.25] [--threads N] [--out FILE] [--no-hw-sample] [--hw-interval-ms N]"
+         [--length 2^24] [--chunk 2^20] [--rough-bound 2000] [--cofactor-bin LN_WIDTH] [--threads N] [--out FILE] [--no-hw-sample] [--hw-interval-ms N]"
     );
     std::process::exit(2);
 }
@@ -80,7 +81,7 @@ fn parse_options() -> Options {
         length: 1 << 24,
         chunk: 1 << 20,
         rough_bound: alpha::DEFAULT_BOUND,
-        cofactor_bin: 0.25,
+        cofactor_bin: cofactor::DEFAULT_BIN_WIDTH,
         threads: std::thread::available_parallelism()
             .map(|n| n.get())
             .unwrap_or(1),
@@ -268,11 +269,10 @@ fn sieve_chunk(fb: &FactorBase, x: &BigUint, a_lo: i64, len: usize, ln_x: f64, s
     for j in 0..len {
         let ln_n = ln_x + ((a_lo + j as i64) as f64 * inv_x).ln_1p();
         let ln_c = (ln_n - small[j] as f64).max(0.0);
-        // A cofactor is 1 or exceeds the rough bound; rounding must not lift a 1 out of bin 0.
-        let k = if ln_c < 0.5 { 0 } else { ((ln_c / cof.bin_width) as usize).min(cof.bins - 1) };
+        let k = cofactor::bin_index(ln_c, cof.bin_width, cof.bins);
         bin[j] = k as u16;
         tally.cofactor.count[k] += 1;
-        tally.cofactor.sum_ln_c[k] += if k == 0 && ln_c < 0.5 { 0.0 } else { ln_c };
+        tally.cofactor.sum_ln_c[k] += cofactor::tallied_ln_c(ln_c);
     }
 
     let mut acc = vec![0u16; len];
@@ -527,7 +527,7 @@ fn run(opts: &Options) -> Result<(), String> {
     // The conditional baseline: per ln c bin and bound, pooled over the sizes.
     let nb = bounds.len();
     let mut cof_csv = String::from(
-        "ln_c_lo,ln_c_hi,b,count,mean_ln_c,u,smooth,observed,observed_stderr,debruijn_local,ratio_debruijn\n",
+        "bin,ln_c_lo,ln_c_hi,b,count,mean_ln_c,u,smooth,observed,observed_stderr,debruijn_local,ratio_debruijn\n",
     );
     let mut bins_filled = 0usize;
     let mut cofactor_total = 0u64;
@@ -548,7 +548,7 @@ fn run(opts: &Options) -> Result<(), String> {
             let debruijn = (dickman.rho(u) + EULER_GAMMA * dickman.rho_prime(u) / ln_bounds[i]).clamp(0.0, 1.0);
             let ratio = if debruijn > 0.0 { observed / debruijn } else { f64::NAN };
             cof_csv.push_str(&format!(
-                "{lo:.4},{hi:.4},{b},{count},{mean:.6},{u:.6},{smooth},{observed:.9},{stderr:.9},{debruijn:.9},{ratio:.6}\n"
+                "{k},{lo:.6},{hi:.6},{b},{count},{mean:.6},{u:.6},{smooth},{observed:.9},{stderr:.9},{debruijn:.9},{ratio:.6}\n"
             ));
         }
     }
@@ -568,7 +568,7 @@ fn run(opts: &Options) -> Result<(), String> {
         "path": cofactor_path.to_string_lossy(),
         "columns": cof_header.split(',').collect::<Vec<_>>(),
         "rows": cof_csv.lines().count().saturating_sub(1),
-        "description": "the conditional baseline, pooled over the sizes: per bin [ln_c_lo, ln_c_hi) of the cofactor c = n / s(n), with s(n) the part of n made of primes up to rough_bound, and per bound B: the count of integers whose cofactor falls in the bin, their mean ln c, u = mean ln c / ln B, the count of those that are B-smooth, the observed density Q_B(c) and its Poisson standard error, and for reference the unconditional de Bruijn local form at u with observed over it. Bin 0 holds the integers with c = 1",
+        "description": "the conditional baseline, pooled over the sizes: per bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = n / s(n), with s(n) the part of n made of primes up to rough_bound, and per bound B: the count of integers whose cofactor falls in the bin, their mean ln c, u = mean ln c / ln B, the count of those that are B-smooth, the observed density Q_B(c) and its Poisson standard error, and for reference the unconditional de Bruijn local form at u with observed over it. Bin 0 holds the integers with c = 1",
     })];
     let mut result = json!({
         "schema_version": RESULT_V2,
@@ -648,7 +648,7 @@ mod tests {
         let ln_x = dickman::ln_biguint(&x);
         let slack = linesieve::default_slack(b_top);
         let primes = primes_up_to(b_top);
-        let cof = Cofactor { primes: primes_up_to(50), bin_width: 0.25, bins: 140 };
+        let cof = Cofactor { primes: primes_up_to(50), bin_width: cofactor::DEFAULT_BIN_WIDTH, bins: 400 };
         // Three chunks at different offsets, as the run splits an interval.
         for &(a_lo, len) in &[(-30_000i64, 20_000usize), (-10_000, 10_000), (0, 15_000)] {
             let t = sieve_chunk(&fb, &x, a_lo, len, ln_x, slack, &bounds, &cof);
@@ -660,7 +660,7 @@ mod tests {
                 let v = &base + BigUint::from(j as u64);
                 // The cofactor by division, binned as the tally bins it.
                 let ln_c = dickman::ln_biguint(&v) - small_part_ln_exact(&v, &cof.primes);
-                let k = if ln_c < 0.5 { 0 } else { (ln_c / cof.bin_width) as usize };
+                let k = cofactor::bin_index(ln_c, cof.bin_width, cof.bins);
                 exp_count[k] += 1;
                 if let Some(lpf) = largest_prime_factor_if_smooth(&v, &primes, b_top) {
                     for (i, &b) in bounds.iter().enumerate() {

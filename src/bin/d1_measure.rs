@@ -16,6 +16,7 @@
 use num_bigint::BigUint;
 use num_traits::Zero;
 use primness::alpha;
+use primness::cofactor::{self, SmallPart};
 use primness::dickman::{self, Dickman};
 use primness::eval::{coprime, Homogeneous};
 use primness::linesieve::{self, FactorBase};
@@ -30,7 +31,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
-pub const RESULT_V3: &str = "d1-measurement/3";
+pub const RESULT_V4: &str = "d1-measurement/4";
 const SCALE: &str = "scaled-down";
 
 struct Options {
@@ -48,13 +49,14 @@ struct Options {
     dump: Option<PathBuf>,
     alpha_bound: u64,
     sieve: bool,
+    cofactor_bin: f64,
 }
 
 fn usage() -> ! {
     eprintln!(
         "Usage: d1-measure [--a-max A] [--b-max B] [--bounds 2^14,2^16,2^18,2^20] \
          [--instance ID] [--source cado-nfs|msieve|yafu|unspecified] [--out FILE] \
-         [--threads N] [--no-hw-sample] [--hw-interval-ms N] [--dump FILE] [--alpha-bound N] [--method sieve|trial] [--region N] <poly-file>"
+         [--threads N] [--no-hw-sample] [--hw-interval-ms N] [--dump FILE] [--alpha-bound N] [--cofactor-bin W] [--method sieve|trial] [--region N] <poly-file>"
     );
     std::process::exit(2);
 }
@@ -87,6 +89,7 @@ fn parse_options() -> Options {
         dump: None,
         alpha_bound: alpha::DEFAULT_BOUND,
         sieve: true,
+        cofactor_bin: cofactor::DEFAULT_BIN_WIDTH,
     };
     let mut poly_path = None;
     let mut args = env::args().skip(1);
@@ -163,6 +166,13 @@ fn parse_options() -> Options {
                     .filter(|n| *n >= 2)
                     .unwrap_or_else(|| usage());
             }
+            "--cofactor-bin" => {
+                opts.cofactor_bin = args
+                    .next()
+                    .and_then(|v| v.parse().ok())
+                    .filter(|w: &f64| w.is_finite() && *w >= 0.01)
+                    .unwrap_or_else(|| usage());
+            }
             "--hw-interval-ms" => {
                 opts.hw_interval_ms = args
                     .next()
@@ -214,6 +224,41 @@ const U_BINS: usize = 100;
 /// log2 of the largest prime factor is binned 0..=LPF_BINS-1; the last bin
 /// of each histogram counts values that were not smooth at the top bound.
 const LPF_BINS: usize = 33;
+/// ln c is binned up to this size; the last bin takes anything beyond.
+const COFACTOR_LN_MAX: f64 = 240.0;
+
+/// Values of one side by the size of their cofactor: per ln c bin the count,
+/// the sum of ln c, and the smooth ones per bound (row-major, bins × bounds).
+struct CofactorHist {
+    count: Vec<u64>,
+    sum_ln_c: Vec<f64>,
+    smooth: Vec<u64>,
+}
+
+impl CofactorHist {
+    fn new(bins: usize, k: usize) -> Self {
+        Self { count: vec![0; bins], sum_ln_c: vec![0.0; bins], smooth: vec![0; bins * k] }
+    }
+
+    fn merge(&mut self, other: &CofactorHist) {
+        for (a, b) in self.count.iter_mut().zip(&other.count) {
+            *a += b;
+        }
+        for (a, b) in self.sum_ln_c.iter_mut().zip(&other.sum_ln_c) {
+            *a += b;
+        }
+        for (a, b) in self.smooth.iter_mut().zip(&other.smooth) {
+            *a += b;
+        }
+    }
+}
+
+/// The cofactor split of a run: the small primes and the ln c bins.
+struct CofactorSpec {
+    small: SmallPart,
+    bin_width: f64,
+    bins: usize,
+}
 
 #[derive(Clone, Copy, Default)]
 struct Bin {
@@ -254,13 +299,17 @@ struct Tally {
     rows: std::collections::BTreeMap<i64, RowStat>,
     alg_lpf_hist: Vec<u64>,
     rat_lpf_hist: Vec<u64>,
+    alg_cof: CofactorHist,
+    rat_cof: CofactorHist,
     residues: String,
     dump: String,
 }
 
 impl Tally {
-    fn new(k: usize) -> Self {
+    fn new(k: usize, cof_bins: usize) -> Self {
         Self {
+            alg_cof: CofactorHist::new(cof_bins, k),
+            rat_cof: CofactorHist::new(cof_bins, k),
             evaluated: 0,
             skipped_zero: 0,
             alg_smooth: vec![0; k],
@@ -325,6 +374,8 @@ impl Tally {
             self.alg_lpf_hist[j] += other.alg_lpf_hist[j];
             self.rat_lpf_hist[j] += other.rat_lpf_hist[j];
         }
+        self.alg_cof.merge(&other.alg_cof);
+        self.rat_cof.merge(&other.rat_cof);
         self.residues.push_str(&other.residues);
         if self.residues.len() > 64 {
             let drop = self.residues.len() - 64;
@@ -355,6 +406,9 @@ struct ValueRow {
     f_lpf: Option<u64>,
     ln_g: f64,
     g_lpf: Option<u64>,
+    /// ln of the part of |F| and of |G| made of the primes up to the rough bound.
+    ln_sf: f64,
+    ln_sg: f64,
 }
 
 /// Every coprime, non-zero position of row b with its logs and largest
@@ -366,6 +420,7 @@ fn row_values(
     alg: &Homogeneous,
     rat: &Homogeneous,
     b_top: u64,
+    small: &SmallPart,
     skipped_zero: &mut u64,
 ) -> Vec<ValueRow> {
     let alg_pows = alg.powers_of_b(b);
@@ -390,6 +445,8 @@ fn row_values(
                     f_lpf: largest_prime_factor_if_smooth(f_mag, primes, b_top),
                     ln_g: dickman::ln_biguint(g_mag),
                     g_lpf: largest_prime_factor_if_smooth(g_mag, primes, b_top),
+                    ln_sf: small.ln(f_mag),
+                    ln_sg: small.ln(g_mag),
                 });
             }
             out
@@ -455,7 +512,8 @@ fn row_values(
                 } else {
                     None
                 };
-                out.push(ValueRow { a, ln_f, f_lpf, ln_g, g_lpf });
+                let (ln_sf, ln_sg) = (small.ln(&f_mag), small.ln(&g_mag));
+                out.push(ValueRow { a, ln_f, f_lpf, ln_g, g_lpf, ln_sf, ln_sg });
             }
             out
         }
@@ -472,15 +530,16 @@ fn measure_rows(
     dickman: &Dickman,
     bounds: &[u64],
     alphas: (f64, f64),
+    cof: &CofactorSpec,
     dump: bool,
 ) -> Tally {
     let b_top = *bounds.last().expect("bounds are non-empty");
     let top = bounds.len() - 1;
     let ln_bounds: Vec<f64> = bounds.iter().map(|&b| (b as f64).ln()).collect();
-    let mut tally = Tally::new(bounds.len());
+    let mut tally = Tally::new(bounds.len(), cof.bins);
     for &b in rows {
         let mut row = RowStat::default();
-        let values = row_values(method, b, a_max, alg, rat, b_top, &mut tally.skipped_zero);
+        let values = row_values(method, b, a_max, alg, rat, b_top, &cof.small, &mut tally.skipped_zero);
         for v in values {
             let (a, ln_f, ln_g, f_lpf, g_lpf) = (v.a, v.ln_f, v.ln_g, v.f_lpf, v.g_lpf);
             tally.evaluated += 1;
@@ -531,6 +590,22 @@ fn measure_rows(
                     row.alg_smooth += u64::from(f_smooth);
                     row.rat_smooth += u64::from(g_smooth);
                     row.both += u64::from(f_smooth && g_smooth);
+                }
+            }
+            for (hist, ln_value, ln_small, lpf) in [
+                (&mut tally.alg_cof, ln_f, v.ln_sf, f_lpf),
+                (&mut tally.rat_cof, ln_g, v.ln_sg, g_lpf),
+            ] {
+                let ln_c = (ln_value - ln_small).max(0.0);
+                let k = cofactor::bin_index(ln_c, cof.bin_width, cof.bins);
+                hist.count[k] += 1;
+                hist.sum_ln_c[k] += cofactor::tallied_ln_c(ln_c);
+                if let Some(l) = lpf {
+                    for (i, &bound) in bounds.iter().enumerate() {
+                        if l <= bound {
+                            hist.smooth[k * bounds.len() + i] += 1;
+                        }
+                    }
                 }
             }
             tally.alg_lpf_hist[lpf_bin(f_lpf)] += 1;
@@ -681,6 +756,17 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         opts.alpha_bound
     );
     let alphas = (alpha_f, alpha_g);
+    let cof = CofactorSpec {
+        small: SmallPart::new(opts.alpha_bound),
+        bin_width: opts.cofactor_bin,
+        bins: (COFACTOR_LN_MAX / opts.cofactor_bin).ceil() as usize + 1,
+    };
+    println!(
+        "cofactor split: {} primes up to {}, ln c in bins of {:.5} (docs/baseline_calibration.md section 7)",
+        cof.small.primes.len(),
+        cof.small.bound,
+        cof.bin_width
+    );
 
     let run_id = format!("d1m-{}-{}", std::process::id(), metrics::now_ms());
     let mut sink = Sink::from_env(&run_id);
@@ -718,7 +804,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         None => None,
     };
 
-    let mut total = Tally::new(bounds.len());
+    let mut total = Tally::new(bounds.len(), cof.bins);
     let rows: Vec<i64> = (1..=b_max).collect();
     for batch in rows.chunks(threads * 4) {
         let batch_started = Instant::now();
@@ -728,9 +814,9 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
             let handles: Vec<_> = batch
                 .chunks(per_thread)
                 .map(|rows| {
-                    let (alg, rat, method, dickman, bounds) = (&alg, &rat, &method, &dickman, &bounds);
+                    let (alg, rat, method, dickman, bounds, cof) = (&alg, &rat, &method, &dickman, &bounds, &cof);
                     scope.spawn(move || {
-                        measure_rows(rows, a_max, alg, rat, method, dickman, bounds, alphas, dump)
+                        measure_rows(rows, a_max, alg, rat, method, dickman, bounds, alphas, cof, dump)
                     })
                 })
                 .collect();
@@ -959,6 +1045,29 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         }
     }
 
+    let mut cof_csv = String::from("side,bin,ln_c_lo,ln_c_hi,b,count,mean_ln_c,smooth\n");
+    let mut cof_filled = [0usize; 2];
+    for (s, (name, hist)) in [("algebraic", &total.alg_cof), ("rational", &total.rat_cof)].into_iter().enumerate() {
+        use std::fmt::Write as _;
+        for k in 0..cof.bins {
+            let count = hist.count[k];
+            if count == 0 {
+                continue;
+            }
+            cof_filled[s] += 1;
+            let mean = hist.sum_ln_c[k] / count as f64;
+            for (i, &b) in bounds.iter().enumerate() {
+                let _ = writeln!(
+                    cof_csv,
+                    "{name},{k},{:.6},{:.6},{b},{count},{mean:.6},{}",
+                    k as f64 * cof.bin_width,
+                    (k + 1) as f64 * cof.bin_width,
+                    hist.smooth[k * bounds.len() + i]
+                );
+            }
+        }
+    }
+
     let hardware = sampler.and_then(|sampler| {
         let path = sampler.path.clone();
         match sampler.stop() {
@@ -991,6 +1100,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         ("u_bins", bins_csv, "per bound, side and u bin of width 0.1: count, smooth, observed, raw, alpha-adjusted and local-density predictions, their ratios to observed"),
         ("rows", rows_csv, "per b row at the top bound: counts, densities, mean ln|F| and ln|G|"),
         ("lpf_hist", lpf_csv, "per side: values by floor(log2(largest prime factor)) at the top bound, plus not_smooth"),
+        ("cofactor", cof_csv, "per side, bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = |value| / s, with s the part of the value made of primes up to cofactor.rough_bound, and bound: the count of values whose cofactor falls in the bin, their mean ln c, and the count of those that are B-smooth. Bin 0 holds the values with c = 1. The bins are those of the d1-baseline/2 table named cofactor"),
     ];
     let mut table_records = Vec::new();
     for (name, csv, description) in &tables {
@@ -1008,7 +1118,7 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     }
 
     let mut result = json!({
-        "schema_version": RESULT_V3,
+        "schema_version": RESULT_V4,
         "run_id": run_id,
         "ts_ms": metrics::now_ms(),
         "elapsed_ms": elapsed_ms,
@@ -1026,6 +1136,13 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
         "alpha_applied": true,
         "smoothness": smoothness,
         "alpha": {"method": alpha::METHOD, "bound": opts.alpha_bound, "algebraic": alpha_f, "rational": alpha_g, "definition": "docs/murphy_alpha.md"},
+        "cofactor": {
+            "rough_bound": cof.small.bound,
+            "small_primes": cof.small.primes.len(),
+            "bin_width": cof.bin_width,
+            "bins": cof.bins,
+            "bins_filled": {"algebraic": cof_filled[0], "rational": cof_filled[1]},
+        },
         "results": results,
         "tables": table_records,
     });
@@ -1035,11 +1152,78 @@ fn run_instrument(poly: poly::InstrumentPolynomial, opts: &Options) -> Result<()
     if let Some(path) = &opts.dump {
         result["dump"] = json!(path.to_string_lossy());
     }
-    registry.validate_value(RESULT_V3, &result)?;
+    registry.validate_value(RESULT_V4, &result)?;
     let text = serde_json::to_string_pretty(&result).map_err(|err| err.to_string())?;
     write_text(&out, &(text + "\n"))?;
     println!("wrote {}", out.display());
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use num_bigint::BigInt;
+
+    #[test]
+    fn cofactor_histograms_agree_with_division() {
+        let f: Vec<BigInt> = [-85186479i64, -38330143, 45773675, 567699, 7560].iter().map(|&c| BigInt::from(c)).collect();
+        let g: Vec<BigInt> = [197150570i64, 63638117].iter().map(|&c| BigInt::from(c)).collect();
+        let (alg, rat) = (Homogeneous::new(&f), Homogeneous::new(&g));
+        let bounds = [1u64 << 10, 1 << 12];
+        let b_top = bounds[1];
+        let (alg_fb, rat_fb) = (FactorBase::build(&f, b_top, 2), FactorBase::build(&g, b_top, 2));
+        let method = Method::Sieve { alg_fb: &alg_fb, rat_fb: &rat_fb, slack: linesieve::default_slack(b_top) };
+        let cof = CofactorSpec { small: SmallPart::new(100), bin_width: cofactor::DEFAULT_BIN_WIDTH, bins: 600 };
+        let rows: Vec<i64> = (1..=40).collect();
+        let a_max = 300i64;
+        let tally = measure_rows(&rows, a_max, &alg, &rat, &method, &Dickman::new(), &bounds, (0.0, 0.0), &cof, false);
+
+        let primes = primes_up_to(b_top);
+        let mut count = [vec![0u64; cof.bins], vec![0u64; cof.bins]];
+        let mut smooth = [vec![0u64; cof.bins * 2], vec![0u64; cof.bins * 2]];
+        let mut evaluated = 0u64;
+        for &b in &rows {
+            let (fp, gp) = (alg.powers_of_b(b), rat.powers_of_b(b));
+            for a in -a_max..=a_max {
+                if !coprime(a, b) {
+                    continue;
+                }
+                let values = [alg.eval_with_powers(a, &fp), rat.eval_with_powers(a, &gp)];
+                if values.iter().any(|v| v.is_zero()) {
+                    continue;
+                }
+                evaluated += 1;
+                for (side, v) in values.iter().enumerate() {
+                    let mut c = v.magnitude().clone();
+                    for &p in &cof.small.primes {
+                        while (&c % p).is_zero() {
+                            c /= p;
+                        }
+                    }
+                    let k = cofactor::bin_index(dickman::ln_biguint(&c), cof.bin_width, cof.bins);
+                    count[side][k] += 1;
+                    if let Some(lpf) = largest_prime_factor_if_smooth(v.magnitude(), &primes, b_top) {
+                        for (i, &bound) in bounds.iter().enumerate() {
+                            if lpf <= bound {
+                                smooth[side][k * 2 + i] += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        assert_eq!(tally.evaluated, evaluated);
+        assert!(evaluated > 10_000);
+        assert_eq!(tally.alg_cof.count, count[0]);
+        assert_eq!(tally.rat_cof.count, count[1]);
+        assert_eq!(tally.alg_cof.smooth, smooth[0]);
+        assert_eq!(tally.rat_cof.smooth, smooth[1]);
+        for i in 0..2 {
+            let by_bin: u64 = (0..cof.bins).map(|k| tally.alg_cof.smooth[k * 2 + i]).sum();
+            assert_eq!(by_bin, tally.alg_smooth[i]);
+            assert!(by_bin > 0);
+        }
+    }
 }
 
 // ---------------------------------------------------------------------------

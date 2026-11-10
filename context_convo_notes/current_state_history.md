@@ -2,12 +2,18 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-10 04:10 EST
-- **Version**: 1.16
+- **Last Modified**: 2026-11-10 05:15 EST
+- **Version**: 1.17
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-10 05:15 EST
+- The exact small-prime measurement is done: `d1-measure` bins every value by its cofactor (`d1-measurement/4`), `scripts/d1_conditional.py` sums the tabulated Q_B over the values. Bins are now an eighth of a bit so power-of-two bounds are bin edges (Q jumps at c = B).
+- Rational control at zero (+0.02% at 2^24, −0.02% at 2^28). Algebraic mean +0.57% ± 0.64% at 2^20, +0.35% ± 0.42% at 2^24, +0.16% ± 0.24% at 2^28: no excess.
+- Single instances deviate (d1-08 +1.72%, d1-09 −1.18% at 2^28) and follow α's tail over primes in (2000, B]: correlation 0.93–0.98; after the tail's first-order prediction the mean is +0.10% ± 0.09% at 2^28. The prediction is too small by 1.5–3.4, not yet explained.
+- Read as no evidence for D1 at this scale. Next: the exact first-order term from root counts, or another sub-claim; the verdict in the prediction document is the author's.
 
 ### 2026-11-10 04:10 EST
 - Pull request 25 is merged. This is the first change on `primness_dev01` after that merge.

@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-10 04:10 EST
-- **Version**: 1.21
+- **Last Modified**: 2026-11-10 05:15 EST
+- **Version**: 1.22
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,19 +60,21 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-10 04:10 EST:
+As of 2026-11-10 05:15 EST:
 
-I am developing on `primness_dev01`. Pull request 25 is merged, and this change is the first on the branch after that merge. D1 is still my starting sub-claim under Obstacle D.
+I am developing on `primness_dev01`. Pull request 25 is merged, and this change follows the conditional-baseline table on the branch. D1 is still my starting sub-claim under Obstacle D.
 
-The baseline is measured (`docs/baseline_calibration.md`): integers without structure follow the de Bruijn local form ρ(u) + γρ′(u)/ln B, and against it, with α and the second-order term α₂ applied, the algebraic side of the ten instances sits +11% above the prediction at 2^14, +2.8% at 2^20, +1.2% at 2^24 and +0.5% at 2^28. The criterion rejects at no bound and I do not read that as evidence for D1.
+The measurement that replaces the α expansion is done, and it finds no excess. `d1-baseline` tabulates Q_B(c), the density of B-smooth integers among integers with no prime factor up to 2000, by the size of c, from 1.69 × 10^9 consecutive integers (`d1-baseline/2`). `d1-measure` divides every polynomial value by its part made of the primes up to 2000 and bins the cofactor the same way (`d1-measurement/4`). `scripts/d1_conditional.py` sums Q_B over the values of each instance. The prediction uses no α, no α₂ and no Dickman function. Sections 7 and 8 of `docs/baseline_calibration.md` record the method, and `data/results/summary.conditional.md` the numbers.
 
-The first half of the measurement that replaces the expansion is done. `d1-baseline` now splits every one of its 1.69 × 10^9 consecutive integers into the part made of primes up to 2000, the α bound, and a cofactor c with no such prime, and counts the integers and the B-smooth ones per bin of ln c, 0.25 wide, pooled over the 101 sizes. The quotient is Q_B(c), the density of B-smooth integers among rough integers of size c, with no independence assumption and no expansion behind it. The result is `d1-baseline/2` with the table `data/results/baseline.consecutive.cofactor.csv`; section 7 of the calibration document records the definition and the run. At every bound the bins sum exactly to the unconditional smooth counts, and the unconditional table is unchanged.
+The rational side is the control, because a linear polynomial has one root at every prime. Its mean gap over the ten instances is +0.02% at 2^24 and −0.02% at 2^28, inside the noise at every bound. On the algebraic side the mean gap is +0.57% ± 0.64% at 2^20, +0.35% ± 0.42% at 2^24 and +0.16% ± 0.24% at 2^28, the error being the spread across instances. Most of the +1.2% and +0.5% left after α and α₂ was the expansion's truncation.
 
-Three things in the table matter for the comparison. Rough integers are far less often smooth than integers of their size: 0.64 to 0.31 of the de Bruijn value at 2^28 for ln c from 25 to 70. At the small bounds Q is banded, with bins that hold no smooth integer at all, so the table has to be read per bin. And the Poisson error per bin is 0.07% to 0.75% at 2^28 over that range but 2% at ln c = 70 for 2^24 and worse below, against a gap of 0.5% and 1.2% to resolve; a longer interval may be needed for the upper sizes.
+Single instances are not at zero: d1-08 is +1.72% at 2^28, d1-09 is −1.18%, each more than six standard errors. Those deviations follow the tail of α over the primes between 2000 and B, which is zero on average over polynomials: the correlation across instances is 0.93 to 0.98 at every bound, and removing the tail's first-order prediction cuts the spread at 2^28 from 0.76% to 0.29% and leaves a mean of +0.10% ± 0.09%. The first-order prediction is too small by a factor of 1.5 at 2^28 and 3.4 at 2^14. I expect that to be the linearization, since one prime near B changes the cofactor by an amount of the order of ln B, but I have not computed it.
 
-The next step is the instrument side: `d1-measure` computes the exact small-prime part of every value by the same definition, sums Q_B over the cofactors, and compares the sum with the observed count on the ten instances. A gap that survives is structure at primes between the α bound and B and the first evidence for D1; a gap that vanishes closes the α chapter.
+I read this as no evidence for D1 on these ten instances at this scale. The rejection threshold in the prediction document is met at every bound under the relative weighting proposed in section 6 of the calibration document; that weighting and the verdict are still mine to adopt in `docs/d1_falsifiable_prediction.md`.
 
-The criterion's weighting proposed in `docs/baseline_calibration.md` section 6 is still for me to adopt in the prediction document. The required status check on the main ruleset is still to be applied in the repository settings.
+Two choices in the build mattered. The bins are an eighth of a bit wide so that every power-of-two bound is a bin edge, because Q jumps at c = B; the first table, in bins of 0.25, put −0.11% on the control at 2^28. And α's root enumeration now uses the roots mod p, which made α at 2^24 a four-minute computation; α at 2^28 is not computed and the tail at 2^24 stands in for it.
+
+The next step is a decision: compute the exact first-order term of the primes between 2000 and B from the root counts and close D1 at this scale, or move to another sub-claim. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -80,9 +82,9 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
-- What carries the gap that remains after the measured baseline and α₂: +1.2% at 2^24 and +0.5% at 2^28 on the algebraic side, positive for eight of ten instances, with implied variances 10 to 50 percent above the computed α₂ for most instances? The candidates are the third moment of the small-prime part, the independence and random-cofactor approximations inside α, and structure at primes between the α bound and B. The exact small-prime measurement in `docs/baseline_calibration.md` section 5 separates them; its baseline half, the table Q_B(c), exists (section 7).
-- Does the residual after α and α₂ track the Galois group of the polynomial on real selected polynomials, as the toy quartics suggested for α alone (A4 least, V4 most)? The toy ladder has not been re-read against the measured baseline, and the reducible x^n − 1 family is outside the second-order expansion's regime.
-- Is the conditional table precise enough at the upper cofactor sizes? Per bin the Poisson error is 2% at ln c = 70 for 2^24 and 8.7% for 2^20. The instrument sum averages over many bins; whether that reaches the 0.5% to 1.2% gap is not computed until the instrument side exists. `--length 2^26` would multiply the counts by four.
+- Why is the α tail's first-order prediction too small, by 1.5 at 2^28 rising to 3.4 at 2^14, when it orders the instances almost perfectly? The candidate is the linearization: the exact first-order term is Σ (n_p − 1)/p × (Q_B(c/p)/Q_B(c) − 1) over the primes between 2000 and B. It needs the root counts per prime and the table, and it would say whether anything is left per polynomial.
+- Is the mean gap after the tail real? It is positive at five of six bounds by about one standard error each (+0.10% ± 0.09% at 2^28), on values the bounds share. More instances, or a larger region per instance, would decide it; the exact first-order term might remove it.
+- Does the residual track the Galois group of the polynomial on real selected polynomials, as the toy quartics suggested for α alone (A4 least, V4 most)? The α tail is a sum over primes of root-count fluctuations, whose variance the Galois group fixes, so the question now has a concrete form.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*

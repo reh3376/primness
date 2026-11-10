@@ -12,59 +12,69 @@
     16777216,
     268435456
   ],
+  "cofactor": {
+    "bin_width": 0.08664339756999316,
+    "bins": 2771,
+    "bins_filled": {
+      "algebraic": 680,
+      "rational": 394
+    },
+    "rough_bound": 2000,
+    "small_primes": 303
+  },
   "dickman": {
     "method": "simpson-grid",
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "elapsed_ms": 36689,
+  "elapsed_ms": 40741,
   "evaluated": 5472915,
   "hardware": {
-    "samples_file": "data/hardware/d1m-42729-1793750986115.jsonl",
+    "samples_file": "data/hardware/d1m-22031-1794303453555.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.9943809509277344,
-        "mean": 0.9783084988594055,
-        "min": 0.951042890548706
+        "max": 0.998842477798462,
+        "mean": 0.9755999825217507,
+        "min": 0.8874169588088989
       },
       "cpu_temp_c": {
-        "max": 83.26068878173828,
-        "mean": 81.29707015188117,
-        "min": 73.24301147460938
+        "max": 80.92269897460938,
+        "mean": 77.60989796031605,
+        "min": 75.7833023071289
       },
-      "duration_ms": 20537,
+      "duration_ms": 23344,
       "gpu_active_ratio": {
-        "max": 0.06155000627040863,
-        "mean": 0.02729782500108214,
-        "min": 0.0
+        "max": 0.05949661135673523,
+        "mean": 0.01820600884754888,
+        "min": 0.0036992663517594337
       },
       "gpu_device_utilization_pct": {
-        "max": 2.0,
-        "mean": 0.2631578947368421,
+        "max": 1.0,
+        "mean": 0.18181818181818182,
         "min": 0.0
       },
       "gpu_share_of_total": {
-        "max": 0.1292860507965088,
-        "mean": 0.12706772904647023,
-        "min": 0.12380099296569824
+        "max": 0.17763078212738037,
+        "mean": 0.1756452430378307,
+        "min": 0.17360830307006836
       },
       "gpu_temp_c": {
-        "max": 73.8491439819336,
-        "mean": 71.07429665013363,
-        "min": 65.63560485839844
+        "max": 70.9711685180664,
+        "mean": 70.21365217729048,
+        "min": 67.84505462646484
       },
       "memory_used_ratio": {
-        "max": 0.6356379985809326,
-        "mean": 0.6335992938593814,
-        "min": 0.6313307285308838
+        "max": 0.8263040781021118,
+        "mean": 0.8246065974235535,
+        "min": 0.822358250617981
       },
       "power_all_w": {
-        "max": 67.73651885986328,
-        "mean": 61.428739045795645,
-        "min": 56.932159423828125
+        "max": 67.0134048461914,
+        "mean": 54.35317247564142,
+        "min": 46.73939895629883
       },
-      "samples": 19
+      "samples": 22
     }
   },
   "instance": "d1-07",
@@ -85,7 +95,7 @@
       "-723060963512031",
       "58211152973"
     ],
-    "schema_version": "instrument-polynomial/1",
+    "schema_version": "instrument-polynomial/2",
     "skew": "996.562",
     "source": "cado-nfs"
   },
@@ -195,9 +205,9 @@
       }
     }
   ],
-  "run_id": "d1m-42729-1793750986115",
+  "run_id": "d1m-22031-1794303453555",
   "scale": "scaled-down",
-  "schema_version": "d1-measurement/2",
+  "schema_version": "d1-measurement/4",
   "skipped_zero": 0,
   "smoothness": {
     "factor_base_primes": 14630843,
@@ -279,8 +289,24 @@
       "name": "lpf_hist",
       "path": "data/results/d1-07.scaled-down.b28.lpf_hist.csv",
       "rows": 43
+    },
+    {
+      "columns": [
+        "side",
+        "bin",
+        "ln_c_lo",
+        "ln_c_hi",
+        "b",
+        "count",
+        "mean_ln_c",
+        "smooth"
+      ],
+      "description": "per side, bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = |value| / s, with s the part of the value made of primes up to cofactor.rough_bound, and bound: the count of values whose cofactor falls in the bin, their mean ln c, and the count of those that are B-smooth. Bin 0 holds the values with c = 1. The bins are those of the d1-baseline/2 table named cofactor",
+      "name": "cofactor",
+      "path": "data/results/d1-07.scaled-down.b28.cofactor.csv",
+      "rows": 3222
     }
   ],
   "threads": 18,
-  "ts_ms": 1793751007623
+  "ts_ms": 1794303477842
 }

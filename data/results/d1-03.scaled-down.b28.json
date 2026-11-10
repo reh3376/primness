@@ -12,59 +12,69 @@
     16777216,
     268435456
   ],
+  "cofactor": {
+    "bin_width": 0.08664339756999316,
+    "bins": 2771,
+    "bins_filled": {
+      "algebraic": 552,
+      "rational": 279
+    },
+    "rough_bound": 2000,
+    "small_primes": 303
+  },
   "dickman": {
     "method": "simpson-grid",
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "elapsed_ms": 45118,
+  "elapsed_ms": 50588,
   "evaluated": 5472915,
   "hardware": {
-    "samples_file": "data/hardware/d1m-18821-1793748713918.jsonl",
+    "samples_file": "data/hardware/d1m-20716-1794303275630.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.9995473027229308,
-        "mean": 0.9818675897338174,
-        "min": 0.9407817125320436
+        "max": 1.0,
+        "mean": 0.9848102235794067,
+        "min": 0.9477921724319458
       },
       "cpu_temp_c": {
-        "max": 89.02960205078125,
-        "mean": 86.90170877630061,
-        "min": 85.43914794921875
+        "max": 86.4921875,
+        "mean": 85.142861328125,
+        "min": 81.7759017944336
       },
-      "duration_ms": 23709,
+      "duration_ms": 26917,
       "gpu_active_ratio": {
-        "max": 0.3981150090694427,
-        "mean": 0.10091108456254005,
-        "min": 0.05287686735391617
+        "max": 0.6600610613822937,
+        "mean": 0.14950153201818467,
+        "min": 0.0
       },
       "gpu_device_utilization_pct": {
-        "max": 85.0,
-        "mean": 4.7272727272727275,
+        "max": 83.0,
+        "mean": 19.32,
         "min": 0.0
       },
       "gpu_share_of_total": {
-        "max": 0.1307283639907837,
-        "mean": 0.12830895727330988,
-        "min": 0.12515747547149658
+        "max": 0.17928802967071533,
+        "mean": 0.17661865234375,
+        "min": 0.17360830307006836
       },
       "gpu_temp_c": {
-        "max": 91.76544189453124,
-        "mean": 81.69636084816672,
-        "min": 78.34244537353516
+        "max": 85.72581481933594,
+        "mean": 81.44357177734375,
+        "min": 79.2671127319336
       },
       "memory_used_ratio": {
-        "max": 0.628930926322937,
-        "mean": 0.6269092559814453,
-        "min": 0.6243119239807129
+        "max": 0.8275265693664551,
+        "mean": 0.8253828763961792,
+        "min": 0.8224577903747559
       },
       "power_all_w": {
-        "max": 51.495357513427734,
-        "mean": 47.249524029818446,
-        "min": 39.113014221191406
+        "max": 50.442176818847656,
+        "mean": 45.92638031005859,
+        "min": 37.6477165222168
       },
-      "samples": 22
+      "samples": 25
     }
   },
   "instance": "d1-03",
@@ -85,7 +95,7 @@
       "-33412475970",
       "413866337"
     ],
-    "schema_version": "instrument-polynomial/1",
+    "schema_version": "instrument-polynomial/2",
     "skew": "54.049",
     "source": "cado-nfs"
   },
@@ -195,9 +205,9 @@
       }
     }
   ],
-  "run_id": "d1m-18821-1793748713918",
+  "run_id": "d1m-20716-1794303275630",
   "scale": "scaled-down",
-  "schema_version": "d1-measurement/2",
+  "schema_version": "d1-measurement/4",
   "skipped_zero": 0,
   "smoothness": {
     "factor_base_primes": 14630843,
@@ -279,8 +289,24 @@
       "name": "lpf_hist",
       "path": "data/results/d1-03.scaled-down.b28.lpf_hist.csv",
       "rows": 48
+    },
+    {
+      "columns": [
+        "side",
+        "bin",
+        "ln_c_lo",
+        "ln_c_hi",
+        "b",
+        "count",
+        "mean_ln_c",
+        "smooth"
+      ],
+      "description": "per side, bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = |value| / s, with s the part of the value made of primes up to cofactor.rough_bound, and bound: the count of values whose cofactor falls in the bin, their mean ln c, and the count of those that are B-smooth. Bin 0 holds the values with c = 1. The bins are those of the d1-baseline/2 table named cofactor",
+      "name": "cofactor",
+      "path": "data/results/d1-03.scaled-down.b28.cofactor.csv",
+      "rows": 2493
     }
   ],
   "threads": 18,
-  "ts_ms": 1793748738564
+  "ts_ms": 1794303303474
 }

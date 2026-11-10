@@ -9,9 +9,9 @@
   ],
   "chunk": 1048576,
   "cofactor": {
-    "bin_width": 0.25,
-    "bins": 485,
-    "bins_filled": 450,
+    "bin_width": 0.08664339756999316,
+    "bins": 1398,
+    "bins_filled": 1285,
     "count": 1694498816,
     "power_cap": 4611686018427387904,
     "rough_bound": 2000,
@@ -22,54 +22,54 @@
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "elapsed_ms": 95385,
+  "elapsed_ms": 94093,
   "euler_gamma": 0.5772156649015329,
   "hardware": {
-    "samples_file": "data/hardware/d1b-14723-1794301633483.jsonl",
+    "samples_file": "data/hardware/d1b-18973-1794303061436.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.8134515285491943,
-        "mean": 0.5075911969266912,
-        "min": 0.27012789249420166
+        "max": 0.7594416737556458,
+        "mean": 0.4951062448077149,
+        "min": 0.2374591827392578
       },
       "cpu_temp_c": {
-        "max": 90.48313903808594,
-        "mean": 75.3875127402685,
-        "min": 58.05633163452149
+        "max": 80.65912628173828,
+        "mean": 77.24218297266698,
+        "min": 68.34004974365234
       },
-      "duration_ms": 94486,
+      "duration_ms": 93203,
       "gpu_active_ratio": {
-        "max": 0.9985576272010804,
-        "mean": 0.24208549474195767,
-        "min": 0.04589325934648514
+        "max": 0.08806853741407394,
+        "mean": 0.06632785343534343,
+        "min": 0.04665651172399521
       },
       "gpu_device_utilization_pct": {
-        "max": 99.0,
-        "mean": 22.0752688172043,
+        "max": 36.0,
+        "mean": 2.7032967032967035,
         "min": 0.0
       },
       "gpu_share_of_total": {
-        "max": 0.18426084518432617,
-        "mean": 0.18110358586875341,
-        "min": 0.17867517471313477
+        "max": 0.18185293674468994,
+        "mean": 0.17973766222104923,
+        "min": 0.1774599552154541
       },
       "gpu_temp_c": {
-        "max": 95.60491180419922,
-        "mean": 70.13815894178165,
-        "min": 48.85416793823242
+        "max": 73.50167083740234,
+        "mean": 71.33576956948082,
+        "min": 63.097469329833984
       },
       "memory_used_ratio": {
-        "max": 0.8348939418792725,
-        "mean": 0.8300339278354439,
-        "min": 0.8260842561721802
+        "max": 0.8343499898910522,
+        "mean": 0.8306048584508372,
+        "min": 0.8267686367034912
       },
       "power_all_w": {
-        "max": 122.29785919189452,
-        "mean": 45.13970580152286,
-        "min": 22.11298370361328
+        "max": 47.72418594360352,
+        "mean": 34.14452632442936,
+        "min": 22.809734344482425
       },
-      "samples": 93
+      "samples": 91
     }
   },
   "interval_length": 16777216,
@@ -6944,7 +6944,7 @@
       "x_digits": 53
     }
   ],
-  "run_id": "d1b-14723-1794301633483",
+  "run_id": "d1b-18973-1794303061436",
   "scale": "scaled-down",
   "schema_version": "d1-baseline/2",
   "sizes": {
@@ -6983,6 +6983,7 @@
     },
     {
       "columns": [
+        "bin",
         "ln_c_lo",
         "ln_c_hi",
         "b",
@@ -6995,12 +6996,12 @@
         "debruijn_local",
         "ratio_debruijn"
       ],
-      "description": "the conditional baseline, pooled over the sizes: per bin [ln_c_lo, ln_c_hi) of the cofactor c = n / s(n), with s(n) the part of n made of primes up to rough_bound, and per bound B: the count of integers whose cofactor falls in the bin, their mean ln c, u = mean ln c / ln B, the count of those that are B-smooth, the observed density Q_B(c) and its Poisson standard error, and for reference the unconditional de Bruijn local form at u with observed over it. Bin 0 holds the integers with c = 1",
+      "description": "the conditional baseline, pooled over the sizes: per bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = n / s(n), with s(n) the part of n made of primes up to rough_bound, and per bound B: the count of integers whose cofactor falls in the bin, their mean ln c, u = mean ln c / ln B, the count of those that are B-smooth, the observed density Q_B(c) and its Poisson standard error, and for reference the unconditional de Bruijn local form at u with observed over it. Bin 0 holds the integers with c = 1",
       "name": "cofactor",
       "path": "data/results/baseline.consecutive.cofactor.csv",
-      "rows": 2700
+      "rows": 7710
     }
   ],
   "threads": 18,
-  "ts_ms": 1794301728877
+  "ts_ms": 1794303155540
 }

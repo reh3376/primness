@@ -168,7 +168,7 @@ def main(argv):
     instances = set()
     for f in sorted(glob.glob("data/results/d1-*.scaled-down*.json")):
         r = json.loads(Path(f).read_text())
-        if r.get("schema_version") not in ("d1-measurement/2", "d1-measurement/3"):
+        if r.get("schema_version") not in ("d1-measurement/2", "d1-measurement/3", "d1-measurement/4"):
             continue
         inst = Path(f).name.split(".")[0]
         instances.add(inst)

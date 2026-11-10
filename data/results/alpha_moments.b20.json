@@ -1,0 +1,165 @@
+{
+  "bound": 1048576,
+  "definition": "docs/baseline_calibration.md",
+  "method": "murphy-valuation-moments",
+  "polynomials": [
+    {
+      "algebraic": {
+        "alpha": -3.9511113990119355,
+        "alpha2": 6.172018515000725
+      },
+      "degree": 4,
+      "instance": "d1-01",
+      "n_digits": 40,
+      "path": "data/instruments/d1-01/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336726,
+        "alpha2": -0.8844676627247529
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -3.2427986041033603,
+        "alpha2": 7.139368860513214
+      },
+      "degree": 4,
+      "instance": "d1-02",
+      "n_digits": 44,
+      "path": "data/instruments/d1-02/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336726,
+        "alpha2": -0.8844676627247527
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.075282803651248,
+        "alpha2": 8.619983345270397
+      },
+      "degree": 4,
+      "instance": "d1-03",
+      "n_digits": 48,
+      "path": "data/instruments/d1-03/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336725,
+        "alpha2": -0.8844676627247527
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -4.080577768273709,
+        "alpha2": 7.416407802705523
+      },
+      "degree": 4,
+      "instance": "d1-04",
+      "n_digits": 52,
+      "path": "data/instruments/d1-04/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336726,
+        "alpha2": -0.8844676627247527
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -3.7714890912568984,
+        "alpha2": 8.118356217998908
+      },
+      "degree": 4,
+      "instance": "d1-05",
+      "n_digits": 56,
+      "path": "data/instruments/d1-05/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336726,
+        "alpha2": -0.8844676627247527
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -3.606499361264931,
+        "alpha2": 8.356286199166224
+      },
+      "degree": 4,
+      "instance": "d1-06",
+      "n_digits": 60,
+      "path": "data/instruments/d1-06/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336725,
+        "alpha2": -0.8844676627247529
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.339273859321299,
+        "alpha2": 12.187039241675647
+      },
+      "degree": 4,
+      "instance": "d1-07",
+      "n_digits": 64,
+      "path": "data/instruments/d1-07/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336725,
+        "alpha2": -0.8844676627247529
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.581760096600734,
+        "alpha2": 9.761161296200054
+      },
+      "degree": 4,
+      "instance": "d1-08",
+      "n_digits": 68,
+      "path": "data/instruments/d1-08/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336726,
+        "alpha2": -0.8844676627247527
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -5.85622045465901,
+        "alpha2": 9.494600635842385
+      },
+      "degree": 4,
+      "instance": "d1-09",
+      "n_digits": 72,
+      "path": "data/instruments/d1-09/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336727,
+        "alpha2": -0.8844676627247529
+      }
+    },
+    {
+      "algebraic": {
+        "alpha": -4.731280168671531,
+        "alpha2": 8.85932189487298
+      },
+      "degree": 4,
+      "instance": "d1-10",
+      "n_digits": 80,
+      "path": "data/instruments/d1-10/cado.poly",
+      "rational": {
+        "alpha": 0.5699600396336726,
+        "alpha2": -0.8844676627247529
+      }
+    }
+  ],
+  "schema_version": "alpha-moments/1",
+  "tables": [
+    {
+      "columns": [
+        "instance",
+        "side",
+        "degree",
+        "n_digits",
+        "alpha",
+        "alpha2"
+      ],
+      "description": "per polynomial and side: Murphy alpha and the excess variance alpha2 of the log small-prime part, over primes up to bound",
+      "name": "alpha_moments",
+      "path": "data/results/alpha_moments.b20.csv",
+      "rows": 20
+    }
+  ],
+  "ts_ms": 1794305248190
+}

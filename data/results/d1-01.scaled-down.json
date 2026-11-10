@@ -13,59 +13,69 @@
     262144,
     1048576
   ],
+  "cofactor": {
+    "bin_width": 0.08664339756999316,
+    "bins": 2771,
+    "bins_filled": {
+      "algebraic": 471,
+      "rational": 225
+    },
+    "rough_bound": 2000,
+    "small_primes": 303
+  },
   "dickman": {
     "method": "simpson-grid",
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "elapsed_ms": 17592,
+  "elapsed_ms": 2087,
   "evaluated": 5472915,
   "hardware": {
-    "samples_file": "data/hardware/d1m-9497-1793747698921.jsonl",
+    "samples_file": "data/hardware/d1m-19989-1794303160614.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.9508300423622132,
-        "mean": 0.9018326838811238,
-        "min": 0.8473008871078491
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
       "cpu_temp_c": {
-        "max": 75.61759948730469,
-        "mean": 70.68933741251628,
-        "min": 58.12211990356445
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
-      "duration_ms": 16585,
+      "duration_ms": 1046,
       "gpu_active_ratio": {
-        "max": 0.12890514731407166,
-        "mean": 0.10535922646522522,
-        "min": 0.08077403157949448
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
       "gpu_device_utilization_pct": {
-        "max": 10.0,
-        "mean": 6.866666666666666,
-        "min": 5.0
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
       "gpu_share_of_total": {
-        "max": 0.12918639183044434,
-        "mean": 0.12906657854715983,
-        "min": 0.12836003303527832
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
       "gpu_temp_c": {
-        "max": 64.36681365966797,
-        "mean": 58.21357854207357,
-        "min": 50.40680694580078
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
       "memory_used_ratio": {
-        "max": 0.634575366973877,
-        "mean": 0.634104855855306,
-        "min": 0.633105993270874
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
       "power_all_w": {
-        "max": 65.74801635742188,
-        "mean": 60.16696599324544,
-        "min": 56.08684158325195
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0
       },
-      "samples": 15
+      "samples": 0
     }
   },
   "instance": "d1-01",
@@ -86,7 +96,7 @@
       "197150570",
       "63638117"
     ],
-    "schema_version": "instrument-polynomial/1",
+    "schema_version": "instrument-polynomial/2",
     "skew": "3.646",
     "source": "cado-nfs"
   },
@@ -228,10 +238,15 @@
       }
     }
   ],
-  "run_id": "d1m-9497-1793747698921",
+  "run_id": "d1m-19989-1794303160614",
   "scale": "scaled-down",
-  "schema_version": "d1-measurement/2",
+  "schema_version": "d1-measurement/4",
   "skipped_zero": 0,
+  "smoothness": {
+    "factor_base_primes": 82025,
+    "method": "line-sieve",
+    "slack_ln": 28.725887222397812
+  },
   "tables": [
     {
       "columns": [
@@ -307,8 +322,24 @@
       "name": "lpf_hist",
       "path": "data/results/d1-01.scaled-down.lpf_hist.csv",
       "rows": 34
+    },
+    {
+      "columns": [
+        "side",
+        "bin",
+        "ln_c_lo",
+        "ln_c_hi",
+        "b",
+        "count",
+        "mean_ln_c",
+        "smooth"
+      ],
+      "description": "per side, bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = |value| / s, with s the part of the value made of primes up to cofactor.rough_bound, and bound: the count of values whose cofactor falls in the bin, their mean ln c, and the count of those that are B-smooth. Bin 0 holds the values with c = 1. The bins are those of the d1-baseline/2 table named cofactor",
+      "name": "cofactor",
+      "path": "data/results/d1-01.scaled-down.cofactor.csv",
+      "rows": 2784
     }
   ],
   "threads": 18,
-  "ts_ms": 1793747716509
+  "ts_ms": 1794303162639
 }

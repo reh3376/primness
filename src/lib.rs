@@ -1,4 +1,5 @@
 pub mod alpha;
+pub mod cofactor;
 pub mod db;
 pub mod dickman;
 pub mod eval;

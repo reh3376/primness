@@ -13,8 +13,8 @@ Every instrument run of 30 digits or more records the machine beside the measure
 ## Recording
 
 - `hw-sample --run-id ID --interval-ms 1000 -- <command>` samples while a command runs, for example CADO-NFS polynomial selection through `scripts/cado-polyselect.sh`.
-- `d1-baseline` starts the sampler the same way; its `d1-baseline/2` result embeds the finish summary under `hardware`. The default grid ran 95 s at a mean CPU activity of 0.51 and a CPU temperature peak of 90.5 °C.
-- `d1-measure` on an instrument polynomial starts the sampler itself with the measurement `run_id` and stops it at the end. `--no-hw-sample` turns it off; `--hw-interval-ms` changes the interval (minimum 100). The finish summary is embedded in the `d1-measurement/1` result under `hardware`, with the trace path.
+- `d1-baseline` starts the sampler the same way; its `d1-baseline/2` result embeds the finish summary under `hardware`. The default grid ran 94 s at a mean CPU activity of 0.50 and a CPU temperature peak of 80.7 °C.
+- `d1-measure` on an instrument polynomial starts the sampler itself with the measurement `run_id` and stops it at the end. `--no-hw-sample` turns it off; `--hw-interval-ms` changes the interval (minimum 100). The finish summary is embedded in the `d1-measurement` result under `hardware`, with the trace path.
 - The trace goes to `$PRIMNESS_HARDWARE_DIR/<run_id>.jsonl` (default `data/hardware`, gitignored) and, when `PRIMNESS_DATABASE_URL` connects, to the `hardware_samples` table (`db/migrations/002_hardware_samples.sql`), one JSONB row per line keyed by `run_id`, `ts_ms`, `kind`.
 - Telemetry never fails the run. A missing `macmon` prints a warning and the measurement continues without a trace.
 
