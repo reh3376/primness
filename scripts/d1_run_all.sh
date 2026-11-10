@@ -4,17 +4,21 @@
 # data/d1_test_instances.md. Polyselect parameters follow CADO's params.c60
 # through params.c80 (degree 4; P and admax by digit count).
 #
-#   scripts/d1_run_all.sh [--force] [--only d1-03,d1-04]
+#   scripts/d1_run_all.sh [--force] [--remeasure] [--only d1-03,d1-04]
+#
+# --force repeats polynomial selection and the measurements. --remeasure
+# repeats the measurements on the polynomials already chosen.
 #
 # Each instance is measured twice: at BOUNDS (default 2^14..2^20) and at
 # BOUNDS28 (default the protocol's 2^20, 2^24, 2^28).
 # Env: D1_MEASURE (binary), HW_SAMPLE (binary), A_MAX, B_MAX, BOUNDS, BOUNDS28.
 set -eu
 cd "$(dirname "$0")/.."
-FORCE=0; ONLY=""
+FORCE=0; REMEASURE=0; ONLY=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --force) FORCE=1 ;;
+    --remeasure) REMEASURE=1 ;;
     --only) ONLY=$2; shift ;;
     *) echo "unknown argument $1" >&2; exit 2 ;;
   esac
@@ -38,7 +42,7 @@ grep -E '^d1-[0-9]+ n ' data/d1_test_instances.md | while read -r id _ n; do
   case ",$ONLY," in *,"$id",*|",,") ;; *) continue ;; esac
   digits=${#n}
   out="data/results/$id.scaled-down.json"
-  if [ "$FORCE" -eq 0 ] && [ -f "$out" ]; then echo "$id: result exists, skipping"; continue; fi
+  if [ "$FORCE" -eq 0 ] && [ "$REMEASURE" -eq 0 ] && [ -f "$out" ]; then echo "$id: result exists, skipping"; continue; fi
   set -- $(params_for_digits "$digits")
   P=$1; ADMAX=$2; NQ=$3
   echo "=== $id ($digits digits): polyselect P=$P admax=$ADMAX nq=$NQ $(date -u +%H:%M:%SZ)"

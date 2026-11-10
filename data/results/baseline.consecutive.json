@@ -8,59 +8,68 @@
     268435456
   ],
   "chunk": 1048576,
+  "cofactor": {
+    "bin_width": 0.08664339756999316,
+    "bins": 1398,
+    "bins_filled": 1285,
+    "count": 1694498816,
+    "power_cap": 4611686018427387904,
+    "rough_bound": 2000,
+    "small_primes": 303
+  },
   "dickman": {
     "method": "simpson-grid",
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "elapsed_ms": 100818,
+  "elapsed_ms": 94093,
   "euler_gamma": 0.5772156649015329,
   "hardware": {
-    "samples_file": "data/hardware/d1b-62888-1794235617332.jsonl",
+    "samples_file": "data/hardware/d1b-18973-1794303061436.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.920752227306366,
-        "mean": 0.5930553994008473,
-        "min": 0.3324326276779175
+        "max": 0.7594416737556458,
+        "mean": 0.4951062448077149,
+        "min": 0.2374591827392578
       },
       "cpu_temp_c": {
-        "max": 91.0057601928711,
-        "mean": 79.55032368095554,
-        "min": 55.878700256347656
+        "max": 80.65912628173828,
+        "mean": 77.24218297266698,
+        "min": 68.34004974365234
       },
-      "duration_ms": 99984,
+      "duration_ms": 93203,
       "gpu_active_ratio": {
-        "max": 0.993755578994751,
-        "mean": 0.24272620944040163,
-        "min": 0.021815361455082893
+        "max": 0.08806853741407394,
+        "mean": 0.06632785343534343,
+        "min": 0.04665651172399521
       },
       "gpu_device_utilization_pct": {
-        "max": 98.0,
-        "mean": 22.46938775510204,
+        "max": 36.0,
+        "mean": 2.7032967032967035,
         "min": 0.0
       },
       "gpu_share_of_total": {
-        "max": 0.13228154182434082,
-        "mean": 0.12938223079759248,
-        "min": 0.12572944164276123
+        "max": 0.18185293674468994,
+        "mean": 0.17973766222104923,
+        "min": 0.1774599552154541
       },
       "gpu_temp_c": {
-        "max": 95.27157592773438,
-        "mean": 75.11875522379972,
-        "min": 51.937313079833984
+        "max": 73.50167083740234,
+        "mean": 71.33576956948082,
+        "min": 63.097469329833984
       },
       "memory_used_ratio": {
-        "max": 0.8723245859146118,
-        "mean": 0.8517982400193507,
-        "min": 0.8452714681625366
+        "max": 0.8343499898910522,
+        "mean": 0.8306048584508372,
+        "min": 0.8267686367034912
       },
       "power_all_w": {
-        "max": 124.34603118896484,
-        "mean": 44.002986071061116,
-        "min": 23.376956939697266
+        "max": 47.72418594360352,
+        "mean": 34.14452632442936,
+        "min": 22.809734344482425
       },
-      "samples": 98
+      "samples": 91
     }
   },
   "interval_length": 16777216,
@@ -6935,9 +6944,9 @@
       "x_digits": 53
     }
   ],
-  "run_id": "d1b-62888-1794235617332",
+  "run_id": "d1b-18973-1794303061436",
   "scale": "scaled-down",
-  "schema_version": "d1-baseline/1",
+  "schema_version": "d1-baseline/2",
   "sizes": {
     "count": 101,
     "ln_x_max": 120.0,
@@ -6971,8 +6980,28 @@
       "name": "points",
       "path": "data/results/baseline.consecutive.points.csv",
       "rows": 606
+    },
+    {
+      "columns": [
+        "bin",
+        "ln_c_lo",
+        "ln_c_hi",
+        "b",
+        "count",
+        "mean_ln_c",
+        "u",
+        "smooth",
+        "observed",
+        "observed_stderr",
+        "debruijn_local",
+        "ratio_debruijn"
+      ],
+      "description": "the conditional baseline, pooled over the sizes: per bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = n / s(n), with s(n) the part of n made of primes up to rough_bound, and per bound B: the count of integers whose cofactor falls in the bin, their mean ln c, u = mean ln c / ln B, the count of those that are B-smooth, the observed density Q_B(c) and its Poisson standard error, and for reference the unconditional de Bruijn local form at u with observed over it. Bin 0 holds the integers with c = 1",
+      "name": "cofactor",
+      "path": "data/results/baseline.consecutive.cofactor.csv",
+      "rows": 7710
     }
   ],
   "threads": 18,
-  "ts_ms": 1794235718154
+  "ts_ms": 1794303155540
 }

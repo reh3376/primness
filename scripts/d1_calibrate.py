@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply the empirical Dickman baseline (d1-baseline/1) to the instance results.
+"""Apply the empirical Dickman baseline (d1-baseline/1 or /2) to the instance results.
 
     scripts/d1_calibrate.py [--baseline data/results/baseline.consecutive.json]
                             [--out data/results/summary.calibrated]
@@ -35,8 +35,8 @@ CHECK_U = (1.5, 6.0)
 
 def load_baseline(path):
     result = json.loads(Path(path).read_text())
-    if result.get("schema_version") != "d1-baseline/1":
-        sys.exit(f"{path}: not a d1-baseline/1 result")
+    if result.get("schema_version") not in ("d1-baseline/1", "d1-baseline/2"):
+        sys.exit(f"{path}: not a d1-baseline/1 or d1-baseline/2 result")
     points = {}
     for size in result["results"]:
         for p in size["bounds"]:
@@ -168,7 +168,7 @@ def main(argv):
     instances = set()
     for f in sorted(glob.glob("data/results/d1-*.scaled-down*.json")):
         r = json.loads(Path(f).read_text())
-        if r.get("schema_version") not in ("d1-measurement/2", "d1-measurement/3"):
+        if r.get("schema_version") not in ("d1-measurement/2", "d1-measurement/3", "d1-measurement/4"):
             continue
         inst = Path(f).name.split(".")[0]
         instances.add(inst)

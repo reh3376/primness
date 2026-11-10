@@ -12,59 +12,69 @@
     16777216,
     268435456
   ],
+  "cofactor": {
+    "bin_width": 0.08664339756999316,
+    "bins": 2771,
+    "bins_filled": {
+      "algebraic": 747,
+      "rational": 499
+    },
+    "rough_bound": 2000,
+    "small_primes": 303
+  },
   "dickman": {
     "method": "simpson-grid",
     "steps_per_unit": 4096,
     "u_max": 40
   },
-  "elapsed_ms": 37483,
+  "elapsed_ms": 55231,
   "evaluated": 5472915,
   "hardware": {
-    "samples_file": "data/hardware/d1m-52376-1793751901839.jsonl",
+    "samples_file": "data/hardware/d1m-22979-1794303591815.jsonl",
     "schema_version": "hardware-sample/1",
     "summary": {
       "cpu_active_ratio": {
-        "max": 0.9937789440155028,
-        "mean": 0.9755562901496887,
-        "min": 0.8822671175003052
+        "max": 1.0,
+        "mean": 0.9821224007113226,
+        "min": 0.9209006428718568
       },
       "cpu_temp_c": {
-        "max": 83.9506607055664,
-        "mean": 82.72855644226074,
-        "min": 77.60279846191406
+        "max": 85.85896301269531,
+        "mean": 80.5424654730435,
+        "min": 76.29605102539062
       },
-      "duration_ms": 21056,
+      "duration_ms": 31020,
       "gpu_active_ratio": {
-        "max": 0.05556052178144455,
-        "mean": 0.02108298228122294,
-        "min": 0.0
+        "max": 0.6637923717498779,
+        "mean": 0.3703572966383192,
+        "min": 0.0038297877181321383
       },
       "gpu_device_utilization_pct": {
-        "max": 1.0,
-        "mean": 0.1,
+        "max": 88.0,
+        "mean": 59.86206896551724,
         "min": 0.0
       },
       "gpu_share_of_total": {
-        "max": 0.12884247303009033,
-        "mean": 0.12089020013809204,
-        "min": 0.08120930194854736
+        "max": 0.17918825149536133,
+        "mean": 0.17712888224371548,
+        "min": 0.17402315139770508
       },
       "gpu_temp_c": {
-        "max": 74.98772430419922,
-        "mean": 73.17527923583984,
-        "min": 69.09188842773438
+        "max": 83.78329467773438,
+        "mean": 80.17016259555159,
+        "min": 76.64118194580078
       },
       "memory_used_ratio": {
-        "max": 0.639817476272583,
-        "mean": 0.6359184801578521,
-        "min": 0.631625771522522
+        "max": 0.8265352249145508,
+        "mean": 0.8245897704157336,
+        "min": 0.8211817741394043
       },
       "power_all_w": {
-        "max": 64.63594818115234,
-        "mean": 57.91021537780762,
-        "min": 52.276634216308594
+        "max": 58.50068664550781,
+        "mean": 44.69715197332974,
+        "min": 33.48432922363281
       },
-      "samples": 20
+      "samples": 29
     }
   },
   "instance": "d1-10",
@@ -85,7 +95,7 @@
       "-7316304093470636623",
       "20106677593073"
     ],
-    "schema_version": "instrument-polynomial/1",
+    "schema_version": "instrument-polynomial/2",
     "skew": "25964.736",
     "source": "cado-nfs"
   },
@@ -195,9 +205,9 @@
       }
     }
   ],
-  "run_id": "d1m-52376-1793751901839",
+  "run_id": "d1m-22979-1794303591815",
   "scale": "scaled-down",
-  "schema_version": "d1-measurement/2",
+  "schema_version": "d1-measurement/4",
   "skipped_zero": 0,
   "smoothness": {
     "factor_base_primes": 14630843,
@@ -279,8 +289,24 @@
       "name": "lpf_hist",
       "path": "data/results/d1-10.scaled-down.b28.lpf_hist.csv",
       "rows": 40
+    },
+    {
+      "columns": [
+        "side",
+        "bin",
+        "ln_c_lo",
+        "ln_c_hi",
+        "b",
+        "count",
+        "mean_ln_c",
+        "smooth"
+      ],
+      "description": "per side, bin (index bin, covering [ln_c_lo, ln_c_hi)) of the cofactor c = |value| / s, with s the part of the value made of primes up to cofactor.rough_bound, and bound: the count of values whose cofactor falls in the bin, their mean ln c, and the count of those that are B-smooth. Bin 0 holds the values with c = 1. The bins are those of the d1-baseline/2 table named cofactor",
+      "name": "cofactor",
+      "path": "data/results/d1-10.scaled-down.b28.cofactor.csv",
+      "rows": 3738
     }
   ],
   "threads": 18,
-  "ts_ms": 1793751923776
+  "ts_ms": 1794303623862
 }

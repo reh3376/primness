@@ -5,6 +5,7 @@
 //! p-adic valuation of F(a, b) over coprime pairs, computed exactly by
 //! lifting roots mod p. Nothing here reads an instrument's score.
 
+use crate::fp::{roots_mod_p, vanishes_mod_p};
 use crate::sieve::primes_up_to;
 use num_bigint::BigInt;
 use num_integer::Integer;
@@ -74,6 +75,16 @@ fn remove_content(f: &mut [BigInt], p: u64) -> u32 {
     }
 }
 
+/// The residues that can be roots of f mod p: its roots, found without
+/// scanning every residue, or every residue when f vanishes mod p.
+fn candidate_roots(f: &[BigInt], p: u64) -> Vec<u64> {
+    if vanishes_mod_p(f, p) {
+        (0..p).collect()
+    } else {
+        roots_mod_p(f, p)
+    }
+}
+
 /// Expected p-adic valuation of f(x) for x uniform in Z_p.
 pub fn affine_valuation(f: &[BigInt], p: u64) -> f64 {
     affine_depth(f, p, 0)
@@ -89,7 +100,7 @@ fn affine_depth(f: &[BigInt], p: u64, depth: u32) -> f64 {
         .map(|i| ((i as u128 * coeffs_mod[i] as u128) % p as u128) as u64)
         .collect();
     let mut total = 0.0;
-    for r in 0..p {
+    for r in candidate_roots(f, p) {
         if eval_mod(&coeffs_mod, r, p) != 0 {
             continue;
         }
@@ -141,7 +152,7 @@ fn affine_moments_depth(f: &[BigInt], p: u64, depth: u32) -> (f64, f64) {
         .map(|i| ((i as u128 * coeffs_mod[i] as u128) % p as u128) as u64)
         .collect();
     let (mut m1, mut m2) = (0.0, 0.0);
-    for r in 0..p {
+    for r in candidate_roots(f, p) {
         if eval_mod(&coeffs_mod, r, p) != 0 {
             continue;
         }

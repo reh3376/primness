@@ -1,6 +1,6 @@
 # D1 summary against the calibrated baseline
 
-Baseline run `d1b-62888-1794235617332`: 101 sizes, ln X from 20 to 120 in steps of 1, 16,777,216 consecutive integers each, 101 s. Definitions in `docs/baseline_calibration.md`. Per instance, bound and side the rows are in `data/results/summary.calibrated.csv`; the baseline check is in `data/results/summary.calibrated.baseline.csv`.
+Baseline run `d1b-18973-1794303061436`: 101 sizes, ln X from 20 to 120 in steps of 1, 16,777,216 consecutive integers each, 94 s. Definitions in `docs/baseline_calibration.md`. Per instance, bound and side the rows are in `data/results/summary.calibrated.csv`; the baseline check is in `data/results/summary.calibrated.baseline.csv`.
 
 ## Which Dickman form do integers without structure follow?
 

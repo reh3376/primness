@@ -2,12 +2,24 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-09 10:05 EST
-- **Version**: 1.15
+- **Last Modified**: 2026-11-10 05:15 EST
+- **Version**: 1.17
 - **Tags**: current-state, history, roadmap, obstacle-D
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-10 05:15 EST
+- The exact small-prime measurement is done: `d1-measure` bins every value by its cofactor (`d1-measurement/4`), `scripts/d1_conditional.py` sums the tabulated Q_B over the values. Bins are now an eighth of a bit so power-of-two bounds are bin edges (Q jumps at c = B).
+- Rational control at zero (+0.02% at 2^24, −0.02% at 2^28). Algebraic mean +0.57% ± 0.64% at 2^20, +0.35% ± 0.42% at 2^24, +0.16% ± 0.24% at 2^28: no excess.
+- Single instances deviate (d1-08 +1.72%, d1-09 −1.18% at 2^28) and follow α's tail over primes in (2000, B]: correlation 0.93–0.98; after the tail's first-order prediction the mean is +0.10% ± 0.09% at 2^28. The prediction is too small by 1.5–3.4, not yet explained.
+- Read as no evidence for D1 at this scale. Next: the exact first-order term from root counts, or another sub-claim; the verdict in the prediction document is the author's.
+
+### 2026-11-10 04:10 EST
+- Pull request 25 is merged. This is the first change on `primness_dev01` after that merge.
+- `d1-baseline` tabulates the conditional baseline (`d1-baseline/2`, `data/results/baseline.consecutive.cofactor.csv`): each of 1.69 × 10^9 consecutive integers is split into its part made of primes up to 2000 and a cofactor c, and the integers and B-smooth ones are counted per 0.25 bin of ln c, giving Q_B(c). Bins sum exactly to the unconditional counts; the unconditional table is unchanged.
+- Q is 0.64 to 0.31 of the de Bruijn value at 2^28 for ln c from 25 to 70; it is banded at the small bounds; per-bin Poisson error 0.07–0.75% at 2^28, 2% at ln c = 70 for 2^24.
+- Next: the instrument side in `d1-measure` (exact small-prime part per value, sum of Q_B over cofactors, compare on the ten instances).
 
 ### 2026-11-09 10:05 EST
 - Pull request 24 is merged. This is the first change on `primness_dev01` after that merge.
