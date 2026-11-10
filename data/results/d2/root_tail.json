@@ -1,0 +1,456 @@
+{
+  "bin_width": 0.010830424696249145,
+  "bound": 268435456,
+  "definition": "docs/baseline_calibration.md",
+  "duration_ms": 71648,
+  "from": 2000,
+  "method": "projective-root-count",
+  "polynomials": [
+    {
+      "algebraic": {
+        "alpha_tail": -0.05424184443695378,
+        "roots_per_prime": 0.9999358875338846
+      },
+      "degree": 4,
+      "instance": "d1-01.r-1",
+      "n_digits": 40,
+      "path": "data/instruments/d2/d1-01.r-1/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.05010487105250493,
+        "roots_per_prime": 1.0003617091371884
+      },
+      "degree": 4,
+      "instance": "d1-01.r2",
+      "n_digits": 40,
+      "path": "data/instruments/d2/d1-01.r2/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.048388370615009973,
+        "roots_per_prime": 0.9995945467494707
+      },
+      "degree": 4,
+      "instance": "d1-01.r3",
+      "n_digits": 40,
+      "path": "data/instruments/d2/d1-01.r3/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.0017779467453498934,
+        "roots_per_prime": 0.9999122383726097
+      },
+      "degree": 4,
+      "instance": "d1-02.r2",
+      "n_digits": 44,
+      "path": "data/instruments/d2/d1-02.r2/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.008839967077848027,
+        "roots_per_prime": 0.9997319989556093
+      },
+      "degree": 4,
+      "instance": "d1-02.r3",
+      "n_digits": 44,
+      "path": "data/instruments/d2/d1-02.r3/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.01408540293028011,
+        "roots_per_prime": 0.9999030794488789
+      },
+      "degree": 4,
+      "instance": "d1-02.r9",
+      "n_digits": 44,
+      "path": "data/instruments/d2/d1-02.r9/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.14972147190150945,
+        "roots_per_prime": 0.9999274121119248
+      },
+      "degree": 4,
+      "instance": "d1-03.r-5",
+      "n_digits": 48,
+      "path": "data/instruments/d2/d1-03.r-5/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.06176029448939416,
+        "roots_per_prime": 1.000475512182052
+      },
+      "degree": 4,
+      "instance": "d1-03.r-6",
+      "n_digits": 48,
+      "path": "data/instruments/d2/d1-03.r-6/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.048321962904937905,
+        "roots_per_prime": 1.000460406792914
+      },
+      "degree": 4,
+      "instance": "d1-03.r4",
+      "n_digits": 48,
+      "path": "data/instruments/d2/d1-03.r4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.024573434466668483,
+        "roots_per_prime": 0.9998594036857149
+      },
+      "degree": 4,
+      "instance": "d1-04.r-3",
+      "n_digits": 52,
+      "path": "data/instruments/d2/d1-04.r-3/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.08158456421648962,
+        "roots_per_prime": 0.999764807040615
+      },
+      "degree": 4,
+      "instance": "d1-04.r-5",
+      "n_digits": 52,
+      "path": "data/instruments/d2/d1-04.r-5/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.00857348212028312,
+        "roots_per_prime": 0.9997510686550188
+      },
+      "degree": 4,
+      "instance": "d1-04.r-6",
+      "n_digits": 52,
+      "path": "data/instruments/d2/d1-04.r-6/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.013026044021462575,
+        "roots_per_prime": 0.9999911144769776
+      },
+      "degree": 4,
+      "instance": "d1-05.r-1",
+      "n_digits": 56,
+      "path": "data/instruments/d2/d1-05.r-1/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.02609997327103535,
+        "roots_per_prime": 0.9998363013258568
+      },
+      "degree": 4,
+      "instance": "d1-05.r-2",
+      "n_digits": 56,
+      "path": "data/instruments/d2/d1-05.r-2/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.08059376912212592,
+        "roots_per_prime": 1.0000948700458083
+      },
+      "degree": 4,
+      "instance": "d1-05.r12",
+      "n_digits": 56,
+      "path": "data/instruments/d2/d1-05.r12/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.049831349329042166,
+        "roots_per_prime": 1.0002721704051936
+      },
+      "degree": 4,
+      "instance": "d1-06.r-1",
+      "n_digits": 60,
+      "path": "data/instruments/d2/d1-06.r-1/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.03634433012261733,
+        "roots_per_prime": 1.000200812820306
+      },
+      "degree": 4,
+      "instance": "d1-06.r-2",
+      "n_digits": 60,
+      "path": "data/instruments/d2/d1-06.r-2/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.1713340403136893,
+        "roots_per_prime": 1.0002240518805183
+      },
+      "degree": 4,
+      "instance": "d1-06.r2",
+      "n_digits": 60,
+      "path": "data/instruments/d2/d1-06.r2/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.08780120937099846,
+        "roots_per_prime": 1.000149208436599
+      },
+      "degree": 4,
+      "instance": "d1-07.r-10",
+      "n_digits": 64,
+      "path": "data/instruments/d2/d1-07.r-10/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.15401463746544905,
+        "roots_per_prime": 1.000005673064699
+      },
+      "degree": 4,
+      "instance": "d1-07.r-12",
+      "n_digits": 64,
+      "path": "data/instruments/d2/d1-07.r-12/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.03715880273358646,
+        "roots_per_prime": 0.9997404743775691
+      },
+      "degree": 4,
+      "instance": "d1-07.r-15",
+      "n_digits": 64,
+      "path": "data/instruments/d2/d1-07.r-15/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.06530347070062051,
+        "roots_per_prime": 0.9997352114139327
+      },
+      "degree": 4,
+      "instance": "d1-08.r-12",
+      "n_digits": 68,
+      "path": "data/instruments/d2/d1-08.r-12/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.016986249747212977,
+        "roots_per_prime": 1.0005434522580847
+      },
+      "degree": 4,
+      "instance": "d1-08.r-15",
+      "n_digits": 68,
+      "path": "data/instruments/d2/d1-08.r-15/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.10751936019338758,
+        "roots_per_prime": 1.0000405316550176
+      },
+      "degree": 4,
+      "instance": "d1-08.r-16",
+      "n_digits": 68,
+      "path": "data/instruments/d2/d1-08.r-16/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.01948436045633954,
+        "roots_per_prime": 1.0000780559022429
+      },
+      "degree": 4,
+      "instance": "d1-09.r3",
+      "n_digits": 72,
+      "path": "data/instruments/d2/d1-09.r3/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.011149196528678854,
+        "roots_per_prime": 0.9997322723563177
+      },
+      "degree": 4,
+      "instance": "d1-09.r4",
+      "n_digits": 72,
+      "path": "data/instruments/d2/d1-09.r4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.022398846925984747,
+        "roots_per_prime": 0.9999727966295161
+      },
+      "degree": 4,
+      "instance": "d1-09.r6",
+      "n_digits": 72,
+      "path": "data/instruments/d2/d1-09.r6/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.010167887025117861,
+        "roots_per_prime": 0.9996368555090926
+      },
+      "degree": 4,
+      "instance": "d1-10.r-12",
+      "n_digits": 80,
+      "path": "data/instruments/d2/d1-10.r-12/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": -0.1577206443671148,
+        "roots_per_prime": 1.0000785343534826
+      },
+      "degree": 4,
+      "instance": "d1-10.r-15",
+      "n_digits": 80,
+      "path": "data/instruments/d2/d1-10.r-15/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.005557613979209121,
+        "roots_per_prime": 1.0001049175218413
+      },
+      "degree": 4,
+      "instance": "d1-10.r-4",
+      "n_digits": 80,
+      "path": "data/instruments/d2/d1-10.r-4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    }
+  ],
+  "primes": 14630540,
+  "schema_version": "root-tail/1",
+  "tables": [
+    {
+      "columns": [
+        "instance",
+        "side",
+        "bin",
+        "ln_p_lo",
+        "ln_p_hi",
+        "primes",
+        "mean_ln_p",
+        "roots",
+        "eta",
+        "eta_ln_p",
+        "eta_affine",
+        "eta_zero"
+      ],
+      "description": "per polynomial, side and bin of ln p over the primes in (from, bound]: the primes, the mean ln p, the sum of the projective root counts r_p, the sum of eta_p = (r_p p - p - 1)/(p^2 - 1), the sum of eta_p ln p, and the sum of eta_p^aff = (r_p^aff - 1)/(p - 1) over the affine roots alone, for a region whose b never reaches p, and the sum of 1/(p - 1) over the primes at which 0 is a root, which a region whose |a| never reaches p meets only at (0, 1)",
+      "name": "root_tail",
+      "path": "data/results/d2/root_tail.csv",
+      "rows": 65460
+    }
+  ],
+  "threads": 18,
+  "ts_ms": 1794345339281
+}

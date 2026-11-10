@@ -1,0 +1,12 @@
+# D2 field (docs/d2_falsifiable_prediction.md): the instrument polynomial of d1-06 rotated by 2 times its rational polynomial, f + 2*g.
+# d2-fields rank 2 of the certified rotations with 0 < |v| <= 16: score 54.147943 = mean ln|F| 56.489113 over a in [-3000, 3000], b in [1, 1500] + alpha -2.341170 (primes <= 2000).
+# Irreducible over Q: factor degrees modulo 11:1.3 17:2.2.
+n: 198118143882013772952352169517898475793589445419425448847093
+Y0: 15325200623603
+Y1: 296899499603
+c0: 36752336783834
+c1: -737233140701
+c2: 1147275716
+c3: 10464252
+c4: 9360
+skew: 265.499

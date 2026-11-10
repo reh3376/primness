@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-10 13:45 EST
-- **Version**: 1.24
+- **Last Modified**: 2026-11-10 16:45 EST
+- **Version**: 1.25
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,19 +60,17 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-10 13:45 EST:
+As of 2026-11-10 16:45 EST:
 
-I am developing on `primness_dev01`. Pull request 27 is merged. D1 found nothing at this scale, so this change tests D5, the sub-claim that smooth values cluster in regions that can be located, on the same ten instances. It also drafts the D1 verdict for my approval.
+I am developing on `primness_dev01`. Pull request 28, which holds D5 and the draft D1 verdict, is still open, and this change follows it on the same branch. It tests the first part of D2, several number fields that share the rational side. That is the multiple number field sieve.
 
-I wrote the D5 prediction before measuring (`docs/d5_falsifiable_prediction.md`). Every value gets the smooth probability D1 ended with: the conditional baseline at its own cofactor plus the first-order root-count term. The region is cut into tilings from 2 × 2 to 50 × 50 and into 64 sectors, and the values are split into two halves by a hash of (a, b). To be supported, regions picked for an excess in one half must show an excess in the other. That excess must exceed three errors, and the rational control's lift by three combined errors, at one of the protocol's bounds.
+I wrote the prediction before measuring (`docs/d2_falsifiable_prediction.md`). For each instance, three rotations f + v·g of the instrument polynomial join it and share its rational side G. Each rotation has 0 < |v| ≤ 16, is chosen by mean size plus α, and is certified irreducible. Every value gets the smooth probability D1 ended with. The claim was that values the NFS combines are jointly smooth more often than the product of their probabilities says: G with any field, or two fields, at the same (a, b). The control pairs each instance's fields with the next instance's.
 
-D5 is rejected on these instances. The largest held-out lift is +1.5 errors (5 × 5 tiles at 2^24), and eleven of the eighteen are negative. At 2^28 the lift on 50 × 50 tiles is −0.11% ± 0.15%. The tiles scatter as counting noise says (χ² per tile 0.98 to 1.00 on the 25 × 25 and 50 × 50 tiles), and the split-half correlations are at zero. The method and result are in `scripts/d5_clusters.py` and `docs/d5_smooth_clusters.md`. `d1-measure --dump` now carries each value's small-prime part.
+D2 part 1 is rejected. The largest criterion value is +1.4 errors, for two fields at 2^24. At 2^28 the joint excess is −0.01% ± 0.03% for G with a field and −0.02% ± 0.06% for two fields. The standard pair (F_0, G) of the ordinary NFS is −0.03% ± 0.05%. At 2^28 the four fields give 3.2 times the relations of one, exactly what their individual probabilities predict. That is the known MNFS gain, which lowers the constant and not the exponent.
 
-One thing in the control is unexplained. The rational side's 64 sectors scatter less than counting noise (χ² per sector 0.79 to 0.87 at 2^16 through 2^28), while its tiles and the algebraic sectors do not. Less scatter is the opposite of clustering, so it does not bear on D5. It does hint that counting noise overstates the noise of large regions. That would make D1's per-instance errors upper bounds. The D1 verdict uses the spread across instances, which does not depend on that noise.
+The thirty rotated fields were never root-optimized, yet they are as smooth as their sizes and root counts say (χ² 32.7 on thirty at 2^28). D1's closure therefore holds on forty polynomials. The method and result are in `docs/d2_multiple_fields.md`. The new tools are `d2-fields` and `d2-joint`, plus an irreducibility certificate in `src/fp.rs`.
 
-`docs/d1_falsifiable_prediction.md` now ends with a draft verdict for my approval: under the relative weighting the claim is rejected at 2^20, 2^24 and 2^28. It lists the protocol's departures.
-
-The next step is mine. I need to adopt or amend the D1 verdict. Then I choose among D2 (higher algebraic structure), D3 (lattice embeddings) and D4 (relation-matrix structure), which need new machinery, or a test of the closure at a larger scale. The required status check on the main ruleset is still to be applied in the repository settings.
+The next step is mine. I need to decide on the D1 verdict draft. Then I choose among the other forms of D2 (a degree-5 or degree-6 field for the same N, or sieving in dimension 3), D3, D4, or a larger-scale check. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
