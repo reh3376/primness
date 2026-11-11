@@ -59,7 +59,11 @@ As of the latest update on the `primness_dev01` branch:
   The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more.
 - Obstacle H has started. H1 was pre-registered before the run (`docs/h1_falsifiable_prediction.md`). Sieving RSA-200 with CADO-NFS's own 200-digit polynomial and parameters on this laptop, sampled over six special-q ranges and integrated to CADO-NFS's relation target, takes 3,896 laptop-hours (`docs/h1_sieving_cost.md`). That is 0.62 of the estimate scaled from the records, so H1 holds. Sieving takes 50–64% of the time and cofactorization 25–37%.
 - H2 measured the laptop's GPU on the same two kernels, with both implementations written here and cross-checked (`docs/h2_gpu_kernels.md`, `src/bin/h2_cpu.rs`, `tools/h2_gpu/main.swift`). Against the 18 CPU cores, the GPU is 8.2 times as fast on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication. H2's limit was 10, so H2 is rejected. Even so, the bound it fixes leaves at least 189 laptop-hours for 200-digit relations with the GPU, and the estimates from H1's time shares are 350 to 755. Obstacle H is forced on the primary hardware envelope.
-- Next concrete step: H3, what a machine built for the two kernels must do per second to collect 200-digit relations in one hour: 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations. The linear algebra at 200 digits also needs measuring.
+- H4 measured the laptop's one-hour reach end to end, under a prediction committed before the runs (`docs/h4_falsifiable_prediction.md`, `docs/h4_one_hour_reach.md`, `scripts/h4_reach.sh`). CADO-NFS as shipped factored RSA-100, RSA-110, RSA-120 and RSA-130 on 18 threads in 4:31, 12:38, 41:00 and 2:08:15, and each run printed the published factors.
+  - The reach is 123.3 digits. H1's cost carried down by L_N[1/3, 1.923] predicted 132, so H4 is rejected: below 200 digits the time doubles every 6 to 7 digits, not every 4 to 5.
+  - The constant that joins the reach to H1's 200-digit cost is 1.67 to 1.68.
+  - The gap to the goal is 77 digits, or 4,300 to 4,700 times the laptop's hour.
+- Next concrete step: the linear algebra at 200 digits, then the one-hour reach with tuned settings. H3, the rates a machine built for the two kernels would need, is not started.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
 

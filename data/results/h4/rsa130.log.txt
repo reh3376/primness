@@ -1,0 +1,742 @@
+Info:root: Using default parameter file ~/external/cado-nfs/parameters/factor/params.c130
+2026-11-11 12:28:26,252 Info:root: Command line parameters: ~/external/cado-nfs/cado-nfs.py 1807082088687404805951656164405905566278102516769401349170127021450056662540244048387341127590812303371781887966563182013214880557 server.address=localhost -t 18 --workdir ./data/dumps/h4/rsa130
+2026-11-11 12:28:26,306 Info:Lattice Sieving: param rels_wanted is 30000000
+2026-11-11 12:28:26,318 Info:Complete Factorization / Discrete logarithm / Class group: Factoring 1807082088687404805951656164405905566278102516769401349170127021450056662540244048387341127590812303371781887966563182013214880557
+2026-11-11 12:28:27,140 Info:Polynomial Selection (size optimized): Starting
+2026-11-11 12:28:27,140 Info:Polynomial Selection (size optimized): 0 polynomials in queue from previous run
+2026-11-11 12:29:04,588 Info:Polynomial Selection (size optimized): Parsed 707 polynomials, added 160 to priority queue (has 48)
+2026-11-11 12:29:04,588 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 35.260000
+2026-11-11 12:29:06,605 Info:Polynomial Selection (size optimized): Parsed 689 polynomials, added 40 to priority queue (has 48)
+2026-11-11 12:29:06,605 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 35.040000
+2026-11-11 12:29:06,642 Info:Polynomial Selection (size optimized): Parsed 767 polynomials, added 27 to priority queue (has 48)
+2026-11-11 12:29:06,642 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.700000
+2026-11-11 12:29:08,723 Info:Polynomial Selection (size optimized): Parsed 674 polynomials, added 10 to priority queue (has 48)
+2026-11-11 12:29:08,723 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.660000
+2026-11-11 12:29:08,751 Info:Polynomial Selection (size optimized): Parsed 776 polynomials, added 8 to priority queue (has 48)
+2026-11-11 12:29:08,751 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.620000
+2026-11-11 12:29:10,897 Info:Polynomial Selection (size optimized): Parsed 552 polynomials, added 5 to priority queue (has 48)
+2026-11-11 12:29:10,897 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.610000
+2026-11-11 12:29:17,436 Info:Polynomial Selection (size optimized): Parsed 745 polynomials, added 5 to priority queue (has 48)
+2026-11-11 12:29:17,436 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.530000
+2026-11-11 12:29:19,832 Info:Polynomial Selection (size optimized): Parsed 729 polynomials, added 8 to priority queue (has 48)
+2026-11-11 12:29:19,832 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.500000
+2026-11-11 12:29:40,238 Info:Polynomial Selection (size optimized): Parsed 768 polynomials, added 4 to priority queue (has 48)
+2026-11-11 12:29:40,238 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.470000
+2026-11-11 12:29:42,418 Info:Polynomial Selection (size optimized): Parsed 698 polynomials, added 8 to priority queue (has 48)
+2026-11-11 12:29:42,418 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.380000
+2026-11-11 12:29:48,999 Info:Polynomial Selection (size optimized): Parsed 699 polynomials, added 7 to priority queue (has 48)
+2026-11-11 12:29:48,999 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.310000
+2026-11-11 12:29:53,211 Info:Polynomial Selection (size optimized): Parsed 747 polynomials, added 4 to priority queue (has 48)
+2026-11-11 12:29:53,211 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.290000
+2026-11-11 12:29:55,559 Info:Polynomial Selection (size optimized): Parsed 858 polynomials, added 5 to priority queue (has 48)
+2026-11-11 12:29:55,559 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.240000
+2026-11-11 12:30:03,051 Info:Polynomial Selection (size optimized): Parsed 785 polynomials, added 4 to priority queue (has 48)
+2026-11-11 12:30:03,052 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.210000
+2026-11-11 12:30:03,097 Info:Polynomial Selection (size optimized): Parsed 795 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:30:03,097 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.210000
+2026-11-11 12:30:08,788 Info:Polynomial Selection (size optimized): Parsed 793 polynomials, added 4 to priority queue (has 48)
+2026-11-11 12:30:08,788 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.180000
+2026-11-11 12:30:24,429 Info:Polynomial Selection (size optimized): Parsed 760 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:30:24,429 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.170000
+2026-11-11 12:30:48,469 Info:Polynomial Selection (size optimized): Parsed 713 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:30:48,469 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.160000
+2026-11-11 12:30:48,504 Info:Polynomial Selection (size optimized): Parsed 751 polynomials, added 5 to priority queue (has 48)
+2026-11-11 12:30:48,504 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.140000
+2026-11-11 12:30:50,768 Info:Polynomial Selection (size optimized): Parsed 748 polynomials, added 4 to priority queue (has 48)
+2026-11-11 12:30:50,768 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.110000
+2026-11-11 12:30:53,029 Info:Polynomial Selection (size optimized): Parsed 757 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:30:57,438 Info:Polynomial Selection (size optimized): Parsed 794 polynomials, added 4 to priority queue (has 48)
+2026-11-11 12:30:57,438 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.100000
+2026-11-11 12:30:59,693 Info:Polynomial Selection (size optimized): Parsed 755 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:30:59,693 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.090000
+2026-11-11 12:31:02,044 Info:Polynomial Selection (size optimized): Parsed 785 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:31:02,045 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.090000
+2026-11-11 12:31:04,570 Info:Polynomial Selection (size optimized): Parsed 759 polynomials, added 3 to priority queue (has 48)
+2026-11-11 12:31:04,570 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.050000
+2026-11-11 12:31:22,436 Info:Polynomial Selection (size optimized): Parsed 705 polynomials, added 3 to priority queue (has 48)
+2026-11-11 12:31:22,436 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.040000
+2026-11-11 12:31:26,567 Info:Polynomial Selection (size optimized): Parsed 799 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:31:26,567 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.030000
+2026-11-11 12:31:28,695 Info:Polynomial Selection (size optimized): Parsed 754 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:31:35,006 Info:Polynomial Selection (size optimized): Parsed 750 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:31:35,006 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 34.020000
+2026-11-11 12:31:35,038 Info:Polynomial Selection (size optimized): Parsed 741 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:31:35,038 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.990000
+2026-11-11 12:31:35,068 Info:Polynomial Selection (size optimized): Parsed 727 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:31:35,068 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.990000
+2026-11-11 12:31:42,054 Info:Polynomial Selection (size optimized): Parsed 776 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:31:42,054 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.980000
+2026-11-11 12:31:42,093 Info:Polynomial Selection (size optimized): Parsed 754 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:31:42,093 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.970000
+2026-11-11 12:31:44,401 Info:Polynomial Selection (size optimized): Parsed 730 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:32:07,383 Info:Polynomial Selection (size optimized): Parsed 765 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:32:07,414 Info:Polynomial Selection (size optimized): Parsed 731 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:07,414 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.970000
+2026-11-11 12:32:13,890 Info:Polynomial Selection (size optimized): Parsed 715 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:32:13,890 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.960000
+2026-11-11 12:32:16,105 Info:Polynomial Selection (size optimized): Parsed 753 polynomials, added 3 to priority queue (has 48)
+2026-11-11 12:32:16,105 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.940000
+2026-11-11 12:32:18,259 Info:Polynomial Selection (size optimized): Parsed 693 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:32:20,638 Info:Polynomial Selection (size optimized): Parsed 749 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:20,638 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.940000
+2026-11-11 12:32:22,954 Info:Polynomial Selection (size optimized): Parsed 783 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:32:25,491 Info:Polynomial Selection (size optimized): Parsed 770 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:25,491 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.940000
+2026-11-11 12:32:30,546 Info:Polynomial Selection (size optimized): Parsed 704 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:32:48,520 Info:Polynomial Selection (size optimized): Parsed 738 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:48,520 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.930000
+2026-11-11 12:32:48,549 Info:Polynomial Selection (size optimized): Parsed 788 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:48,549 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.920000
+2026-11-11 12:32:50,859 Info:Polynomial Selection (size optimized): Parsed 772 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:50,859 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.910000
+2026-11-11 12:32:57,374 Info:Polynomial Selection (size optimized): Parsed 723 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:32:59,732 Info:Polynomial Selection (size optimized): Parsed 761 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:32:59,732 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.900000
+2026-11-11 12:33:10,973 Info:Polynomial Selection (size optimized): Parsed 781 polynomials, added 3 to priority queue (has 48)
+2026-11-11 12:33:10,974 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.890000
+2026-11-11 12:33:17,413 Info:Polynomial Selection (size optimized): Parsed 855 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:33:17,413 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.880000
+2026-11-11 12:33:25,618 Info:Polynomial Selection (size optimized): Parsed 778 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:33:27,604 Info:Polynomial Selection (size optimized): Parsed 745 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:33:29,584 Info:Polynomial Selection (size optimized): Parsed 819 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:33:31,566 Info:Polynomial Selection (size optimized): Parsed 825 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:33:33,516 Info:Polynomial Selection (size optimized): Parsed 817 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:33:33,516 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.880000
+2026-11-11 12:33:33,529 Info:Polynomial Selection (size optimized): Parsed 275 polynomials, added 0 to priority queue (has 48)
+2026-11-11 12:33:35,471 Info:Polynomial Selection (size optimized): Parsed 827 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:33:35,471 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.870000
+2026-11-11 12:34:02,639 Info:Polynomial Selection (size optimized): Parsed 753 polynomials, added 2 to priority queue (has 48)
+2026-11-11 12:34:02,639 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.850000
+2026-11-11 12:34:08,030 Info:Polynomial Selection (size optimized): Parsed 783 polynomials, added 1 to priority queue (has 48)
+2026-11-11 12:34:08,031 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 33.840000
+2026-11-11 12:34:08,040 Info:Polynomial Selection (size optimized): Finished
+2026-11-11 12:34:08,040 Info:Complete Factorization / Discrete logarithm / Class group: Polynomial Selection (size optimized)
+2026-11-11 12:34:08,040 Info:Polynomial Selection (size optimized): Aggregate statistics:
+2026-11-11 12:34:08,040 Info:Polynomial Selection (size optimized): potential collisions: 55473.2
+2026-11-11 12:34:08,040 Info:Polynomial Selection (size optimized): raw lognorm (nr/min/av/max/std): 52982/37.660/47.642/59.230/2.223
+2026-11-11 12:34:08,040 Info:Polynomial Selection (size optimized): optimized lognorm (nr/min/av/max/std): 44043/37.380/41.796/56.260/1.575
+2026-11-11 12:34:08,040 Info:Polynomial Selection (size optimized): Total time: 4132.34
+2026-11-11 12:34:08,040 Info:Polynomial Selection (root optimized): Starting
+2026-11-11 12:34:08,040 Info:Polynomial Selection (root optimized): No polynomial was previously found
+2026-11-11 12:35:04,744 Info:Polynomial Selection (root optimized): Kept 39 polynomials with MurphyE from 1.691e-06 to 1.365e-06
+2026-11-11 12:35:05,028 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.0 had MurphyE 1.691e-06, refined to 1.689e-06
+2026-11-11 12:35:05,028 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.1 had MurphyE 1.658e-06, refined to 1.660e-06
+2026-11-11 12:35:05,028 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.2 had MurphyE 1.653e-06, refined to 1.662e-06
+2026-11-11 12:35:05,028 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.3 had MurphyE 1.640e-06, refined to 1.663e-06
+2026-11-11 12:35:05,028 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.4 had MurphyE 1.619e-06, refined to 1.638e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.5 had MurphyE 1.600e-06, refined to 1.628e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.6 had MurphyE 1.584e-06, refined to 1.582e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.7 had MurphyE 1.584e-06, refined to 1.578e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.8 had MurphyE 1.556e-06, refined to 1.536e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.9 had MurphyE 1.551e-06, refined to 1.545e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.10 had MurphyE 1.547e-06, refined to 1.526e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.11 had MurphyE 1.526e-06, refined to 1.510e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.12 had MurphyE 1.518e-06, refined to 1.539e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.13 had MurphyE 1.502e-06, refined to 1.499e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.14 had MurphyE 1.501e-06, refined to 1.507e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.15 had MurphyE 1.496e-06, refined to 1.504e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.16 had MurphyE 1.492e-06, refined to 1.497e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.17 had MurphyE 1.486e-06, refined to 1.498e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.18 had MurphyE 1.484e-06, refined to 1.499e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.19 had MurphyE 1.482e-06, refined to 1.487e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.20 had MurphyE 1.479e-06, refined to 1.483e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.21 had MurphyE 1.479e-06, refined to 1.485e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.22 had MurphyE 1.474e-06, refined to 1.485e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.23 had MurphyE 1.472e-06, refined to 1.461e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.24 had MurphyE 1.470e-06, refined to 1.462e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.25 had MurphyE 1.470e-06, refined to 1.452e-06
+2026-11-11 12:35:05,029 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.26 had MurphyE 1.470e-06, refined to 1.468e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.27 had MurphyE 1.442e-06, refined to 1.445e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.28 had MurphyE 1.440e-06, refined to 1.459e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.29 had MurphyE 1.434e-06, refined to 1.425e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.30 had MurphyE 1.427e-06, refined to 1.433e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.31 had MurphyE 1.417e-06, refined to 1.408e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.32 had MurphyE 1.412e-06, refined to 1.417e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.33 had MurphyE 1.409e-06, refined to 1.430e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.34 had MurphyE 1.404e-06, refined to 1.387e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.35 had MurphyE 1.399e-06, refined to 1.420e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.36 had MurphyE 1.395e-06, refined to 1.407e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.37 had MurphyE 1.381e-06, refined to 1.397e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa130/c130.poly.38 had MurphyE 1.365e-06, refined to 1.363e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Best polynomial is ./data/dumps/h4/rsa130/c130.poly.0
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Finished, best polynomial has Murphy_E = 1.691e-06
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Best polynomial is:
+2026-11-11 12:35:05,030 Info:Polynomial Selection (root optimized): Best overall polynomial was 47-th in list after size optimization
+2026-11-11 12:35:05,031 Info:Complete Factorization / Discrete logarithm / Class group: Polynomial Selection (root optimized)
+2026-11-11 12:35:05,031 Info:Polynomial Selection (root optimized): Aggregate statistics:
+2026-11-11 12:35:05,031 Info:Polynomial Selection (root optimized): Total time: 292.19
+2026-11-11 12:35:05,031 Info:Polynomial Selection (root optimized): Rootsieve time: 0
+2026-11-11 12:35:05,031 Info:Generate Factor Base: Starting
+2026-11-11 12:35:05,504 Info:Generate Factor Base: Finished
+2026-11-11 12:35:05,504 Info:Complete Factorization / Discrete logarithm / Class group: Generate Factor Base
+2026-11-11 12:35:05,504 Info:Generate Factor Base: Total cpu/real time for makefb: 4.87/0.4703
+2026-11-11 12:35:05,505 Info:Generate Free Relations: Starting
+2026-11-11 12:38:39,629 Info:Generate Free Relations: Found 122063 free relations
+2026-11-11 12:38:39,629 Info:Generate Free Relations: Finished
+2026-11-11 12:38:39,629 Info:Complete Factorization / Discrete logarithm / Class group: Generate Free Relations
+2026-11-11 12:38:39,629 Info:Generate Free Relations: Total cpu/real time for freerel: 212.89/214.118
+2026-11-11 12:38:39,629 Info:Lattice Sieving: Starting
+2026-11-11 12:38:39,629 Info:Lattice Sieving: We want 30000000 relation(s)
+2026-11-11 12:41:17,632 Info:Lattice Sieving: Found 129250 relations in './data/dumps/h4/rsa130/c130.upload/c130.780000-790000.gz', total is now 129250/30000000
+2026-11-11 12:41:22,896 Info:Lattice Sieving: Found 132210 relations in './data/dumps/h4/rsa130/c130.upload/c130.770000-780000.gz', total is now 261460/30000000
+2026-11-11 12:41:25,662 Info:Lattice Sieving: Found 142404 relations in './data/dumps/h4/rsa130/c130.upload/c130.750000-760000.gz', total is now 403864/30000000
+2026-11-11 12:41:30,297 Info:Lattice Sieving: Found 141455 relations in './data/dumps/h4/rsa130/c130.upload/c130.760000-770000.gz', total is now 545319/30000000
+2026-11-11 12:41:30,306 Info:Lattice Sieving: Found 136824 relations in './data/dumps/h4/rsa130/c130.upload/c130.790000-800000.gz', total is now 682143/30000000
+2026-11-11 12:41:30,312 Info:Lattice Sieving: Found 132848 relations in './data/dumps/h4/rsa130/c130.upload/c130.830000-840000.gz', total is now 814991/30000000
+2026-11-11 12:41:37,122 Info:Lattice Sieving: Found 141163 relations in './data/dumps/h4/rsa130/c130.upload/c130.800000-810000.gz', total is now 956154/30000000
+2026-11-11 12:41:37,131 Info:Lattice Sieving: Found 139029 relations in './data/dumps/h4/rsa130/c130.upload/c130.810000-820000.gz', total is now 1095183/30000000
+2026-11-11 12:41:39,324 Info:Lattice Sieving: Found 140026 relations in './data/dumps/h4/rsa130/c130.upload/c130.820000-830000.gz', total is now 1235209/30000000
+2026-11-11 12:43:49,690 Info:Lattice Sieving: Found 128797 relations in './data/dumps/h4/rsa130/c130.upload/c130.840000-850000.gz', total is now 1364006/30000000
+2026-11-11 12:43:49,696 Info:Lattice Sieving: Found 126109 relations in './data/dumps/h4/rsa130/c130.upload/c130.850000-860000.gz', total is now 1490115/30000000
+2026-11-11 12:43:58,645 Info:Lattice Sieving: Found 126516 relations in './data/dumps/h4/rsa130/c130.upload/c130.870000-880000.gz', total is now 1616631/30000000
+2026-11-11 12:44:00,919 Info:Lattice Sieving: Found 126232 relations in './data/dumps/h4/rsa130/c130.upload/c130.880000-890000.gz', total is now 1742863/30000000
+2026-11-11 12:44:03,218 Info:Lattice Sieving: Found 127916 relations in './data/dumps/h4/rsa130/c130.upload/c130.890000-900000.gz', total is now 1870779/30000000
+2026-11-11 12:44:07,682 Info:Lattice Sieving: Found 126240 relations in './data/dumps/h4/rsa130/c130.upload/c130.910000-920000.gz', total is now 1997019/30000000
+2026-11-11 12:44:09,882 Info:Lattice Sieving: Found 141014 relations in './data/dumps/h4/rsa130/c130.upload/c130.860000-870000.gz', total is now 2138033/30000000
+2026-11-11 12:44:16,509 Info:Lattice Sieving: Found 135021 relations in './data/dumps/h4/rsa130/c130.upload/c130.900000-910000.gz', total is now 2273054/30000000
+2026-11-11 12:44:21,081 Info:Lattice Sieving: Found 135790 relations in './data/dumps/h4/rsa130/c130.upload/c130.920000-930000.gz', total is now 2408844/30000000
+2026-11-11 12:46:39,717 Info:Lattice Sieving: Found 127924 relations in './data/dumps/h4/rsa130/c130.upload/c130.930000-940000.gz', total is now 2536768/30000000
+2026-11-11 12:46:46,542 Info:Lattice Sieving: Found 133534 relations in './data/dumps/h4/rsa130/c130.upload/c130.940000-950000.gz', total is now 2670302/30000000
+2026-11-11 12:46:46,548 Info:Lattice Sieving: Found 126676 relations in './data/dumps/h4/rsa130/c130.upload/c130.950000-960000.gz', total is now 2796978/30000000
+2026-11-11 12:46:51,105 Info:Lattice Sieving: Found 120912 relations in './data/dumps/h4/rsa130/c130.upload/c130.980000-990000.gz', total is now 2917890/30000000
+2026-11-11 12:46:55,547 Info:Lattice Sieving: Found 132067 relations in './data/dumps/h4/rsa130/c130.upload/c130.960000-970000.gz', total is now 3049957/30000000
+2026-11-11 12:46:55,553 Info:Lattice Sieving: Found 129856 relations in './data/dumps/h4/rsa130/c130.upload/c130.970000-980000.gz', total is now 3179813/30000000
+2026-11-11 12:46:55,559 Info:Lattice Sieving: Found 123772 relations in './data/dumps/h4/rsa130/c130.upload/c130.990000-1000000.gz', total is now 3303585/30000000
+2026-11-11 12:46:57,829 Info:Lattice Sieving: Found 117023 relations in './data/dumps/h4/rsa130/c130.upload/c130.1010000-1020000.gz', total is now 3420608/30000000
+2026-11-11 12:47:06,861 Info:Lattice Sieving: Found 126973 relations in './data/dumps/h4/rsa130/c130.upload/c130.1000000-1010000.gz', total is now 3547581/30000000
+2026-11-11 12:49:06,010 Info:Lattice Sieving: Found 111938 relations in './data/dumps/h4/rsa130/c130.upload/c130.1030000-1040000.gz', total is now 3659519/30000000
+2026-11-11 12:49:08,258 Info:Lattice Sieving: Found 121287 relations in './data/dumps/h4/rsa130/c130.upload/c130.1020000-1030000.gz', total is now 3780806/30000000
+2026-11-11 12:49:12,720 Info:Lattice Sieving: Found 115182 relations in './data/dumps/h4/rsa130/c130.upload/c130.1050000-1060000.gz', total is now 3895988/30000000
+2026-11-11 12:49:14,945 Info:Lattice Sieving: Found 111008 relations in './data/dumps/h4/rsa130/c130.upload/c130.1070000-1080000.gz', total is now 4006996/30000000
+2026-11-11 12:49:23,927 Info:Lattice Sieving: Found 125769 relations in './data/dumps/h4/rsa130/c130.upload/c130.1040000-1050000.gz', total is now 4132765/30000000
+2026-11-11 12:49:28,465 Info:Lattice Sieving: Found 123044 relations in './data/dumps/h4/rsa130/c130.upload/c130.1060000-1070000.gz', total is now 4255809/30000000
+2026-11-11 12:49:30,710 Info:Lattice Sieving: Found 122855 relations in './data/dumps/h4/rsa130/c130.upload/c130.1080000-1090000.gz', total is now 4378664/30000000
+2026-11-11 12:49:41,829 Info:Lattice Sieving: Found 130176 relations in './data/dumps/h4/rsa130/c130.upload/c130.1090000-1100000.gz', total is now 4508840/30000000
+2026-11-11 12:49:44,057 Info:Lattice Sieving: Found 123950 relations in './data/dumps/h4/rsa130/c130.upload/c130.1100000-1110000.gz', total is now 4632790/30000000
+2026-11-11 12:51:49,654 Info:Lattice Sieving: Found 113007 relations in './data/dumps/h4/rsa130/c130.upload/c130.1110000-1120000.gz', total is now 4745797/30000000
+2026-11-11 12:52:00,061 Info:Lattice Sieving: Found 109651 relations in './data/dumps/h4/rsa130/c130.upload/c130.1140000-1150000.gz', total is now 4855448/30000000
+2026-11-11 12:52:06,788 Info:Lattice Sieving: Found 117363 relations in './data/dumps/h4/rsa130/c130.upload/c130.1130000-1140000.gz', total is now 4972811/30000000
+2026-11-11 12:52:09,052 Info:Lattice Sieving: Found 123330 relations in './data/dumps/h4/rsa130/c130.upload/c130.1120000-1130000.gz', total is now 5096141/30000000
+2026-11-11 12:52:20,453 Info:Lattice Sieving: Found 112757 relations in './data/dumps/h4/rsa130/c130.upload/c130.1170000-1180000.gz', total is now 5208898/30000000
+2026-11-11 12:52:22,747 Info:Lattice Sieving: Found 121447 relations in './data/dumps/h4/rsa130/c130.upload/c130.1150000-1160000.gz', total is now 5330345/30000000
+2026-11-11 12:52:22,759 Info:Lattice Sieving: Found 118596 relations in './data/dumps/h4/rsa130/c130.upload/c130.1160000-1170000.gz', total is now 5448941/30000000
+2026-11-11 12:52:31,739 Info:Lattice Sieving: Found 112738 relations in './data/dumps/h4/rsa130/c130.upload/c130.1180000-1190000.gz', total is now 5561679/30000000
+2026-11-11 12:52:36,157 Info:Lattice Sieving: Found 115765 relations in './data/dumps/h4/rsa130/c130.upload/c130.1190000-1200000.gz', total is now 5677444/30000000
+2026-11-11 12:54:15,063 Info:Lattice Sieving: Found 110961 relations in './data/dumps/h4/rsa130/c130.upload/c130.1200000-1210000.gz', total is now 5788405/30000000
+2026-11-11 12:54:30,894 Info:Lattice Sieving: Found 117216 relations in './data/dumps/h4/rsa130/c130.upload/c130.1210000-1220000.gz', total is now 5905621/30000000
+2026-11-11 12:54:30,907 Info:Lattice Sieving: Found 109372 relations in './data/dumps/h4/rsa130/c130.upload/c130.1220000-1230000.gz', total is now 6014993/30000000
+2026-11-11 12:54:30,916 Info:Lattice Sieving: Found 109237 relations in './data/dumps/h4/rsa130/c130.upload/c130.1230000-1240000.gz', total is now 6124230/30000000
+2026-11-11 12:54:50,955 Info:Lattice Sieving: Found 114341 relations in './data/dumps/h4/rsa130/c130.upload/c130.1250000-1260000.gz', total is now 6238571/30000000
+2026-11-11 12:54:50,960 Info:Lattice Sieving: Found 112966 relations in './data/dumps/h4/rsa130/c130.upload/c130.1260000-1270000.gz', total is now 6351537/30000000
+2026-11-11 12:54:55,678 Info:Lattice Sieving: Found 119544 relations in './data/dumps/h4/rsa130/c130.upload/c130.1240000-1250000.gz', total is now 6471081/30000000
+2026-11-11 12:54:55,684 Info:Lattice Sieving: Found 110304 relations in './data/dumps/h4/rsa130/c130.upload/c130.1270000-1280000.gz', total is now 6581385/30000000
+2026-11-11 12:55:08,892 Info:Lattice Sieving: Found 114929 relations in './data/dumps/h4/rsa130/c130.upload/c130.1280000-1290000.gz', total is now 6696314/30000000
+2026-11-11 12:57:02,592 Info:Lattice Sieving: Found 111904 relations in './data/dumps/h4/rsa130/c130.upload/c130.1290000-1300000.gz', total is now 6808218/30000000
+2026-11-11 12:57:11,487 Info:Lattice Sieving: Found 106726 relations in './data/dumps/h4/rsa130/c130.upload/c130.1310000-1320000.gz', total is now 6914944/30000000
+2026-11-11 12:57:13,729 Info:Lattice Sieving: Found 108135 relations in './data/dumps/h4/rsa130/c130.upload/c130.1300000-1310000.gz', total is now 7023079/30000000
+2026-11-11 12:57:22,636 Info:Lattice Sieving: Found 113158 relations in './data/dumps/h4/rsa130/c130.upload/c130.1320000-1330000.gz', total is now 7136237/30000000
+2026-11-11 12:57:33,720 Info:Lattice Sieving: Found 105136 relations in './data/dumps/h4/rsa130/c130.upload/c130.1350000-1360000.gz', total is now 7241373/30000000
+2026-11-11 12:57:40,475 Info:Lattice Sieving: Found 110763 relations in './data/dumps/h4/rsa130/c130.upload/c130.1340000-1350000.gz', total is now 7352136/30000000
+2026-11-11 12:57:44,968 Info:Lattice Sieving: Found 116712 relations in './data/dumps/h4/rsa130/c130.upload/c130.1330000-1340000.gz', total is now 7468848/30000000
+2026-11-11 12:57:44,976 Info:Lattice Sieving: Found 110933 relations in './data/dumps/h4/rsa130/c130.upload/c130.1360000-1370000.gz', total is now 7579781/30000000
+2026-11-11 12:58:05,126 Info:Lattice Sieving: Found 117752 relations in './data/dumps/h4/rsa130/c130.upload/c130.1370000-1380000.gz', total is now 7697533/30000000
+2026-11-11 12:59:28,024 Info:Lattice Sieving: Found 107314 relations in './data/dumps/h4/rsa130/c130.upload/c130.1380000-1390000.gz', total is now 7804847/30000000
+2026-11-11 12:59:32,470 Info:Lattice Sieving: Found 102647 relations in './data/dumps/h4/rsa130/c130.upload/c130.1400000-1410000.gz', total is now 7907494/30000000
+2026-11-11 12:59:36,982 Info:Lattice Sieving: Found 100134 relations in './data/dumps/h4/rsa130/c130.upload/c130.1410000-1420000.gz', total is now 8007628/30000000
+2026-11-11 12:59:50,495 Info:Lattice Sieving: Found 117702 relations in './data/dumps/h4/rsa130/c130.upload/c130.1390000-1400000.gz', total is now 8125330/30000000
+2026-11-11 13:00:08,561 Info:Lattice Sieving: Found 105816 relations in './data/dumps/h4/rsa130/c130.upload/c130.1440000-1450000.gz', total is now 8231146/30000000
+2026-11-11 13:00:10,789 Info:Lattice Sieving: Found 107089 relations in './data/dumps/h4/rsa130/c130.upload/c130.1450000-1460000.gz', total is now 8338235/30000000
+2026-11-11 13:00:13,057 Info:Lattice Sieving: Found 117647 relations in './data/dumps/h4/rsa130/c130.upload/c130.1420000-1430000.gz', total is now 8455882/30000000
+2026-11-11 13:00:15,302 Info:Lattice Sieving: Found 114268 relations in './data/dumps/h4/rsa130/c130.upload/c130.1430000-1440000.gz', total is now 8570150/30000000
+2026-11-11 13:00:33,224 Info:Lattice Sieving: Found 109588 relations in './data/dumps/h4/rsa130/c130.upload/c130.1460000-1470000.gz', total is now 8679738/30000000
+2026-11-11 13:02:11,895 Info:Lattice Sieving: Found 100207 relations in './data/dumps/h4/rsa130/c130.upload/c130.1490000-1500000.gz', total is now 8779945/30000000
+2026-11-11 13:02:18,649 Info:Lattice Sieving: Found 109417 relations in './data/dumps/h4/rsa130/c130.upload/c130.1480000-1490000.gz', total is now 8889362/30000000
+2026-11-11 13:02:25,418 Info:Lattice Sieving: Found 119052 relations in './data/dumps/h4/rsa130/c130.upload/c130.1470000-1480000.gz', total is now 9008414/30000000
+2026-11-11 13:02:29,900 Info:Lattice Sieving: Found 104508 relations in './data/dumps/h4/rsa130/c130.upload/c130.1500000-1510000.gz', total is now 9112922/30000000
+2026-11-11 13:02:47,939 Info:Lattice Sieving: Found 103909 relations in './data/dumps/h4/rsa130/c130.upload/c130.1510000-1520000.gz', total is now 9216831/30000000
+2026-11-11 13:02:59,345 Info:Lattice Sieving: Found 108345 relations in './data/dumps/h4/rsa130/c130.upload/c130.1520000-1530000.gz', total is now 9325176/30000000
+2026-11-11 13:02:59,351 Info:Lattice Sieving: Found 107795 relations in './data/dumps/h4/rsa130/c130.upload/c130.1540000-1550000.gz', total is now 9432971/30000000
+2026-11-11 13:03:01,631 Info:Lattice Sieving: Found 109294 relations in './data/dumps/h4/rsa130/c130.upload/c130.1530000-1540000.gz', total is now 9542265/30000000
+2026-11-11 13:03:24,254 Info:Lattice Sieving: Found 110901 relations in './data/dumps/h4/rsa130/c130.upload/c130.1550000-1560000.gz', total is now 9653166/30000000
+2026-11-11 13:04:15,852 Info:Lattice Sieving: Found 90389 relations in './data/dumps/h4/rsa130/c130.upload/c130.1560000-1570000.gz', total is now 9743555/30000000
+2026-11-11 13:04:42,651 Info:Lattice Sieving: Found 104125 relations in './data/dumps/h4/rsa130/c130.upload/c130.1570000-1580000.gz', total is now 9847680/30000000
+2026-11-11 13:04:47,139 Info:Lattice Sieving: Found 102343 relations in './data/dumps/h4/rsa130/c130.upload/c130.1580000-1590000.gz', total is now 9950023/30000000
+2026-11-11 13:04:53,782 Info:Lattice Sieving: Found 103372 relations in './data/dumps/h4/rsa130/c130.upload/c130.1590000-1600000.gz', total is now 10053395/30000000
+2026-11-11 13:05:11,629 Info:Lattice Sieving: Found 103611 relations in './data/dumps/h4/rsa130/c130.upload/c130.1600000-1610000.gz', total is now 10157006/30000000
+2026-11-11 13:05:11,635 Info:Lattice Sieving: Found 96567 relations in './data/dumps/h4/rsa130/c130.upload/c130.1610000-1620000.gz', total is now 10253573/30000000
+2026-11-11 13:05:22,802 Info:Lattice Sieving: Found 100805 relations in './data/dumps/h4/rsa130/c130.upload/c130.1630000-1640000.gz', total is now 10354378/30000000
+2026-11-11 13:05:25,053 Info:Lattice Sieving: Found 103121 relations in './data/dumps/h4/rsa130/c130.upload/c130.1620000-1630000.gz', total is now 10457499/30000000
+2026-11-11 13:05:47,356 Info:Lattice Sieving: Found 103818 relations in './data/dumps/h4/rsa130/c130.upload/c130.1640000-1650000.gz', total is now 10561317/30000000
+2026-11-11 13:06:55,957 Info:Lattice Sieving: Found 103093 relations in './data/dumps/h4/rsa130/c130.upload/c130.1650000-1660000.gz', total is now 10664410/30000000
+2026-11-11 13:07:24,020 Info:Lattice Sieving: Found 100346 relations in './data/dumps/h4/rsa130/c130.upload/c130.1660000-1670000.gz', total is now 10764756/30000000
+2026-11-11 13:07:26,279 Info:Lattice Sieving: Found 97725 relations in './data/dumps/h4/rsa130/c130.upload/c130.1670000-1680000.gz', total is now 10862481/30000000
+2026-11-11 13:07:33,070 Info:Lattice Sieving: Found 98236 relations in './data/dumps/h4/rsa130/c130.upload/c130.1680000-1690000.gz', total is now 10960717/30000000
+2026-11-11 13:07:53,059 Info:Lattice Sieving: Found 97538 relations in './data/dumps/h4/rsa130/c130.upload/c130.1700000-1710000.gz', total is now 11058255/30000000
+2026-11-11 13:07:57,546 Info:Lattice Sieving: Found 94134 relations in './data/dumps/h4/rsa130/c130.upload/c130.1720000-1730000.gz', total is now 11152389/30000000
+2026-11-11 13:08:04,279 Info:Lattice Sieving: Found 97891 relations in './data/dumps/h4/rsa130/c130.upload/c130.1710000-1720000.gz', total is now 11250280/30000000
+2026-11-11 13:08:10,957 Info:Lattice Sieving: Found 111344 relations in './data/dumps/h4/rsa130/c130.upload/c130.1690000-1700000.gz', total is now 11361624/30000000
+2026-11-11 13:08:42,577 Info:Lattice Sieving: Found 107784 relations in './data/dumps/h4/rsa130/c130.upload/c130.1730000-1740000.gz', total is now 11469408/30000000
+2026-11-11 13:09:27,370 Info:Lattice Sieving: Found 101705 relations in './data/dumps/h4/rsa130/c130.upload/c130.1740000-1750000.gz', total is now 11571113/30000000
+2026-11-11 13:09:45,196 Info:Lattice Sieving: Found 96980 relations in './data/dumps/h4/rsa130/c130.upload/c130.1760000-1770000.gz', total is now 11668093/30000000
+2026-11-11 13:09:47,502 Info:Lattice Sieving: Found 99956 relations in './data/dumps/h4/rsa130/c130.upload/c130.1750000-1760000.gz', total is now 11768049/30000000
+2026-11-11 13:09:56,501 Info:Lattice Sieving: Found 99632 relations in './data/dumps/h4/rsa130/c130.upload/c130.1770000-1780000.gz', total is now 11867681/30000000
+2026-11-11 13:10:18,881 Info:Lattice Sieving: Found 103100 relations in './data/dumps/h4/rsa130/c130.upload/c130.1780000-1790000.gz', total is now 11970781/30000000
+2026-11-11 13:10:21,204 Info:Lattice Sieving: Found 90826 relations in './data/dumps/h4/rsa130/c130.upload/c130.1810000-1820000.gz', total is now 12061607/30000000
+2026-11-11 13:10:25,782 Info:Lattice Sieving: Found 103738 relations in './data/dumps/h4/rsa130/c130.upload/c130.1790000-1800000.gz', total is now 12165345/30000000
+2026-11-11 13:10:25,789 Info:Lattice Sieving: Found 99245 relations in './data/dumps/h4/rsa130/c130.upload/c130.1800000-1810000.gz', total is now 12264590/30000000
+2026-11-11 13:11:10,927 Info:Lattice Sieving: Found 105109 relations in './data/dumps/h4/rsa130/c130.upload/c130.1820000-1830000.gz', total is now 12369699/30000000
+2026-11-11 13:11:48,858 Info:Lattice Sieving: Found 96653 relations in './data/dumps/h4/rsa130/c130.upload/c130.1830000-1840000.gz', total is now 12466352/30000000
+2026-11-11 13:12:10,697 Info:Lattice Sieving: Found 94394 relations in './data/dumps/h4/rsa130/c130.upload/c130.1840000-1850000.gz', total is now 12560746/30000000
+2026-11-11 13:12:27,376 Info:Lattice Sieving: Found 99910 relations in './data/dumps/h4/rsa130/c130.upload/c130.1850000-1860000.gz', total is now 12660656/30000000
+2026-11-11 13:12:32,476 Info:Lattice Sieving: Found 96435 relations in './data/dumps/h4/rsa130/c130.upload/c130.1860000-1870000.gz', total is now 12757091/30000000
+2026-11-11 13:12:54,170 Info:Lattice Sieving: Found 95288 relations in './data/dumps/h4/rsa130/c130.upload/c130.1870000-1880000.gz', total is now 12852379/30000000
+2026-11-11 13:12:58,624 Info:Lattice Sieving: Found 92675 relations in './data/dumps/h4/rsa130/c130.upload/c130.1890000-1900000.gz', total is now 12945054/30000000
+2026-11-11 13:13:03,274 Info:Lattice Sieving: Found 95587 relations in './data/dumps/h4/rsa130/c130.upload/c130.1900000-1910000.gz', total is now 13040641/30000000
+2026-11-11 13:13:05,592 Info:Lattice Sieving: Found 101335 relations in './data/dumps/h4/rsa130/c130.upload/c130.1880000-1890000.gz', total is now 13141976/30000000
+2026-11-11 13:13:47,849 Info:Lattice Sieving: Found 94688 relations in './data/dumps/h4/rsa130/c130.upload/c130.1910000-1920000.gz', total is now 13236664/30000000
+2026-11-11 13:14:21,082 Info:Lattice Sieving: Found 98693 relations in './data/dumps/h4/rsa130/c130.upload/c130.1920000-1930000.gz', total is now 13335357/30000000
+2026-11-11 13:14:40,983 Info:Lattice Sieving: Found 101002 relations in './data/dumps/h4/rsa130/c130.upload/c130.1930000-1940000.gz', total is now 13436359/30000000
+2026-11-11 13:14:43,191 Info:Lattice Sieving: Found 95848 relations in './data/dumps/h4/rsa130/c130.upload/c130.1940000-1950000.gz', total is now 13532207/30000000
+2026-11-11 13:14:43,200 Info:Lattice Sieving: Found 93760 relations in './data/dumps/h4/rsa130/c130.upload/c130.1950000-1960000.gz', total is now 13625967/30000000
+2026-11-11 13:15:05,484 Info:Lattice Sieving: Found 93319 relations in './data/dumps/h4/rsa130/c130.upload/c130.1960000-1970000.gz', total is now 13719286/30000000
+2026-11-11 13:15:09,893 Info:Lattice Sieving: Found 94446 relations in './data/dumps/h4/rsa130/c130.upload/c130.1970000-1980000.gz', total is now 13813732/30000000
+2026-11-11 13:15:18,686 Info:Lattice Sieving: Found 96518 relations in './data/dumps/h4/rsa130/c130.upload/c130.1990000-2000000.gz', total is now 13910250/30000000
+2026-11-11 13:15:20,929 Info:Lattice Sieving: Found 98820 relations in './data/dumps/h4/rsa130/c130.upload/c130.1980000-1990000.gz', total is now 14009070/30000000
+2026-11-11 13:16:07,540 Info:Lattice Sieving: Found 100862 relations in './data/dumps/h4/rsa130/c130.upload/c130.2000000-2010000.gz', total is now 14109932/30000000
+2026-11-11 13:16:34,013 Info:Lattice Sieving: Found 95643 relations in './data/dumps/h4/rsa130/c130.upload/c130.2010000-2020000.gz', total is now 14205575/30000000
+2026-11-11 13:16:53,967 Info:Lattice Sieving: Found 94455 relations in './data/dumps/h4/rsa130/c130.upload/c130.2030000-2040000.gz', total is now 14300030/30000000
+2026-11-11 13:16:53,973 Info:Lattice Sieving: Found 93800 relations in './data/dumps/h4/rsa130/c130.upload/c130.2040000-2050000.gz', total is now 14393830/30000000
+2026-11-11 13:17:08,150 Info:Lattice Sieving: Found 104715 relations in './data/dumps/h4/rsa130/c130.upload/c130.2020000-2030000.gz', total is now 14498545/30000000
+2026-11-11 13:17:32,319 Info:Lattice Sieving: Found 97647 relations in './data/dumps/h4/rsa130/c130.upload/c130.2050000-2060000.gz', total is now 14596192/30000000
+2026-11-11 13:17:35,045 Info:Lattice Sieving: Found 96376 relations in './data/dumps/h4/rsa130/c130.upload/c130.2060000-2070000.gz', total is now 14692568/30000000
+2026-11-11 13:17:35,055 Info:Lattice Sieving: Found 88506 relations in './data/dumps/h4/rsa130/c130.upload/c130.2070000-2080000.gz', total is now 14781074/30000000
+2026-11-11 13:17:43,091 Info:Lattice Sieving: Found 90818 relations in './data/dumps/h4/rsa130/c130.upload/c130.2080000-2090000.gz', total is now 14871892/30000000
+2026-11-11 13:18:41,892 Info:Lattice Sieving: Found 95861 relations in './data/dumps/h4/rsa130/c130.upload/c130.2090000-2100000.gz', total is now 14967753/30000000
+2026-11-11 13:19:10,874 Info:Lattice Sieving: Found 96972 relations in './data/dumps/h4/rsa130/c130.upload/c130.2100000-2110000.gz', total is now 15064725/30000000
+2026-11-11 13:19:19,788 Info:Lattice Sieving: Found 87676 relations in './data/dumps/h4/rsa130/c130.upload/c130.2120000-2130000.gz', total is now 15152401/30000000
+2026-11-11 13:19:28,588 Info:Lattice Sieving: Found 94213 relations in './data/dumps/h4/rsa130/c130.upload/c130.2110000-2120000.gz', total is now 15246614/30000000
+2026-11-11 13:19:44,121 Info:Lattice Sieving: Found 95704 relations in './data/dumps/h4/rsa130/c130.upload/c130.2130000-2140000.gz', total is now 15342318/30000000
+2026-11-11 13:19:50,764 Info:Lattice Sieving: Found 88506 relations in './data/dumps/h4/rsa130/c130.upload/c130.2160000-2170000.gz', total is now 15430824/30000000
+2026-11-11 13:20:01,837 Info:Lattice Sieving: Found 96940 relations in './data/dumps/h4/rsa130/c130.upload/c130.2150000-2160000.gz', total is now 15527764/30000000
+2026-11-11 13:20:06,328 Info:Lattice Sieving: Found 101044 relations in './data/dumps/h4/rsa130/c130.upload/c130.2140000-2150000.gz', total is now 15628808/30000000
+2026-11-11 13:20:06,336 Info:Lattice Sieving: Found 96012 relations in './data/dumps/h4/rsa130/c130.upload/c130.2170000-2180000.gz', total is now 15724820/30000000
+2026-11-11 13:20:55,316 Info:Lattice Sieving: Found 93965 relations in './data/dumps/h4/rsa130/c130.upload/c130.2180000-2190000.gz', total is now 15818785/30000000
+2026-11-11 13:21:19,562 Info:Lattice Sieving: Found 89758 relations in './data/dumps/h4/rsa130/c130.upload/c130.2190000-2200000.gz', total is now 15908543/30000000
+2026-11-11 13:21:24,040 Info:Lattice Sieving: Found 86920 relations in './data/dumps/h4/rsa130/c130.upload/c130.2200000-2210000.gz', total is now 15995463/30000000
+2026-11-11 13:21:26,281 Info:Lattice Sieving: Found 83838 relations in './data/dumps/h4/rsa130/c130.upload/c130.2210000-2220000.gz', total is now 16079301/30000000
+2026-11-11 13:21:57,153 Info:Lattice Sieving: Found 88279 relations in './data/dumps/h4/rsa130/c130.upload/c130.2230000-2240000.gz', total is now 16167580/30000000
+2026-11-11 13:22:01,666 Info:Lattice Sieving: Found 97811 relations in './data/dumps/h4/rsa130/c130.upload/c130.2220000-2230000.gz', total is now 16265391/30000000
+2026-11-11 13:22:31,624 Info:Lattice Sieving: Found 96521 relations in './data/dumps/h4/rsa130/c130.upload/c130.2240000-2250000.gz', total is now 16361912/30000000
+2026-11-11 13:22:31,634 Info:Lattice Sieving: Found 93481 relations in './data/dumps/h4/rsa130/c130.upload/c130.2250000-2260000.gz', total is now 16455393/30000000
+2026-11-11 13:22:34,421 Info:Lattice Sieving: Found 95359 relations in './data/dumps/h4/rsa130/c130.upload/c130.2260000-2270000.gz', total is now 16550752/30000000
+2026-11-11 13:23:31,502 Info:Lattice Sieving: Found 89708 relations in './data/dumps/h4/rsa130/c130.upload/c130.2270000-2280000.gz', total is now 16640460/30000000
+2026-11-11 13:23:53,846 Info:Lattice Sieving: Found 89131 relations in './data/dumps/h4/rsa130/c130.upload/c130.2280000-2290000.gz', total is now 16729591/30000000
+2026-11-11 13:24:00,555 Info:Lattice Sieving: Found 88512 relations in './data/dumps/h4/rsa130/c130.upload/c130.2300000-2310000.gz', total is now 16818103/30000000
+2026-11-11 13:24:02,805 Info:Lattice Sieving: Found 89951 relations in './data/dumps/h4/rsa130/c130.upload/c130.2290000-2300000.gz', total is now 16908054/30000000
+2026-11-11 13:24:24,903 Info:Lattice Sieving: Found 83509 relations in './data/dumps/h4/rsa130/c130.upload/c130.2310000-2320000.gz', total is now 16991563/30000000
+2026-11-11 13:24:35,944 Info:Lattice Sieving: Found 87809 relations in './data/dumps/h4/rsa130/c130.upload/c130.2320000-2330000.gz', total is now 17079372/30000000
+2026-11-11 13:24:51,410 Info:Lattice Sieving: Found 84730 relations in './data/dumps/h4/rsa130/c130.upload/c130.2340000-2350000.gz', total is now 17164102/30000000
+2026-11-11 13:25:02,502 Info:Lattice Sieving: Found 93167 relations in './data/dumps/h4/rsa130/c130.upload/c130.2330000-2340000.gz', total is now 17257269/30000000
+2026-11-11 13:25:11,351 Info:Lattice Sieving: Found 97293 relations in './data/dumps/h4/rsa130/c130.upload/c130.2350000-2360000.gz', total is now 17354562/30000000
+2026-11-11 13:25:51,246 Info:Lattice Sieving: Found 96207 relations in './data/dumps/h4/rsa130/c130.upload/c130.2360000-2370000.gz', total is now 17450769/30000000
+2026-11-11 13:25:55,668 Info:Lattice Sieving: Found 82823 relations in './data/dumps/h4/rsa130/c130.upload/c130.2370000-2380000.gz', total is now 17533592/30000000
+2026-11-11 13:26:11,228 Info:Lattice Sieving: Found 90200 relations in './data/dumps/h4/rsa130/c130.upload/c130.2380000-2390000.gz', total is now 17623792/30000000
+2026-11-11 13:26:22,363 Info:Lattice Sieving: Found 95905 relations in './data/dumps/h4/rsa130/c130.upload/c130.2390000-2400000.gz', total is now 17719697/30000000
+2026-11-11 13:26:35,642 Info:Lattice Sieving: Found 89921 relations in './data/dumps/h4/rsa130/c130.upload/c130.2400000-2410000.gz', total is now 17809618/30000000
+2026-11-11 13:26:55,545 Info:Lattice Sieving: Found 95453 relations in './data/dumps/h4/rsa130/c130.upload/c130.2410000-2420000.gz', total is now 17905071/30000000
+2026-11-11 13:27:02,263 Info:Lattice Sieving: Found 79550 relations in './data/dumps/h4/rsa130/c130.upload/c130.2430000-2440000.gz', total is now 17984621/30000000
+2026-11-11 13:27:10,330 Info:Lattice Sieving: Found 92707 relations in './data/dumps/h4/rsa130/c130.upload/c130.2420000-2430000.gz', total is now 18077328/30000000
+2026-11-11 13:27:37,048 Info:Lattice Sieving: Found 90724 relations in './data/dumps/h4/rsa130/c130.upload/c130.2440000-2450000.gz', total is now 18168052/30000000
+2026-11-11 13:28:23,001 Info:Lattice Sieving: Found 85536 relations in './data/dumps/h4/rsa130/c130.upload/c130.2450000-2460000.gz', total is now 18253588/30000000
+2026-11-11 13:28:27,455 Info:Lattice Sieving: Found 87962 relations in './data/dumps/h4/rsa130/c130.upload/c130.2460000-2470000.gz', total is now 18341550/30000000
+2026-11-11 13:28:51,835 Info:Lattice Sieving: Found 91551 relations in './data/dumps/h4/rsa130/c130.upload/c130.2470000-2480000.gz', total is now 18433101/30000000
+2026-11-11 13:29:00,785 Info:Lattice Sieving: Found 90370 relations in './data/dumps/h4/rsa130/c130.upload/c130.2480000-2490000.gz', total is now 18523471/30000000
+2026-11-11 13:29:07,503 Info:Lattice Sieving: Found 85388 relations in './data/dumps/h4/rsa130/c130.upload/c130.2490000-2500000.gz', total is now 18608859/30000000
+2026-11-11 13:29:23,203 Info:Lattice Sieving: Found 79505 relations in './data/dumps/h4/rsa130/c130.upload/c130.2510000-2520000.gz', total is now 18688364/30000000
+2026-11-11 13:29:25,407 Info:Lattice Sieving: Found 85272 relations in './data/dumps/h4/rsa130/c130.upload/c130.2500000-2510000.gz', total is now 18773636/30000000
+2026-11-11 13:29:41,036 Info:Lattice Sieving: Found 86938 relations in './data/dumps/h4/rsa130/c130.upload/c130.2520000-2530000.gz', total is now 18860574/30000000
+2026-11-11 13:29:58,785 Info:Lattice Sieving: Found 87011 relations in './data/dumps/h4/rsa130/c130.upload/c130.2530000-2540000.gz', total is now 18947585/30000000
+2026-11-11 13:30:36,509 Info:Lattice Sieving: Found 85260 relations in './data/dumps/h4/rsa130/c130.upload/c130.2550000-2560000.gz', total is now 19032845/30000000
+2026-11-11 13:30:40,960 Info:Lattice Sieving: Found 94592 relations in './data/dumps/h4/rsa130/c130.upload/c130.2540000-2550000.gz', total is now 19127437/30000000
+2026-11-11 13:30:56,494 Info:Lattice Sieving: Found 82918 relations in './data/dumps/h4/rsa130/c130.upload/c130.2560000-2570000.gz', total is now 19210355/30000000
+2026-11-11 13:31:18,786 Info:Lattice Sieving: Found 91996 relations in './data/dumps/h4/rsa130/c130.upload/c130.2570000-2580000.gz', total is now 19302351/30000000
+2026-11-11 13:31:21,013 Info:Lattice Sieving: Found 89056 relations in './data/dumps/h4/rsa130/c130.upload/c130.2580000-2590000.gz', total is now 19391407/30000000
+2026-11-11 13:31:34,294 Info:Lattice Sieving: Found 87713 relations in './data/dumps/h4/rsa130/c130.upload/c130.2590000-2600000.gz', total is now 19479120/30000000
+2026-11-11 13:31:34,301 Info:Lattice Sieving: Found 86501 relations in './data/dumps/h4/rsa130/c130.upload/c130.2600000-2610000.gz', total is now 19565621/30000000
+2026-11-11 13:31:41,009 Info:Lattice Sieving: Found 80465 relations in './data/dumps/h4/rsa130/c130.upload/c130.2610000-2620000.gz', total is now 19646086/30000000
+2026-11-11 13:32:11,512 Info:Lattice Sieving: Found 85888 relations in './data/dumps/h4/rsa130/c130.upload/c130.2620000-2630000.gz', total is now 19731974/30000000
+2026-11-11 13:33:10,655 Info:Lattice Sieving: Found 86572 relations in './data/dumps/h4/rsa130/c130.upload/c130.2630000-2640000.gz', total is now 19818546/30000000
+2026-11-11 13:33:18,979 Info:Lattice Sieving: Found 86606 relations in './data/dumps/h4/rsa130/c130.upload/c130.2640000-2650000.gz', total is now 19905152/30000000
+2026-11-11 13:33:42,676 Info:Lattice Sieving: Found 90685 relations in './data/dumps/h4/rsa130/c130.upload/c130.2650000-2660000.gz', total is now 19995837/30000000
+2026-11-11 13:33:58,332 Info:Lattice Sieving: Found 84410 relations in './data/dumps/h4/rsa130/c130.upload/c130.2670000-2680000.gz', total is now 20080247/30000000
+2026-11-11 13:34:02,740 Info:Lattice Sieving: Found 90200 relations in './data/dumps/h4/rsa130/c130.upload/c130.2660000-2670000.gz', total is now 20170447/30000000
+2026-11-11 13:34:22,594 Info:Lattice Sieving: Found 85413 relations in './data/dumps/h4/rsa130/c130.upload/c130.2700000-2710000.gz', total is now 20255860/30000000
+2026-11-11 13:34:24,857 Info:Lattice Sieving: Found 92005 relations in './data/dumps/h4/rsa130/c130.upload/c130.2690000-2700000.gz', total is now 20347865/30000000
+2026-11-11 13:34:27,087 Info:Lattice Sieving: Found 93597 relations in './data/dumps/h4/rsa130/c130.upload/c130.2680000-2690000.gz', total is now 20441462/30000000
+2026-11-11 13:34:44,849 Info:Lattice Sieving: Found 83056 relations in './data/dumps/h4/rsa130/c130.upload/c130.2710000-2720000.gz', total is now 20524518/30000000
+2026-11-11 13:35:29,389 Info:Lattice Sieving: Found 86455 relations in './data/dumps/h4/rsa130/c130.upload/c130.2720000-2730000.gz', total is now 20610973/30000000
+2026-11-11 13:35:29,395 Info:Lattice Sieving: Found 83780 relations in './data/dumps/h4/rsa130/c130.upload/c130.2730000-2740000.gz', total is now 20694753/30000000
+2026-11-11 13:35:49,307 Info:Lattice Sieving: Found 83407 relations in './data/dumps/h4/rsa130/c130.upload/c130.2740000-2750000.gz', total is now 20778160/30000000
+2026-11-11 13:36:00,437 Info:Lattice Sieving: Found 81804 relations in './data/dumps/h4/rsa130/c130.upload/c130.2750000-2760000.gz', total is now 20859964/30000000
+2026-11-11 13:36:13,870 Info:Lattice Sieving: Found 85999 relations in './data/dumps/h4/rsa130/c130.upload/c130.2760000-2770000.gz', total is now 20945963/30000000
+2026-11-11 13:36:33,746 Info:Lattice Sieving: Found 86433 relations in './data/dumps/h4/rsa130/c130.upload/c130.2770000-2780000.gz', total is now 21032396/30000000
+2026-11-11 13:36:33,753 Info:Lattice Sieving: Found 84584 relations in './data/dumps/h4/rsa130/c130.upload/c130.2780000-2790000.gz', total is now 21116980/30000000
+2026-11-11 13:36:33,759 Info:Lattice Sieving: Found 83901 relations in './data/dumps/h4/rsa130/c130.upload/c130.2790000-2800000.gz', total is now 21200881/30000000
+2026-11-11 13:37:04,880 Info:Lattice Sieving: Found 91054 relations in './data/dumps/h4/rsa130/c130.upload/c130.2800000-2810000.gz', total is now 21291935/30000000
+2026-11-11 13:37:42,233 Info:Lattice Sieving: Found 84142 relations in './data/dumps/h4/rsa130/c130.upload/c130.2820000-2830000.gz', total is now 21376077/30000000
+2026-11-11 13:37:47,864 Info:Lattice Sieving: Found 86543 relations in './data/dumps/h4/rsa130/c130.upload/c130.2810000-2820000.gz', total is now 21462620/30000000
+2026-11-11 13:38:17,736 Info:Lattice Sieving: Found 85136 relations in './data/dumps/h4/rsa130/c130.upload/c130.2830000-2840000.gz', total is now 21547756/30000000
+2026-11-11 13:38:39,461 Info:Lattice Sieving: Found 87594 relations in './data/dumps/h4/rsa130/c130.upload/c130.2840000-2850000.gz', total is now 21635350/30000000
+2026-11-11 13:38:43,997 Info:Lattice Sieving: Found 82073 relations in './data/dumps/h4/rsa130/c130.upload/c130.2850000-2860000.gz', total is now 21717423/30000000
+2026-11-11 13:38:54,999 Info:Lattice Sieving: Found 76322 relations in './data/dumps/h4/rsa130/c130.upload/c130.2870000-2880000.gz', total is now 21793745/30000000
+2026-11-11 13:39:10,594 Info:Lattice Sieving: Found 85702 relations in './data/dumps/h4/rsa130/c130.upload/c130.2880000-2890000.gz', total is now 21879447/30000000
+2026-11-11 13:39:15,170 Info:Lattice Sieving: Found 89352 relations in './data/dumps/h4/rsa130/c130.upload/c130.2860000-2870000.gz', total is now 21968799/30000000
+2026-11-11 13:39:32,882 Info:Lattice Sieving: Found 80920 relations in './data/dumps/h4/rsa130/c130.upload/c130.2890000-2900000.gz', total is now 22049719/30000000
+2026-11-11 13:40:13,058 Info:Lattice Sieving: Found 81746 relations in './data/dumps/h4/rsa130/c130.upload/c130.2910000-2920000.gz', total is now 22131465/30000000
+2026-11-11 13:40:19,795 Info:Lattice Sieving: Found 89375 relations in './data/dumps/h4/rsa130/c130.upload/c130.2900000-2910000.gz', total is now 22220840/30000000
+2026-11-11 13:40:30,956 Info:Lattice Sieving: Found 79944 relations in './data/dumps/h4/rsa130/c130.upload/c130.2920000-2930000.gz', total is now 22300784/30000000
+2026-11-11 13:40:51,007 Info:Lattice Sieving: Found 84598 relations in './data/dumps/h4/rsa130/c130.upload/c130.2930000-2940000.gz', total is now 22385382/30000000
+2026-11-11 13:40:51,013 Info:Lattice Sieving: Found 82108 relations in './data/dumps/h4/rsa130/c130.upload/c130.2940000-2950000.gz', total is now 22467490/30000000
+2026-11-11 13:40:59,994 Info:Lattice Sieving: Found 79486 relations in './data/dumps/h4/rsa130/c130.upload/c130.2950000-2960000.gz', total is now 22546976/30000000
+2026-11-11 13:41:22,458 Info:Lattice Sieving: Found 82114 relations in './data/dumps/h4/rsa130/c130.upload/c130.2970000-2980000.gz', total is now 22629090/30000000
+2026-11-11 13:41:26,888 Info:Lattice Sieving: Found 87308 relations in './data/dumps/h4/rsa130/c130.upload/c130.2960000-2970000.gz', total is now 22716398/30000000
+2026-11-11 13:41:42,528 Info:Lattice Sieving: Found 82657 relations in './data/dumps/h4/rsa130/c130.upload/c130.2980000-2990000.gz', total is now 22799055/30000000
+2026-11-11 13:42:27,257 Info:Lattice Sieving: Found 86496 relations in './data/dumps/h4/rsa130/c130.upload/c130.2990000-3000000.gz', total is now 22885551/30000000
+2026-11-11 13:42:31,795 Info:Lattice Sieving: Found 77185 relations in './data/dumps/h4/rsa130/c130.upload/c130.3010000-3020000.gz', total is now 22962736/30000000
+2026-11-11 13:42:37,221 Info:Lattice Sieving: Found 86258 relations in './data/dumps/h4/rsa130/c130.upload/c130.3000000-3010000.gz', total is now 23048994/30000000
+2026-11-11 13:43:01,324 Info:Lattice Sieving: Found 76758 relations in './data/dumps/h4/rsa130/c130.upload/c130.3020000-3030000.gz', total is now 23125752/30000000
+2026-11-11 13:43:17,815 Info:Lattice Sieving: Found 83029 relations in './data/dumps/h4/rsa130/c130.upload/c130.3030000-3040000.gz', total is now 23208781/30000000
+2026-11-11 13:43:36,403 Info:Lattice Sieving: Found 86392 relations in './data/dumps/h4/rsa130/c130.upload/c130.3040000-3050000.gz', total is now 23295173/30000000
+2026-11-11 13:43:52,851 Info:Lattice Sieving: Found 81116 relations in './data/dumps/h4/rsa130/c130.upload/c130.3050000-3060000.gz', total is now 23376289/30000000
+2026-11-11 13:43:55,089 Info:Lattice Sieving: Found 78362 relations in './data/dumps/h4/rsa130/c130.upload/c130.3060000-3070000.gz', total is now 23454651/30000000
+2026-11-11 13:44:17,245 Info:Lattice Sieving: Found 82367 relations in './data/dumps/h4/rsa130/c130.upload/c130.3070000-3080000.gz', total is now 23537018/30000000
+2026-11-11 13:44:59,406 Info:Lattice Sieving: Found 81333 relations in './data/dumps/h4/rsa130/c130.upload/c130.3080000-3090000.gz', total is now 23618351/30000000
+2026-11-11 13:45:03,883 Info:Lattice Sieving: Found 79643 relations in './data/dumps/h4/rsa130/c130.upload/c130.3090000-3100000.gz', total is now 23697994/30000000
+2026-11-11 13:45:15,046 Info:Lattice Sieving: Found 85342 relations in './data/dumps/h4/rsa130/c130.upload/c130.3100000-3110000.gz', total is now 23783336/30000000
+2026-11-11 13:45:19,607 Info:Lattice Sieving: Found 77692 relations in './data/dumps/h4/rsa130/c130.upload/c130.3110000-3120000.gz', total is now 23861028/30000000
+2026-11-11 13:45:39,540 Info:Lattice Sieving: Found 83086 relations in './data/dumps/h4/rsa130/c130.upload/c130.3120000-3130000.gz', total is now 23944114/30000000
+2026-11-11 13:45:43,961 Info:Lattice Sieving: Found 78478 relations in './data/dumps/h4/rsa130/c130.upload/c130.3130000-3140000.gz', total is now 24022592/30000000
+2026-11-11 13:45:59,392 Info:Lattice Sieving: Found 79484 relations in './data/dumps/h4/rsa130/c130.upload/c130.3140000-3150000.gz', total is now 24102076/30000000
+2026-11-11 13:46:03,845 Info:Lattice Sieving: Found 80554 relations in './data/dumps/h4/rsa130/c130.upload/c130.3150000-3160000.gz', total is now 24182630/30000000
+2026-11-11 13:46:19,423 Info:Lattice Sieving: Found 76489 relations in './data/dumps/h4/rsa130/c130.upload/c130.3160000-3170000.gz', total is now 24259119/30000000
+2026-11-11 13:47:08,405 Info:Lattice Sieving: Found 80625 relations in './data/dumps/h4/rsa130/c130.upload/c130.3170000-3180000.gz', total is now 24339744/30000000
+2026-11-11 13:47:15,081 Info:Lattice Sieving: Found 82515 relations in './data/dumps/h4/rsa130/c130.upload/c130.3180000-3190000.gz', total is now 24422259/30000000
+2026-11-11 13:47:17,345 Info:Lattice Sieving: Found 76548 relations in './data/dumps/h4/rsa130/c130.upload/c130.3190000-3200000.gz', total is now 24498807/30000000
+2026-11-11 13:47:33,033 Info:Lattice Sieving: Found 83825 relations in './data/dumps/h4/rsa130/c130.upload/c130.3200000-3210000.gz', total is now 24582632/30000000
+2026-11-11 13:47:54,752 Info:Lattice Sieving: Found 80273 relations in './data/dumps/h4/rsa130/c130.upload/c130.3210000-3220000.gz', total is now 24662905/30000000
+2026-11-11 13:48:05,672 Info:Lattice Sieving: Found 81548 relations in './data/dumps/h4/rsa130/c130.upload/c130.3220000-3230000.gz', total is now 24744453/30000000
+2026-11-11 13:48:11,139 Info:Lattice Sieving: Found 70983 relations in './data/dumps/h4/rsa130/c130.upload/c130.3240000-3250000.gz', total is now 24815436/30000000
+2026-11-11 13:48:38,063 Info:Lattice Sieving: Found 84964 relations in './data/dumps/h4/rsa130/c130.upload/c130.3230000-3240000.gz', total is now 24900400/30000000
+2026-11-11 13:49:01,413 Info:Lattice Sieving: Found 85919 relations in './data/dumps/h4/rsa130/c130.upload/c130.3250000-3260000.gz', total is now 24986319/30000000
+2026-11-11 13:49:41,357 Info:Lattice Sieving: Found 80486 relations in './data/dumps/h4/rsa130/c130.upload/c130.3260000-3270000.gz', total is now 25066805/30000000
+2026-11-11 13:49:48,180 Info:Lattice Sieving: Found 78593 relations in './data/dumps/h4/rsa130/c130.upload/c130.3280000-3290000.gz', total is now 25145398/30000000
+2026-11-11 13:49:52,621 Info:Lattice Sieving: Found 82618 relations in './data/dumps/h4/rsa130/c130.upload/c130.3270000-3280000.gz', total is now 25228016/30000000
+2026-11-11 13:50:01,556 Info:Lattice Sieving: Found 76865 relations in './data/dumps/h4/rsa130/c130.upload/c130.3290000-3300000.gz', total is now 25304881/30000000
+2026-11-11 13:50:10,430 Info:Lattice Sieving: Found 74665 relations in './data/dumps/h4/rsa130/c130.upload/c130.3300000-3310000.gz', total is now 25379546/30000000
+2026-11-11 13:50:25,954 Info:Lattice Sieving: Found 79907 relations in './data/dumps/h4/rsa130/c130.upload/c130.3310000-3320000.gz', total is now 25459453/30000000
+2026-11-11 13:50:39,302 Info:Lattice Sieving: Found 85140 relations in './data/dumps/h4/rsa130/c130.upload/c130.3320000-3330000.gz', total is now 25544593/30000000
+2026-11-11 13:50:43,812 Info:Lattice Sieving: Found 75664 relations in './data/dumps/h4/rsa130/c130.upload/c130.3330000-3340000.gz', total is now 25620257/30000000
+2026-11-11 13:51:06,049 Info:Lattice Sieving: Found 76685 relations in './data/dumps/h4/rsa130/c130.upload/c130.3340000-3350000.gz', total is now 25696942/30000000
+2026-11-11 13:51:43,663 Info:Lattice Sieving: Found 74541 relations in './data/dumps/h4/rsa130/c130.upload/c130.3350000-3360000.gz', total is now 25771483/30000000
+2026-11-11 13:51:48,083 Info:Lattice Sieving: Found 75270 relations in './data/dumps/h4/rsa130/c130.upload/c130.3360000-3370000.gz', total is now 25846753/30000000
+2026-11-11 13:52:01,485 Info:Lattice Sieving: Found 79140 relations in './data/dumps/h4/rsa130/c130.upload/c130.3370000-3380000.gz', total is now 25925893/30000000
+2026-11-11 13:52:12,670 Info:Lattice Sieving: Found 81566 relations in './data/dumps/h4/rsa130/c130.upload/c130.3380000-3390000.gz', total is now 26007459/30000000
+2026-11-11 13:52:12,675 Info:Lattice Sieving: Found 74477 relations in './data/dumps/h4/rsa130/c130.upload/c130.3390000-3400000.gz', total is now 26081936/30000000
+2026-11-11 13:52:37,315 Info:Lattice Sieving: Found 80048 relations in './data/dumps/h4/rsa130/c130.upload/c130.3400000-3410000.gz', total is now 26161984/30000000
+2026-11-11 13:52:39,518 Info:Lattice Sieving: Found 73451 relations in './data/dumps/h4/rsa130/c130.upload/c130.3410000-3420000.gz', total is now 26235435/30000000
+2026-11-11 13:52:55,213 Info:Lattice Sieving: Found 81223 relations in './data/dumps/h4/rsa130/c130.upload/c130.3420000-3430000.gz', total is now 26316658/30000000
+2026-11-11 13:53:31,870 Info:Lattice Sieving: Found 84169 relations in './data/dumps/h4/rsa130/c130.upload/c130.3430000-3440000.gz', total is now 26400827/30000000
+2026-11-11 13:54:19,965 Info:Lattice Sieving: Found 80036 relations in './data/dumps/h4/rsa130/c130.upload/c130.3440000-3450000.gz', total is now 26480863/30000000
+2026-11-11 13:54:22,383 Info:Lattice Sieving: Found 78776 relations in './data/dumps/h4/rsa130/c130.upload/c130.3450000-3460000.gz', total is now 26559639/30000000
+2026-11-11 13:54:40,194 Info:Lattice Sieving: Found 80580 relations in './data/dumps/h4/rsa130/c130.upload/c130.3460000-3470000.gz', total is now 26640219/30000000
+2026-11-11 13:54:42,395 Info:Lattice Sieving: Found 75322 relations in './data/dumps/h4/rsa130/c130.upload/c130.3480000-3490000.gz', total is now 26715541/30000000
+2026-11-11 13:54:44,645 Info:Lattice Sieving: Found 76831 relations in './data/dumps/h4/rsa130/c130.upload/c130.3470000-3480000.gz', total is now 26792372/30000000
+2026-11-11 13:55:00,106 Info:Lattice Sieving: Found 71445 relations in './data/dumps/h4/rsa130/c130.upload/c130.3490000-3500000.gz', total is now 26863817/30000000
+2026-11-11 13:55:06,734 Info:Lattice Sieving: Found 74632 relations in './data/dumps/h4/rsa130/c130.upload/c130.3500000-3510000.gz', total is now 26938449/30000000
+2026-11-11 13:55:28,985 Info:Lattice Sieving: Found 77233 relations in './data/dumps/h4/rsa130/c130.upload/c130.3510000-3520000.gz', total is now 27015682/30000000
+2026-11-11 13:55:55,723 Info:Lattice Sieving: Found 78402 relations in './data/dumps/h4/rsa130/c130.upload/c130.3520000-3530000.gz', total is now 27094084/30000000
+2026-11-11 13:56:22,442 Info:Lattice Sieving: Found 72164 relations in './data/dumps/h4/rsa130/c130.upload/c130.3540000-3550000.gz', total is now 27166248/30000000
+2026-11-11 13:56:26,956 Info:Lattice Sieving: Found 76118 relations in './data/dumps/h4/rsa130/c130.upload/c130.3530000-3540000.gz', total is now 27242366/30000000
+2026-11-11 13:56:44,809 Info:Lattice Sieving: Found 74451 relations in './data/dumps/h4/rsa130/c130.upload/c130.3570000-3580000.gz', total is now 27316817/30000000
+2026-11-11 13:56:47,019 Info:Lattice Sieving: Found 74517 relations in './data/dumps/h4/rsa130/c130.upload/c130.3560000-3570000.gz', total is now 27391334/30000000
+2026-11-11 13:56:55,957 Info:Lattice Sieving: Found 82094 relations in './data/dumps/h4/rsa130/c130.upload/c130.3550000-3560000.gz', total is now 27473428/30000000
+2026-11-11 13:57:04,874 Info:Lattice Sieving: Found 74920 relations in './data/dumps/h4/rsa130/c130.upload/c130.3580000-3590000.gz', total is now 27548348/30000000
+2026-11-11 13:57:16,040 Info:Lattice Sieving: Found 76891 relations in './data/dumps/h4/rsa130/c130.upload/c130.3590000-3600000.gz', total is now 27625239/30000000
+2026-11-11 13:57:42,670 Info:Lattice Sieving: Found 81294 relations in './data/dumps/h4/rsa130/c130.upload/c130.3600000-3610000.gz', total is now 27706533/30000000
+2026-11-11 13:58:00,470 Info:Lattice Sieving: Found 74443 relations in './data/dumps/h4/rsa130/c130.upload/c130.3610000-3620000.gz', total is now 27780976/30000000
+2026-11-11 13:58:37,488 Info:Lattice Sieving: Found 74772 relations in './data/dumps/h4/rsa130/c130.upload/c130.3620000-3630000.gz', total is now 27855748/30000000
+2026-11-11 13:58:37,497 Info:Lattice Sieving: Found 71266 relations in './data/dumps/h4/rsa130/c130.upload/c130.3630000-3640000.gz', total is now 27927014/30000000
+2026-11-11 13:59:04,038 Info:Lattice Sieving: Found 72217 relations in './data/dumps/h4/rsa130/c130.upload/c130.3640000-3650000.gz', total is now 27999231/30000000
+2026-11-11 13:59:08,513 Info:Lattice Sieving: Found 72849 relations in './data/dumps/h4/rsa130/c130.upload/c130.3650000-3660000.gz', total is now 28072080/30000000
+2026-11-11 13:59:21,936 Info:Lattice Sieving: Found 75963 relations in './data/dumps/h4/rsa130/c130.upload/c130.3660000-3670000.gz', total is now 28148043/30000000
+2026-11-11 13:59:39,743 Info:Lattice Sieving: Found 74424 relations in './data/dumps/h4/rsa130/c130.upload/c130.3680000-3690000.gz', total is now 28222467/30000000
+2026-11-11 13:59:44,151 Info:Lattice Sieving: Found 83745 relations in './data/dumps/h4/rsa130/c130.upload/c130.3670000-3680000.gz', total is now 28306212/30000000
+2026-11-11 14:00:15,335 Info:Lattice Sieving: Found 80574 relations in './data/dumps/h4/rsa130/c130.upload/c130.3690000-3700000.gz', total is now 28386786/30000000
+2026-11-11 14:00:26,489 Info:Lattice Sieving: Found 76247 relations in './data/dumps/h4/rsa130/c130.upload/c130.3700000-3710000.gz', total is now 28463033/30000000
+2026-11-11 14:01:00,013 Info:Lattice Sieving: Found 79171 relations in './data/dumps/h4/rsa130/c130.upload/c130.3720000-3730000.gz', total is now 28542204/30000000
+2026-11-11 14:01:02,232 Info:Lattice Sieving: Found 80860 relations in './data/dumps/h4/rsa130/c130.upload/c130.3710000-3720000.gz', total is now 28623064/30000000
+2026-11-11 14:01:11,140 Info:Lattice Sieving: Found 75430 relations in './data/dumps/h4/rsa130/c130.upload/c130.3730000-3740000.gz', total is now 28698494/30000000
+2026-11-11 14:01:17,848 Info:Lattice Sieving: Found 76647 relations in './data/dumps/h4/rsa130/c130.upload/c130.3740000-3750000.gz', total is now 28775141/30000000
+2026-11-11 14:01:26,788 Info:Lattice Sieving: Found 74682 relations in './data/dumps/h4/rsa130/c130.upload/c130.3750000-3760000.gz', total is now 28849823/30000000
+2026-11-11 14:01:44,654 Info:Lattice Sieving: Found 73877 relations in './data/dumps/h4/rsa130/c130.upload/c130.3760000-3770000.gz', total is now 28923700/30000000
+2026-11-11 14:01:57,965 Info:Lattice Sieving: Found 79552 relations in './data/dumps/h4/rsa130/c130.upload/c130.3770000-3780000.gz', total is now 29003252/30000000
+2026-11-11 14:02:22,445 Info:Lattice Sieving: Found 74382 relations in './data/dumps/h4/rsa130/c130.upload/c130.3780000-3790000.gz', total is now 29077634/30000000
+2026-11-11 14:02:33,495 Info:Lattice Sieving: Found 75396 relations in './data/dumps/h4/rsa130/c130.upload/c130.3790000-3800000.gz', total is now 29153030/30000000
+2026-11-11 14:03:04,980 Info:Lattice Sieving: Found 72717 relations in './data/dumps/h4/rsa130/c130.upload/c130.3810000-3820000.gz', total is now 29225747/30000000
+2026-11-11 14:03:15,782 Info:Lattice Sieving: Found 78001 relations in './data/dumps/h4/rsa130/c130.upload/c130.3800000-3810000.gz', total is now 29303748/30000000
+2026-11-11 14:03:37,352 Info:Lattice Sieving: Found 79116 relations in './data/dumps/h4/rsa130/c130.upload/c130.3820000-3830000.gz', total is now 29382864/30000000
+2026-11-11 14:03:37,360 Info:Lattice Sieving: Found 76157 relations in './data/dumps/h4/rsa130/c130.upload/c130.3830000-3840000.gz', total is now 29459021/30000000
+2026-11-11 14:03:53,652 Info:Lattice Sieving: Found 75773 relations in './data/dumps/h4/rsa130/c130.upload/c130.3840000-3850000.gz', total is now 29534794/30000000
+2026-11-11 14:04:01,803 Info:Lattice Sieving: Found 69607 relations in './data/dumps/h4/rsa130/c130.upload/c130.3850000-3860000.gz', total is now 29604401/30000000
+2026-11-11 14:04:23,153 Info:Lattice Sieving: Found 71926 relations in './data/dumps/h4/rsa130/c130.upload/c130.3860000-3870000.gz', total is now 29676327/30000000
+2026-11-11 14:04:45,197 Info:Lattice Sieving: Found 72649 relations in './data/dumps/h4/rsa130/c130.upload/c130.3870000-3880000.gz', total is now 29748976/30000000
+2026-11-11 14:05:16,239 Info:Lattice Sieving: Found 82326 relations in './data/dumps/h4/rsa130/c130.upload/c130.3880000-3890000.gz', total is now 29831302/30000000
+2026-11-11 14:05:27,352 Info:Lattice Sieving: Found 66830 relations in './data/dumps/h4/rsa130/c130.upload/c130.3900000-3910000.gz', total is now 29898132/30000000
+2026-11-11 14:05:36,256 Info:Lattice Sieving: Found 76509 relations in './data/dumps/h4/rsa130/c130.upload/c130.3890000-3900000.gz', total is now 29974641/30000000
+2026-11-11 14:05:47,378 Info:Lattice Sieving: Found 71065 relations in './data/dumps/h4/rsa130/c130.upload/c130.3910000-3920000.gz', total is now 30045706/30000000
+2026-11-11 14:05:47,382 Info:Lattice Sieving: Reached target of 30000000 relations, now have 30045706
+2026-11-11 14:05:47,382 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 14:05:47,382 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 14:05:47,382 Info:Lattice Sieving: Total number of relations: 30045706
+2026-11-11 14:05:47,382 Info:Lattice Sieving: Average J: 3823.43 for 218105 special-q, max bucket fill -bkmult 1.0,1s:1.194000
+2026-11-11 14:05:47,382 Info:Lattice Sieving: Total time: 46374.8s
+2026-11-11 14:05:47,382 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 14:05:47,382 Info:Filtering - Duplicate Removal, splitting pass: Splitting 317 new files
+2026-11-11 14:06:08,371 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 15020912, 1: 15024794
+2026-11-11 14:06:08,371 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 14:06:08,371 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 51.87/20.9645
+2026-11-11 14:06:08,371 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 14:06:08,371 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 21.0s
+2026-11-11 14:06:08,371 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 14:07:11,704 Info:Filtering - Duplicate Removal, removal pass: 10975311 unique relations remain on slice 0
+2026-11-11 14:08:20,424 Info:Filtering - Duplicate Removal, removal pass: 10976819 unique relations remain on slice 1
+2026-11-11 14:08:20,424 Info:Filtering - Duplicate Removal, removal pass: Of 30045706 newly added relations 21952130 were unique (ratio 0.730625)
+2026-11-11 14:08:20,425 Info:Filtering - Duplicate Removal, removal pass: 21952130 unique relations remain in total
+2026-11-11 14:08:20,425 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 14:08:20,425 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 359.68/132.035
+2026-11-11 14:08:20,425 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 14:08:20,425 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 130.0s
+2026-11-11 14:08:20,425 Info:Filtering - Singleton removal: Starting
+2026-11-11 14:08:20,427 Info:Filtering - Singleton removal: Reading 21952130 unique and 122063 free relations, total 22074193
+2026-11-11 14:08:46,212 Info:Filtering - Singleton removal: After purge, 4814593 relations with 5085457 primes remain with excess -270864
+2026-11-11 14:08:46,212 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 14:08:46,212 Info:Filtering - Singleton removal: Requesting 715323 additional relations
+2026-11-11 14:08:46,212 Info:Filtering - Duplicate Removal, removal pass: Got request for 22667453 (715323 additional) output relations, estimate 31024762 (979056 additional) needed in input
+2026-11-11 14:08:46,213 Info:Lattice Sieving: New goal for number of relations is 31024762, currently have 30045706. Need to sieve more
+2026-11-11 14:08:46,213 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 14:08:46,213 Info:Filtering - Singleton removal: Total cpu/real time for purge: 54.74/25.7779
+2026-11-11 14:08:46,213 Info:Lattice Sieving: Starting
+2026-11-11 14:08:46,214 Info:Lattice Sieving: We want 31024762 relation(s)
+2026-11-11 14:08:46,217 Info:Lattice Sieving: Found 73880 relations in './data/dumps/h4/rsa130/c130.upload/c130.3920000-3930000.gz', total is now 30119586/31024762
+2026-11-11 14:08:46,223 Info:Lattice Sieving: Found 75192 relations in './data/dumps/h4/rsa130/c130.upload/c130.3930000-3940000.gz', total is now 30194778/31024762
+2026-11-11 14:08:46,230 Info:Lattice Sieving: Found 77469 relations in './data/dumps/h4/rsa130/c130.upload/c130.3940000-3950000.gz', total is now 30272247/31024762
+2026-11-11 14:08:46,235 Info:Lattice Sieving: Found 73321 relations in './data/dumps/h4/rsa130/c130.upload/c130.3950000-3960000.gz', total is now 30345568/31024762
+2026-11-11 14:08:46,240 Info:Lattice Sieving: Found 69227 relations in './data/dumps/h4/rsa130/c130.upload/c130.3960000-3970000.gz', total is now 30414795/31024762
+2026-11-11 14:08:46,246 Info:Lattice Sieving: Found 71071 relations in './data/dumps/h4/rsa130/c130.upload/c130.3970000-3980000.gz', total is now 30485866/31024762
+2026-11-11 14:08:46,251 Info:Lattice Sieving: Found 72431 relations in './data/dumps/h4/rsa130/c130.upload/c130.3980000-3990000.gz', total is now 30558297/31024762
+2026-11-11 14:08:46,257 Info:Lattice Sieving: Found 66092 relations in './data/dumps/h4/rsa130/c130.upload/c130.3990000-4000000.gz', total is now 30624389/31024762
+2026-11-11 14:08:46,263 Info:Lattice Sieving: Found 73427 relations in './data/dumps/h4/rsa130/c130.upload/c130.4000000-4010000.gz', total is now 30697816/31024762
+2026-11-11 14:08:46,269 Info:Lattice Sieving: Found 72993 relations in './data/dumps/h4/rsa130/c130.upload/c130.4010000-4020000.gz', total is now 30770809/31024762
+2026-11-11 14:08:54,494 Info:Lattice Sieving: Found 75831 relations in './data/dumps/h4/rsa130/c130.upload/c130.4020000-4030000.gz', total is now 30846640/31024762
+2026-11-11 14:09:10,983 Info:Lattice Sieving: Found 68967 relations in './data/dumps/h4/rsa130/c130.upload/c130.4040000-4050000.gz', total is now 30915607/31024762
+2026-11-11 14:09:16,387 Info:Lattice Sieving: Found 77675 relations in './data/dumps/h4/rsa130/c130.upload/c130.4030000-4040000.gz', total is now 30993282/31024762
+2026-11-11 14:09:45,861 Info:Lattice Sieving: Found 74632 relations in './data/dumps/h4/rsa130/c130.upload/c130.4050000-4060000.gz', total is now 31067914/31024762
+2026-11-11 14:09:45,865 Info:Lattice Sieving: Reached target of 31024762 relations, now have 31067914
+2026-11-11 14:09:45,865 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 14:09:45,865 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 14:09:45,865 Info:Lattice Sieving: Total number of relations: 31067914
+2026-11-11 14:09:45,865 Info:Lattice Sieving: Average J: 3822.56 for 227229 special-q, max bucket fill -bkmult 1.0,1s:1.194000
+2026-11-11 14:09:45,865 Info:Lattice Sieving: Total time: 48434.1s
+2026-11-11 14:09:45,865 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 14:09:45,867 Info:Filtering - Duplicate Removal, splitting pass: Splitting 14 new files
+2026-11-11 14:09:46,716 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 15532505, 1: 15535409
+2026-11-11 14:09:46,716 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 14:09:46,716 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 53.71/21.8045
+2026-11-11 14:09:46,716 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 14:09:46,716 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 21.8s
+2026-11-11 14:09:46,716 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 14:09:57,366 Info:Filtering - Duplicate Removal, removal pass: 11279329 unique relations remain on slice 0
+2026-11-11 14:10:08,322 Info:Filtering - Duplicate Removal, removal pass: 11281157 unique relations remain on slice 1
+2026-11-11 14:10:08,323 Info:Filtering - Duplicate Removal, removal pass: Of 1022208 newly added relations 608356 were unique (ratio 0.595139)
+2026-11-11 14:10:08,323 Info:Filtering - Duplicate Removal, removal pass: 22560486 unique relations remain in total
+2026-11-11 14:10:08,323 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 14:10:08,323 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 391.14/153.625
+2026-11-11 14:10:08,323 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 14:10:08,323 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 149.8s
+2026-11-11 14:10:08,323 Info:Filtering - Singleton removal: Starting
+2026-11-11 14:10:08,324 Info:Filtering - Singleton removal: Reading 22560486 unique and 122063 free relations, total 22682549
+2026-11-11 14:10:26,978 Info:Filtering - Singleton removal: After purge, 5573870 relations with 5707502 primes remain with excess -133632
+2026-11-11 14:10:26,978 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 14:10:26,978 Info:Filtering - Singleton removal: Requesting 587514 additional relations
+2026-11-11 14:10:26,978 Info:Filtering - Duplicate Removal, removal pass: Got request for 23148000 (587514 additional) output relations, estimate 32055101 (987187 additional) needed in input
+2026-11-11 14:10:26,978 Info:Lattice Sieving: New goal for number of relations is 32055101, currently have 31067914. Need to sieve more
+2026-11-11 14:10:26,979 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 14:10:26,979 Info:Filtering - Singleton removal: Total cpu/real time for purge: 92.12/44.4274
+2026-11-11 14:10:26,979 Info:Lattice Sieving: Starting
+2026-11-11 14:10:26,979 Info:Lattice Sieving: We want 32055101 relation(s)
+2026-11-11 14:10:26,981 Info:Lattice Sieving: Found 66524 relations in './data/dumps/h4/rsa130/c130.upload/c130.4060000-4070000.gz', total is now 31134438/32055101
+2026-11-11 14:10:31,451 Info:Lattice Sieving: Found 73031 relations in './data/dumps/h4/rsa130/c130.upload/c130.4070000-4080000.gz', total is now 31207469/32055101
+2026-11-11 14:10:40,360 Info:Lattice Sieving: Found 77703 relations in './data/dumps/h4/rsa130/c130.upload/c130.4080000-4090000.gz', total is now 31285172/32055101
+2026-11-11 14:10:55,893 Info:Lattice Sieving: Found 74503 relations in './data/dumps/h4/rsa130/c130.upload/c130.4090000-4100000.gz', total is now 31359675/32055101
+2026-11-11 14:10:58,117 Info:Lattice Sieving: Found 71224 relations in './data/dumps/h4/rsa130/c130.upload/c130.4100000-4110000.gz', total is now 31430899/32055101
+2026-11-11 14:11:18,084 Info:Lattice Sieving: Found 73805 relations in './data/dumps/h4/rsa130/c130.upload/c130.4110000-4120000.gz', total is now 31504704/32055101
+2026-11-11 14:11:27,064 Info:Lattice Sieving: Found 72649 relations in './data/dumps/h4/rsa130/c130.upload/c130.4120000-4130000.gz', total is now 31577353/32055101
+2026-11-11 14:11:31,554 Info:Lattice Sieving: Found 72856 relations in './data/dumps/h4/rsa130/c130.upload/c130.4130000-4140000.gz', total is now 31650209/32055101
+2026-11-11 14:11:53,870 Info:Lattice Sieving: Found 73613 relations in './data/dumps/h4/rsa130/c130.upload/c130.4140000-4150000.gz', total is now 31723822/32055101
+2026-11-11 14:12:07,291 Info:Lattice Sieving: Found 69331 relations in './data/dumps/h4/rsa130/c130.upload/c130.4150000-4160000.gz', total is now 31793153/32055101
+2026-11-11 14:12:40,737 Info:Lattice Sieving: Found 75118 relations in './data/dumps/h4/rsa130/c130.upload/c130.4160000-4170000.gz', total is now 31868271/32055101
+2026-11-11 14:12:43,025 Info:Lattice Sieving: Found 70961 relations in './data/dumps/h4/rsa130/c130.upload/c130.4170000-4180000.gz', total is now 31939232/32055101
+2026-11-11 14:13:03,270 Info:Lattice Sieving: Found 73338 relations in './data/dumps/h4/rsa130/c130.upload/c130.4180000-4190000.gz', total is now 32012570/32055101
+2026-11-11 14:13:03,276 Info:Lattice Sieving: Found 72747 relations in './data/dumps/h4/rsa130/c130.upload/c130.4190000-4200000.gz', total is now 32085317/32055101
+2026-11-11 14:13:03,280 Info:Lattice Sieving: Reached target of 32055101 relations, now have 32085317
+2026-11-11 14:13:03,280 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 14:13:03,280 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 14:13:03,280 Info:Lattice Sieving: Total number of relations: 32085317
+2026-11-11 14:13:03,280 Info:Lattice Sieving: Average J: 3821.9 for 236384 special-q, max bucket fill -bkmult 1.0,1s:1.194000
+2026-11-11 14:13:03,280 Info:Lattice Sieving: Total time: 50388.5s
+2026-11-11 14:13:03,280 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 14:13:03,281 Info:Filtering - Duplicate Removal, splitting pass: Splitting 14 new files
+2026-11-11 14:13:04,148 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 16040476, 1: 16044841
+2026-11-11 14:13:04,148 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 14:13:04,148 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 55.54/22.6606
+2026-11-11 14:13:04,148 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 14:13:04,148 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 22.6s
+2026-11-11 14:13:04,148 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 14:13:15,202 Info:Filtering - Duplicate Removal, removal pass: 11579082 unique relations remain on slice 0
+2026-11-11 14:13:26,367 Info:Filtering - Duplicate Removal, removal pass: 11581214 unique relations remain on slice 1
+2026-11-11 14:13:26,368 Info:Filtering - Duplicate Removal, removal pass: Of 1017403 newly added relations 599810 were unique (ratio 0.589550)
+2026-11-11 14:13:26,369 Info:Filtering - Duplicate Removal, removal pass: 23160296 unique relations remain in total
+2026-11-11 14:13:26,369 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 14:13:26,369 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 423.3/175.828
+2026-11-11 14:13:26,369 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 14:13:26,369 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 170.20000000000002s
+2026-11-11 14:13:26,369 Info:Filtering - Singleton removal: Starting
+2026-11-11 14:13:26,369 Info:Filtering - Singleton removal: Reading 23160296 unique and 122063 free relations, total 23282359
+2026-11-11 14:13:50,778 Info:Filtering - Singleton removal: After purge, 6304436 relations with 6287310 primes remain with excess 17126
+2026-11-11 14:13:50,779 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 14:13:50,779 Info:Filtering - Singleton removal: Requesting 445737 additional relations
+2026-11-11 14:13:50,779 Info:Filtering - Duplicate Removal, removal pass: Got request for 23606033 (445737 additional) output relations, estimate 32841380 (756063 additional) needed in input
+2026-11-11 14:13:50,779 Info:Lattice Sieving: New goal for number of relations is 32841380, currently have 32085317. Need to sieve more
+2026-11-11 14:13:50,780 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 14:13:50,780 Info:Filtering - Singleton removal: Total cpu/real time for purge: 140.99/68.8321
+2026-11-11 14:13:50,780 Info:Lattice Sieving: Starting
+2026-11-11 14:13:50,780 Info:Lattice Sieving: We want 32841380 relation(s)
+2026-11-11 14:13:50,783 Info:Lattice Sieving: Found 72587 relations in './data/dumps/h4/rsa130/c130.upload/c130.4200000-4210000.gz', total is now 32157904/32841380
+2026-11-11 14:13:50,789 Info:Lattice Sieving: Found 70249 relations in './data/dumps/h4/rsa130/c130.upload/c130.4210000-4220000.gz', total is now 32228153/32841380
+2026-11-11 14:13:50,795 Info:Lattice Sieving: Found 69912 relations in './data/dumps/h4/rsa130/c130.upload/c130.4220000-4230000.gz', total is now 32298065/32841380
+2026-11-11 14:14:07,176 Info:Lattice Sieving: Found 69089 relations in './data/dumps/h4/rsa130/c130.upload/c130.4230000-4240000.gz', total is now 32367154/32841380
+2026-11-11 14:14:47,005 Info:Lattice Sieving: Found 76610 relations in './data/dumps/h4/rsa130/c130.upload/c130.4240000-4250000.gz', total is now 32443764/32841380
+2026-11-11 14:15:06,791 Info:Lattice Sieving: Found 68478 relations in './data/dumps/h4/rsa130/c130.upload/c130.4250000-4260000.gz', total is now 32512242/32841380
+2026-11-11 14:15:06,801 Info:Lattice Sieving: Found 68210 relations in './data/dumps/h4/rsa130/c130.upload/c130.4260000-4270000.gz', total is now 32580452/32841380
+2026-11-11 14:15:26,867 Info:Lattice Sieving: Found 67386 relations in './data/dumps/h4/rsa130/c130.upload/c130.4280000-4290000.gz', total is now 32647838/32841380
+2026-11-11 14:15:37,895 Info:Lattice Sieving: Found 74051 relations in './data/dumps/h4/rsa130/c130.upload/c130.4270000-4280000.gz', total is now 32721889/32841380
+2026-11-11 14:15:57,951 Info:Lattice Sieving: Found 72807 relations in './data/dumps/h4/rsa130/c130.upload/c130.4290000-4300000.gz', total is now 32794696/32841380
+2026-11-11 14:16:02,420 Info:Lattice Sieving: Found 72999 relations in './data/dumps/h4/rsa130/c130.upload/c130.4300000-4310000.gz', total is now 32867695/32841380
+2026-11-11 14:16:02,424 Info:Lattice Sieving: Reached target of 32841380 relations, now have 32867695
+2026-11-11 14:16:02,424 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 14:16:02,424 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 14:16:02,424 Info:Lattice Sieving: Total number of relations: 32867695
+2026-11-11 14:16:02,424 Info:Lattice Sieving: Average J: 3821.51 for 243487 special-q, max bucket fill -bkmult 1.0,1s:1.194000
+2026-11-11 14:16:02,424 Info:Lattice Sieving: Total time: 51948.7s
+2026-11-11 14:16:02,424 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 14:16:02,425 Info:Filtering - Duplicate Removal, splitting pass: Splitting 11 new files
+2026-11-11 14:16:02,982 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 16432483, 1: 16435212
+2026-11-11 14:16:02,982 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 14:16:02,982 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 56.94/23.2077
+2026-11-11 14:16:02,982 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 14:16:02,982 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 23.1s
+2026-11-11 14:16:02,982 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 14:16:13,723 Info:Filtering - Duplicate Removal, removal pass: 11809026 unique relations remain on slice 0
+2026-11-11 14:16:25,045 Info:Filtering - Duplicate Removal, removal pass: 11810408 unique relations remain on slice 1
+2026-11-11 14:16:25,046 Info:Filtering - Duplicate Removal, removal pass: Of 782378 newly added relations 459138 were unique (ratio 0.586849)
+2026-11-11 14:16:25,047 Info:Filtering - Duplicate Removal, removal pass: 23619434 unique relations remain in total
+2026-11-11 14:16:25,047 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 14:16:25,047 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 452.8/197.875
+2026-11-11 14:16:25,047 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 14:16:25,047 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 190.20000000000002s
+2026-11-11 14:16:25,047 Info:Filtering - Singleton removal: Starting
+2026-11-11 14:16:25,047 Info:Filtering - Singleton removal: Reading 23619434 unique and 122063 free relations, total 23741497
+2026-11-11 14:17:01,941 Info:Filtering - Singleton removal: After purge, 5159628 relations with 5159468 primes remain with weight 35861696047 and excess 160
+2026-11-11 14:17:01,942 Info:Filtering - Singleton removal: Have enough relations
+2026-11-11 14:17:01,942 Info:Lattice Sieving: Cancelling remaining workunits
+2026-11-11 14:17:01,988 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 14:17:01,988 Info:Filtering - Singleton removal: Total cpu/real time for purge: 209.89/105.722
+2026-11-11 14:17:01,988 Info:Filtering - Merging: Starting
+2026-11-11 14:17:31,147 Info:Filtering - Merging: Merged matrix has 1183823 rows and total weight 131879138 (111.4 entries per row on average)
+2026-11-11 14:17:45,605 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Merging
+2026-11-11 14:17:45,605 Info:Filtering - Merging: Total cpu/real time for merge: 28.61/29.1529
+2026-11-11 14:17:45,605 Info:Filtering - Merging: Total cpu/real time for replay: 14.19/14.4539
+2026-11-11 14:17:45,605 Info:Linear Algebra: Starting
+2026-11-11 14:19:36,325 Info:Linear Algebra: krylov: N=3000 ; ETA (N=39000): Wed Nov 11 14:29:22 2026 [0.016 s/iter]
+2026-11-11 14:20:08,887 Info:Linear Algebra: krylov: N=6000 ; ETA (N=39000): Wed Nov 11 14:27:35 2026 [0.014 s/iter]
+2026-11-11 14:20:42,465 Info:Linear Algebra: krylov: N=9000 ; ETA (N=39000): Wed Nov 11 14:27:05 2026 [0.013 s/iter]
+2026-11-11 14:21:16,396 Info:Linear Algebra: krylov: N=12000 ; ETA (N=39000): Wed Nov 11 14:26:51 2026 [0.012 s/iter]
+2026-11-11 14:21:50,778 Info:Linear Algebra: krylov: N=15000 ; ETA (N=39000): Wed Nov 11 14:26:43 2026 [0.012 s/iter]
+2026-11-11 14:22:25,569 Info:Linear Algebra: krylov: N=18000 ; ETA (N=39000): Wed Nov 11 14:26:39 2026 [0.012 s/iter]
+2026-11-11 14:23:00,291 Info:Linear Algebra: krylov: N=21000 ; ETA (N=39000): Wed Nov 11 14:26:36 2026 [0.012 s/iter]
+2026-11-11 14:23:35,244 Info:Linear Algebra: krylov: N=24000 ; ETA (N=39000): Wed Nov 11 14:26:34 2026 [0.012 s/iter]
+2026-11-11 14:24:21,426 Info:Linear Algebra: krylov: N=27000 ; ETA (N=39000): Wed Nov 11 14:26:49 2026 [0.012 s/iter]
+2026-11-11 14:25:11,147 Info:Linear Algebra: krylov: N=30000 ; ETA (N=39000): Wed Nov 11 14:27:06 2026 [0.013 s/iter]
+2026-11-11 14:25:45,626 Info:Linear Algebra: krylov: N=33000 ; ETA (N=39000): Wed Nov 11 14:27:01 2026 [0.013 s/iter]
+2026-11-11 14:26:20,663 Info:Linear Algebra: krylov: N=36000 ; ETA (N=39000): Wed Nov 11 14:26:57 2026 [0.013 s/iter]
+2026-11-11 14:26:55,644 Info:Linear Algebra: krylov: N=39000 ; ETA (N=39000): Wed Nov 11 14:26:55 2026 [0.013 s/iter]
+2026-11-11 14:26:55,968 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 14:27:01,140 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 14:27:07,488 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 14:27:15,213 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 14:27:34,486 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 14:28:26,288 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 14:30:21,321 Info:Linear Algebra: lingen ETA: Wed Nov 11 14:30:23 2026
+2026-11-11 14:30:59,889 Info:Linear Algebra: mksol: N=3000 ; ETA (N=21000): Wed Nov 11 14:34:46 2026 [0.013 s/iter]
+2026-11-11 14:31:40,469 Info:Linear Algebra: mksol: N=6000 ; ETA (N=21000): Wed Nov 11 14:34:56 2026 [0.013 s/iter]
+2026-11-11 14:32:24,594 Info:Linear Algebra: mksol: N=9000 ; ETA (N=21000): Wed Nov 11 14:35:07 2026 [0.014 s/iter]
+2026-11-11 14:33:08,637 Info:Linear Algebra: mksol: N=12000 ; ETA (N=21000): Wed Nov 11 14:35:12 2026 [0.014 s/iter]
+2026-11-11 14:33:51,436 Info:Linear Algebra: mksol: N=15000 ; ETA (N=21000): Wed Nov 11 14:35:14 2026 [0.014 s/iter]
+2026-11-11 14:34:37,920 Info:Linear Algebra: mksol: N=18000 ; ETA (N=21000): Wed Nov 11 14:35:19 2026 [0.014 s/iter]
+2026-11-11 14:34:54,368 Info:Linear Algebra: mksol: N=18496 ; ETA (N=21000): Wed Nov 11 14:35:30 2026 [0.015 s/iter]
+2026-11-11 14:34:55,075 Info:Complete Factorization / Discrete logarithm / Class group: Linear Algebra
+2026-11-11 14:34:55,075 Info:Linear Algebra: Total cpu/real time for bwc: 8964.66/1029.02
+2026-11-11 14:34:55,075 Info:Linear Algebra: Aggregate statistics:
+2026-11-11 14:34:55,076 Info:Linear Algebra: Krylov: CPU time 5308.96, WCT time 488.77, iteration CPU time 0.01, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (39000 iterations)
+2026-11-11 14:34:55,076 Info:Linear Algebra: Lingen CPU time 204.91, WCT time 205.7
+2026-11-11 14:34:55,076 Info:Linear Algebra: Mksol: CPU time 3117.78,  WCT time 272.98, iteration CPU time 0.01, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (21000 iterations)
+2026-11-11 14:34:55,076 Info:Quadratic Characters: Starting
+2026-11-11 14:35:45,971 Info:Complete Factorization / Discrete logarithm / Class group: Quadratic Characters
+2026-11-11 14:35:45,971 Info:Quadratic Characters: Total cpu/real time for characters: 43.27/50.8884
+2026-11-11 14:35:45,971 Info:Square Root: Starting
+2026-11-11 14:35:45,972 Info:Square Root: Creating file of (a,b) values
+2026-11-11 14:36:40,607 Info:Square Root: finished
+2026-11-11 14:36:40,608 Info:Square Root: Factors: 39685999459597454290161126162883786067576449112810064832555157243 45534498646735972188403686897274408864356301263205069600999044599
+2026-11-11 14:36:40,608 Info:Complete Factorization / Discrete logarithm / Class group: Square Root
+2026-11-11 14:36:40,608 Info:Square Root: Total cpu/real time for sqrt: 61.34/54.6257
+2026-11-11 14:36:40,608 Info:Generate Free Relations: Total cpu/real time for freerel: 212.89/214.118
+2026-11-11 14:36:40,608 Info:Linear Algebra: Total cpu/real time for bwc: 8964.66/1029.02
+2026-11-11 14:36:40,608 Info:Linear Algebra: Aggregate statistics:
+2026-11-11 14:36:40,608 Info:Linear Algebra: Krylov: CPU time 5308.96, WCT time 488.77, iteration CPU time 0.01, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (39000 iterations)
+2026-11-11 14:36:40,608 Info:Linear Algebra: Lingen CPU time 204.91, WCT time 205.7
+2026-11-11 14:36:40,608 Info:Linear Algebra: Mksol: CPU time 3117.78,  WCT time 272.98, iteration CPU time 0.01, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (21000 iterations)
+2026-11-11 14:36:40,608 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 452.8/197.875
+2026-11-11 14:36:40,608 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 14:36:40,608 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 190.20000000000002s
+2026-11-11 14:36:40,608 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 56.94/23.2077
+2026-11-11 14:36:40,608 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 14:36:40,608 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 23.1s
+2026-11-11 14:36:40,608 Info:Generate Factor Base: Total cpu/real time for makefb: 4.87/0.4703
+2026-11-11 14:36:40,608 Info:Square Root: Total cpu/real time for sqrt: 61.34/54.6257
+2026-11-11 14:36:40,608 Info:Filtering - Merging: Total cpu/real time for merge: 28.61/29.1529
+2026-11-11 14:36:40,608 Info:Filtering - Merging: Total cpu/real time for replay: 14.19/14.4539
+2026-11-11 14:36:40,608 Info:Polynomial Selection (root optimized): Aggregate statistics:
+2026-11-11 14:36:40,608 Info:Polynomial Selection (root optimized): Total time: 292.19
+2026-11-11 14:36:40,608 Info:Polynomial Selection (root optimized): Rootsieve time: 0
+2026-11-11 14:36:40,608 Info:Polynomial Selection (size optimized): Aggregate statistics:
+2026-11-11 14:36:40,608 Info:Polynomial Selection (size optimized): potential collisions: 55473.2
+2026-11-11 14:36:40,608 Info:Polynomial Selection (size optimized): raw lognorm (nr/min/av/max/std): 52982/37.660/47.642/59.230/2.223
+2026-11-11 14:36:40,608 Info:Polynomial Selection (size optimized): optimized lognorm (nr/min/av/max/std): 44043/37.380/41.796/56.260/1.575
+2026-11-11 14:36:40,608 Info:Polynomial Selection (size optimized): Total time: 4132.34
+2026-11-11 14:36:40,608 Info:Quadratic Characters: Total cpu/real time for characters: 43.27/50.8884
+2026-11-11 14:36:40,608 Info:Filtering - Singleton removal: Total cpu/real time for purge: 209.89/105.722
+2026-11-11 14:36:40,608 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 14:36:40,608 Info:Lattice Sieving: Total number of relations: 32867695
+2026-11-11 14:36:40,608 Info:Lattice Sieving: Average J: 3821.51 for 243487 special-q, max bucket fill -bkmult 1.0,1s:1.194000
+2026-11-11 14:36:40,608 Info:Lattice Sieving: Total time: 51948.7s
+2026-11-11 14:36:40,642 Info:Complete Factorization / Discrete logarithm / Class group: Total cpu/elapsed time for entire Complete Factorization 103794/7694.29 [02:08:14]

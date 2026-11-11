@@ -1,0 +1,600 @@
+Info:root: Using default parameter file ~/external/cado-nfs/parameters/factor/params.c100
+2026-11-11 11:30:14,559 Info:root: Command line parameters: ~/external/cado-nfs/cado-nfs.py 1522605027922533360535618378132637429718068114961380688657908494580122963258952897654000350692006139 server.address=localhost -t 18 --workdir ./data/dumps/h4/rsa100
+2026-11-11 11:30:14,641 Info:Lattice Sieving: param rels_wanted is 3600000
+2026-11-11 11:30:14,652 Info:Complete Factorization / Discrete logarithm / Class group: Factoring 1522605027922533360535618378132637429718068114961380688657908494580122963258952897654000350692006139
+2026-11-11 11:30:15,419 Info:Polynomial Selection (size optimized): Starting
+2026-11-11 11:30:15,419 Info:Polynomial Selection (size optimized): 0 polynomials in queue from previous run
+2026-11-11 11:30:17,403 Info:Polynomial Selection (size optimized): Parsed 5 polynomials, added 5 to priority queue (has 5/24)
+2026-11-11 11:30:17,403 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 27.230000
+2026-11-11 11:30:19,531 Info:Polynomial Selection (size optimized): Parsed 137 polynomials, added 58 to priority queue (has 24)
+2026-11-11 11:30:19,531 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 26.100000
+2026-11-11 11:30:19,541 Info:Polynomial Selection (size optimized): Parsed 77 polynomials, added 12 to priority queue (has 24)
+2026-11-11 11:30:19,541 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.900000
+2026-11-11 11:30:19,552 Info:Polynomial Selection (size optimized): Parsed 123 polynomials, added 17 to priority queue (has 24)
+2026-11-11 11:30:19,552 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.610000
+2026-11-11 11:30:19,562 Info:Polynomial Selection (size optimized): Parsed 144 polynomials, added 10 to priority queue (has 24)
+2026-11-11 11:30:19,562 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.470000
+2026-11-11 11:30:19,571 Info:Polynomial Selection (size optimized): Parsed 152 polynomials, added 5 to priority queue (has 24)
+2026-11-11 11:30:19,571 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.380000
+2026-11-11 11:30:19,579 Info:Polynomial Selection (size optimized): Parsed 140 polynomials, added 6 to priority queue (has 24)
+2026-11-11 11:30:19,579 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.300000
+2026-11-11 11:30:19,586 Info:Polynomial Selection (size optimized): Parsed 131 polynomials, added 2 to priority queue (has 24)
+2026-11-11 11:30:19,586 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.270000
+2026-11-11 11:30:19,594 Info:Polynomial Selection (size optimized): Parsed 160 polynomials, added 4 to priority queue (has 24)
+2026-11-11 11:30:19,594 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.260000
+2026-11-11 11:30:19,600 Info:Polynomial Selection (size optimized): Parsed 75 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:19,600 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.240000
+2026-11-11 11:30:19,605 Info:Polynomial Selection (size optimized): Parsed 118 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:19,605 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.210000
+2026-11-11 11:30:21,574 Info:Polynomial Selection (size optimized): Parsed 157 polynomials, added 3 to priority queue (has 24)
+2026-11-11 11:30:21,574 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.130000
+2026-11-11 11:30:21,580 Info:Polynomial Selection (size optimized): Parsed 132 polynomials, added 2 to priority queue (has 24)
+2026-11-11 11:30:21,580 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.080000
+2026-11-11 11:30:21,587 Info:Polynomial Selection (size optimized): Parsed 150 polynomials, added 3 to priority queue (has 24)
+2026-11-11 11:30:21,587 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 25.040000
+2026-11-11 11:30:21,594 Info:Polynomial Selection (size optimized): Parsed 134 polynomials, added 3 to priority queue (has 24)
+2026-11-11 11:30:21,594 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.970000
+2026-11-11 11:30:21,598 Info:Polynomial Selection (size optimized): Parsed 66 polynomials, added 0 to priority queue (has 24)
+2026-11-11 11:30:21,602 Info:Polynomial Selection (size optimized): Parsed 79 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:21,602 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.950000
+2026-11-11 11:30:21,607 Info:Polynomial Selection (size optimized): Parsed 145 polynomials, added 2 to priority queue (has 24)
+2026-11-11 11:30:21,607 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.910000
+2026-11-11 11:30:21,613 Info:Polynomial Selection (size optimized): Parsed 152 polynomials, added 2 to priority queue (has 24)
+2026-11-11 11:30:21,613 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.900000
+2026-11-11 11:30:21,619 Info:Polynomial Selection (size optimized): Parsed 145 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:21,619 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.850000
+2026-11-11 11:30:23,510 Info:Polynomial Selection (size optimized): Parsed 159 polynomials, added 0 to priority queue (has 24)
+2026-11-11 11:30:23,520 Info:Polynomial Selection (size optimized): Parsed 152 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:23,520 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.840000
+2026-11-11 11:30:23,526 Info:Polynomial Selection (size optimized): Parsed 149 polynomials, added 0 to priority queue (has 24)
+2026-11-11 11:30:23,531 Info:Polynomial Selection (size optimized): Parsed 75 polynomials, added 0 to priority queue (has 24)
+2026-11-11 11:30:23,536 Info:Polynomial Selection (size optimized): Parsed 90 polynomials, added 0 to priority queue (has 24)
+2026-11-11 11:30:23,542 Info:Polynomial Selection (size optimized): Parsed 152 polynomials, added 0 to priority queue (has 24)
+2026-11-11 11:30:23,548 Info:Polynomial Selection (size optimized): Parsed 159 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:23,548 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.830000
+2026-11-11 11:30:23,554 Info:Polynomial Selection (size optimized): Parsed 153 polynomials, added 1 to priority queue (has 24)
+2026-11-11 11:30:23,554 Info:Polynomial Selection (size optimized): Worst polynomial in queue now has exp_E 24.830000
+2026-11-11 11:30:23,557 Info:Polynomial Selection (size optimized): Finished
+2026-11-11 11:30:23,557 Info:Complete Factorization / Discrete logarithm / Class group: Polynomial Selection (size optimized)
+2026-11-11 11:30:23,557 Info:Polynomial Selection (size optimized): Aggregate statistics:
+2026-11-11 11:30:23,557 Info:Polynomial Selection (size optimized): potential collisions: 4853.36
+2026-11-11 11:30:23,557 Info:Polynomial Selection (size optimized): raw lognorm (nr/min/av/max/std): 4520/27.840/34.926/41.200/1.155
+2026-11-11 11:30:23,557 Info:Polynomial Selection (size optimized): optimized lognorm (nr/min/av/max/std): 3511/28.020/31.066/35.780/1.198
+2026-11-11 11:30:23,557 Info:Polynomial Selection (size optimized): Total time: 95.36
+2026-11-11 11:30:23,557 Info:Polynomial Selection (root optimized): Starting
+2026-11-11 11:30:23,557 Info:Polynomial Selection (root optimized): No polynomial was previously found
+2026-11-11 11:30:30,793 Info:Polynomial Selection (root optimized): Kept 22 polynomials with MurphyE from 1.480e-05 to 1.189e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.0 had MurphyE 1.480e-05, refined to 1.462e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.1 had MurphyE 1.402e-05, refined to 1.408e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.2 had MurphyE 1.360e-05, refined to 1.362e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.3 had MurphyE 1.313e-05, refined to 1.300e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.4 had MurphyE 1.296e-05, refined to 1.284e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.5 had MurphyE 1.285e-05, refined to 1.294e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.6 had MurphyE 1.283e-05, refined to 1.309e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.7 had MurphyE 1.261e-05, refined to 1.248e-05
+2026-11-11 11:30:30,955 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.8 had MurphyE 1.255e-05, refined to 1.271e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.9 had MurphyE 1.253e-05, refined to 1.241e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.10 had MurphyE 1.245e-05, refined to 1.247e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.11 had MurphyE 1.245e-05, refined to 1.241e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.12 had MurphyE 1.244e-05, refined to 1.264e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.13 had MurphyE 1.242e-05, refined to 1.238e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.14 had MurphyE 1.242e-05, refined to 1.220e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.15 had MurphyE 1.235e-05, refined to 1.250e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.16 had MurphyE 1.230e-05, refined to 1.248e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.17 had MurphyE 1.204e-05, refined to 1.203e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.18 had MurphyE 1.203e-05, refined to 1.189e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.19 had MurphyE 1.193e-05, refined to 1.198e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.20 had MurphyE 1.189e-05, refined to 1.167e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Polynomial ./data/dumps/h4/rsa100/c100.poly.21 had MurphyE 1.189e-05, refined to 1.207e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Best polynomial is ./data/dumps/h4/rsa100/c100.poly.0
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Finished, best polynomial has Murphy_E = 1.480e-05
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Best polynomial is:
+2026-11-11 11:30:30,956 Info:Polynomial Selection (root optimized): Best overall polynomial was 5-th in list after size optimization
+2026-11-11 11:30:30,957 Info:Complete Factorization / Discrete logarithm / Class group: Polynomial Selection (root optimized)
+2026-11-11 11:30:30,957 Info:Polynomial Selection (root optimized): Aggregate statistics:
+2026-11-11 11:30:30,957 Info:Polynomial Selection (root optimized): Total time: 22.09
+2026-11-11 11:30:30,957 Info:Polynomial Selection (root optimized): Rootsieve time: 0
+2026-11-11 11:30:30,957 Info:Generate Factor Base: Starting
+2026-11-11 11:30:31,013 Info:Generate Factor Base: Finished
+2026-11-11 11:30:31,013 Info:Complete Factorization / Discrete logarithm / Class group: Generate Factor Base
+2026-11-11 11:30:31,013 Info:Generate Factor Base: Total cpu/real time for makefb: 0.53/0.0537522
+2026-11-11 11:30:31,013 Info:Generate Free Relations: Starting
+2026-11-11 11:30:57,613 Info:Generate Free Relations: Found 17248 free relations
+2026-11-11 11:30:57,613 Info:Generate Free Relations: Finished
+2026-11-11 11:30:57,613 Info:Complete Factorization / Discrete logarithm / Class group: Generate Free Relations
+2026-11-11 11:30:57,613 Info:Generate Free Relations: Total cpu/real time for freerel: 26.43/26.5949
+2026-11-11 11:30:57,613 Info:Lattice Sieving: Starting
+2026-11-11 11:30:57,613 Info:Lattice Sieving: We want 3600000 relation(s)
+2026-11-11 11:31:05,342 Info:Lattice Sieving: Found 42101 relations in './data/dumps/h4/rsa100/c100.upload/c100.195000-200000.gz', total is now 42101/3600000
+2026-11-11 11:31:07,301 Info:Lattice Sieving: Found 48623 relations in './data/dumps/h4/rsa100/c100.upload/c100.180000-185000.gz', total is now 90724/3600000
+2026-11-11 11:31:07,305 Info:Lattice Sieving: Found 46753 relations in './data/dumps/h4/rsa100/c100.upload/c100.185000-190000.gz', total is now 137477/3600000
+2026-11-11 11:31:07,309 Info:Lattice Sieving: Found 47916 relations in './data/dumps/h4/rsa100/c100.upload/c100.190000-195000.gz', total is now 185393/3600000
+2026-11-11 11:31:07,313 Info:Lattice Sieving: Found 41192 relations in './data/dumps/h4/rsa100/c100.upload/c100.200000-205000.gz', total is now 226585/3600000
+2026-11-11 11:31:09,252 Info:Lattice Sieving: Found 44730 relations in './data/dumps/h4/rsa100/c100.upload/c100.205000-210000.gz', total is now 271315/3600000
+2026-11-11 11:31:09,256 Info:Lattice Sieving: Found 42410 relations in './data/dumps/h4/rsa100/c100.upload/c100.210000-215000.gz', total is now 313725/3600000
+2026-11-11 11:31:09,261 Info:Lattice Sieving: Found 37105 relations in './data/dumps/h4/rsa100/c100.upload/c100.215000-220000.gz', total is now 350830/3600000
+2026-11-11 11:31:09,265 Info:Lattice Sieving: Found 42734 relations in './data/dumps/h4/rsa100/c100.upload/c100.220000-225000.gz', total is now 393564/3600000
+2026-11-11 11:31:13,224 Info:Lattice Sieving: Found 43234 relations in './data/dumps/h4/rsa100/c100.upload/c100.225000-230000.gz', total is now 436798/3600000
+2026-11-11 11:31:13,228 Info:Lattice Sieving: Found 39741 relations in './data/dumps/h4/rsa100/c100.upload/c100.230000-235000.gz', total is now 476539/3600000
+2026-11-11 11:31:13,232 Info:Lattice Sieving: Found 35842 relations in './data/dumps/h4/rsa100/c100.upload/c100.235000-240000.gz', total is now 512381/3600000
+2026-11-11 11:31:13,236 Info:Lattice Sieving: Found 41126 relations in './data/dumps/h4/rsa100/c100.upload/c100.240000-245000.gz', total is now 553507/3600000
+2026-11-11 11:31:13,241 Info:Lattice Sieving: Found 37710 relations in './data/dumps/h4/rsa100/c100.upload/c100.245000-250000.gz', total is now 591217/3600000
+2026-11-11 11:31:15,224 Info:Lattice Sieving: Found 38464 relations in './data/dumps/h4/rsa100/c100.upload/c100.250000-255000.gz', total is now 629681/3600000
+2026-11-11 11:31:15,229 Info:Lattice Sieving: Found 37291 relations in './data/dumps/h4/rsa100/c100.upload/c100.255000-260000.gz', total is now 666972/3600000
+2026-11-11 11:31:15,233 Info:Lattice Sieving: Found 35219 relations in './data/dumps/h4/rsa100/c100.upload/c100.260000-265000.gz', total is now 702191/3600000
+2026-11-11 11:31:17,208 Info:Lattice Sieving: Found 37188 relations in './data/dumps/h4/rsa100/c100.upload/c100.265000-270000.gz', total is now 739379/3600000
+2026-11-11 11:31:19,227 Info:Lattice Sieving: Found 33368 relations in './data/dumps/h4/rsa100/c100.upload/c100.270000-275000.gz', total is now 772747/3600000
+2026-11-11 11:31:19,233 Info:Lattice Sieving: Found 37344 relations in './data/dumps/h4/rsa100/c100.upload/c100.275000-280000.gz', total is now 810091/3600000
+2026-11-11 11:31:21,301 Info:Lattice Sieving: Found 40757 relations in './data/dumps/h4/rsa100/c100.upload/c100.280000-285000.gz', total is now 850848/3600000
+2026-11-11 11:31:21,307 Info:Lattice Sieving: Found 38624 relations in './data/dumps/h4/rsa100/c100.upload/c100.285000-290000.gz', total is now 889472/3600000
+2026-11-11 11:31:21,311 Info:Lattice Sieving: Found 36266 relations in './data/dumps/h4/rsa100/c100.upload/c100.290000-295000.gz', total is now 925738/3600000
+2026-11-11 11:31:21,316 Info:Lattice Sieving: Found 32958 relations in './data/dumps/h4/rsa100/c100.upload/c100.295000-300000.gz', total is now 958696/3600000
+2026-11-11 11:31:23,333 Info:Lattice Sieving: Found 39694 relations in './data/dumps/h4/rsa100/c100.upload/c100.300000-305000.gz', total is now 998390/3600000
+2026-11-11 11:31:23,338 Info:Lattice Sieving: Found 38005 relations in './data/dumps/h4/rsa100/c100.upload/c100.305000-310000.gz', total is now 1036395/3600000
+2026-11-11 11:31:23,343 Info:Lattice Sieving: Found 36337 relations in './data/dumps/h4/rsa100/c100.upload/c100.310000-315000.gz', total is now 1072732/3600000
+2026-11-11 11:31:25,383 Info:Lattice Sieving: Found 38406 relations in './data/dumps/h4/rsa100/c100.upload/c100.315000-320000.gz', total is now 1111138/3600000
+2026-11-11 11:31:27,394 Info:Lattice Sieving: Found 35367 relations in './data/dumps/h4/rsa100/c100.upload/c100.320000-325000.gz', total is now 1146505/3600000
+2026-11-11 11:31:27,399 Info:Lattice Sieving: Found 35872 relations in './data/dumps/h4/rsa100/c100.upload/c100.325000-330000.gz', total is now 1182377/3600000
+2026-11-11 11:31:27,404 Info:Lattice Sieving: Found 34019 relations in './data/dumps/h4/rsa100/c100.upload/c100.330000-335000.gz', total is now 1216396/3600000
+2026-11-11 11:31:27,409 Info:Lattice Sieving: Found 35006 relations in './data/dumps/h4/rsa100/c100.upload/c100.335000-340000.gz', total is now 1251402/3600000
+2026-11-11 11:31:27,414 Info:Lattice Sieving: Found 34183 relations in './data/dumps/h4/rsa100/c100.upload/c100.340000-345000.gz', total is now 1285585/3600000
+2026-11-11 11:31:29,427 Info:Lattice Sieving: Found 33679 relations in './data/dumps/h4/rsa100/c100.upload/c100.345000-350000.gz', total is now 1319264/3600000
+2026-11-11 11:31:29,432 Info:Lattice Sieving: Found 33689 relations in './data/dumps/h4/rsa100/c100.upload/c100.350000-355000.gz', total is now 1352953/3600000
+2026-11-11 11:31:29,437 Info:Lattice Sieving: Found 35156 relations in './data/dumps/h4/rsa100/c100.upload/c100.355000-360000.gz', total is now 1388109/3600000
+2026-11-11 11:31:31,447 Info:Lattice Sieving: Found 31628 relations in './data/dumps/h4/rsa100/c100.upload/c100.360000-365000.gz', total is now 1419737/3600000
+2026-11-11 11:31:33,494 Info:Lattice Sieving: Found 33358 relations in './data/dumps/h4/rsa100/c100.upload/c100.365000-370000.gz', total is now 1453095/3600000
+2026-11-11 11:31:33,499 Info:Lattice Sieving: Found 29641 relations in './data/dumps/h4/rsa100/c100.upload/c100.370000-375000.gz', total is now 1482736/3600000
+2026-11-11 11:31:33,504 Info:Lattice Sieving: Found 31522 relations in './data/dumps/h4/rsa100/c100.upload/c100.375000-380000.gz', total is now 1514258/3600000
+2026-11-11 11:31:33,508 Info:Lattice Sieving: Found 31615 relations in './data/dumps/h4/rsa100/c100.upload/c100.380000-385000.gz', total is now 1545873/3600000
+2026-11-11 11:31:35,560 Info:Lattice Sieving: Found 32927 relations in './data/dumps/h4/rsa100/c100.upload/c100.385000-390000.gz', total is now 1578800/3600000
+2026-11-11 11:31:35,565 Info:Lattice Sieving: Found 32065 relations in './data/dumps/h4/rsa100/c100.upload/c100.390000-395000.gz', total is now 1610865/3600000
+2026-11-11 11:31:35,570 Info:Lattice Sieving: Found 30370 relations in './data/dumps/h4/rsa100/c100.upload/c100.395000-400000.gz', total is now 1641235/3600000
+2026-11-11 11:31:35,574 Info:Lattice Sieving: Found 30907 relations in './data/dumps/h4/rsa100/c100.upload/c100.400000-405000.gz', total is now 1672142/3600000
+2026-11-11 11:31:39,614 Info:Lattice Sieving: Found 33218 relations in './data/dumps/h4/rsa100/c100.upload/c100.405000-410000.gz', total is now 1705360/3600000
+2026-11-11 11:31:39,619 Info:Lattice Sieving: Found 31841 relations in './data/dumps/h4/rsa100/c100.upload/c100.410000-415000.gz', total is now 1737201/3600000
+2026-11-11 11:31:39,624 Info:Lattice Sieving: Found 32327 relations in './data/dumps/h4/rsa100/c100.upload/c100.415000-420000.gz', total is now 1769528/3600000
+2026-11-11 11:31:39,628 Info:Lattice Sieving: Found 33350 relations in './data/dumps/h4/rsa100/c100.upload/c100.420000-425000.gz', total is now 1802878/3600000
+2026-11-11 11:31:39,633 Info:Lattice Sieving: Found 28192 relations in './data/dumps/h4/rsa100/c100.upload/c100.425000-430000.gz', total is now 1831070/3600000
+2026-11-11 11:31:41,635 Info:Lattice Sieving: Found 32529 relations in './data/dumps/h4/rsa100/c100.upload/c100.430000-435000.gz', total is now 1863599/3600000
+2026-11-11 11:31:41,640 Info:Lattice Sieving: Found 31669 relations in './data/dumps/h4/rsa100/c100.upload/c100.435000-440000.gz', total is now 1895268/3600000
+2026-11-11 11:31:41,645 Info:Lattice Sieving: Found 33033 relations in './data/dumps/h4/rsa100/c100.upload/c100.440000-445000.gz', total is now 1928301/3600000
+2026-11-11 11:31:41,649 Info:Lattice Sieving: Found 29953 relations in './data/dumps/h4/rsa100/c100.upload/c100.445000-450000.gz', total is now 1958254/3600000
+2026-11-11 11:31:45,670 Info:Lattice Sieving: Found 30657 relations in './data/dumps/h4/rsa100/c100.upload/c100.450000-455000.gz', total is now 1988911/3600000
+2026-11-11 11:31:45,675 Info:Lattice Sieving: Found 32636 relations in './data/dumps/h4/rsa100/c100.upload/c100.455000-460000.gz', total is now 2021547/3600000
+2026-11-11 11:31:45,680 Info:Lattice Sieving: Found 29946 relations in './data/dumps/h4/rsa100/c100.upload/c100.460000-465000.gz', total is now 2051493/3600000
+2026-11-11 11:31:45,685 Info:Lattice Sieving: Found 26398 relations in './data/dumps/h4/rsa100/c100.upload/c100.465000-470000.gz', total is now 2077891/3600000
+2026-11-11 11:31:47,688 Info:Lattice Sieving: Found 31105 relations in './data/dumps/h4/rsa100/c100.upload/c100.470000-475000.gz', total is now 2108996/3600000
+2026-11-11 11:31:47,693 Info:Lattice Sieving: Found 31242 relations in './data/dumps/h4/rsa100/c100.upload/c100.475000-480000.gz', total is now 2140238/3600000
+2026-11-11 11:31:47,698 Info:Lattice Sieving: Found 26844 relations in './data/dumps/h4/rsa100/c100.upload/c100.480000-485000.gz', total is now 2167082/3600000
+2026-11-11 11:31:47,702 Info:Lattice Sieving: Found 28427 relations in './data/dumps/h4/rsa100/c100.upload/c100.485000-490000.gz', total is now 2195509/3600000
+2026-11-11 11:31:49,747 Info:Lattice Sieving: Found 29387 relations in './data/dumps/h4/rsa100/c100.upload/c100.490000-495000.gz', total is now 2224896/3600000
+2026-11-11 11:31:51,792 Info:Lattice Sieving: Found 29790 relations in './data/dumps/h4/rsa100/c100.upload/c100.495000-500000.gz', total is now 2254686/3600000
+2026-11-11 11:31:51,798 Info:Lattice Sieving: Found 26531 relations in './data/dumps/h4/rsa100/c100.upload/c100.500000-505000.gz', total is now 2281217/3600000
+2026-11-11 11:31:51,803 Info:Lattice Sieving: Found 30710 relations in './data/dumps/h4/rsa100/c100.upload/c100.505000-510000.gz', total is now 2311927/3600000
+2026-11-11 11:31:51,808 Info:Lattice Sieving: Found 29309 relations in './data/dumps/h4/rsa100/c100.upload/c100.510000-515000.gz', total is now 2341236/3600000
+2026-11-11 11:31:53,876 Info:Lattice Sieving: Found 29204 relations in './data/dumps/h4/rsa100/c100.upload/c100.515000-520000.gz', total is now 2370440/3600000
+2026-11-11 11:31:53,882 Info:Lattice Sieving: Found 28883 relations in './data/dumps/h4/rsa100/c100.upload/c100.520000-525000.gz', total is now 2399323/3600000
+2026-11-11 11:31:53,887 Info:Lattice Sieving: Found 28669 relations in './data/dumps/h4/rsa100/c100.upload/c100.525000-530000.gz', total is now 2427992/3600000
+2026-11-11 11:31:53,892 Info:Lattice Sieving: Found 27805 relations in './data/dumps/h4/rsa100/c100.upload/c100.530000-535000.gz', total is now 2455797/3600000
+2026-11-11 11:31:55,985 Info:Lattice Sieving: Found 30912 relations in './data/dumps/h4/rsa100/c100.upload/c100.535000-540000.gz', total is now 2486709/3600000
+2026-11-11 11:31:58,184 Info:Lattice Sieving: Found 28508 relations in './data/dumps/h4/rsa100/c100.upload/c100.540000-545000.gz', total is now 2515217/3600000
+2026-11-11 11:31:58,190 Info:Lattice Sieving: Found 28708 relations in './data/dumps/h4/rsa100/c100.upload/c100.545000-550000.gz', total is now 2543925/3600000
+2026-11-11 11:31:58,195 Info:Lattice Sieving: Found 26389 relations in './data/dumps/h4/rsa100/c100.upload/c100.550000-555000.gz', total is now 2570314/3600000
+2026-11-11 11:32:00,351 Info:Lattice Sieving: Found 30713 relations in './data/dumps/h4/rsa100/c100.upload/c100.555000-560000.gz', total is now 2601027/3600000
+2026-11-11 11:32:00,357 Info:Lattice Sieving: Found 28076 relations in './data/dumps/h4/rsa100/c100.upload/c100.560000-565000.gz', total is now 2629103/3600000
+2026-11-11 11:32:00,364 Info:Lattice Sieving: Found 25495 relations in './data/dumps/h4/rsa100/c100.upload/c100.565000-570000.gz', total is now 2654598/3600000
+2026-11-11 11:32:00,369 Info:Lattice Sieving: Found 27379 relations in './data/dumps/h4/rsa100/c100.upload/c100.570000-575000.gz', total is now 2681977/3600000
+2026-11-11 11:32:00,374 Info:Lattice Sieving: Found 26599 relations in './data/dumps/h4/rsa100/c100.upload/c100.575000-580000.gz', total is now 2708576/3600000
+2026-11-11 11:32:02,516 Info:Lattice Sieving: Found 27321 relations in './data/dumps/h4/rsa100/c100.upload/c100.580000-585000.gz', total is now 2735897/3600000
+2026-11-11 11:32:04,657 Info:Lattice Sieving: Found 25771 relations in './data/dumps/h4/rsa100/c100.upload/c100.585000-590000.gz', total is now 2761668/3600000
+2026-11-11 11:32:04,663 Info:Lattice Sieving: Found 29096 relations in './data/dumps/h4/rsa100/c100.upload/c100.590000-595000.gz', total is now 2790764/3600000
+2026-11-11 11:32:04,669 Info:Lattice Sieving: Found 24846 relations in './data/dumps/h4/rsa100/c100.upload/c100.595000-600000.gz', total is now 2815610/3600000
+2026-11-11 11:32:06,826 Info:Lattice Sieving: Found 29167 relations in './data/dumps/h4/rsa100/c100.upload/c100.600000-605000.gz', total is now 2844777/3600000
+2026-11-11 11:32:06,832 Info:Lattice Sieving: Found 28780 relations in './data/dumps/h4/rsa100/c100.upload/c100.605000-610000.gz', total is now 2873557/3600000
+2026-11-11 11:32:06,838 Info:Lattice Sieving: Found 24476 relations in './data/dumps/h4/rsa100/c100.upload/c100.610000-615000.gz', total is now 2898033/3600000
+2026-11-11 11:32:06,843 Info:Lattice Sieving: Found 28395 relations in './data/dumps/h4/rsa100/c100.upload/c100.615000-620000.gz', total is now 2926428/3600000
+2026-11-11 11:32:06,849 Info:Lattice Sieving: Found 28338 relations in './data/dumps/h4/rsa100/c100.upload/c100.620000-625000.gz', total is now 2954766/3600000
+2026-11-11 11:32:09,043 Info:Lattice Sieving: Found 25175 relations in './data/dumps/h4/rsa100/c100.upload/c100.625000-630000.gz', total is now 2979941/3600000
+2026-11-11 11:32:11,186 Info:Lattice Sieving: Found 28340 relations in './data/dumps/h4/rsa100/c100.upload/c100.630000-635000.gz', total is now 3008281/3600000
+2026-11-11 11:32:11,192 Info:Lattice Sieving: Found 23318 relations in './data/dumps/h4/rsa100/c100.upload/c100.635000-640000.gz', total is now 3031599/3600000
+2026-11-11 11:32:11,198 Info:Lattice Sieving: Found 27501 relations in './data/dumps/h4/rsa100/c100.upload/c100.640000-645000.gz', total is now 3059100/3600000
+2026-11-11 11:32:13,352 Info:Lattice Sieving: Found 25560 relations in './data/dumps/h4/rsa100/c100.upload/c100.645000-650000.gz', total is now 3084660/3600000
+2026-11-11 11:32:13,358 Info:Lattice Sieving: Found 25934 relations in './data/dumps/h4/rsa100/c100.upload/c100.650000-655000.gz', total is now 3110594/3600000
+2026-11-11 11:32:13,364 Info:Lattice Sieving: Found 26041 relations in './data/dumps/h4/rsa100/c100.upload/c100.655000-660000.gz', total is now 3136635/3600000
+2026-11-11 11:32:13,371 Info:Lattice Sieving: Found 25072 relations in './data/dumps/h4/rsa100/c100.upload/c100.660000-665000.gz', total is now 3161707/3600000
+2026-11-11 11:32:13,376 Info:Lattice Sieving: Found 25434 relations in './data/dumps/h4/rsa100/c100.upload/c100.665000-670000.gz', total is now 3187141/3600000
+2026-11-11 11:32:15,516 Info:Lattice Sieving: Found 26221 relations in './data/dumps/h4/rsa100/c100.upload/c100.670000-675000.gz', total is now 3213362/3600000
+2026-11-11 11:32:15,526 Info:Lattice Sieving: Found 23672 relations in './data/dumps/h4/rsa100/c100.upload/c100.680000-685000.gz', total is now 3237034/3600000
+2026-11-11 11:32:17,683 Info:Lattice Sieving: Found 25715 relations in './data/dumps/h4/rsa100/c100.upload/c100.675000-680000.gz', total is now 3262749/3600000
+2026-11-11 11:32:17,690 Info:Lattice Sieving: Found 25793 relations in './data/dumps/h4/rsa100/c100.upload/c100.685000-690000.gz', total is now 3288542/3600000
+2026-11-11 11:32:19,883 Info:Lattice Sieving: Found 28344 relations in './data/dumps/h4/rsa100/c100.upload/c100.690000-695000.gz', total is now 3316886/3600000
+2026-11-11 11:32:19,889 Info:Lattice Sieving: Found 25290 relations in './data/dumps/h4/rsa100/c100.upload/c100.695000-700000.gz', total is now 3342176/3600000
+2026-11-11 11:32:19,895 Info:Lattice Sieving: Found 25223 relations in './data/dumps/h4/rsa100/c100.upload/c100.700000-705000.gz', total is now 3367399/3600000
+2026-11-11 11:32:19,901 Info:Lattice Sieving: Found 25765 relations in './data/dumps/h4/rsa100/c100.upload/c100.705000-710000.gz', total is now 3393164/3600000
+2026-11-11 11:32:19,915 Info:Lattice Sieving: Found 22978 relations in './data/dumps/h4/rsa100/c100.upload/c100.710000-715000.gz', total is now 3416142/3600000
+2026-11-11 11:32:19,921 Info:Lattice Sieving: Found 22583 relations in './data/dumps/h4/rsa100/c100.upload/c100.715000-720000.gz', total is now 3438725/3600000
+2026-11-11 11:32:22,118 Info:Lattice Sieving: Found 25948 relations in './data/dumps/h4/rsa100/c100.upload/c100.720000-725000.gz', total is now 3464673/3600000
+2026-11-11 11:32:22,125 Info:Lattice Sieving: Found 24392 relations in './data/dumps/h4/rsa100/c100.upload/c100.725000-730000.gz', total is now 3489065/3600000
+2026-11-11 11:32:26,427 Info:Lattice Sieving: Found 27118 relations in './data/dumps/h4/rsa100/c100.upload/c100.730000-735000.gz', total is now 3516183/3600000
+2026-11-11 11:32:26,434 Info:Lattice Sieving: Found 25312 relations in './data/dumps/h4/rsa100/c100.upload/c100.735000-740000.gz', total is now 3541495/3600000
+2026-11-11 11:32:26,439 Info:Lattice Sieving: Found 24401 relations in './data/dumps/h4/rsa100/c100.upload/c100.740000-745000.gz', total is now 3565896/3600000
+2026-11-11 11:32:26,445 Info:Lattice Sieving: Found 28120 relations in './data/dumps/h4/rsa100/c100.upload/c100.745000-750000.gz', total is now 3594016/3600000
+2026-11-11 11:32:26,450 Info:Lattice Sieving: Found 26081 relations in './data/dumps/h4/rsa100/c100.upload/c100.750000-755000.gz', total is now 3620097/3600000
+2026-11-11 11:32:26,453 Info:Lattice Sieving: Reached target of 3600000 relations, now have 3620097
+2026-11-11 11:32:26,453 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:32:26,453 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:32:26,453 Info:Lattice Sieving: Total number of relations: 3620097
+2026-11-11 11:32:26,454 Info:Lattice Sieving: Average J: 961.926 for 44564 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:32:26,454 Info:Lattice Sieving: Total time: 737.23s
+2026-11-11 11:32:26,454 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:32:26,454 Info:Filtering - Duplicate Removal, splitting pass: Splitting 115 new files
+2026-11-11 11:32:28,799 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 1808048, 1: 1812049
+2026-11-11 11:32:28,799 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:32:28,799 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.06/2.33202
+2026-11-11 11:32:28,799 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:32:28,799 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.3s
+2026-11-11 11:32:28,799 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:32:34,907 Info:Filtering - Duplicate Removal, removal pass: 1362668 unique relations remain on slice 0
+2026-11-11 11:32:39,990 Info:Filtering - Duplicate Removal, removal pass: 1365031 unique relations remain on slice 1
+2026-11-11 11:32:39,990 Info:Filtering - Duplicate Removal, removal pass: Of 3620097 newly added relations 2727699 were unique (ratio 0.753488)
+2026-11-11 11:32:39,991 Info:Filtering - Duplicate Removal, removal pass: 2727699 unique relations remain in total
+2026-11-11 11:32:39,991 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:32:39,991 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 30.77/11.1754
+2026-11-11 11:32:39,991 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:32:39,991 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 10.8s
+2026-11-11 11:32:39,991 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:32:39,991 Info:Filtering - Singleton removal: Reading 2727699 unique and 17248 free relations, total 2744947
+2026-11-11 11:32:42,573 Info:Filtering - Singleton removal: After purge, 344446 relations with 415139 primes remain with excess -70693
+2026-11-11 11:32:42,573 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:32:42,573 Info:Filtering - Singleton removal: Requesting 70693 additional relations
+2026-11-11 11:32:42,573 Info:Filtering - Duplicate Removal, removal pass: Got request for 2798392 (70693 additional) output relations, estimate 3713918 (93821 additional) needed in input
+2026-11-11 11:32:42,573 Info:Lattice Sieving: New goal for number of relations is 3713918, currently have 3620097. Need to sieve more
+2026-11-11 11:32:42,573 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:32:42,573 Info:Filtering - Singleton removal: Total cpu/real time for purge: 6.18/2.57728
+2026-11-11 11:32:42,573 Info:Lattice Sieving: Starting
+2026-11-11 11:32:42,573 Info:Lattice Sieving: We want 3713918 relation(s)
+2026-11-11 11:32:42,575 Info:Lattice Sieving: Found 26741 relations in './data/dumps/h4/rsa100/c100.upload/c100.755000-760000.gz', total is now 3646838/3713918
+2026-11-11 11:32:42,580 Info:Lattice Sieving: Found 27719 relations in './data/dumps/h4/rsa100/c100.upload/c100.760000-765000.gz', total is now 3674557/3713918
+2026-11-11 11:32:42,583 Info:Lattice Sieving: Found 23555 relations in './data/dumps/h4/rsa100/c100.upload/c100.765000-770000.gz', total is now 3698112/3713918
+2026-11-11 11:32:42,587 Info:Lattice Sieving: Found 27162 relations in './data/dumps/h4/rsa100/c100.upload/c100.770000-775000.gz', total is now 3725274/3713918
+2026-11-11 11:32:42,589 Info:Lattice Sieving: Reached target of 3713918 relations, now have 3725274
+2026-11-11 11:32:42,589 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:32:42,589 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:32:42,589 Info:Lattice Sieving: Total number of relations: 3725274
+2026-11-11 11:32:42,589 Info:Lattice Sieving: Average J: 961.887 for 46125 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:32:42,589 Info:Lattice Sieving: Total time: 764.45s
+2026-11-11 11:32:42,589 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:32:42,589 Info:Filtering - Duplicate Removal, splitting pass: Splitting 4 new files
+2026-11-11 11:32:42,656 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 1860754, 1: 1864520
+2026-11-11 11:32:42,656 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:32:42,656 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.2/2.39336
+2026-11-11 11:32:42,656 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:32:42,657 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.4s
+2026-11-11 11:32:42,657 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:32:44,000 Info:Filtering - Duplicate Removal, removal pass: 1395107 unique relations remain on slice 0
+2026-11-11 11:32:45,286 Info:Filtering - Duplicate Removal, removal pass: 1397006 unique relations remain on slice 1
+2026-11-11 11:32:45,287 Info:Filtering - Duplicate Removal, removal pass: Of 105177 newly added relations 64414 were unique (ratio 0.612434)
+2026-11-11 11:32:45,287 Info:Filtering - Duplicate Removal, removal pass: 2792113 unique relations remain in total
+2026-11-11 11:32:45,287 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:32:45,287 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 34.05/13.7913
+2026-11-11 11:32:45,287 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:32:45,287 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 13.2s
+2026-11-11 11:32:45,287 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:32:45,287 Info:Filtering - Singleton removal: Reading 2792113 unique and 17248 free relations, total 2809361
+2026-11-11 11:32:47,618 Info:Filtering - Singleton removal: After purge, 442869 relations with 504753 primes remain with excess -61884
+2026-11-11 11:32:47,618 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:32:47,618 Info:Filtering - Singleton removal: Requesting 61884 additional relations
+2026-11-11 11:32:47,618 Info:Filtering - Duplicate Removal, removal pass: Got request for 2853997 (61884 additional) output relations, estimate 3826319 (101045 additional) needed in input
+2026-11-11 11:32:47,619 Info:Lattice Sieving: New goal for number of relations is 3826319, currently have 3725274. Need to sieve more
+2026-11-11 11:32:47,619 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:32:47,619 Info:Filtering - Singleton removal: Total cpu/real time for purge: 11.18/4.9039
+2026-11-11 11:32:47,619 Info:Lattice Sieving: Starting
+2026-11-11 11:32:47,619 Info:Lattice Sieving: We want 3826319 relation(s)
+2026-11-11 11:32:47,621 Info:Lattice Sieving: Found 20871 relations in './data/dumps/h4/rsa100/c100.upload/c100.775000-780000.gz', total is now 3746145/3826319
+2026-11-11 11:32:47,625 Info:Lattice Sieving: Found 26484 relations in './data/dumps/h4/rsa100/c100.upload/c100.780000-785000.gz', total is now 3772629/3826319
+2026-11-11 11:32:47,629 Info:Lattice Sieving: Found 25409 relations in './data/dumps/h4/rsa100/c100.upload/c100.785000-790000.gz', total is now 3798038/3826319
+2026-11-11 11:32:47,634 Info:Lattice Sieving: Found 24919 relations in './data/dumps/h4/rsa100/c100.upload/c100.790000-795000.gz', total is now 3822957/3826319
+2026-11-11 11:32:47,638 Info:Lattice Sieving: Found 22605 relations in './data/dumps/h4/rsa100/c100.upload/c100.795000-800000.gz', total is now 3845562/3826319
+2026-11-11 11:32:47,640 Info:Lattice Sieving: Reached target of 3826319 relations, now have 3845562
+2026-11-11 11:32:47,640 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:32:47,640 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:32:47,640 Info:Lattice Sieving: Total number of relations: 3845562
+2026-11-11 11:32:47,640 Info:Lattice Sieving: Average J: 961.69 for 47938 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:32:47,640 Info:Lattice Sieving: Total time: 801.03s
+2026-11-11 11:32:47,640 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:32:47,640 Info:Filtering - Duplicate Removal, splitting pass: Splitting 5 new files
+2026-11-11 11:32:47,710 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 1920990, 1: 1924572
+2026-11-11 11:32:47,710 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:32:47,710 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.37/2.45717
+2026-11-11 11:32:47,710 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:32:47,710 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.5s
+2026-11-11 11:32:47,710 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:32:49,070 Info:Filtering - Duplicate Removal, removal pass: 1431476 unique relations remain on slice 0
+2026-11-11 11:32:50,477 Info:Filtering - Duplicate Removal, removal pass: 1433312 unique relations remain on slice 1
+2026-11-11 11:32:50,477 Info:Filtering - Duplicate Removal, removal pass: Of 120288 newly added relations 72675 were unique (ratio 0.604175)
+2026-11-11 11:32:50,478 Info:Filtering - Duplicate Removal, removal pass: 2864788 unique relations remain in total
+2026-11-11 11:32:50,478 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:32:50,478 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 37.61/16.5448
+2026-11-11 11:32:50,478 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:32:50,478 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 15.7s
+2026-11-11 11:32:50,478 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:32:50,478 Info:Filtering - Singleton removal: Reading 2864788 unique and 17248 free relations, total 2882036
+2026-11-11 11:32:52,897 Info:Filtering - Singleton removal: After purge, 536496 relations with 586414 primes remain with excess -49918
+2026-11-11 11:32:52,897 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:32:52,897 Info:Filtering - Singleton removal: Requesting 49918 additional relations
+2026-11-11 11:32:52,897 Info:Filtering - Duplicate Removal, removal pass: Got request for 2914706 (49918 additional) output relations, estimate 3928183 (82621 additional) needed in input
+2026-11-11 11:32:52,898 Info:Lattice Sieving: New goal for number of relations is 3928183, currently have 3845562. Need to sieve more
+2026-11-11 11:32:52,898 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:32:52,898 Info:Filtering - Singleton removal: Total cpu/real time for purge: 17.06/7.31912
+2026-11-11 11:32:52,898 Info:Lattice Sieving: Starting
+2026-11-11 11:32:52,898 Info:Lattice Sieving: We want 3928183 relation(s)
+2026-11-11 11:32:52,900 Info:Lattice Sieving: Found 22916 relations in './data/dumps/h4/rsa100/c100.upload/c100.800000-805000.gz', total is now 3868478/3928183
+2026-11-11 11:32:52,904 Info:Lattice Sieving: Found 25441 relations in './data/dumps/h4/rsa100/c100.upload/c100.805000-810000.gz', total is now 3893919/3928183
+2026-11-11 11:32:52,908 Info:Lattice Sieving: Found 23299 relations in './data/dumps/h4/rsa100/c100.upload/c100.810000-815000.gz', total is now 3917218/3928183
+2026-11-11 11:32:52,912 Info:Lattice Sieving: Found 22392 relations in './data/dumps/h4/rsa100/c100.upload/c100.815000-820000.gz', total is now 3939610/3928183
+2026-11-11 11:32:52,914 Info:Lattice Sieving: Reached target of 3928183 relations, now have 3939610
+2026-11-11 11:32:52,914 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:32:52,914 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:32:52,914 Info:Lattice Sieving: Total number of relations: 3939610
+2026-11-11 11:32:52,914 Info:Lattice Sieving: Average J: 961.349 for 49366 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:32:52,914 Info:Lattice Sieving: Total time: 830.4s
+2026-11-11 11:32:52,914 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:32:52,915 Info:Filtering - Duplicate Removal, splitting pass: Splitting 4 new files
+2026-11-11 11:32:52,986 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 1968000, 1: 1971610
+2026-11-11 11:32:52,986 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:32:52,986 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.52/2.52264
+2026-11-11 11:32:52,987 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:32:52,987 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.6s
+2026-11-11 11:32:52,987 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:32:54,372 Info:Filtering - Duplicate Removal, removal pass: 1469575 unique relations remain on slice 0
+2026-11-11 11:32:55,725 Info:Filtering - Duplicate Removal, removal pass: 1471460 unique relations remain on slice 1
+2026-11-11 11:32:55,725 Info:Filtering - Duplicate Removal, removal pass: Of 94048 newly added relations 76247 were unique (ratio 0.810724)
+2026-11-11 11:32:55,726 Info:Filtering - Duplicate Removal, removal pass: 2941035 unique relations remain in total
+2026-11-11 11:32:55,726 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:32:55,726 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 40.97/19.2693
+2026-11-11 11:32:55,726 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:32:55,726 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 18.099999999999998s
+2026-11-11 11:32:55,726 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:32:55,726 Info:Filtering - Singleton removal: Reading 2941035 unique and 17248 free relations, total 2958283
+2026-11-11 11:32:57,978 Info:Filtering - Singleton removal: After purge, 628277 relations with 664484 primes remain with excess -36207
+2026-11-11 11:32:57,978 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:32:57,978 Info:Filtering - Singleton removal: Requesting 36207 additional relations
+2026-11-11 11:32:57,978 Info:Filtering - Duplicate Removal, removal pass: Got request for 2977242 (36207 additional) output relations, estimate 3984270 (44660 additional) needed in input
+2026-11-11 11:32:57,978 Info:Lattice Sieving: New goal for number of relations is 3984270, currently have 3939610. Need to sieve more
+2026-11-11 11:32:57,978 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:32:57,978 Info:Filtering - Singleton removal: Total cpu/real time for purge: 20.97/9.56632
+2026-11-11 11:32:57,978 Info:Lattice Sieving: Starting
+2026-11-11 11:32:57,979 Info:Lattice Sieving: We want 3984270 relation(s)
+2026-11-11 11:32:57,980 Info:Lattice Sieving: Found 25492 relations in './data/dumps/h4/rsa100/c100.upload/c100.820000-825000.gz', total is now 3965102/3984270
+2026-11-11 11:32:57,984 Info:Lattice Sieving: Found 24321 relations in './data/dumps/h4/rsa100/c100.upload/c100.825000-830000.gz', total is now 3989423/3984270
+2026-11-11 11:32:57,986 Info:Lattice Sieving: Reached target of 3984270 relations, now have 3989423
+2026-11-11 11:32:57,986 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:32:57,986 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:32:57,986 Info:Lattice Sieving: Total number of relations: 3989423
+2026-11-11 11:32:57,986 Info:Lattice Sieving: Average J: 961.168 for 50136 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:32:57,986 Info:Lattice Sieving: Total time: 844.29s
+2026-11-11 11:32:57,986 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:32:57,986 Info:Filtering - Duplicate Removal, splitting pass: Splitting 2 new files
+2026-11-11 11:32:58,026 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 1992818, 1: 1996605
+2026-11-11 11:32:58,026 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:32:58,026 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.59/2.55766
+2026-11-11 11:32:58,026 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:32:58,026 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.6s
+2026-11-11 11:32:58,026 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:32:59,538 Info:Filtering - Duplicate Removal, removal pass: 1489557 unique relations remain on slice 0
+2026-11-11 11:33:01,472 Info:Filtering - Duplicate Removal, removal pass: 1491590 unique relations remain on slice 1
+2026-11-11 11:33:01,472 Info:Filtering - Duplicate Removal, removal pass: Of 49813 newly added relations 40112 were unique (ratio 0.805252)
+2026-11-11 11:33:01,473 Info:Filtering - Duplicate Removal, removal pass: 2981147 unique relations remain in total
+2026-11-11 11:33:01,473 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:33:01,473 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 44.54/22.701
+2026-11-11 11:33:01,473 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:33:01,473 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 21.099999999999998s
+2026-11-11 11:33:01,473 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:33:01,473 Info:Filtering - Singleton removal: Reading 2981147 unique and 17248 free relations, total 2998395
+2026-11-11 11:33:05,350 Info:Filtering - Singleton removal: After purge, 676581 relations with 704517 primes remain with excess -27936
+2026-11-11 11:33:05,350 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:33:05,350 Info:Filtering - Singleton removal: Requesting 29811 additional relations
+2026-11-11 11:33:05,350 Info:Filtering - Duplicate Removal, removal pass: Got request for 3010958 (29811 additional) output relations, estimate 4026444 (37021 additional) needed in input
+2026-11-11 11:33:05,351 Info:Lattice Sieving: New goal for number of relations is 4026444, currently have 3989423. Need to sieve more
+2026-11-11 11:33:05,351 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:33:05,351 Info:Filtering - Singleton removal: Total cpu/real time for purge: 29.95/13.4374
+2026-11-11 11:33:05,351 Info:Lattice Sieving: Starting
+2026-11-11 11:33:05,351 Info:Lattice Sieving: We want 4026444 relation(s)
+2026-11-11 11:33:05,354 Info:Lattice Sieving: Found 23009 relations in './data/dumps/h4/rsa100/c100.upload/c100.830000-835000.gz', total is now 4012432/4026444
+2026-11-11 11:33:05,362 Info:Lattice Sieving: Found 22529 relations in './data/dumps/h4/rsa100/c100.upload/c100.835000-840000.gz', total is now 4034961/4026444
+2026-11-11 11:33:05,368 Info:Lattice Sieving: Reached target of 4026444 relations, now have 4034961
+2026-11-11 11:33:05,368 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:33:05,368 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:33:05,368 Info:Lattice Sieving: Total number of relations: 4034961
+2026-11-11 11:33:05,368 Info:Lattice Sieving: Average J: 961.043 for 50841 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:33:05,368 Info:Lattice Sieving: Total time: 856.35s
+2026-11-11 11:33:05,368 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:33:05,369 Info:Filtering - Duplicate Removal, splitting pass: Splitting 2 new files
+2026-11-11 11:33:05,438 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 2015726, 1: 2019235
+2026-11-11 11:33:05,438 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:33:05,438 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.7/2.61692
+2026-11-11 11:33:05,438 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:33:05,438 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.7s
+2026-11-11 11:33:05,438 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:33:07,779 Info:Filtering - Duplicate Removal, removal pass: 1507995 unique relations remain on slice 0
+2026-11-11 11:33:10,147 Info:Filtering - Duplicate Removal, removal pass: 1509805 unique relations remain on slice 1
+2026-11-11 11:33:10,147 Info:Filtering - Duplicate Removal, removal pass: Of 45538 newly added relations 36653 were unique (ratio 0.804888)
+2026-11-11 11:33:10,148 Info:Filtering - Duplicate Removal, removal pass: 3017800 unique relations remain in total
+2026-11-11 11:33:10,148 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:33:10,148 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 49.48/27.3891
+2026-11-11 11:33:10,148 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:33:10,148 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 25.4s
+2026-11-11 11:33:10,148 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:33:10,149 Info:Filtering - Singleton removal: Reading 3017800 unique and 17248 free relations, total 3035048
+2026-11-11 11:33:14,619 Info:Filtering - Singleton removal: After purge, 718170 relations with 738353 primes remain with excess -20183
+2026-11-11 11:33:14,619 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:33:14,619 Info:Filtering - Singleton removal: Requesting 30178 additional relations
+2026-11-11 11:33:14,619 Info:Filtering - Duplicate Removal, removal pass: Got request for 3047978 (30178 additional) output relations, estimate 4072454 (37493 additional) needed in input
+2026-11-11 11:33:14,620 Info:Lattice Sieving: New goal for number of relations is 4072454, currently have 4034961. Need to sieve more
+2026-11-11 11:33:14,620 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:33:14,620 Info:Filtering - Singleton removal: Total cpu/real time for purge: 39.14/17.9009
+2026-11-11 11:33:14,620 Info:Lattice Sieving: Starting
+2026-11-11 11:33:14,620 Info:Lattice Sieving: We want 4072454 relation(s)
+2026-11-11 11:33:14,622 Info:Lattice Sieving: Found 22820 relations in './data/dumps/h4/rsa100/c100.upload/c100.840000-845000.gz', total is now 4057781/4072454
+2026-11-11 11:33:14,628 Info:Lattice Sieving: Found 23798 relations in './data/dumps/h4/rsa100/c100.upload/c100.845000-850000.gz', total is now 4081579/4072454
+2026-11-11 11:33:14,631 Info:Lattice Sieving: Reached target of 4072454 relations, now have 4081579
+2026-11-11 11:33:14,631 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:33:14,631 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:33:14,631 Info:Lattice Sieving: Total number of relations: 4081579
+2026-11-11 11:33:14,631 Info:Lattice Sieving: Average J: 960.939 for 51561 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:33:14,631 Info:Lattice Sieving: Total time: 868.23s
+2026-11-11 11:33:14,631 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:33:14,632 Info:Filtering - Duplicate Removal, splitting pass: Splitting 2 new files
+2026-11-11 11:33:14,684 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 2038967, 1: 2042612
+2026-11-11 11:33:14,685 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:33:14,685 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.79/2.66231
+2026-11-11 11:33:14,685 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:33:14,685 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.7s
+2026-11-11 11:33:14,685 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:33:16,708 Info:Filtering - Duplicate Removal, removal pass: 1526718 unique relations remain on slice 0
+2026-11-11 11:33:19,218 Info:Filtering - Duplicate Removal, removal pass: 1528699 unique relations remain on slice 1
+2026-11-11 11:33:19,219 Info:Filtering - Duplicate Removal, removal pass: Of 46618 newly added relations 37617 were unique (ratio 0.806920)
+2026-11-11 11:33:19,220 Info:Filtering - Duplicate Removal, removal pass: 3055417 unique relations remain in total
+2026-11-11 11:33:19,220 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:33:19,220 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 54.56/31.8997
+2026-11-11 11:33:19,220 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:33:19,220 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 29.4s
+2026-11-11 11:33:19,220 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:33:19,220 Info:Filtering - Singleton removal: Reading 3055417 unique and 17248 free relations, total 3072665
+2026-11-11 11:33:24,038 Info:Filtering - Singleton removal: After purge, 761361 relations with 773097 primes remain with excess -11736
+2026-11-11 11:33:24,038 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:33:24,038 Info:Filtering - Singleton removal: Requesting 30554 additional relations
+2026-11-11 11:33:24,038 Info:Filtering - Duplicate Removal, removal pass: Got request for 3085971 (30554 additional) output relations, estimate 4119444 (37865 additional) needed in input
+2026-11-11 11:33:24,039 Info:Lattice Sieving: New goal for number of relations is 4119444, currently have 4081579. Need to sieve more
+2026-11-11 11:33:24,039 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:33:24,039 Info:Filtering - Singleton removal: Total cpu/real time for purge: 48.9/22.7099
+2026-11-11 11:33:24,039 Info:Lattice Sieving: Starting
+2026-11-11 11:33:24,040 Info:Lattice Sieving: We want 4119444 relation(s)
+2026-11-11 11:33:24,043 Info:Lattice Sieving: Found 21782 relations in './data/dumps/h4/rsa100/c100.upload/c100.850000-855000.gz', total is now 4103361/4119444
+2026-11-11 11:33:24,048 Info:Lattice Sieving: Found 25721 relations in './data/dumps/h4/rsa100/c100.upload/c100.855000-860000.gz', total is now 4129082/4119444
+2026-11-11 11:33:24,051 Info:Lattice Sieving: Reached target of 4119444 relations, now have 4129082
+2026-11-11 11:33:24,051 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:33:24,051 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:33:24,051 Info:Lattice Sieving: Total number of relations: 4129082
+2026-11-11 11:33:24,051 Info:Lattice Sieving: Average J: 960.834 for 52295 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:33:24,051 Info:Lattice Sieving: Total time: 877.94s
+2026-11-11 11:33:24,052 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:33:24,052 Info:Filtering - Duplicate Removal, splitting pass: Splitting 2 new files
+2026-11-11 11:33:24,104 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 2062800, 1: 2066282
+2026-11-11 11:33:24,104 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:33:24,104 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.88/2.70796
+2026-11-11 11:33:24,104 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:33:24,104 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.7s
+2026-11-11 11:33:24,104 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:33:26,405 Info:Filtering - Duplicate Removal, removal pass: 1545887 unique relations remain on slice 0
+2026-11-11 11:33:28,678 Info:Filtering - Duplicate Removal, removal pass: 1547670 unique relations remain on slice 1
+2026-11-11 11:33:28,679 Info:Filtering - Duplicate Removal, removal pass: Of 47503 newly added relations 38140 were unique (ratio 0.802897)
+2026-11-11 11:33:28,680 Info:Filtering - Duplicate Removal, removal pass: 3093557 unique relations remain in total
+2026-11-11 11:33:28,680 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:33:28,680 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 59.43/36.4531
+2026-11-11 11:33:28,680 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:33:28,680 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 33.6s
+2026-11-11 11:33:28,680 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:33:28,681 Info:Filtering - Singleton removal: Reading 3093557 unique and 17248 free relations, total 3110805
+2026-11-11 11:33:32,385 Info:Filtering - Singleton removal: After purge, 806088 relations with 808913 primes remain with excess -2825
+2026-11-11 11:33:32,385 Info:Filtering - Singleton removal: Not enough relations
+2026-11-11 11:33:32,385 Info:Filtering - Singleton removal: Requesting 30935 additional relations
+2026-11-11 11:33:32,385 Info:Filtering - Duplicate Removal, removal pass: Got request for 3124492 (30935 additional) output relations, estimate 4167611 (38529 additional) needed in input
+2026-11-11 11:33:32,386 Info:Lattice Sieving: New goal for number of relations is 4167611, currently have 4129082. Need to sieve more
+2026-11-11 11:33:32,386 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:33:32,386 Info:Filtering - Singleton removal: Total cpu/real time for purge: 56.19/26.4069
+2026-11-11 11:33:32,386 Info:Lattice Sieving: Starting
+2026-11-11 11:33:32,386 Info:Lattice Sieving: We want 4167611 relation(s)
+2026-11-11 11:33:32,387 Info:Lattice Sieving: Found 24935 relations in './data/dumps/h4/rsa100/c100.upload/c100.860000-865000.gz', total is now 4154017/4167611
+2026-11-11 11:33:32,392 Info:Lattice Sieving: Found 23490 relations in './data/dumps/h4/rsa100/c100.upload/c100.865000-870000.gz', total is now 4177507/4167611
+2026-11-11 11:33:32,394 Info:Lattice Sieving: Reached target of 4167611 relations, now have 4177507
+2026-11-11 11:33:32,394 Info:Complete Factorization / Discrete logarithm / Class group: Lattice Sieving
+2026-11-11 11:33:32,394 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:33:32,394 Info:Lattice Sieving: Total number of relations: 4177507
+2026-11-11 11:33:32,394 Info:Lattice Sieving: Average J: 960.69 for 53046 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:33:32,394 Info:Lattice Sieving: Total time: 887.88s
+2026-11-11 11:33:32,394 Info:Filtering - Duplicate Removal, splitting pass: Starting
+2026-11-11 11:33:32,395 Info:Filtering - Duplicate Removal, splitting pass: Splitting 2 new files
+2026-11-11 11:33:32,431 Info:Filtering - Duplicate Removal, splitting pass: Relations per slice: 0: 2086948, 1: 2090559
+2026-11-11 11:33:32,431 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, splitting pass
+2026-11-11 11:33:32,431 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.94/2.73925
+2026-11-11 11:33:32,431 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:33:32,431 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.7s
+2026-11-11 11:33:32,431 Info:Filtering - Duplicate Removal, removal pass: Starting
+2026-11-11 11:33:33,927 Info:Filtering - Duplicate Removal, removal pass: 1565282 unique relations remain on slice 0
+2026-11-11 11:33:35,421 Info:Filtering - Duplicate Removal, removal pass: 1567134 unique relations remain on slice 1
+2026-11-11 11:33:35,421 Info:Filtering - Duplicate Removal, removal pass: Of 48425 newly added relations 38859 were unique (ratio 0.802457)
+2026-11-11 11:33:35,421 Info:Filtering - Duplicate Removal, removal pass: 3132416 unique relations remain in total
+2026-11-11 11:33:35,421 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Duplicate Removal, removal pass
+2026-11-11 11:33:35,422 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 62.55/39.4305
+2026-11-11 11:33:35,422 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:33:35,422 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 36.199999999999996s
+2026-11-11 11:33:35,422 Info:Filtering - Singleton removal: Starting
+2026-11-11 11:33:35,422 Info:Filtering - Singleton removal: Reading 3132416 unique and 17248 free relations, total 3149664
+2026-11-11 11:33:40,624 Info:Filtering - Singleton removal: After purge, 749658 relations with 749508 primes remain with weight 626705972 and excess 150
+2026-11-11 11:33:40,624 Info:Filtering - Singleton removal: Have enough relations
+2026-11-11 11:33:40,624 Info:Lattice Sieving: Cancelling remaining workunits
+2026-11-11 11:33:40,650 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Singleton removal
+2026-11-11 11:33:40,650 Info:Filtering - Singleton removal: Total cpu/real time for purge: 65.85/31.6052
+2026-11-11 11:33:40,650 Info:Filtering - Merging: Starting
+2026-11-11 11:33:43,466 Info:Filtering - Merging: Merged matrix has 174665 rows and total weight 15229755 (87.2 entries per row on average)
+2026-11-11 11:33:45,122 Info:Complete Factorization / Discrete logarithm / Class group: Filtering - Merging
+2026-11-11 11:33:45,122 Info:Filtering - Merging: Total cpu/real time for merge: 2.74/2.81214
+2026-11-11 11:33:45,122 Info:Filtering - Merging: Total cpu/real time for replay: 1.61/1.65184
+2026-11-11 11:33:45,122 Info:Linear Algebra: Starting
+2026-11-11 11:33:55,675 Info:Linear Algebra: krylov: N=2000 ; ETA (N=6000): Wed Nov 11 11:34:00 2026 [0.001 s/iter]
+2026-11-11 11:33:58,385 Info:Linear Algebra: krylov: N=4000 ; ETA (N=6000): Wed Nov 11 11:34:00 2026 [0.001 s/iter]
+2026-11-11 11:34:01,258 Info:Linear Algebra: krylov: N=6000 ; ETA (N=6000): Wed Nov 11 11:34:01 2026 [0.001 s/iter]
+2026-11-11 11:34:01,334 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 11:34:06,341 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 11:34:11,347 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 11:34:16,882 Info:Linear Algebra: lingen ETA: not available yet
+2026-11-11 11:34:19,541 Info:Linear Algebra: lingen ETA: Wed Nov 11 11:34:19 2026
+2026-11-11 11:34:24,245 Info:Linear Algebra: mksol: N=2000 ; ETA (N=4000): Wed Nov 11 11:34:28 2026 [0.002 s/iter]
+2026-11-11 11:34:25,757 Info:Linear Algebra: mksol: N=2728 ; ETA (N=4000): Wed Nov 11 11:34:27 2026 [0.002 s/iter]
+2026-11-11 11:34:25,846 Info:Complete Factorization / Discrete logarithm / Class group: Linear Algebra
+2026-11-11 11:34:25,846 Info:Linear Algebra: Total cpu/real time for bwc: 185.7/40.62
+2026-11-11 11:34:25,846 Info:Linear Algebra: Aggregate statistics:
+2026-11-11 11:34:25,846 Info:Linear Algebra: Krylov: CPU time 81.38, WCT time 8.82, iteration CPU time 0, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (6000 iterations)
+2026-11-11 11:34:25,846 Info:Linear Algebra: Lingen CPU time 18.21, WCT time 18.27
+2026-11-11 11:34:25,846 Info:Linear Algebra: Mksol: CPU time 54.25,  WCT time 6.21, iteration CPU time 0, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (4000 iterations)
+2026-11-11 11:34:25,846 Info:Quadratic Characters: Starting
+2026-11-11 11:34:33,594 Info:Complete Factorization / Discrete logarithm / Class group: Quadratic Characters
+2026-11-11 11:34:33,594 Info:Quadratic Characters: Total cpu/real time for characters: 5.97/7.74386
+2026-11-11 11:34:33,594 Info:Square Root: Starting
+2026-11-11 11:34:33,595 Info:Square Root: Creating file of (a,b) values
+2026-11-11 11:34:44,962 Info:Square Root: finished
+2026-11-11 11:34:44,962 Info:Square Root: Factors: 37975227936943673922808872755445627854565536638199 40094690950920881030683735292761468389214899724061
+2026-11-11 11:34:44,962 Info:Complete Factorization / Discrete logarithm / Class group: Square Root
+2026-11-11 11:34:44,962 Info:Square Root: Total cpu/real time for sqrt: 12.12/11.3524
+2026-11-11 11:34:44,963 Info:Generate Free Relations: Total cpu/real time for freerel: 26.43/26.5949
+2026-11-11 11:34:44,963 Info:Linear Algebra: Total cpu/real time for bwc: 185.7/40.62
+2026-11-11 11:34:44,963 Info:Linear Algebra: Aggregate statistics:
+2026-11-11 11:34:44,963 Info:Linear Algebra: Krylov: CPU time 81.38, WCT time 8.82, iteration CPU time 0, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (6000 iterations)
+2026-11-11 11:34:44,963 Info:Linear Algebra: Lingen CPU time 18.21, WCT time 18.27
+2026-11-11 11:34:44,963 Info:Linear Algebra: Mksol: CPU time 54.25,  WCT time 6.21, iteration CPU time 0, COMM 0.0, cpu-wait 0.0, comm-wait 0.0 (4000 iterations)
+2026-11-11 11:34:44,963 Info:Filtering - Duplicate Removal, removal pass: Total cpu/real time for dup2: 62.55/39.4305
+2026-11-11 11:34:44,963 Info:Filtering - Duplicate Removal, removal pass: Aggregate statistics:
+2026-11-11 11:34:44,963 Info:Filtering - Duplicate Removal, removal pass: CPU time for dup2: 36.199999999999996s
+2026-11-11 11:34:44,963 Info:Filtering - Duplicate Removal, splitting pass: Total cpu/real time for dup1: 6.94/2.73925
+2026-11-11 11:34:44,963 Info:Filtering - Duplicate Removal, splitting pass: Aggregate statistics:
+2026-11-11 11:34:44,963 Info:Filtering - Duplicate Removal, splitting pass: CPU time for dup1: 2.7s
+2026-11-11 11:34:44,963 Info:Generate Factor Base: Total cpu/real time for makefb: 0.53/0.0537522
+2026-11-11 11:34:44,963 Info:Square Root: Total cpu/real time for sqrt: 12.12/11.3524
+2026-11-11 11:34:44,963 Info:Filtering - Merging: Total cpu/real time for merge: 2.74/2.81214
+2026-11-11 11:34:44,963 Info:Filtering - Merging: Total cpu/real time for replay: 1.61/1.65184
+2026-11-11 11:34:44,963 Info:Polynomial Selection (root optimized): Aggregate statistics:
+2026-11-11 11:34:44,963 Info:Polynomial Selection (root optimized): Total time: 22.09
+2026-11-11 11:34:44,963 Info:Polynomial Selection (root optimized): Rootsieve time: 0
+2026-11-11 11:34:44,963 Info:Polynomial Selection (size optimized): Aggregate statistics:
+2026-11-11 11:34:44,963 Info:Polynomial Selection (size optimized): potential collisions: 4853.36
+2026-11-11 11:34:44,963 Info:Polynomial Selection (size optimized): raw lognorm (nr/min/av/max/std): 4520/27.840/34.926/41.200/1.155
+2026-11-11 11:34:44,963 Info:Polynomial Selection (size optimized): optimized lognorm (nr/min/av/max/std): 3511/28.020/31.066/35.780/1.198
+2026-11-11 11:34:44,963 Info:Polynomial Selection (size optimized): Total time: 95.36
+2026-11-11 11:34:44,963 Info:Quadratic Characters: Total cpu/real time for characters: 5.97/7.74386
+2026-11-11 11:34:44,963 Info:Filtering - Singleton removal: Total cpu/real time for purge: 65.85/31.6052
+2026-11-11 11:34:44,963 Info:Lattice Sieving: Aggregate statistics:
+2026-11-11 11:34:44,963 Info:Lattice Sieving: Total number of relations: 4177507
+2026-11-11 11:34:44,963 Info:Lattice Sieving: Average J: 960.69 for 53046 special-q, max bucket fill -bkmult 1.0,1s:1.401000
+2026-11-11 11:34:44,963 Info:Lattice Sieving: Total time: 887.88s
+2026-11-11 11:34:45,123 Info:Complete Factorization / Discrete logarithm / Class group: Total cpu/elapsed time for entire Complete Factorization 2101.29/270.311

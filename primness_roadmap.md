@@ -2,10 +2,10 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-10 19:30 EST
-- **Version**: 1.27
+- **Last Modified**: 2026-11-11 14:40 EST
+- **Version**: 1.28
 - **Schema**: current-state/1
-- **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
+- **Tags**: factoring, GNFS, obstacle-D, obstacle-H, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
 - **Repository**: https://github.com/reh3376/primness (public; development on `primness_dev01` only; PRs required to `main`)
 
@@ -60,29 +60,21 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-10 19:30 EST:
+As of 2026-11-11 14:40 EST:
 
-I am developing on `primness_dev01`. Pull request 28 is merged, and this change follows it. It closes the D measurements and starts Obstacle H.
+I am developing on `primness_dev01`. Pull request 29 is merged, and this change follows it. It measures the laptop's one-hour reach.
 
-I closed the D measurements and adopted the D1 verdict, which rejects the claim (`docs/d1_falsifiable_prediction.md`). `docs/obstacle_d_verdict.md` records the verdict on Obstacle D. D1, D5 and D2 part 1 were each rejected under a criterion written before measuring.
+Obstacle D is closed (`docs/obstacle_d_verdict.md`). The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more. Obstacle H is forced on the primary hardware envelope:
+- H1: relation collection for RSA-200 takes 3,896 laptop-hours on the CPU (`docs/h1_sieving_cost.md`).
+- H2: the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication. That still leaves at least 189 laptop-hours with the GPU (`docs/h2_gpu_kernels.md`).
 
-A closing pass over all the data looked for anything those criteria could miss (`scripts/d_checks_run_all.sh`, binary `d-checks`, `data/results/d_checks.md`). It found nothing:
-- The 2,160 per-instance statistics show no shift or tail of the kind a hidden excess would leave.
-- Smoothness at fixed cofactor does not depend on the small-prime part, the other side, or (a, b) mod 2 or 3.
-- Neighbouring values are not smooth together more often than independence says.
-- The prediction holds up to u ≈ 5, which covers the u at which a 200-digit run sieves.
-- The trend in digits allows at most +0.47% at 200 digits at 2^28 (95% upper bound).
-- Five toy quartics with Galois groups A4, S4, C4, D4 and V4 follow the model whatever their group.
+H4 measures the other end: the largest number this laptop factors completely in one hour. I wrote the prediction and committed it before the first measured run (`docs/h4_falsifiable_prediction.md`). H1's cost, carried down by L_N[1/3, 1.923], puts the reach at 132 digits, and H4 holds within 5 digits of that. CADO-NFS as shipped factored RSA-100, RSA-110, RSA-120 and RSA-130 end to end on 18 threads, each with its default parameter file (`scripts/h4_reach.sh`). The runs took 4:31, 12:38, 41:00 and 2:08:15. Each printed the published factors (`docs/h4_one_hour_reach.md`, `data/results/h4_reach.md`).
 
-The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more. What is left is smaller values, another source of relations, or more throughput.
+The one-hour reach is 123.3 digits, so H4 is rejected. Below 200 digits, the L-scaling makes the cost fall too fast. From 100 to 130 digits the time doubles every 6 to 7 digits, where L_N[1/3, 1.923] says every 4 to 5. The measured times are 10 down to 2.8 times the scaled ones. The constant that joins one hour at 123.3 digits to 4,300 to 4,700 hours at 200 digits is 1.67 to 1.68. The figures above 200 digits are restated with it in the open questions. Measured in the success criterion's units, the gap is 77 digits, or 4,300 to 4,700 times the laptop's hour.
 
-Obstacle H is forced in the sense the README gives it. Its first measurement, H1, was written down and committed before the run (`docs/h1_falsifiable_prediction.md`). It is the relation collection for RSA-200 on this laptop, with CADO-NFS's own 200-digit polynomial and parameters, sampled over six special-q ranges and integrated to CADO-NFS's relation target. It takes 3,896 laptop-hours (`docs/h1_sieving_cost.md`, `data/results/h1_cost.md`). H1 holds: the estimate scaled from the records was 6,300, and the measurement is 0.62 of it. Sieving takes 50 to 64 percent of the time and cofactorization 25 to 37 percent, so neither alone decides the speed. The gap at 200 digits is about 3,900 times for the relations, or 4,300 to 4,700 times with the linear algebra.
+Sieving is 60 to 77 percent of the wall time, rising with size, and the linear algebra is 13 to 17 percent. These runs ran at sustained clocks, lower than in H1's 20-second samples. During sieving the CPU drew 37 to 44 W, against 62 to 67 W in H1's samples. Measured at sustained clocks, H1's cost would be about 18 percent higher. That moves the predicted reach by about a digit and does not change the verdict.
 
-H2 asked what the laptop's GPU adds, since the success criterion counts it. I wrote the prediction and committed it before measuring (`docs/h2_falsifiable_prediction.md`). Both kernels exist twice, in Rust for the 18 CPU cores (`h2-cpu`) and in Metal for the 40 GPU cores (`tools/h2_gpu/main.swift`). The two sides do provably the same work: the sieve checksums are identical, and all 18,432 shared Montgomery chains agree.
-
-The GPU is 8.2 times as fast as the CPU on the bucket sieve, and 19.6 times on Montgomery multiplication modulo 96-bit numbers, which is the core of ECM. My limit was 10, so H2 is rejected on the multiplication (`docs/h2_gpu_kernels.md`). The bound the protocol fixes for that case still leaves at least 189 laptop-hours for the relations of a 200-digit number with the GPU. Spreading the two ratios over H1's time shares gives 350 to 755 hours. Obstacle H is forced on the primary hardware envelope.
-
-Next is H3: what a machine built for the two kernels must do per second to collect 200-digit relations in one hour. That is about 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations, sized against this laptop's measured rates and against published sieving designs. The linear algebra at 200 digits and the laptop's own one-hour reach with tuned CADO-NFS settings follow. New mathematics enters when there is a construction the harness can price. The required status check on the main ruleset is still to be applied in the repository settings.
+Next is the linear algebra at 200 digits, which H3's rates also need. After that comes the one-hour reach with tuned settings: the linear algebra's threads, the relation target, polynomial selection effort and the machine's power mode. H3 is not started.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -94,7 +86,8 @@ Full history in `context_convo_notes/current_state_history.md`.
 - Why do the rational side's sectors scatter less than counting noise when its tiles do not? The χ² per sector is 0.79 to 0.87 at 2^16 through 2^28, and 0.35 for the largest sectors of d1-02 (`docs/d5_smooth_clusters.md`). The closing checks add that D5's held-out lifts are negative on both sides and that the rational side's D1 χ² is 3.3 on ten at 2^28. Smooth values are slightly anti-clustered. The likely reason is that a region holds an almost fixed number of each prime's multiples, since they form a lattice.
 - The five toy quartics sit +0.10% ± 0.03% above the model at 2^24 and 2^28, whatever their Galois group, while the forty NFS polynomials do not. Is that the neglected second-order term, or roots of small height that tiny coefficients produce? It is too small to matter for the verdict.
 - How far do tuned implementations move H2's ratios (8.2 for the sieve, 19.6 for the multiplication)? A tuned 96-bit multiplication on the CPU, a full ECM on the GPU, and a two-dimensional lattice siever with small-prime sieving and survivor rescans would each change them. None would move the bound of 189 hours by its own size.
-- 240 to 260 digits, the range of the latest records, is a stretch beyond the 200-digit target. At H1's measured rate it needs about 3 × 10^5, 8 × 10^5 and 2 × 10^6 laptop-hours at 240, 250 and 260 digits. By L_N[1/3] that calls for a constant below the special number field sieve's 1.526 on general numbers.
+- 240 to 260 digits, the range of the latest records, is a stretch beyond the 200-digit target. From H1's 200-digit cost, L_N[1/3, 1.923] gives about 3 × 10^5, 8 × 10^5 and 2 × 10^6 laptop-hours at 240, 250 and 260 digits. H4 measured an effective constant of 1.67 to 1.68 between the laptop's one-hour reach and 200 digits. With that constant the figures are 1.6–1.8 × 10^5, 3.7–4.2 × 10^5 and 8.4–9.7 × 10^5. The constant rose with size across everything measured, so the second set is the lower one. By L_N[1/3] that calls for a constant below the special number field sieve's 1.526 on general numbers.
+- How much slower is a sustained 200-digit run than H1's samples? H1's 20-second samples ran with the CPU at 62 to 67 W. H4's sustained sieving drew 37 to 44 W, with macmon's 6-core tier at 2.88 GHz (`docs/h4_one_hour_reach.md`). By the clocks a sustained run is about 18 percent slower, which would put a complete 200-digit factorization at about 5,100 to 5,600 laptop-hours. A sustained run over one special-q range would measure it.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*

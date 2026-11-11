@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-10 19:30 EST (code map, next work; the sections below them keep their 2026-11-09 facts)
+**Last updated:** 2026-11-11 14:40 EST (code map, next work; the sections below them keep their 2026-11-09 facts)
 
 ## What this project is
 
@@ -72,6 +72,7 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 | [src/bin/d_checks.rs](../src/bin/d_checks.rs), [scripts/d_checks.py](../scripts/d_checks.py), [scripts/d_checks_run_all.sh](../scripts/d_checks_run_all.sh) | Obstacle D's closing checks: binary `d-checks` (per dump column, sums by u, small part, the other side, residues mod 2 and 3, and neighbouring pairs, from a `d-checks-manifest/1`); the pooled statistics of D1, D2 part 1 and D5, the per-value tests, the trend in digits and the toy quartics (`data/instruments/galois/`); writes `data/results/d_checks.{md,csv}`. |
 | [scripts/h1_test_sieve.sh](../scripts/h1_test_sieve.sh), [scripts/h1_cost.py](../scripts/h1_cost.py) | H1: CADO-NFS `las -random-sample` on RSA-200 with its own c200 polynomial and parameters over six special-q ranges under `hw-sample`, integrated to the relation target; writes `data/results/h1_cost.{md,csv}`. |
 | [src/bin/h2_cpu.rs](../src/bin/h2_cpu.rs), [tools/h2_gpu/main.swift](../tools/h2_gpu/main.swift), [scripts/h2_run.sh](../scripts/h2_run.sh), [scripts/h2_summary.py](../scripts/h2_summary.py) | H2: binary `h2-cpu` (shared inputs with `--prepare`; the CPU bucket sieve, 96-bit Montgomery chains and copy with `--run`), the same kernels in Metal (`swiftc -O`), both under `hw-sample`, cross-checked; writes `data/results/h2_kernels.{md,csv}`. |
+| [scripts/h4_reach.sh](../scripts/h4_reach.sh), [scripts/h4_summary.py](../scripts/h4_summary.py) | H4: RSA-100, RSA-110, ... factored end to end by `cado-nfs.py N server.address=localhost -t 18` (the default parameter file, nothing overridden) under `hw-sample`, ascending until a run takes more than one hour; the factors checked against the published ones, the phases from the log's timestamps, the reach interpolated in ln T; writes `data/results/h4_reach.{md,csv}`. |
 | [src/bin/d1_tail.rs](../src/bin/d1_tail.rs), [scripts/d1_conditional.py](../scripts/d1_conditional.py) | Binary `d1-tail` (projective root counts at every prime in (2000, B], summed by bin of ln p, `root-tail/1`); the comparison with the conditional baseline, the α tail and the exact first-order term. |
 | [scripts/d1_run_all.sh](../scripts/d1_run_all.sh), [scripts/d1_summary.py](../scripts/d1_summary.py), [scripts/d1_report.py](../scripts/d1_report.py) | All instances end to end; the criterion across instances; the per-run report. |
 | [src/hardware.rs](../src/hardware.rs) | `hardware-sample/1` telemetry: macmon + ioreg + sysctl, JSONL trace, Postgres rows, summary. See [docs/hardware_telemetry.md](hardware_telemetry.md). |
@@ -141,10 +142,11 @@ The bench container is `primness-bench`, image built from [Dockerfile](../Docker
 Obstacle D's measurements are closed ([docs/obstacle_d_verdict.md](obstacle_d_verdict.md)), and the D1 verdict is adopted. Obstacle H is forced on the primary hardware envelope:
 - H1 ([docs/h1_sieving_cost.md](h1_sieving_cost.md)): CADO-NFS takes 3,896 laptop-hours to collect the relations for RSA-200 on the CPU.
 - H2 ([docs/h2_gpu_kernels.md](h2_gpu_kernels.md)): the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication, which leaves at least 189 laptop-hours with the GPU.
+- H4 ([docs/h4_one_hour_reach.md](h4_one_hour_reach.md)): with CADO-NFS as shipped, the laptop factors a 123.3-digit number in one hour (RSA-100 to RSA-130 in 4:31 to 2:08:15). The prediction was 132, so H4 is rejected. The effective constant from the reach to 200 digits is 1.67 to 1.68. The runs ran at sustained clocks, below those of H1's 20-second samples.
 
-1. H3: specify what a machine built for the two kernels must do per second to collect 200-digit relations in one hour: about 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations. Size it against this laptop's measured rates and against published sieving designs (TWIRL, Shamir and Tromer 2003). Write the prediction first, as for every claim here.
-2. Measure the linear algebra at 200 digits: the matrix size from CADO-NFS's filtering of a sampled relation set, and the cost of block Wiedemann on this machine.
-3. Measure the laptop's own one-hour reach with tuned CADO-NFS settings (relation target, free relations, threads in linear algebra).
+1. Measure the linear algebra at 200 digits: the matrix size, and the cost of block Wiedemann on this machine. H3's rates need it too. Write the prediction first, as for every claim here.
+2. Measure the one-hour reach with tuned settings: the linear algebra's threads, the relation target, polynomial selection effort and the machine's power mode. Use `scripts/h4_reach.sh` with the changes named in a new prediction.
+3. H3: specify what a machine built for the two kernels must do per second to collect 200-digit relations in one hour: about 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations. Size it against this laptop's measured rates and against published sieving designs (TWIRL, Shamir and Tromer 2003). Not started.
 4. New mathematics only as a construction the harness can price from its value sizes and root counts ([docs/obstacle_d_verdict.md](obstacle_d_verdict.md) sections 4 and 5).
 
 ## Handoff checklist

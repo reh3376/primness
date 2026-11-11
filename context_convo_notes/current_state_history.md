@@ -2,12 +2,21 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-10 19:30 EST
-- **Version**: 1.22
+- **Last Modified**: 2026-11-11 14:40 EST
+- **Version**: 1.23
 - **Tags**: current-state, history, roadmap, obstacle-D, obstacle-H
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-11 14:40 EST
+- Pull request 29 is merged. This change measures the laptop's one-hour reach.
+- H4 was pre-registered in 4660e12. H1's cost, carried down by L_N[1/3, 1.923], puts the reach at 132 digits, and H4 holds within ±5 digits.
+- CADO-NFS as shipped (18 threads, default parameter files, work server on localhost) factored RSA-100, RSA-110, RSA-120 and RSA-130 in 4:31, 12:38, 41:00 and 2:08:15, each time with the published factors.
+- The reach is 123.3 digits, so H4 is rejected. The time doubles every 5.9 to 6.7 digits, against L's 4.3 to 4.8.
+- The effective constant from the reach to 200 digits is 1.67 to 1.68. The 240-to-260-digit figures are restated with it: 1.6–1.8 × 10^5, 3.7–4.2 × 10^5 and 8.4–9.7 × 10^5 laptop-hours, beside 2.9 × 10^5, 7.6 × 10^5 and 2.0 × 10^6 with 1.923.
+- Sieving is 60–77% of the time and the linear algebra 13–17%. The runs ran at sustained clocks below H1's 20-second samples (37–44 W against 62–67 W). That makes H1's cost about 18% low by the clocks, and the verdict does not change.
+- Next: the linear algebra at 200 digits, then the tuned one-hour reach. H3 is not started.
 
 ### 2026-11-10 19:30 EST
 - Pull request 28 is merged. This change closes the D measurements and starts Obstacle H.
