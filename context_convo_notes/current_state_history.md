@@ -2,12 +2,25 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-10 16:45 EST
-- **Version**: 1.20
-- **Tags**: current-state, history, roadmap, obstacle-D
+- **Last Modified**: 2026-11-10 19:30 EST
+- **Version**: 1.21
+- **Tags**: current-state, history, roadmap, obstacle-D, obstacle-H
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-10 19:30 EST
+- Pull request 28 is merged. This change closes the D measurements and starts Obstacle H.
+- The D1 verdict is adopted, and the claim is rejected. `docs/obstacle_d_verdict.md` records the verdict on D: D1, D5 and D2 part 1 were rejected under criteria written first; D2's other forms, D3 and D4 are bounded by the literature and by the share of linear algebra.
+- Closing checks (`d-checks`, `scripts/d_checks.py`, `data/results/d_checks.md`) found nothing left over:
+  - no shift or tail in the 2,160 pooled statistics;
+  - no dependence on the small-prime part, the other side, or (a, b) mod 2 or 3;
+  - no excess of smooth neighbours;
+  - the model calibrated up to u ≈ 5;
+  - +0.47% at most at 200 digits at 2^28;
+  - the A4, S4, C4, D4 and V4 quartics follow the model whatever their group.
+- H1 was pre-registered in c6dd75a. Sieving RSA-200 with CADO-NFS's own c200 polynomial and parameters on this laptop takes 3,896 laptop-hours (0.62 of the 6,300 scaled from the records), so H1 holds. Sieving is 50–64% of the time and cofactorization 25–37%.
+- Next: H2 (what the GPU adds, and the rates one hour needs), then linear algebra at 200 digits and the laptop's tuned one-hour reach.
 
 ### 2026-11-10 16:45 EST
 - Pull request 28 (D5, the D1 verdict draft) is still open; this change follows it on `primness_dev01`.

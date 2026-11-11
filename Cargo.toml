@@ -55,6 +55,10 @@ path = "src/bin/d2_fields.rs"
 name = "d2-joint"
 path = "src/bin/d2_joint.rs"
 
+[[bin]]
+name = "d-checks"
+path = "src/bin/d_checks.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1

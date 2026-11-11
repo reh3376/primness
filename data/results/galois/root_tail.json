@@ -1,0 +1,106 @@
+{
+  "bin_width": 0.010830424696249145,
+  "bound": 268435456,
+  "definition": "docs/baseline_calibration.md",
+  "duration_ms": 8029,
+  "from": 2000,
+  "method": "projective-root-count",
+  "polynomials": [
+    {
+      "algebraic": {
+        "alpha_tail": -0.02575394444274345,
+        "roots_per_prime": 0.9999699942722552
+      },
+      "degree": 4,
+      "instance": "a4",
+      "n_digits": 7,
+      "path": "data/instruments/galois/a4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.014781694238429737,
+        "roots_per_prime": 1.0000103892269185
+      },
+      "degree": 4,
+      "instance": "c4",
+      "n_digits": 7,
+      "path": "data/instruments/galois/c4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.06196713371435273,
+        "roots_per_prime": 0.9998196922328225
+      },
+      "degree": 4,
+      "instance": "d4",
+      "n_digits": 7,
+      "path": "data/instruments/galois/d4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.04445423636781115,
+        "roots_per_prime": 0.9999393733929165
+      },
+      "degree": 4,
+      "instance": "s4",
+      "n_digits": 7,
+      "path": "data/instruments/galois/s4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    },
+    {
+      "algebraic": {
+        "alpha_tail": 0.039896878398827405,
+        "roots_per_prime": 0.9998318585643455
+      },
+      "degree": 4,
+      "instance": "v4",
+      "n_digits": 7,
+      "path": "data/instruments/galois/v4/cado.poly",
+      "rational": {
+        "alpha_tail": 0.0004959821659539177,
+        "roots_per_prime": 1.0
+      }
+    }
+  ],
+  "primes": 14630540,
+  "schema_version": "root-tail/1",
+  "tables": [
+    {
+      "columns": [
+        "instance",
+        "side",
+        "bin",
+        "ln_p_lo",
+        "ln_p_hi",
+        "primes",
+        "mean_ln_p",
+        "roots",
+        "eta",
+        "eta_ln_p",
+        "eta_affine",
+        "eta_zero"
+      ],
+      "description": "per polynomial, side and bin of ln p over the primes in (from, bound]: the primes, the mean ln p, the sum of the projective root counts r_p, the sum of eta_p = (r_p p - p - 1)/(p^2 - 1), the sum of eta_p ln p, and the sum of eta_p^aff = (r_p^aff - 1)/(p - 1) over the affine roots alone, for a region whose b never reaches p, and the sum of 1/(p - 1) over the primes at which 0 is a root, which a region whose |a| never reaches p meets only at (0, 1)",
+      "name": "root_tail",
+      "path": "data/results/galois/root_tail.csv",
+      "rows": 10910
+    }
+  ],
+  "threads": 18,
+  "ts_ms": 1794355560244
+}

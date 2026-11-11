@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-10 16:45 EST
-- **Version**: 1.25
+- **Last Modified**: 2026-11-10 19:30 EST
+- **Version**: 1.26
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,17 +60,25 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-10 16:45 EST:
+As of 2026-11-10 19:30 EST:
 
-I am developing on `primness_dev01`. Pull request 28, which holds D5 and the draft D1 verdict, is still open, and this change follows it on the same branch. It tests the first part of D2, several number fields that share the rational side. That is the multiple number field sieve.
+I am developing on `primness_dev01`. Pull request 28 is merged, and this change follows it. It closes the D measurements and starts Obstacle H.
 
-I wrote the prediction before measuring (`docs/d2_falsifiable_prediction.md`). For each instance, three rotations f + v·g of the instrument polynomial join it and share its rational side G. Each rotation has 0 < |v| ≤ 16, is chosen by mean size plus α, and is certified irreducible. Every value gets the smooth probability D1 ended with. The claim was that values the NFS combines are jointly smooth more often than the product of their probabilities says: G with any field, or two fields, at the same (a, b). The control pairs each instance's fields with the next instance's.
+I closed the D measurements and adopted the D1 verdict, which rejects the claim (`docs/d1_falsifiable_prediction.md`). `docs/obstacle_d_verdict.md` records the verdict on Obstacle D. D1, D5 and D2 part 1 were each rejected under a criterion written before measuring.
 
-D2 part 1 is rejected. The largest criterion value is +1.4 errors, for two fields at 2^24. At 2^28 the joint excess is −0.01% ± 0.03% for G with a field and −0.02% ± 0.06% for two fields. The standard pair (F_0, G) of the ordinary NFS is −0.03% ± 0.05%. At 2^28 the four fields give 3.2 times the relations of one, exactly what their individual probabilities predict. That is the known MNFS gain, which lowers the constant and not the exponent.
+A closing pass over all the data looked for anything those criteria could miss (`scripts/d_checks_run_all.sh`, binary `d-checks`, `data/results/d_checks.md`). It found nothing:
+- The 2,160 per-instance statistics show no shift or tail of the kind a hidden excess would leave.
+- Smoothness at fixed cofactor does not depend on the small-prime part, the other side, or (a, b) mod 2 or 3.
+- Neighbouring values are not smooth together more often than independence says.
+- The prediction holds up to u ≈ 5, which covers the u at which a 200-digit run sieves.
+- The trend in digits allows at most +0.47% at 200 digits at 2^28 (95% upper bound).
+- Five toy quartics with Galois groups A4, S4, C4, D4 and V4 follow the model whatever their group.
 
-The thirty rotated fields were never root-optimized, yet they are as smooth as their sizes and root counts say (χ² 32.7 on thirty at 2^28). D1's closure therefore holds on forty polynomials. The method and result are in `docs/d2_multiple_fields.md`. The new tools are `d2-fields` and `d2-joint`, plus an irreducibility certificate in `src/fp.rs`.
+The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more. What is left is smaller values, another source of relations, or more throughput.
 
-The next step is mine. I need to decide on the D1 verdict draft. Then I choose among the other forms of D2 (a degree-5 or degree-6 field for the same N, or sieving in dimension 3), D3, D4, or a larger-scale check. The required status check on the main ruleset is still to be applied in the repository settings.
+Obstacle H is forced in the sense the README gives it. Its first measurement, H1, was written down and committed before the run (`docs/h1_falsifiable_prediction.md`). It is the relation collection for RSA-200 on this laptop, with CADO-NFS's own 200-digit polynomial and parameters, sampled over six special-q ranges and integrated to CADO-NFS's relation target. It takes 3,896 laptop-hours (`docs/h1_sieving_cost.md`, `data/results/h1_cost.md`). H1 holds: the estimate scaled from the records was 6,300, and the measurement is 0.62 of it. Sieving takes 50 to 64 percent of the time and cofactorization 25 to 37 percent, so neither alone decides the speed. The gap at 200 digits is about 3,900 times for the relations, or 4,300 to 4,700 times with the linear algebra.
+
+Next is H2. The laptop's GPU is part of the success criterion and has not been measured, so H2 measures what it adds to the two dominant kernels and states what a machine must do per second to collect 200-digit relations in an hour. The linear algebra at 200 digits and the laptop's own one-hour reach with tuned CADO-NFS settings follow. New mathematics enters when there is a construction the harness can price. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -78,9 +86,11 @@ Full history in `context_convo_notes/current_state_history.md`.
 
 ## open_questions
 
-- Does the closure hold at a larger scale? These are 40–80 digit numbers with B up to 2^28 and a region with b ≤ 1500. At the sizes the success criterion needs, the region reaches past the primes it sieves and the special roots of section 9 stop mattering, but the first-order term's convexity grows with u. One larger instance at the protocol's bounds would show whether the residual stays at the noise.
-- Why do the rational side's sectors scatter less than counting noise when its tiles do not? The χ² per sector is 0.79 to 0.87 at 2^16 through 2^28, and 0.35 for the largest sectors of d1-02 (`docs/d5_smooth_clusters.md`). Independent draws let the number of values each smaller prime divides vary, and a region fixes those numbers. The answer would also say how far counting noise overstates the noise of a whole region, and so D1's per-instance errors.
-- Does the spread of the α tail across polynomials follow the Galois group, as the toy quartics suggested for α alone (A4 least, V4 most)? It is now the whole of what a polynomial does beyond the small primes, so the question is about root statistics and no longer a candidate for D1.
+- Does the closure hold at a larger scale? These are 40–80 digit numbers with B up to 2^28 and a region with b ≤ 1500. The closing checks narrowed it (`docs/obstacle_d_verdict.md` section 2.3). The small bounds already put the values at the u of a 200-digit run, and the model holds there within the counting error. The trend in digits allows at most +0.47% at 200 digits at 2^28. What a larger instance would still test is a larger B at the same u.
+- Why do the rational side's sectors scatter less than counting noise when its tiles do not? The χ² per sector is 0.79 to 0.87 at 2^16 through 2^28, and 0.35 for the largest sectors of d1-02 (`docs/d5_smooth_clusters.md`). The closing checks add that D5's held-out lifts are negative on both sides and that the rational side's D1 χ² is 3.3 on ten at 2^28. Smooth values are slightly anti-clustered. The likely reason is that a region holds an almost fixed number of each prime's multiples, since they form a lattice.
+- The five toy quartics sit +0.10% ± 0.03% above the model at 2^24 and 2^28, whatever their Galois group, while the forty NFS polynomials do not. Is that the neglected second-order term, or roots of small height that tiny coefficients produce? It is too small to matter for the verdict.
+- What does the laptop's GPU add to the two kernels that dominate the 200-digit sieve, the bucket sieve and the ECM cofactorization? H1 measured the CPU alone (`docs/h1_sieving_cost.md`).
+- 240 to 260 digits, the range of the latest records, is a stretch beyond the 200-digit target. At H1's measured rate it needs about 3 × 10^5, 8 × 10^5 and 2 × 10^6 laptop-hours at 240, 250 and 260 digits. By L_N[1/3] that calls for a constant below the special number field sieve's 1.526 on general numbers.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 
 *Living base document for the Primness project.*

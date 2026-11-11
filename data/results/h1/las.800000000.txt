@@ -1,0 +1,935 @@
+# (692ecb7) /Users/reh3376/external/cado-nfs/build/Mac.lan/sieve/las -poly /Users/reh3376/external/cado-nfs/parameters/polynomials/c200.poly -fb1 data/dumps/h1/c200.roots1.gz -lim0 130000000 -lim1 100000000 -lpb0 32 -lpb1 33 -mfb0 85 -mfb1 96 -ncurves0 13 -ncurves1 13 -I 15 -sqside 1 -q0 800000000 -q1 840000000 -random-sample 40 -seed 1 -t 18 -T -out data/dumps/h1/rels.800000000.txt
+# Compiled with gcc Apple LLVM 17.0.0 (clang-1700.6.4.2)
+# Compilation flags (C) -std=c99 -W -Wall -O2 
+# Compilation flags (C++) -std=c++20 -O2 
+# las flags: BUCKET_SIEVE_POWERS LOGNORM_GUARD_BITS=1.00
+# Interpreting -I 15 as meaning -A 29
+# Warning: arguments nq and q1 will both limit the q range
+# Getting rid of sieve_shared_data structure [rss=3296.00 k]
+# Applying binding machine,1,18,nobind with hwloc disabled
+# 1 job(s) in parallel
+# 18 thread(s) per job
+# Expected memory usage per binding zone for the factor base: 218.35 MB
+# Expected memory usage per subjob for logI=15: 2.03 GB
+# Expected memory use per subjob (max reached for logI=15): 2.03 GB
+# Expected memory use for 1 binding zone(s) and 1 18-threaded jobs per zone, counting 3 MB of base footprint: 2.25 GB
+# Using default value powlim0=ULONG_MAX
+# Creating side-0 rational factor base for polynomial f0(x) = -326608761889029870766645733041173882197+84894790052771290621531*x
+# including primes up to 130000000 and prime powers up to 18446744073709551615 using threadpool of 18 threads.
+# Creating side-0 rational factor base took 0.9 (0.3 real)
+# Using default value powlim1=ULONG_MAX
+# Reading side-1 factor base from disk for polynomial f1(x) = -11444944679595557096042809594837099955039273400+365078708293754410773614764986917035850*x-8020499689154842110538290156559*x^2-264242959914910550470729*x^3+3613757731404540*x^4+30133200*x^5
+# Reading side-1 factor base from data/dumps/h1/c200.roots1.gz
+# Factor base successfully read, 3646309 primes, largest was 99999959
+# Reading side-1 factor base took 0.4 (0.5 real)
+#
+# Now sieving side-1 q=800871931; rho=707087135
+# Side 0: log2(maxnorm)=144.75 scale=1.75, logbase=1.485994 bound=166
+# Creating new slicing on side 0 for scale=1.75, thresholds={32768, 130000000, 130000000, 130000000}
+# side-0 part 0: 3589 primes, 3589 ideals, weight 3.3755
+# side-0 part 1: 7376159 primes, 7376159 ideals, weight 0.5868 [241 slices]
+# Side 1: log2(maxnorm)=207.10 scale=1.23, logbase=1.760917 bound=130
+# Creating new slicing on side 1 for scale=1.23, thresholds={32768, 100000000, 100000000, 100000000}
+# side-1 part 0: 2362 primes, 3713 ideals, weight 8.3239
+# side-1 part 1: 3643947 primes, 5757394 ideals, weight 0.57098 [157 slices]
+# Using default strategy for the cofactorization: ncurves0=13 ncurves1=13
+# Building/reading strategies took 0.0s
+# Sieving side-1 q=800871931; rho=707087135; a0=93784796; b0=-1; a1=238163155; b1=6; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1
+# Error: 1s buckets are full, worst is bucket 1930 on side 1 (slot 0): 1483 1410 1379 1399 1309 1395 1397 1408 1385 1410 1402 1347 1447 1353 1399 1421 1593* 1380 1429 1369 /1513
+# redoing side-1 q=800871931; rho=707087135 because 1s buckets are full
+# Fullest level-1s bucket on side 1 is #1930/0, wrote 1593/1513
+# Updating 1s bucket multiplier to 1.000*1593/1513*1.05, =1.106
+# Expected memory usage per binding zone for the factor base: 218.35 MB
+# Expected memory usage per subjob for logI=15: 2.23 GB
+# Expected memory use per subjob (max reached for logI=15): 2.23 GB
+# Expected memory use for 1 binding zone(s) and 1 18-threaded jobs per zone, counting 3 MB of base footprint: 2.44 GB
+#
+# Now sieving side-1 q=800871931; rho=707087135
+# Side 0: log2(maxnorm)=144.75 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.10 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=800871931; rho=707087135; a0=93784796; b0=-1; a1=238163155; b1=6; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=801794821; rho=294746895
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=206.32 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 349466 (ratio 6.51e-04)
+# survivors not_both_even: 349466
+# survivors not_both_multiples_of_p: 349466
+# survivors trial_divided_on_side[0]: 23860
+# survivors check_leftover_norm_on_side[0]: 23860 (6.8%)
+# survivors trial_divided_on_side[1]: 3780
+# survivors check_leftover_norm_on_side[1]: 3780 (15.8%)
+# survivors enter_cofactoring: 3780
+# survivors cofactored: 3035 (80.3%)
+# survivors smooth: 14
+# Checksums over sieve region: after all sieving: 0 0
+# 14 relation(s)
+# Time for side-1 q=800871931; rho=707087135: (0.5 elapsed) 7.34s [norm 0.01+0.0, sieving 4.5 (2.2+2.0 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.5]
+# Sieving side-1 q=801794821; rho=294746895; a0=-82445864; b0=-3; a1=212301031; b1=-2; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=802116187; rho=773393566
+# Side 0: log2(maxnorm)=144.16 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.81 scale=1.20, logbase=1.781797 bound=128
+# Creating new slicing on side 1 for scale=1.20, thresholds={32768, 100000000, 100000000, 100000000}
+# side-1 part 0: 2362 primes, 3713 ideals, weight 8.3239
+# side-1 part 1: 3643947 primes, 5757394 ideals, weight 0.57098 [151 slices]
+# Sieving side-1 q=802116187; rho=773393566; a0=28722621; b0=-1; a1=629780461; b1=6; I=32768; J=9992;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 536870912
+# survivors after_sieve: 394725 (ratio 7.35e-04)
+# survivors not_both_even: 394725
+# survivors not_both_multiples_of_p: 394725
+# survivors trial_divided_on_side[0]: 27113
+# survivors check_leftover_norm_on_side[0]: 27113 (6.9%)
+# survivors trial_divided_on_side[1]: 4165
+# survivors check_leftover_norm_on_side[1]: 4165 (15.4%)
+# survivors enter_cofactoring: 4165
+# survivors cofactored: 3321 (79.7%)
+# survivors smooth: 16
+# Checksums over sieve region: after all sieving: 0 0
+# 16 relation(s)
+# Time for side-1 q=801794821; rho=294746895: (0.4 elapsed) 7.01s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# survivors before_sieve: 327417856
+# survivors after_sieve: 239103 (ratio 7.30e-04)
+# survivors not_both_even: 239103
+# survivors not_both_multiples_of_p: 239103
+# survivors trial_divided_on_side[0]: 16461
+# survivors check_leftover_norm_on_side[0]: 16461 (6.9%)
+# survivors trial_divided_on_side[1]: 2432
+# survivors check_leftover_norm_on_side[1]: 2432 (14.8%)
+# survivors enter_cofactoring: 2432
+# survivors cofactored: 1931 (79.4%)
+# survivors smooth: 8
+# Checksums over sieve region: after all sieving: 0 0
+# 8 relation(s)
+# Time for side-1 q=802116187; rho=773393566: (0.3 elapsed) 4.61s [norm 0.01+0.0, sieving 3.2 (1.6+1.4 + 0.2), factor 1.2 (0.2+0.2 + 0.8), rest 0.0]
+#
+# Now sieving side-1 q=803698211; rho=771541681
+# Side 0: log2(maxnorm)=144.19 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.81 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=803698211; rho=771541681; a0=32156530; b0=-1; a1=610759031; b1=6; I=32768; J=10230;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 335216640
+# survivors after_sieve: 245221 (ratio 7.32e-04)
+# survivors not_both_even: 245221
+# survivors not_both_multiples_of_p: 245221
+# survivors trial_divided_on_side[0]: 16864
+# survivors check_leftover_norm_on_side[0]: 16864 (6.9%)
+# survivors trial_divided_on_side[1]: 2509
+# survivors check_leftover_norm_on_side[1]: 2509 (14.9%)
+# survivors enter_cofactoring: 2509
+# survivors cofactored: 1977 (78.8%)
+# survivors smooth: 12
+# Checksums over sieve region: after all sieving: 0 0
+# 12 relation(s)
+# Time for side-1 q=803698211; rho=771541681: (0.3 elapsed) 4.73s [norm 0.01+0.0, sieving 3.2 (1.6+1.4 + 0.2), factor 1.2 (0.2+0.2 + 0.8), rest 0.0]
+#
+# Now sieving side-1 q=804882581; rho=239822451
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.27 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=804882581; rho=239822451; a0=85415228; b0=-3; a1=239822451; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=805414249; rho=35895178
+# Side 0: log2(maxnorm)=144.66 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.82 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 398320 (ratio 7.42e-04)
+# survivors not_both_even: 398320
+# survivors not_both_multiples_of_p: 398320
+# survivors trial_divided_on_side[0]: 27533
+# survivors check_leftover_norm_on_side[0]: 27533 (6.9%)
+# survivors trial_divided_on_side[1]: 4286
+# survivors check_leftover_norm_on_side[1]: 4286 (15.6%)
+# survivors enter_cofactoring: 4286
+# survivors cofactored: 3425 (79.9%)
+# survivors smooth: 10
+# Checksums over sieve region: after all sieving: 0 0
+# 10 relation(s)
+# Time for side-1 q=804882581; rho=239822451: (0.4 elapsed) 7.06s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.4), rest 0.0]
+# Sieving side-1 q=805414249; rho=35895178; a0=35895178; b0=1; a1=554148003; b1=-7; I=32768; J=13062;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 428015616
+# survivors after_sieve: 278819 (ratio 6.51e-04)
+# survivors not_both_even: 278819
+# survivors not_both_multiples_of_p: 278819
+# survivors trial_divided_on_side[0]: 19127
+# survivors check_leftover_norm_on_side[0]: 19127 (6.9%)
+# survivors trial_divided_on_side[1]: 2821
+# survivors check_leftover_norm_on_side[1]: 2821 (14.7%)
+# survivors enter_cofactoring: 2821
+# survivors cofactored: 2301 (81.6%)
+# survivors smooth: 12
+# Checksums over sieve region: after all sieving: 0 0
+# 12 relation(s)
+# Time for side-1 q=805414249; rho=35895178: (0.3 elapsed) 5.55s [norm 0.01+0.0, sieving 3.8 (1.9+1.7 + 0.3), factor 1.4 (0.3+0.3 + 0.9), rest 0.0]
+#
+# Now sieving side-1 q=806834849; rho=135639998
+# Side 0: log2(maxnorm)=144.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=206.29 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=806834849; rho=135639998; a0=135639998; b0=1; a1=128634859; b1=-5; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=807278369; rho=262624542
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.50 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 369430 (ratio 6.88e-04)
+# survivors not_both_even: 369430
+# survivors not_both_multiples_of_p: 369430
+# survivors trial_divided_on_side[0]: 25694
+# survivors check_leftover_norm_on_side[0]: 25694 (7.0%)
+# survivors trial_divided_on_side[1]: 4004
+# survivors check_leftover_norm_on_side[1]: 4004 (15.6%)
+# survivors enter_cofactoring: 4004
+# survivors cofactored: 3209 (80.1%)
+# survivors smooth: 10
+# Checksums over sieve region: after all sieving: 0 0
+# 10 relation(s)
+# Time for side-1 q=806834849; rho=135639998: (0.4 elapsed) 6.93s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=807278369; rho=262624542; a0=19404743; b0=-3; a1=262624542; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=808431607; rho=645649654
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=206.79 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=808431607; rho=645649654; a0=162781953; b0=-1; a1=157303795; b1=4; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 536870912
+# survivors after_sieve: 392817 (ratio 7.32e-04)
+# survivors not_both_even: 392817
+# survivors not_both_multiples_of_p: 392817
+# survivors trial_divided_on_side[0]: 27166
+# survivors check_leftover_norm_on_side[0]: 27166 (6.9%)
+# survivors trial_divided_on_side[1]: 4249
+# survivors check_leftover_norm_on_side[1]: 4249 (15.6%)
+# survivors enter_cofactoring: 4249
+# survivors cofactored: 3353 (78.9%)
+# survivors smooth: 10
+# Checksums over sieve region: after all sieving: 0 0
+# 10 relation(s)
+# Time for side-1 q=807278369; rho=262624542: (0.4 elapsed) 7.05s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.4), rest 0.0]
+#
+# Now sieving side-1 q=809346673; rho=93541610
+# Side 0: log2(maxnorm)=144.75 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.24 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 378656 (ratio 7.05e-04)
+# survivors not_both_even: 378656
+# survivors not_both_multiples_of_p: 378656
+# survivors trial_divided_on_side[0]: 26170
+# survivors check_leftover_norm_on_side[0]: 26170 (6.9%)
+# survivors trial_divided_on_side[1]: 4111
+# survivors check_leftover_norm_on_side[1]: 4111 (15.7%)
+# survivors enter_cofactoring: 4111
+# survivors cofactored: 3262 (79.3%)
+# survivors smooth: 15
+# Checksums over sieve region: after all sieving: 0 0
+# 15 relation(s)
+# Time for side-1 q=808431607; rho=645649654: (0.5 elapsed) 7.06s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=809346673; rho=93541610; a0=93541610; b0=1; a1=248097013; b1=-6; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=810283079; rho=675476523
+# Side 0: log2(maxnorm)=144.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=206.32 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 356722 (ratio 6.64e-04)
+# survivors not_both_even: 356722
+# survivors not_both_multiples_of_p: 356722
+# survivors trial_divided_on_side[0]: 24564
+# survivors check_leftover_norm_on_side[0]: 24564 (6.9%)
+# survivors trial_divided_on_side[1]: 3719
+# survivors check_leftover_norm_on_side[1]: 3719 (15.1%)
+# survivors enter_cofactoring: 3719
+# survivors cofactored: 2949 (79.3%)
+# survivors smooth: 9
+# Checksums over sieve region: after all sieving: 0 0
+# 9 relation(s)
+# Time for side-1 q=809346673; rho=93541610: (0.4 elapsed) 6.84s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+# Sieving side-1 q=810283079; rho=675476523; a0=134806556; b0=-1; a1=136250299; b1=5; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=811069811; rho=726907872
+# Side 0: log2(maxnorm)=144.87 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.62 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 371362 (ratio 6.92e-04)
+# survivors not_both_even: 371362
+# survivors not_both_multiples_of_p: 371362
+# survivors trial_divided_on_side[0]: 25699
+# survivors check_leftover_norm_on_side[0]: 25699 (6.9%)
+# survivors trial_divided_on_side[1]: 3930
+# survivors check_leftover_norm_on_side[1]: 3930 (15.3%)
+# survivors enter_cofactoring: 3930
+# survivors cofactored: 3135 (79.8%)
+# survivors smooth: 14
+# Checksums over sieve region: after all sieving: 0 0
+# 14 relation(s)
+# Time for side-1 q=810283079; rho=675476523: (0.4 elapsed) 6.91s [norm 0.01+0.0, sieving 4.6 (2.2+2.0 + 0.3), factor 1.9 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=811069811; rho=726907872; a0=84161939; b0=-1; a1=221936238; b1=7; I=32768; J=15482;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=812163923; rho=791026144
+# Side 0: log2(maxnorm)=143.87 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.83 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 507314176
+# survivors after_sieve: 336764 (ratio 6.64e-04)
+# survivors not_both_even: 336764
+# survivors not_both_multiples_of_p: 336764
+# survivors trial_divided_on_side[0]: 22879
+# survivors check_leftover_norm_on_side[0]: 22879 (6.8%)
+# survivors trial_divided_on_side[1]: 3306
+# survivors check_leftover_norm_on_side[1]: 3306 (14.4%)
+# survivors enter_cofactoring: 3306
+# survivors cofactored: 2628 (79.5%)
+# survivors smooth: 7
+# Checksums over sieve region: after all sieving: 0 0
+# 7 relation(s)
+# Time for side-1 q=811069811; rho=726907872: (0.4 elapsed) 6.45s [norm 0.01+0.0, sieving 4.4 (2.1+2.0 + 0.3), factor 1.7 (0.3+0.3 + 1.1), rest 0.0]
+# Sieving side-1 q=812163923; rho=791026144; a0=21137779; b0=-1; a1=706475028; b1=5; I=32768; J=9168;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 300417024
+# survivors after_sieve: 218475 (ratio 7.27e-04)
+# survivors not_both_even: 218475
+# survivors not_both_multiples_of_p: 218475
+# survivors trial_divided_on_side[0]: 14965
+# survivors check_leftover_norm_on_side[0]: 14965 (6.8%)
+# survivors trial_divided_on_side[1]: 2349
+# survivors check_leftover_norm_on_side[1]: 2349 (15.7%)
+# survivors enter_cofactoring: 2349
+# survivors cofactored: 1899 (80.8%)
+# survivors smooth: 8
+# Checksums over sieve region: after all sieving: 0 0
+# 8 relation(s)
+# Time for side-1 q=812163923; rho=791026144: (0.3 elapsed) 4.37s [norm 0.01+0.0, sieving 3.0 (1.5+1.3 + 0.2), factor 1.1 (0.2+0.2 + 0.7), rest 0.0]
+#
+# Now sieving side-1 q=813146549; rho=98145453
+# Side 0: log2(maxnorm)=144.75 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.15 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=813146549; rho=98145453; a0=98145453; b0=1; a1=224273831; b1=-6; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=814008869; rho=132564236
+# Side 0: log2(maxnorm)=144.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=206.47 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 358035 (ratio 6.67e-04)
+# survivors not_both_even: 358035
+# survivors not_both_multiples_of_p: 358035
+# survivors trial_divided_on_side[0]: 24501
+# survivors check_leftover_norm_on_side[0]: 24501 (6.8%)
+# survivors trial_divided_on_side[1]: 3782
+# survivors check_leftover_norm_on_side[1]: 3782 (15.4%)
+# survivors enter_cofactoring: 3782
+# survivors cofactored: 3002 (79.4%)
+# survivors smooth: 17
+# Checksums over sieve region: after all sieving: 0 0
+# 17 relation(s)
+# Time for side-1 q=813146549; rho=98145453: (0.4 elapsed) 6.90s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+# Sieving side-1 q=814008869; rho=132564236; a0=132564236; b0=1; a1=151187689; b1=-5; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=815935667; rho=792603338
+# Side 0: log2(maxnorm)=143.87 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.84 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 367817 (ratio 6.85e-04)
+# survivors not_both_even: 367817
+# survivors not_both_multiples_of_p: 367817
+# survivors trial_divided_on_side[0]: 25208
+# survivors check_leftover_norm_on_side[0]: 25208 (6.9%)
+# survivors trial_divided_on_side[1]: 3983
+# survivors check_leftover_norm_on_side[1]: 3983 (15.8%)
+# survivors enter_cofactoring: 3983
+# survivors cofactored: 3144 (78.9%)
+# survivors smooth: 8
+# Checksums over sieve region: after all sieving: 0 0
+# 8 relation(s)
+# Time for side-1 q=814008869; rho=132564236: (0.5 elapsed) 6.98s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=815935667; rho=792603338; a0=23332329; b0=-1; a1=699274022; b1=5; I=32768; J=9232;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 302514176
+# survivors after_sieve: 220912 (ratio 7.30e-04)
+# survivors not_both_even: 220912
+# survivors not_both_multiples_of_p: 220912
+# survivors trial_divided_on_side[0]: 15092
+# survivors check_leftover_norm_on_side[0]: 15092 (6.8%)
+# survivors trial_divided_on_side[1]: 2218
+# survivors check_leftover_norm_on_side[1]: 2218 (14.7%)
+# survivors enter_cofactoring: 2218
+# survivors cofactored: 1735 (78.2%)
+# survivors smooth: 5
+# Checksums over sieve region: after all sieving: 0 0
+# 5 relation(s)
+# Time for side-1 q=815935667; rho=792603338: (0.3 elapsed) 4.37s [norm 0.01+0.0, sieving 3.1 (1.5+1.3 + 0.2), factor 1.1 (0.2+0.2 + 0.7), rest 0.0]
+#
+# Now sieving side-1 q=816555137; rho=239477687
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.38 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=816555137; rho=239477687; a0=98122076; b0=-3; a1=239477687; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=817901893; rho=384095540
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.14 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=817901893; rho=384095540; a0=49710813; b0=-2; a1=334384727; b1=3; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 536870912
+# survivors after_sieve: 398429 (ratio 7.42e-04)
+# survivors not_both_even: 398429
+# survivors not_both_multiples_of_p: 398429
+# survivors trial_divided_on_side[0]: 27647
+# survivors check_leftover_norm_on_side[0]: 27647 (6.9%)
+# survivors trial_divided_on_side[1]: 4310
+# survivors check_leftover_norm_on_side[1]: 4310 (15.6%)
+# survivors enter_cofactoring: 4310
+# survivors cofactored: 3420 (79.4%)
+# survivors smooth: 16
+# Checksums over sieve region: after all sieving: 0 0
+# 16 relation(s)
+# Time for side-1 q=816555137; rho=239477687: (0.4 elapsed) 7.10s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.4), rest 0.0]
+#
+# Now sieving side-1 q=818856397; rho=665171548
+# Side 0: log2(maxnorm)=144.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.01 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=818856397; rho=665171548; a0=153684849; b0=-1; a1=50432152; b1=5; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 536870912
+# survivors after_sieve: 379463 (ratio 7.07e-04)
+# survivors not_both_even: 379463
+# survivors not_both_multiples_of_p: 379463
+# survivors trial_divided_on_side[0]: 26171
+# survivors check_leftover_norm_on_side[0]: 26171 (6.9%)
+# survivors trial_divided_on_side[1]: 3862
+# survivors check_leftover_norm_on_side[1]: 3862 (14.8%)
+# survivors enter_cofactoring: 3862
+# survivors cofactored: 3023 (78.3%)
+# survivors smooth: 11
+# Checksums over sieve region: after all sieving: 0 0
+# 11 relation(s)
+# Time for side-1 q=817901893; rho=384095540: (0.4 elapsed) 6.95s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+#
+# Now sieving side-1 q=819382307; rho=229833884
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.56 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 372442 (ratio 6.94e-04)
+# survivors not_both_even: 372442
+# survivors not_both_multiples_of_p: 372442
+# survivors trial_divided_on_side[0]: 25381
+# survivors check_leftover_norm_on_side[0]: 25381 (6.8%)
+# survivors trial_divided_on_side[1]: 3956
+# survivors check_leftover_norm_on_side[1]: 3956 (15.6%)
+# survivors enter_cofactoring: 3956
+# survivors cofactored: 3150 (79.6%)
+# survivors smooth: 6
+# Checksums over sieve region: after all sieving: 0 0
+# 6 relation(s)
+# Time for side-1 q=818856397; rho=665171548: (0.4 elapsed) 7.01s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=819382307; rho=229833884; a0=129880655; b0=-3; a1=229833884; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=820526537; rho=787282477
+# Side 0: log2(maxnorm)=144.18 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.86 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=820526537; rho=787282477; a0=33244060; b0=-1; a1=621062177; b1=6; I=32768; J=10140;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 536870912
+# survivors after_sieve: 397766 (ratio 7.41e-04)
+# survivors not_both_even: 397766
+# survivors not_both_multiples_of_p: 397766
+# survivors trial_divided_on_side[0]: 27155
+# survivors check_leftover_norm_on_side[0]: 27155 (6.8%)
+# survivors trial_divided_on_side[1]: 4205
+# survivors check_leftover_norm_on_side[1]: 4205 (15.5%)
+# survivors enter_cofactoring: 4205
+# survivors cofactored: 3387 (80.5%)
+# survivors smooth: 9
+# Checksums over sieve region: after all sieving: 0 0
+# 9 relation(s)
+# Time for side-1 q=819382307; rho=229833884: (0.4 elapsed) 7.06s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# survivors before_sieve: 332267520
+# survivors after_sieve: 242744 (ratio 7.31e-04)
+# survivors not_both_even: 242744
+# survivors not_both_multiples_of_p: 242744
+# survivors trial_divided_on_side[0]: 16689
+# survivors check_leftover_norm_on_side[0]: 16689 (6.9%)
+# survivors trial_divided_on_side[1]: 2406
+# survivors check_leftover_norm_on_side[1]: 2406 (14.4%)
+# survivors enter_cofactoring: 2406
+# survivors cofactored: 1916 (79.6%)
+# survivors smooth: 6
+# Checksums over sieve region: after all sieving: 0 0
+# 6 relation(s)
+# Time for side-1 q=820526537; rho=787282477: (0.3 elapsed) 4.68s [norm 0.01+0.0, sieving 3.2 (1.6+1.4 + 0.2), factor 1.2 (0.2+0.2 + 0.8), rest 0.0]
+#
+# Now sieving side-1 q=821838503; rho=64843940
+# Side 0: log2(maxnorm)=144.88 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.71 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=821838503; rho=64843940; a0=64843940; b0=1; a1=367930923; b1=-7; I=32768; J=15600;
+# Reserving buckets with a multiplier of 1,1s:1.106
+#
+# Now sieving side-1 q=822055369; rho=117290486
+# Side 0: log2(maxnorm)=144.75 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.43 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 511180800
+# survivors after_sieve: 328331 (ratio 6.42e-04)
+# survivors not_both_even: 328331
+# survivors not_both_multiples_of_p: 328331
+# survivors trial_divided_on_side[0]: 22474
+# survivors check_leftover_norm_on_side[0]: 22474 (6.8%)
+# survivors trial_divided_on_side[1]: 3357
+# survivors check_leftover_norm_on_side[1]: 3357 (14.9%)
+# survivors enter_cofactoring: 3357
+# survivors cofactored: 2681 (79.9%)
+# survivors smooth: 11
+# Checksums over sieve region: after all sieving: 0 0
+# 11 relation(s)
+# Time for side-1 q=821838503; rho=64843940: (0.4 elapsed) 6.51s [norm 0.01+0.0, sieving 4.4 (2.1+2.0 + 0.3), factor 1.7 (0.3+0.3 + 1.1), rest 0.0]
+# Sieving side-1 q=822055369; rho=117290486; a0=117290486; b0=1; a1=118312453; b1=-6; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# survivors before_sieve: 536870912
+# survivors after_sieve: 362007 (ratio 6.74e-04)
+# survivors not_both_even: 362007
+# survivors not_both_multiples_of_p: 362007
+# survivors trial_divided_on_side[0]: 24885
+# survivors check_leftover_norm_on_side[0]: 24885 (6.9%)
+# survivors trial_divided_on_side[1]: 3799
+# survivors check_leftover_norm_on_side[1]: 3799 (15.3%)
+# survivors enter_cofactoring: 3799
+# survivors cofactored: 3042 (80.1%)
+# survivors smooth: 11
+# Checksums over sieve region: after all sieving: 0 0
+# 11 relation(s)
+# Time for side-1 q=822055369; rho=117290486: (0.4 elapsed) 6.90s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+#
+# Now sieving side-1 q=823292579; rho=524067737
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.39 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=823292579; rho=524067737; a0=74381947; b0=-3; a1=-224842895; b1=-2; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.106
+# Error: 1s buckets are full, worst is bucket 6160 on side 1 (slot 0): 1322 1365 1416 1475 1718* 1389 1380 1521 1378 1370 1404 1315 1333 1336 1341 1276 1423 1580 1408 1377 /1669
+# redoing side-1 q=823292579; rho=524067737 because 1s buckets are full
+# Fullest level-1s bucket on side 1 is #6160/0, wrote 1718/1669
+# Updating 1s bucket multiplier to 1.106*1718/1669*1.05, =1.195
+# Expected memory usage per binding zone for the factor base: 218.35 MB
+# Expected memory usage per subjob for logI=15: 2.39 GB
+# Expected memory use per subjob (max reached for logI=15): 2.39 GB
+# Expected memory use for 1 binding zone(s) and 1 18-threaded jobs per zone, counting 3 MB of base footprint: 2.61 GB
+#
+# Now sieving side-1 q=823292579; rho=524067737
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.39 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=823292579; rho=524067737; a0=74381947; b0=-3; a1=-224842895; b1=-2; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=824832059; rho=228860793
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.66 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 391725 (ratio 7.30e-04)
+# survivors not_both_even: 391725
+# survivors not_both_multiples_of_p: 391725
+# survivors trial_divided_on_side[0]: 27121
+# survivors check_leftover_norm_on_side[0]: 27121 (6.9%)
+# survivors trial_divided_on_side[1]: 4090
+# survivors check_leftover_norm_on_side[1]: 4090 (15.1%)
+# survivors enter_cofactoring: 4090
+# survivors cofactored: 3251 (79.5%)
+# survivors smooth: 11
+# Checksums over sieve region: after all sieving: 0 0
+# 11 relation(s)
+# Time for side-1 q=823292579; rho=524067737: (0.5 elapsed) 7.65s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.6]
+# Sieving side-1 q=824832059; rho=228860793; a0=138249680; b0=-3; a1=228860793; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=825625483; rho=681806353
+# Side 0: log2(maxnorm)=144.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=206.59 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 395233 (ratio 7.36e-04)
+# survivors not_both_even: 395233
+# survivors not_both_multiples_of_p: 395233
+# survivors trial_divided_on_side[0]: 27215
+# survivors check_leftover_norm_on_side[0]: 27215 (6.9%)
+# survivors trial_divided_on_side[1]: 4097
+# survivors check_leftover_norm_on_side[1]: 4097 (15.1%)
+# survivors enter_cofactoring: 4097
+# survivors cofactored: 3268 (79.8%)
+# survivors smooth: 10
+# Checksums over sieve region: after all sieving: 0 0
+# 10 relation(s)
+# Time for side-1 q=824832059; rho=228860793: (0.4 elapsed) 7.06s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=825625483; rho=681806353; a0=143819130; b0=-1; a1=106529833; b1=5; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=826842967; rho=522478449
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.43 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 370252 (ratio 6.90e-04)
+# survivors not_both_even: 370252
+# survivors not_both_multiples_of_p: 370252
+# survivors trial_divided_on_side[0]: 25355
+# survivors check_leftover_norm_on_side[0]: 25355 (6.8%)
+# survivors trial_divided_on_side[1]: 3839
+# survivors check_leftover_norm_on_side[1]: 3839 (15.1%)
+# survivors enter_cofactoring: 3839
+# survivors cofactored: 3040 (79.2%)
+# survivors smooth: 7
+# Checksums over sieve region: after all sieving: 0 0
+# 7 relation(s)
+# Time for side-1 q=825625483; rho=681806353: (0.5 elapsed) 6.94s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+# Sieving side-1 q=826842967; rho=522478449; a0=86250587; b0=-3; a1=-218113931; b1=-2; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=827642191; rho=708025203
+# Side 0: log2(maxnorm)=144.75 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.48 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 393859 (ratio 7.34e-04)
+# survivors not_both_even: 393859
+# survivors not_both_multiples_of_p: 393859
+# survivors trial_divided_on_side[0]: 26751
+# survivors check_leftover_norm_on_side[0]: 26751 (6.8%)
+# survivors trial_divided_on_side[1]: 4128
+# survivors check_leftover_norm_on_side[1]: 4128 (15.4%)
+# survivors enter_cofactoring: 4128
+# survivors cofactored: 3281 (79.5%)
+# survivors smooth: 7
+# Checksums over sieve region: after all sieving: 0 0
+# 7 relation(s)
+# Time for side-1 q=826842967; rho=522478449: (0.5 elapsed) 7.09s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=827642191; rho=708025203; a0=119616988; b0=-1; a1=109940263; b1=6; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=828311969; rho=404601516
+# Side 0: log2(maxnorm)=143.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.49 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 364921 (ratio 6.80e-04)
+# survivors not_both_even: 364921
+# survivors not_both_multiples_of_p: 364921
+# survivors trial_divided_on_side[0]: 25028
+# survivors check_leftover_norm_on_side[0]: 25028 (6.9%)
+# survivors trial_divided_on_side[1]: 3710
+# survivors check_leftover_norm_on_side[1]: 3710 (14.8%)
+# survivors enter_cofactoring: 3710
+# survivors cofactored: 2960 (79.8%)
+# survivors smooth: 6
+# Checksums over sieve region: after all sieving: 0 0
+# 6 relation(s)
+# Time for side-1 q=827642191; rho=708025203: (0.5 elapsed) 6.98s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+# Sieving side-1 q=828311969; rho=404601516; a0=19108937; b0=-2; a1=404601516; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+# survivors before_sieve: 536870912
+# survivors after_sieve: 365695 (ratio 6.81e-04)
+# survivors not_both_even: 365695
+# survivors not_both_multiples_of_p: 365695
+# survivors trial_divided_on_side[0]: 25173
+# survivors check_leftover_norm_on_side[0]: 25173 (6.9%)
+# survivors trial_divided_on_side[1]: 3795
+# survivors check_leftover_norm_on_side[1]: 3795 (15.1%)
+# survivors enter_cofactoring: 3795
+# survivors cofactored: 3034 (79.9%)
+# survivors smooth: 22
+# Checksums over sieve region: after all sieving: 0 0
+# 22 relation(s)
+# Time for side-1 q=828311969; rho=404601516: (0.5 elapsed) 6.94s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+#
+# Now sieving side-1 q=829724893; rho=639604330
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.81 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=829724893; rho=639604330; a0=190120563; b0=-1; a1=69242641; b1=4; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=830333453; rho=630606151
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.75 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 383503 (ratio 7.14e-04)
+# survivors not_both_even: 383503
+# survivors not_both_multiples_of_p: 383503
+# survivors trial_divided_on_side[0]: 26752
+# survivors check_leftover_norm_on_side[0]: 26752 (7.0%)
+# survivors trial_divided_on_side[1]: 4174
+# survivors check_leftover_norm_on_side[1]: 4174 (15.6%)
+# survivors enter_cofactoring: 4174
+# survivors cofactored: 3314 (79.4%)
+# survivors smooth: 10
+# Checksums over sieve region: after all sieving: 0 0
+# 10 relation(s)
+# Time for side-1 q=829724893; rho=639604330: (0.4 elapsed) 7.10s [norm 0.01+0.0, sieving 4.6 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.4), rest 0.0]
+# Sieving side-1 q=830333453; rho=630606151; a0=199727302; b0=-1; a1=31424245; b1=4; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=831567743; rho=216386038
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.30 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 384846 (ratio 7.17e-04)
+# survivors not_both_even: 384846
+# survivors not_both_multiples_of_p: 384846
+# survivors trial_divided_on_side[0]: 26403
+# survivors check_leftover_norm_on_side[0]: 26403 (6.9%)
+# survivors trial_divided_on_side[1]: 4011
+# survivors check_leftover_norm_on_side[1]: 4011 (15.2%)
+# survivors enter_cofactoring: 4011
+# survivors cofactored: 3156 (78.7%)
+# survivors smooth: 11
+# Checksums over sieve region: after all sieving: 0 0
+# 11 relation(s)
+# Time for side-1 q=830333453; rho=630606151: (0.4 elapsed) 7.08s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=831567743; rho=216386038; a0=216386038; b0=1; a1=-33976409; b1=-4; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=832179757; rho=232474221
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.69 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 388443 (ratio 7.24e-04)
+# survivors not_both_even: 388443
+# survivors not_both_multiples_of_p: 388443
+# survivors trial_divided_on_side[0]: 26747
+# survivors check_leftover_norm_on_side[0]: 26747 (6.9%)
+# survivors trial_divided_on_side[1]: 4168
+# survivors check_leftover_norm_on_side[1]: 4168 (15.6%)
+# survivors enter_cofactoring: 4168
+# survivors cofactored: 3355 (80.5%)
+# survivors smooth: 8
+# Checksums over sieve region: after all sieving: 0 0
+# 8 relation(s)
+# Time for side-1 q=831567743; rho=216386038: (0.4 elapsed) 7.11s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=832179757; rho=232474221; a0=134757094; b0=-3; a1=232474221; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=833311939; rho=756990660
+# Side 0: log2(maxnorm)=144.89 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.97 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=833311939; rho=756990660; a0=76321279; b0=-1; a1=299062986; b1=7; I=32768; J=15724;
+# Reserving buckets with a multiplier of 1,1s:1.195
+# survivors before_sieve: 536870912
+# survivors after_sieve: 395285 (ratio 7.36e-04)
+# survivors not_both_even: 395285
+# survivors not_both_multiples_of_p: 395285
+# survivors trial_divided_on_side[0]: 27163
+# survivors check_leftover_norm_on_side[0]: 27163 (6.9%)
+# survivors trial_divided_on_side[1]: 4249
+# survivors check_leftover_norm_on_side[1]: 4249 (15.6%)
+# survivors enter_cofactoring: 4249
+# survivors cofactored: 3400 (80.0%)
+# survivors smooth: 13
+# Checksums over sieve region: after all sieving: 0 0
+# 13 relation(s)
+# Time for side-1 q=832179757; rho=232474221: (0.4 elapsed) 7.17s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.4), rest 0.0]
+#
+# survivors before_sieve: 515244032
+# survivors after_sieve: 334483 (ratio 6.49e-04)
+# survivors not_both_even: 334483
+# survivors not_both_multiples_of_p: 334483
+# survivors trial_divided_on_side[0]: 22862
+# survivors check_leftover_norm_on_side[0]: 22862 (6.8%)
+# survivors trial_divided_on_side[1]: 3435
+# survivors check_leftover_norm_on_side[1]: 3435 (15.0%)
+# survivors enter_cofactoring: 3435
+# survivors cofactored: 2730 (79.5%)
+# survivors smooth: 12
+# Checksums over sieve region: after all sieving: 0 0
+# 12 relation(s)
+# Time for side-1 q=833311939; rho=756990660: (0.4 elapsed) 6.68s [norm 0.01+0.0, sieving 4.5 (2.2+2.1 + 0.3), factor 1.8 (0.3+0.3 + 1.1), rest 0.0]
+# Now sieving side-1 q=834796043; rho=795094288
+# Side 0: log2(maxnorm)=144.50 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.89 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=834796043; rho=795094288; a0=39701755; b0=-1; a1=556883758; b1=7; I=32768; J=11472;
+# Reserving buckets with a multiplier of 1,1s:1.195
+# survivors before_sieve: 375914496
+# survivors after_sieve: 266606 (ratio 7.09e-04)
+# survivors not_both_even: 266606
+# survivors not_both_multiples_of_p: 266606
+# survivors trial_divided_on_side[0]: 18449
+# survivors check_leftover_norm_on_side[0]: 18449 (6.9%)
+# survivors trial_divided_on_side[1]: 2610
+# survivors check_leftover_norm_on_side[1]: 2610 (14.1%)
+# survivors enter_cofactoring: 2610
+# survivors cofactored: 2096 (80.3%)
+# survivors smooth: 6
+# Checksums over sieve region: after all sieving: 0 0
+# 6 relation(s)
+# Time for side-1 q=834796043; rho=795094288: (0.3 elapsed) 5.15s [norm 0.01+0.0, sieving 3.5 (1.7+1.6 + 0.2), factor 1.3 (0.2+0.2 + 0.8), rest 0.0]
+#
+# Now sieving side-1 q=835058467; rho=352164644
+# Side 0: log2(maxnorm)=144.26 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=207.50 scale=1.20, logbase=1.781797 bound=128
+# Sieving side-1 q=835058467; rho=352164644; a0=130729179; b0=-2; a1=221435465; b1=3; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=836619097; rho=415106750
+# Side 0: log2(maxnorm)=143.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=208.73 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 397168 (ratio 7.40e-04)
+# survivors not_both_even: 397168
+# survivors not_both_multiples_of_p: 397168
+# survivors trial_divided_on_side[0]: 27303
+# survivors check_leftover_norm_on_side[0]: 27303 (6.9%)
+# survivors trial_divided_on_side[1]: 4015
+# survivors check_leftover_norm_on_side[1]: 4015 (14.7%)
+# survivors enter_cofactoring: 4015
+# survivors cofactored: 3207 (79.9%)
+# survivors smooth: 13
+# Checksums over sieve region: after all sieving: 0 0
+# 13 relation(s)
+# Time for side-1 q=835058467; rho=352164644: (0.5 elapsed) 7.04s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=836619097; rho=415106750; a0=6405597; b0=-2; a1=415106750; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=837055267; rho=8943021
+# Side 0: log2(maxnorm)=143.00 scale=1.78, logbase=1.477728 bound=168
+# Creating new slicing on side 0 for scale=1.78, thresholds={32768, 130000000, 130000000, 130000000}
+# side-0 part 0: 3589 primes, 3589 ideals, weight 3.3755
+# side-0 part 1: 7376159 primes, 7376159 ideals, weight 0.5868 [234 slices]
+# Side 1: log2(maxnorm)=208.90 scale=1.20, logbase=1.781797 bound=128
+# survivors before_sieve: 536870912
+# survivors after_sieve: 361402 (ratio 6.73e-04)
+# survivors not_both_even: 361402
+# survivors not_both_multiples_of_p: 361402
+# survivors trial_divided_on_side[0]: 24848
+# survivors check_leftover_norm_on_side[0]: 24848 (6.9%)
+# survivors trial_divided_on_side[1]: 3721
+# survivors check_leftover_norm_on_side[1]: 3721 (15.0%)
+# survivors enter_cofactoring: 3721
+# survivors cofactored: 2934 (78.8%)
+# survivors smooth: 7
+# Checksums over sieve region: after all sieving: 0 0
+# 7 relation(s)
+# Time for side-1 q=836619097; rho=415106750: (0.4 elapsed) 6.95s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.2), rest 0.0]
+# Sieving side-1 q=837055267; rho=8943021; a0=8943021; b0=1; a1=819169225; b1=-2; I=32768; J=8820;
+# Reserving buckets with a multiplier of 1,1s:1.195
+# survivors before_sieve: 289013760
+# survivors after_sieve: 224397 (ratio 7.76e-04)
+# survivors not_both_even: 224397
+# survivors not_both_multiples_of_p: 224397
+# survivors trial_divided_on_side[0]: 15730
+# survivors check_leftover_norm_on_side[0]: 15730 (7.0%)
+# survivors trial_divided_on_side[1]: 2361
+# survivors check_leftover_norm_on_side[1]: 2361 (15.0%)
+# survivors enter_cofactoring: 2361
+# survivors cofactored: 1877 (79.5%)
+# survivors smooth: 9
+# Checksums over sieve region: after all sieving: 0 0
+# 9 relation(s)
+# Time for side-1 q=837055267; rho=8943021: (0.3 elapsed) 4.39s [norm 0.01+0.0, sieving 3.0 (1.5+1.3 + 0.2), factor 1.1 (0.2+0.2 + 0.8), rest 0.0]
+#
+# Now sieving side-1 q=838913639; rho=162331769
+# Side 0: log2(maxnorm)=144.53 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.97 scale=1.23, logbase=1.760917 bound=130
+# Sieving side-1 q=838913639; rho=162331769; a0=162331769; b0=1; a1=27254794; b1=-5; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+#
+# Now sieving side-1 q=839506159; rho=255469216
+# Side 0: log2(maxnorm)=143.94 scale=1.75, logbase=1.485994 bound=166
+# Side 1: log2(maxnorm)=205.50 scale=1.23, logbase=1.760917 bound=130
+# survivors before_sieve: 536870912
+# survivors after_sieve: 371052 (ratio 6.91e-04)
+# survivors not_both_even: 371052
+# survivors not_both_multiples_of_p: 371052
+# survivors trial_divided_on_side[0]: 25571
+# survivors check_leftover_norm_on_side[0]: 25571 (6.9%)
+# survivors trial_divided_on_side[1]: 3961
+# survivors check_leftover_norm_on_side[1]: 3961 (15.5%)
+# survivors enter_cofactoring: 3961
+# survivors cofactored: 3186 (80.4%)
+# survivors smooth: 11
+# Checksums over sieve region: after all sieving: 0 0
+# 11 relation(s)
+# Time for side-1 q=838913639; rho=162331769: (0.4 elapsed) 7.04s [norm 0.01+0.0, sieving 4.7 (2.2+2.1 + 0.3), factor 1.9 (0.3+0.3 + 1.3), rest 0.0]
+# Sieving side-1 q=839506159; rho=255469216; a0=73098511; b0=-3; a1=255469216; b1=1; I=32768; J=16384;
+# Reserving buckets with a multiplier of 1,1s:1.195
+# survivors before_sieve: 536870912
+# survivors after_sieve: 394474 (ratio 7.35e-04)
+# survivors not_both_even: 394474
+# survivors not_both_multiples_of_p: 394474
+# survivors trial_divided_on_side[0]: 27017
+# survivors check_leftover_norm_on_side[0]: 27017 (6.8%)
+# survivors trial_divided_on_side[1]: 4077
+# survivors check_leftover_norm_on_side[1]: 4077 (15.1%)
+# survivors enter_cofactoring: 4077
+# survivors cofactored: 3275 (80.3%)
+# survivors smooth: 13
+# Checksums over sieve region: after all sieving: 0 0
+# 13 relation(s)
+# Time for side-1 q=839506159; rho=255469216: (0.4 elapsed) 7.15s [norm 0.01+0.0, sieving 4.7 (2.3+2.1 + 0.3), factor 2.0 (0.3+0.3 + 1.3), rest 0.0]
+# subjob 0 done (40 special-q's), now waiting for other jobs
+# Average J=15101 for 40 special-q's, max bucket fill -bkmult 1,1s:1.195
+# Discarded 0 special-q's out of 40 pushed
+#
+# Hierarchical timings:
+# 0.203828 (bookkeeping)
+# 0.942099 multithreaded tasks
+#  1.08069 allocate_buckets ; category 0
+#  0.490529 side 0 ; category 2
+#   50.6608 fill_in_buckets_toplevel
+#   0.0179565 prepare small sieve
+#   0.426018 init norms ; category 4
+#   6.72508 apply buckets ; category 2
+#   17.284 small sieve ; category 2
+#   5.22244 S minus S (2) ; category 5
+#   7.00022 purge buckets ; category 5
+#   8.68857 resieve ; category 2
+#  0.497538 side 1 ; category 258
+#   39.3234 fill_in_buckets_toplevel
+#   0.0191856 prepare small sieve
+#   0.65402 init norms ; category 260
+#   6.2153 apply buckets ; category 258
+#   23.9494 small sieve ; category 258
+#   5.22436 S minus S (2) ; category 261
+#   6.7063 purge buckets ; category 261
+#   8.09851 resieve ; category 258
+#  11.8181 search_survivors ; category 1
+#  13.5745 cofactoring_sync
+#  46.8908 cofactoring ; category 6
+#  0.017252 print relations ; category 0
+# 0.00163517 skew Gauss ; category 0
+# 0.154818 process_bucket_region outer container ; category 3
+#
+# Categorized timings (total counted time 261.89):
+# -1 uncategorized (top-level bookkeeping): 14.72
+# 0 bookkeeping (lower levels): 1.10
+# 1 search_survivors: 11.82
+# 2 sieving on side 0: 83.87
+# 3 sieving (not differentiated): 0.15
+# 4 norms on side 0: 0.43
+# 5 cofactoring on side 0: 12.22
+# 6 cofactoring (not differentiated): 46.89
+# 258 sieving on side 1: 78.10
+# 260 norms on side 1: 0.65
+# 261 cofactoring on side 1: 11.93
+# total counted time: 261.89
+#
+# survivors before_sieve: 19793772544
+# survivors after_sieve: 13941170 (ratio 7.04e-04)
+# survivors not_both_even: 13941170
+# survivors not_both_multiples_of_p: 13941170
+# survivors trial_divided_on_side[0]: 958786
+# survivors check_leftover_norm_on_side[0]: 958786 (6.9%)
+# survivors trial_divided_on_side[1]: 145980
+# survivors check_leftover_norm_on_side[1]: 145980 (15.2%)
+# survivors enter_cofactoring: 145980
+# survivors cofactored: 116289 (79.7%)
+# survivors smooth: 421
+# Wasted cpu time due to 2 bkmult adjustments: 0.01
+# Cumulated wait time over all threads 0.74
+# Total cpu time 269.02s, useful 261.89s [norm 0.43+0.7, sieving 173.9 (83.9+78.1 + 12.0), factor 71.0 (12.2+11.9 + 46.9), rest 1.1], wasted+waited 0.75s, rest 6.38s
+# Total elapsed time 16.96s, per special-q 0.424097, per relation 0.0402943
+# Expected memory usage per binding zone for the factor base: 218.35 MB
+# Expected memory usage per subjob for logI=15: 2.39 GB
+# Expected memory use per subjob (max reached for logI=15): 2.39 GB
+# Expected memory use for 1 binding zone(s) and 1 18-threaded jobs per zone, counting 3 MB of base footprint: 2.61 GB
+# PeakMemusage (MB) = 6449
+# Total 421 reports [0.639s/r, 10.5r/sq] in 17 elapsed s [1585.8% CPU]
+# Getting rid of sieve_shared_data structure [rss=3924.44 M]
