@@ -1,0 +1,10 @@
+# x^4 + x + 1: irreducible, Galois group S4 (generic)
+n: 1000003
+skew: 1.0
+c0: 1
+c1: 1
+c2: 0
+c3: 0
+c4: 1
+Y0: -2
+Y1: 1

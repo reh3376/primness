@@ -20,9 +20,9 @@ All measurements must complete on the primary laptop+GPU constraints stated in t
 **Relation to roadmap**  
 This is the first concrete, testable claim under Obstacle D. A positive result weakens D; a negative result (rejection) forces a pivot or refinement of the sub-claim before larger speculation.
 
-**Verdict (draft for the author's approval, 2026-11-10)**
+**Verdict (adopted 2026-11-10)**
 
-*This section was drafted from the measurements for the author to adopt, amend or reject. Until the author adopts it, the claim stays undecided.*
+*Drafted from the measurements for the author, and adopted on 2026-11-10 when the author closed the D measurements (`docs/obstacle_d_verdict.md`). The claim is rejected.*
 
 - **Weighting.** The gap is relative, observed/predicted − 1, and the ten instances are weighted alike (`docs/baseline_calibration.md` section 6). The noise is the larger of the binomial noise and the spread across instances.
 - **Prediction.** "Dickman–de Bruijn adjusted only by the measured Murphy α" is implemented exactly rather than through α's expansion. Every value is split into its part made of the primes up to 2000 and a cofactor c, and its smoothness is predicted by the density Q_B(c) of B-smooth integers among consecutive integers with no prime factor up to 2000 and a cofactor of the same size (sections 7 and 8). The polynomial's root counts at the primes between 2000 and B, α's continuation, are then applied to first order (section 9).

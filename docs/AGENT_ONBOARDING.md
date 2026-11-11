@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-03 19:28 EST
+**Last updated:** 2026-11-10 19:30 EST (code map, next work; the sections below them keep their 2026-11-09 facts)
 
 ## What this project is
 
@@ -69,6 +69,9 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 | [src/bin/d1_baseline.rs](../src/bin/d1_baseline.rs), [src/bin/d1_alpha.rs](../src/bin/d1_alpha.rs), [scripts/d1_calibrate.py](../scripts/d1_calibrate.py) | Binary `d1-baseline` (consecutive-integer baseline and its conditional table by cofactor size, `d1-baseline/2`); binary `d1-alpha` (α and α₂ per instrument, `alpha-moments/1`); the calibrated comparison and the criterion under both weightings. |
 | [scripts/d5_clusters.py](../scripts/d5_clusters.py), [scripts/d5_run_all.sh](../scripts/d5_run_all.sh) | D5: per-value prediction from the `d1-measure --dump` lines, sums per region and half, dispersion, split-half correlation and held-out lift; the dumps and the analysis end to end. |
 | [src/bin/d2_fields.rs](../src/bin/d2_fields.rs), [src/bin/d2_joint.rs](../src/bin/d2_joint.rs), [scripts/d2_joint.py](../scripts/d2_joint.py), [scripts/d2_run_all.sh](../scripts/d2_run_all.sh) | D2 part 1: binary `d2-fields` (three rotations f + v·g per instrument, chosen by score and certified irreducible, into `data/instruments/d2/`); binary `d2-joint` (joint smooth counts of columns at the same (a, b) against the product of their predictions, with the exact variance, from a `d2-joint-manifest/1`); the classes, the control and the criterion; end to end. |
+| [src/bin/d_checks.rs](../src/bin/d_checks.rs), [scripts/d_checks.py](../scripts/d_checks.py), [scripts/d_checks_run_all.sh](../scripts/d_checks_run_all.sh) | Obstacle D's closing checks: binary `d-checks` (per dump column, sums by u, small part, the other side, residues mod 2 and 3, and neighbouring pairs, from a `d-checks-manifest/1`); the pooled statistics of D1, D2 part 1 and D5, the per-value tests, the trend in digits and the toy quartics (`data/instruments/galois/`); writes `data/results/d_checks.{md,csv}`. |
+| [scripts/h1_test_sieve.sh](../scripts/h1_test_sieve.sh), [scripts/h1_cost.py](../scripts/h1_cost.py) | H1: CADO-NFS `las -random-sample` on RSA-200 with its own c200 polynomial and parameters over six special-q ranges under `hw-sample`, integrated to the relation target; writes `data/results/h1_cost.{md,csv}`. |
+| [src/bin/h2_cpu.rs](../src/bin/h2_cpu.rs), [tools/h2_gpu/main.swift](../tools/h2_gpu/main.swift), [scripts/h2_run.sh](../scripts/h2_run.sh), [scripts/h2_summary.py](../scripts/h2_summary.py) | H2: binary `h2-cpu` (shared inputs with `--prepare`; the CPU bucket sieve, 96-bit Montgomery chains and copy with `--run`), the same kernels in Metal (`swiftc -O`), both under `hw-sample`, cross-checked; writes `data/results/h2_kernels.{md,csv}`. |
 | [src/bin/d1_tail.rs](../src/bin/d1_tail.rs), [scripts/d1_conditional.py](../scripts/d1_conditional.py) | Binary `d1-tail` (projective root counts at every prime in (2000, B], summed by bin of ln p, `root-tail/1`); the comparison with the conditional baseline, the α tail and the exact first-order term. |
 | [scripts/d1_run_all.sh](../scripts/d1_run_all.sh), [scripts/d1_summary.py](../scripts/d1_summary.py), [scripts/d1_report.py](../scripts/d1_report.py) | All instances end to end; the criterion across instances; the per-run report. |
 | [src/hardware.rs](../src/hardware.rs) | `hardware-sample/1` telemetry: macmon + ioreg + sysctl, JSONL trace, Postgres rows, summary. See [docs/hardware_telemetry.md](hardware_telemetry.md). |
@@ -135,12 +138,14 @@ The bench container is `primness-bench`, image built from [Dockerfile](../Docker
 
 ## Immediate next work
 
-1. Replace the α expansion with the exact small-prime part: for every value compute s(F) by trial division over the primes up to the α bound, and compare its smoothness with the baseline's conditional density Q_B(X/s) of B-smooth integers among those with no prime factor below that bound, which `d1-baseline` can tabulate from the same consecutive integers by binning on the cofactor's size ([docs/baseline_calibration.md](baseline_calibration.md) §5). A gap that survives is structure at primes between the α bound and B.
-2. Adopt or amend the criterion weighting proposed in [docs/baseline_calibration.md](baseline_calibration.md) §6 in [docs/d1_falsifiable_prediction.md](d1_falsifiable_prediction.md); that file is the author's and has not been edited.
-3. Test the A4 lever on one instance: select polynomials with square discriminant and measure the residual after α against the generic selection.
-4. Fix the protocol's region per digit length so a run can be labeled `full`.
+Obstacle D's measurements are closed ([docs/obstacle_d_verdict.md](obstacle_d_verdict.md)), and the D1 verdict is adopted. Obstacle H is forced on the primary hardware envelope:
+- H1 ([docs/h1_sieving_cost.md](h1_sieving_cost.md)): CADO-NFS takes 3,896 laptop-hours to collect the relations for RSA-200 on the CPU.
+- H2 ([docs/h2_gpu_kernels.md](h2_gpu_kernels.md)): the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication, which leaves at least 189 laptop-hours with the GPU.
 
-Do not start all ten instances at \(B = 2^{28}\) before one small external polynomial has been parsed. Do not run msieve NFS polynomial selection on these ten numbers with the 1.54 binary described above and expect an NFS polynomial.
+1. H3: specify what a machine built for the two kernels must do per second to collect 200-digit relations in one hour: about 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations. Size it against this laptop's measured rates and against published sieving designs (TWIRL, Shamir and Tromer 2003). Write the prediction first, as for every claim here.
+2. Measure the linear algebra at 200 digits: the matrix size from CADO-NFS's filtering of a sampled relation set, and the cost of block Wiedemann on this machine.
+3. Measure the laptop's own one-hour reach with tuned CADO-NFS settings (relation target, free relations, threads in linear algebra).
+4. New mathematics only as a construction the harness can price from its value sizes and root counts ([docs/obstacle_d_verdict.md](obstacle_d_verdict.md) sections 4 and 5).
 
 ## Handoff checklist
 

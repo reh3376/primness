@@ -1,0 +1,10 @@
+# x^4 + 1: irreducible, Galois group Klein four; primes dividing its values are 2 and p = 1 mod 8
+n: 1000003
+skew: 1.0
+c0: 1
+c1: 0
+c2: 0
+c3: 0
+c4: 1
+Y0: -2
+Y1: 1
