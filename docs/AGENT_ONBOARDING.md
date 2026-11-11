@@ -2,7 +2,7 @@
 
 **Purpose.** This is the zero-context handoff for a new coding agent. Read this file, then the linked documents. When an older note and `primness_roadmap.md` disagree, the roadmap **Current State** section is the later record. Do not invent a section, a formula, or a test that those files do not contain.
 
-**Last updated:** 2026-11-11 14:40 EST (code map, next work; the sections below them keep their 2026-11-09 facts)
+**Last updated:** 2026-11-11 18:40 EST (code map, next work; the sections below them keep their 2026-11-09 facts)
 
 ## What this project is
 
@@ -73,6 +73,7 @@ Workspace [Cargo.toml](../Cargo.toml), edition 2021, resolver 2. Release profile
 | [scripts/h1_test_sieve.sh](../scripts/h1_test_sieve.sh), [scripts/h1_cost.py](../scripts/h1_cost.py) | H1: CADO-NFS `las -random-sample` on RSA-200 with its own c200 polynomial and parameters over six special-q ranges under `hw-sample`, integrated to the relation target; writes `data/results/h1_cost.{md,csv}`. |
 | [src/bin/h2_cpu.rs](../src/bin/h2_cpu.rs), [tools/h2_gpu/main.swift](../tools/h2_gpu/main.swift), [scripts/h2_run.sh](../scripts/h2_run.sh), [scripts/h2_summary.py](../scripts/h2_summary.py) | H2: binary `h2-cpu` (shared inputs with `--prepare`; the CPU bucket sieve, 96-bit Montgomery chains and copy with `--run`), the same kernels in Metal (`swiftc -O`), both under `hw-sample`, cross-checked; writes `data/results/h2_kernels.{md,csv}`. |
 | [scripts/h4_reach.sh](../scripts/h4_reach.sh), [scripts/h4_summary.py](../scripts/h4_summary.py) | H4: RSA-100, RSA-110, ... factored end to end by `cado-nfs.py N server.address=localhost -t 18` (the default parameter file, nothing overridden) under `hw-sample`, ascending until a run takes more than one hour; the factors checked against the published ones, the phases from the log's timestamps, the reach interpolated in ln T; writes `data/results/h4_reach.{md,csv}`. |
+| [scripts/h5_sieve_share.sh](../scripts/h5_sieve_share.sh), [scripts/h5_summary.py](../scripts/h5_summary.py) | H5: nine `las -t 2 -random-sample 300 -T` processes on RSA-130's sieve as H4 ran it (its polynomial, factor base and client parameters), one per ninth of its special-q range, weighted by the run's special-q's per workunit. Computes the sieve proper's share, the ceiling for a free sieve and the criterion, plus H1's split at 200 digits and the growth decomposition. Writes `data/results/h5_sieve_share.{md,csv}`. |
 | [src/bin/d1_tail.rs](../src/bin/d1_tail.rs), [scripts/d1_conditional.py](../scripts/d1_conditional.py) | Binary `d1-tail` (projective root counts at every prime in (2000, B], summed by bin of ln p, `root-tail/1`); the comparison with the conditional baseline, the α tail and the exact first-order term. |
 | [scripts/d1_run_all.sh](../scripts/d1_run_all.sh), [scripts/d1_summary.py](../scripts/d1_summary.py), [scripts/d1_report.py](../scripts/d1_report.py) | All instances end to end; the criterion across instances; the per-run report. |
 | [src/hardware.rs](../src/hardware.rs) | `hardware-sample/1` telemetry: macmon + ioreg + sysctl, JSONL trace, Postgres rows, summary. See [docs/hardware_telemetry.md](hardware_telemetry.md). |
@@ -143,8 +144,9 @@ Obstacle D's measurements are closed ([docs/obstacle_d_verdict.md](obstacle_d_ve
 - H1 ([docs/h1_sieving_cost.md](h1_sieving_cost.md)): CADO-NFS takes 3,896 laptop-hours to collect the relations for RSA-200 on the CPU.
 - H2 ([docs/h2_gpu_kernels.md](h2_gpu_kernels.md)): the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication, which leaves at least 189 laptop-hours with the GPU.
 - H4 ([docs/h4_one_hour_reach.md](h4_one_hour_reach.md)): with CADO-NFS as shipped, the laptop factors a 123.3-digit number in one hour (RSA-100 to RSA-130 in 4:31 to 2:08:15). The prediction was 132, so H4 is rejected. The effective constant from the reach to 200 digits is 1.67 to 1.68. The runs ran at sustained clocks, below those of H1's 20-second samples.
+- H5 ([docs/h5_sieve_share.md](h5_sieve_share.md)): the sieve proper (norms, sieving and survivor search) is 84.9 percent of `las`'s time and 65.1 percent of RSA-130's complete factorization. A sieve that cost nothing would buy at most 2.87 times at the reach, and 1.8 to 2.7 times at 200 digits. From 130 to 200 digits the cost per sieve position grows 1.45 times, and the number of positions 2,015 times.
 
-1. Measure the linear algebra at 200 digits: the matrix size, and the cost of block Wiedemann on this machine. H3's rates need it too. Write the prediction first, as for every claim here.
+1. Measure the linear algebra at 200 digits: the matrix size, and the cost of block Wiedemann on this machine. It is the floor a perfect sieve would leave, and H3's rates need it too. Write the prediction first, as for every claim here.
 2. Measure the one-hour reach with tuned settings: the linear algebra's threads, the relation target, polynomial selection effort and the machine's power mode. Use `scripts/h4_reach.sh` with the changes named in a new prediction.
 3. H3: specify what a machine built for the two kernels must do per second to collect 200-digit relations in one hour: about 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations. Size it against this laptop's measured rates and against published sieving designs (TWIRL, Shamir and Tromer 2003). Not started.
 4. New mathematics only as a construction the harness can price from its value sizes and root counts ([docs/obstacle_d_verdict.md](obstacle_d_verdict.md) sections 4 and 5).

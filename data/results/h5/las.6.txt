@@ -1,0 +1,95 @@
+# (692ecb7) ~/external/cado-nfs/build/Mac.lan/sieve/las -poly data/dumps/h4/rsa130/c130.poly -fb1 data/dumps/h4/rsa130/c130.roots1.gz -I 13 -lim0 6000000 -lim1 7500000 -lpb0 28 -lpb1 29 -mfb0 54 -mfb1 57 -lambda0 1.93 -lambda1 1.96 -ncurves0 11 -ncurves1 13 -sqside 1 -q0 2738885 -q1 3136662 -random-sample 300 -seed 1 -t 2 -T -out data/dumps/h5/rels.6.txt
+# Compiled with gcc Apple LLVM 17.0.0 (clang-1700.6.4.2)
+# Compilation flags (C) -std=c99 -W -Wall -O2 
+# Compilation flags (C++) -std=c++20 -O2 
+# las flags: BUCKET_SIEVE_POWERS LOGNORM_GUARD_BITS=1.00
+# Interpreting -I 13 as meaning -A 25
+# Warning: arguments nq and q1 will both limit the q range
+# Getting rid of sieve_shared_data structure [rss=3216.00 k]
+# Applying binding machine,1,2,nobind with hwloc disabled
+# 1 job(s) in parallel
+# 2 thread(s) per job
+# Expected memory usage per binding zone for the factor base: 14.72 MB
+# Expected memory usage per subjob for logI=13: 112.67 MB
+# Expected memory use per subjob (max reached for logI=13): 112.67 MB
+# Expected memory use for 1 binding zone(s) and 1 2-threaded jobs per zone, counting 3 MB of base footprint: 130.49 MB
+# Using default value powlim0=ULONG_MAX
+# Creating side-0 rational factor base for polynomial f0(x) = -8828384182918861144477594+401879364570849803*x
+# including primes up to 6000000 and prime powers up to 18446744073709551615 using threadpool of 2 threads.
+# Creating side-0 rational factor base took 0.0 (0.0 real)
+# Using default value powlim1=ULONG_MAX
+# Reading side-1 factor base from disk for polynomial f1(x) = 446148019785937710746849109480-3899172933693482735206071*x-1336776178063237828550*x^2+5789577692461229*x^3+205245042300*x^4+327600*x^5
+# Reading side-1 factor base from data/dumps/h4/rsa130/c130.roots1.gz
+# Factor base successfully read, 322171 primes, largest was 7499887
+# Reading side-1 factor base took 0.0 (0.1 real)
+#
+# [300 per-special-q blocks omitted; full output in data/dumps/h5/]
+# subjob 0 done (300 special-q's), now waiting for other jobs
+# Average J=3832 for 300 special-q's, max bucket fill -bkmult 1,1s:1.095
+# Discarded 0 special-q's out of 300 pushed
+#
+# Hierarchical timings:
+# 0.293356 (bookkeeping)
+# 0.33774 multithreaded tasks
+#  0.0271242 allocate_buckets ; category 0
+#  0.194378 side 0 ; category 2
+#   20.5808 fill_in_buckets_toplevel
+#   0.0448104 prepare small sieve
+#   0.227757 init norms ; category 4
+#   1.69716 apply buckets ; category 2
+#   7.94171 small sieve ; category 2
+#   2.54861 S minus S (2) ; category 5
+#   1.7151 purge buckets ; category 5
+#   3.52595 resieve ; category 2
+#  0.182869 side 1 ; category 258
+#   20.9506 fill_in_buckets_toplevel
+#   0.0500173 prepare small sieve
+#   0.906225 init norms ; category 260
+#   1.72824 apply buckets ; category 258
+#   11.6389 small sieve ; category 258
+#   2.53344 S minus S (2) ; category 261
+#   1.91488 purge buckets ; category 261
+#   2.78144 resieve ; category 258
+#  5.75329 search_survivors ; category 1
+#  2.72228 cofactoring_sync
+#  1.11085 cofactoring ; category 6
+#  0.384701 print relations ; category 0
+# 0.0112103 skew Gauss ; category 0
+# 0.0622279 process_bucket_region outer container ; category 3
+#
+# Categorized timings (total counted time 91.87):
+# -1 uncategorized (top-level bookkeeping): 3.35
+# 0 bookkeeping (lower levels): 0.42
+# 1 search_survivors: 5.75
+# 2 sieving on side 0: 33.98
+# 3 sieving (not differentiated): 0.06
+# 4 norms on side 0: 0.23
+# 5 cofactoring on side 0: 4.26
+# 6 cofactoring (not differentiated): 1.11
+# 258 sieving on side 1: 37.33
+# 260 norms on side 1: 0.91
+# 261 cofactoring on side 1: 4.45
+# total counted time: 91.87
+#
+# survivors before_sieve: 9417785344
+# survivors after_sieve: 2537779 (ratio 2.69e-04)
+# survivors not_both_even: 2537779
+# survivors not_both_multiples_of_p: 2537779
+# survivors trial_divided_on_side[0]: 406082
+# survivors check_leftover_norm_on_side[0]: 406082 (16.0%)
+# survivors trial_divided_on_side[1]: 67717
+# survivors check_leftover_norm_on_side[1]: 67717 (16.7%)
+# survivors enter_cofactoring: 67717
+# survivors cofactored: 67711 (100.0%)
+# survivors smooth: 37050
+# Wasted cpu time due to 1 bkmult adjustments: 0.01
+# Cumulated wait time over all threads 0.14
+# Total cpu time 92.46s, useful 91.87s [norm 0.23+0.9, sieving 77.1 (34.0+37.3 + 5.8), factor 9.8 (4.3+4.4 + 1.1), rest 0.4], wasted+waited 0.15s, rest 0.44s
+# Total elapsed time 50.36s, per special-q 0.167872, per relation 0.00135929
+# Expected memory usage per binding zone for the factor base: 14.72 MB
+# Expected memory usage per subjob for logI=13: 123.14 MB
+# Expected memory use per subjob (max reached for logI=13): 123.14 MB
+# Expected memory use for 1 binding zone(s) and 1 2-threaded jobs per zone, counting 3 MB of base footprint: 140.96 MB
+# PeakMemusage (MB) = 290
+# Total 37050 reports [0.0025s/r, 123.5r/sq] in 50.4 elapsed s [183.6% CPU]
+# Getting rid of sieve_shared_data structure [rss=171.62 MB]

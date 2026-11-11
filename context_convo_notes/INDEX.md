@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:13 EST
-- **Last Modified**: 2026-11-11 14:40 EST
-- **Version**: 1.14
+- **Last Modified**: 2026-11-11 18:40 EST
+- **Version**: 1.15
 - **Tags**: index, documentation, context
 - **Related Files**: primness_roadmap.md, current_state_history.md
 
@@ -28,5 +28,6 @@
 | 2026-11-10 19:30 | Obstacle D closed (D1 verdict adopted; closing checks find nothing left; Galois group acts only through root counts); H1: RSA-200's sieve takes 3,896 laptop-hours, H1 holds | obstacle-D, verdict, closing-checks, galois, obstacle-H, H1 | [2026-11-10_1930_obstacle_d_closed_h1.md](2026-11-10_1930_obstacle_d_closed_h1.md) |
 | 2026-11-10 19:30 | H2: the GPU is 8.2× the CPU on the bucket sieve and 19.6× on 96-bit Montgomery multiplication (H2 rejected); laptop plus GPU still needs at least 189 hours for 200-digit relations | obstacle-H, H2, gpu, metal | [2026-11-10_1930_h2_gpu_kernels.md](2026-11-10_1930_h2_gpu_kernels.md) |
 | 2026-11-11 14:40 | H4: the laptop's one-hour reach with CADO-NFS end to end is 123.3 digits (RSA-100 to RSA-130 in 4:31 to 2:08:15), against 132 from H1 by L_N[1/3, 1.923] (H4 rejected); effective constant 1.67–1.68 | obstacle-H, H4, cado-nfs, one-hour-reach | [2026-11-11_1440_h4_one_hour_reach.md](2026-11-11_1440_h4_one_hour_reach.md) |
+| 2026-11-11 18:40 | H5: the sieve proper is 84.9% of `las`'s time and 65.1% of RSA-130's factorization, so a perfect sieve buys at most 2.87× at the one-hour reach (H5 holds) and 1.8–2.7× at 200 digits; from 130 to 200 digits the cost per position grows 1.45× and the positions 2,015× | obstacle-H, H5, sieve, cofactorization, amdahl | [2026-11-11_1840_h5_sieve_share.md](2026-11-11_1840_h5_sieve_share.md) |
 
 Update this table whenever a new timestamped note is added to the directory.

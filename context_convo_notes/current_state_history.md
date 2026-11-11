@@ -2,12 +2,21 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-11 14:40 EST
-- **Version**: 1.23
+- **Last Modified**: 2026-11-11 18:40 EST
+- **Version**: 1.24
 - **Tags**: current-state, history, roadmap, obstacle-D, obstacle-H
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-11 18:40 EST
+- Pull request 30 (H4) is merged. This change measures how much of the laptop's work a better sieve could save.
+- H5 was pre-registered in 2f1ab98. The claim: the sieve proper is under two thirds of RSA-130's wall time, so a free sieve buys under 3×.
+- Nine `las -T` samples of RSA-130's sieve as H4 ran it put the sieve proper at 84.9% of `las`'s time and the cofactorization at 10.8%.
+- That gives s = 0.651 and a ceiling of 2.87×, so H5 holds, narrowly. The derivation, which carried H1's 200-digit split down, predicted 1.7–2.2×.
+- At 200 digits a free sieve buys 1.8–2.7× and a free relation collection 5.9–11×.
+- From RSA-130 to 200 digits the cost per sieve position grows 1.45× and the number of positions 2,015× (14× the relations, 144× the positions per relation).
+- Next: the linear algebra at 200 digits, then the tuned one-hour reach. H3 is not started.
 
 ### 2026-11-11 14:40 EST
 - Pull request 29 is merged. This change measures the laptop's one-hour reach.
