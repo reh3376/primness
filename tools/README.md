@@ -44,5 +44,9 @@ python3 scripts/cado-best-poly.py data/instruments/d1-01/ropt.polys data/instrum
 
 `scripts/cado-polyselect.sh` runs both stages under `hw-sample` and writes `data/instruments/<id>/`: `stage1.polys` and `ropt.polys` (the candidates; not committed, since they run to megabytes and the log records the command that regenerates them), `polyselect.log` (exact commands, CADO commit, instrument stderr) and `polyselect.hardware.json` (the `hardware-sample/1` finish record). `scripts/cado-best-poly.py` copies the candidate with the largest MurphyE to `cado.poly`, keeping the score only as a comment. The harness reads `cado.poly` with `--source cado-nfs` because the caller knows that program wrote it. Parameters follow `parameters/factor/params.c60` scaled down (degree 4, P = 420, incr 60); the MurphyE bounds and area (`Bf = Bg = 2^17`, area 1e12) only rank candidates.
 
+## Running cado-nfs.py end to end here (H4)
+
+`scripts/h4_reach.sh` drives the `cado-nfs.py` driver itself, which imports Flask and requests. CADO-NFS's own venv (`cado-nfs.venv`, made by `scripts/setup-venv.sh` in its tree) has both, and `CADO_PYTHON` selects another interpreter. By default CADO-NFS's work server listens on every interface and whitelists the host's own addresses. The script passes `server.address=localhost`, so the server listens on 127.0.0.1 only. That is a network setting, not a factoring parameter. The work directories, with every relation, stay under `data/dumps/h4/` (gitignored). The log lines kept in `data/results/h4/` leave out paths, network addresses and certificate hashes.
+
 ## Integration rule
 Call these programs, or parse their polynomial files, to obtain candidate polynomials and relation sets. All smoothness density measurements, Dickman–de Bruijn comparisons, and falsifiable claims under D1 are performed by the Primness Rust harness.
