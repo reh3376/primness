@@ -3,7 +3,7 @@
 **Metadata**
 - **Created**: 2026-11-03 (base document)
 - **Last Modified**: 2026-11-10 19:30 EST
-- **Version**: 1.26
+- **Version**: 1.27
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -78,7 +78,11 @@ The values of the number field sieve are as smooth as their sizes and root count
 
 Obstacle H is forced in the sense the README gives it. Its first measurement, H1, was written down and committed before the run (`docs/h1_falsifiable_prediction.md`). It is the relation collection for RSA-200 on this laptop, with CADO-NFS's own 200-digit polynomial and parameters, sampled over six special-q ranges and integrated to CADO-NFS's relation target. It takes 3,896 laptop-hours (`docs/h1_sieving_cost.md`, `data/results/h1_cost.md`). H1 holds: the estimate scaled from the records was 6,300, and the measurement is 0.62 of it. Sieving takes 50 to 64 percent of the time and cofactorization 25 to 37 percent, so neither alone decides the speed. The gap at 200 digits is about 3,900 times for the relations, or 4,300 to 4,700 times with the linear algebra.
 
-Next is H2. The laptop's GPU is part of the success criterion and has not been measured, so H2 measures what it adds to the two dominant kernels and states what a machine must do per second to collect 200-digit relations in an hour. The linear algebra at 200 digits and the laptop's own one-hour reach with tuned CADO-NFS settings follow. New mathematics enters when there is a construction the harness can price. The required status check on the main ruleset is still to be applied in the repository settings.
+H2 asked what the laptop's GPU adds, since the success criterion counts it. I wrote the prediction and committed it before measuring (`docs/h2_falsifiable_prediction.md`). Both kernels exist twice, in Rust for the 18 CPU cores (`h2-cpu`) and in Metal for the 40 GPU cores (`tools/h2_gpu/main.swift`). The two sides do provably the same work: the sieve checksums are identical, and all 18,432 shared Montgomery chains agree.
+
+The GPU is 8.2 times as fast as the CPU on the bucket sieve, and 19.6 times on Montgomery multiplication modulo 96-bit numbers, which is the core of ECM. My limit was 10, so H2 is rejected on the multiplication (`docs/h2_gpu_kernels.md`). The bound the protocol fixes for that case still leaves at least 189 laptop-hours for the relations of a 200-digit number with the GPU. Spreading the two ratios over H1's time shares gives 350 to 755 hours. Obstacle H is forced on the primary hardware envelope.
+
+Next is H3: what a machine built for the two kernels must do per second to collect 200-digit relations in one hour. That is about 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations, sized against this laptop's measured rates and against published sieving designs. The linear algebra at 200 digits and the laptop's own one-hour reach with tuned CADO-NFS settings follow. New mathematics enters when there is a construction the harness can price. The required status check on the main ruleset is still to be applied in the repository settings.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -89,7 +93,7 @@ Full history in `context_convo_notes/current_state_history.md`.
 - Does the closure hold at a larger scale? These are 40–80 digit numbers with B up to 2^28 and a region with b ≤ 1500. The closing checks narrowed it (`docs/obstacle_d_verdict.md` section 2.3). The small bounds already put the values at the u of a 200-digit run, and the model holds there within the counting error. The trend in digits allows at most +0.47% at 200 digits at 2^28. What a larger instance would still test is a larger B at the same u.
 - Why do the rational side's sectors scatter less than counting noise when its tiles do not? The χ² per sector is 0.79 to 0.87 at 2^16 through 2^28, and 0.35 for the largest sectors of d1-02 (`docs/d5_smooth_clusters.md`). The closing checks add that D5's held-out lifts are negative on both sides and that the rational side's D1 χ² is 3.3 on ten at 2^28. Smooth values are slightly anti-clustered. The likely reason is that a region holds an almost fixed number of each prime's multiples, since they form a lattice.
 - The five toy quartics sit +0.10% ± 0.03% above the model at 2^24 and 2^28, whatever their Galois group, while the forty NFS polynomials do not. Is that the neglected second-order term, or roots of small height that tiny coefficients produce? It is too small to matter for the verdict.
-- What does the laptop's GPU add to the two kernels that dominate the 200-digit sieve, the bucket sieve and the ECM cofactorization? H1 measured the CPU alone (`docs/h1_sieving_cost.md`).
+- How far do tuned implementations move H2's ratios (8.2 for the sieve, 19.6 for the multiplication)? A tuned 96-bit multiplication on the CPU, a full ECM on the GPU, and a two-dimensional lattice siever with small-prime sieving and survivor rescans would each change them. None would move the bound of 189 hours by its own size.
 - 240 to 260 digits, the range of the latest records, is a stretch beyond the 200-digit target. At H1's measured rate it needs about 3 × 10^5, 8 × 10^5 and 2 × 10^6 laptop-hours at 240, 250 and 260 digits. By L_N[1/3] that calls for a constant below the special number field sieve's 1.526 on general numbers.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 

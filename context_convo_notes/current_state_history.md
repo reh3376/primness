@@ -3,7 +3,7 @@
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
 - **Last Modified**: 2026-11-10 19:30 EST
-- **Version**: 1.21
+- **Version**: 1.22
 - **Tags**: current-state, history, roadmap, obstacle-D, obstacle-H
 - **Related Files**: primness_roadmap.md
 
@@ -20,7 +20,8 @@
   - +0.47% at most at 200 digits at 2^28;
   - the A4, S4, C4, D4 and V4 quartics follow the model whatever their group.
 - H1 was pre-registered in c6dd75a. Sieving RSA-200 with CADO-NFS's own c200 polynomial and parameters on this laptop takes 3,896 laptop-hours (0.62 of the 6,300 scaled from the records), so H1 holds. Sieving is 50–64% of the time and cofactorization 25–37%.
-- Next: H2 (what the GPU adds, and the rates one hour needs), then linear algebra at 200 digits and the laptop's tuned one-hour reach.
+- H2 was pre-registered in d183e59 and implemented twice, in Rust for the CPU and in Metal for the GPU, with the two sides cross-checked. The GPU is 8.2× the CPU on the bucket sieve and 19.6× on 96-bit Montgomery multiplication, against a limit of 10, so H2 is rejected. At least 189 laptop-hours remain for 200-digit relations with the GPU (350–755 from H1's time shares), so Obstacle H is forced on the primary envelope.
+- Next: H3, the rates a machine built for the two kernels needs at one hour; then linear algebra at 200 digits and the laptop's tuned one-hour reach.
 
 ### 2026-11-10 16:45 EST
 - Pull request 28 (D5, the D1 verdict draft) is still open; this change follows it on `primness_dev01`.

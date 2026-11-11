@@ -58,7 +58,8 @@ As of the latest update on the `primness_dev01` branch:
 
   The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more.
 - Obstacle H has started. H1 was pre-registered before the run (`docs/h1_falsifiable_prediction.md`). Sieving RSA-200 with CADO-NFS's own 200-digit polynomial and parameters on this laptop, sampled over six special-q ranges and integrated to CADO-NFS's relation target, takes 3,896 laptop-hours (`docs/h1_sieving_cost.md`). That is 0.62 of the estimate scaled from the records, so H1 holds. Sieving takes 50–64% of the time and cofactorization 25–37%.
-- Next concrete step: H2, what the laptop's GPU adds to the sieve and the cofactorization, and the rates a machine needs to collect 200-digit relations in one hour. After that come the linear algebra at 200 digits and the laptop's tuned one-hour reach.
+- H2 measured the laptop's GPU on the same two kernels, with both implementations written here and cross-checked (`docs/h2_gpu_kernels.md`, `src/bin/h2_cpu.rs`, `tools/h2_gpu/main.swift`). Against the 18 CPU cores, the GPU is 8.2 times as fast on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication. H2's limit was 10, so H2 is rejected. Even so, the bound it fixes leaves at least 189 laptop-hours for 200-digit relations with the GPU, and the estimates from H1's time shares are 350 to 755. Obstacle H is forced on the primary hardware envelope.
+- Next concrete step: H3, what a machine built for the two kernels must do per second to collect 200-digit relations in one hour: 8,300 special-q's, 4.5 × 10^12 sieve positions and 4 × 10^7 cofactorizations. The linear algebra at 200 digits also needs measuring.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
 

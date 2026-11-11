@@ -59,6 +59,10 @@ path = "src/bin/d2_joint.rs"
 name = "d-checks"
 path = "src/bin/d_checks.rs"
 
+[[bin]]
+name = "h2-cpu"
+path = "src/bin/h2_cpu.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1

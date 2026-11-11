@@ -3,7 +3,7 @@
 **Metadata**
 - **Created**: 2026-11-03 12:13 EST
 - **Last Modified**: 2026-11-10 19:30 EST
-- **Version**: 1.12
+- **Version**: 1.13
 - **Tags**: index, documentation, context
 - **Related Files**: primness_roadmap.md, current_state_history.md
 
@@ -26,5 +26,6 @@
 | 2026-11-10 13:45 | D5 smooth clusters tested on the ten D1 instances: no locatable excess, tiles at counting noise; D1 verdict drafted | obstacle-D, D5, D1, smooth-clusters, null-result | [2026-11-10_1345_d5_smooth_clusters.md](2026-11-10_1345_d5_smooth_clusters.md) |
 | 2026-11-10 16:45 | D2 part 1: four number fields sharing the rational side are smooth independently (joint excess at the noise); D1 closure holds on thirty rotated fields | obstacle-D, D2, MNFS, joint-smoothness, null-result | [2026-11-10_1645_d2_multiple_fields.md](2026-11-10_1645_d2_multiple_fields.md) |
 | 2026-11-10 19:30 | Obstacle D closed (D1 verdict adopted; closing checks find nothing left; Galois group acts only through root counts); H1: RSA-200's sieve takes 3,896 laptop-hours, H1 holds | obstacle-D, verdict, closing-checks, galois, obstacle-H, H1 | [2026-11-10_1930_obstacle_d_closed_h1.md](2026-11-10_1930_obstacle_d_closed_h1.md) |
+| 2026-11-10 19:30 | H2: the GPU is 8.2× the CPU on the bucket sieve and 19.6× on 96-bit Montgomery multiplication (H2 rejected); laptop plus GPU still needs at least 189 hours for 200-digit relations | obstacle-H, H2, gpu, metal | [2026-11-10_1930_h2_gpu_kernels.md](2026-11-10_1930_h2_gpu_kernels.md) |
 
 Update this table whenever a new timestamped note is added to the directory.
