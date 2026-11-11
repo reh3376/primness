@@ -63,7 +63,11 @@ As of the latest update on the `primness_dev01` branch:
   - The reach is 123.3 digits. H1's cost carried down by L_N[1/3, 1.923] predicted 132, so H4 is rejected: below 200 digits the time doubles every 6 to 7 digits, not every 4 to 5.
   - The constant that joins the reach to H1's 200-digit cost is 1.67 to 1.68.
   - The gap to the goal is 77 digits, or 4,300 to 4,700 times the laptop's hour.
-- Next concrete step: the linear algebra at 200 digits, then the one-hour reach with tuned settings. H3, the rates a machine built for the two kernels would need, is not started.
+- H5 measured what a better sieve could save, under a prediction committed first (`docs/h5_falsifiable_prediction.md`, `docs/h5_sieve_share.md`, `scripts/h5_sieve_share.sh`).
+  - Nine `las -T` samples of RSA-130's sieve, as H4 ran it, put the sieve proper (norms, sieving and survivor search) at 84.9% of `las`'s time and 65.1% of the complete factorization.
+  - A sieve that cost nothing and found the same relations would make the one-hour-reach factorization at most 2.87× faster, so H5 holds (limit 3×). At 200 digits the ceiling is 1.8–2.7×, and a free relation collection buys 5.9–11×, against the 4,300–4,700× one hour needs.
+  - From RSA-130 to 200 digits the cost per sieve position grows only 1.45×. The number of positions grows 2,015×, because smooth values become rarer. A far more efficient replacement would have to examine far fewer candidates, which is a change of algorithm rather than of sieve.
+- Next concrete step: the linear algebra at 200 digits, the floor that remains even with a perfect sieve. Then the one-hour reach with tuned settings. H3, the rates a machine built for the two kernels would need, is not started.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
 

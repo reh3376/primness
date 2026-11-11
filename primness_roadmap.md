@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-11 14:40 EST
-- **Version**: 1.28
+- **Last Modified**: 2026-11-11 18:40 EST
+- **Version**: 1.29
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, obstacle-H, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,21 +60,28 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-11 14:40 EST:
+As of 2026-11-11 18:40 EST:
 
-I am developing on `primness_dev01`. Pull request 29 is merged, and this change follows it. It measures the laptop's one-hour reach.
+I am developing on `primness_dev01`. Pull request 30 is merged, and this change follows it. It measures how much of the laptop's work a better sieve could save.
 
 Obstacle D is closed (`docs/obstacle_d_verdict.md`). The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more. Obstacle H is forced on the primary hardware envelope:
 - H1: relation collection for RSA-200 takes 3,896 laptop-hours on the CPU (`docs/h1_sieving_cost.md`).
-- H2: the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication. That still leaves at least 189 laptop-hours with the GPU (`docs/h2_gpu_kernels.md`).
+- H2: the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication. That still leaves at least 189 laptop-hours (`docs/h2_gpu_kernels.md`).
+- H4: with CADO-NFS as shipped, the laptop factors a 123.3-digit number in one hour; RSA-100 to RSA-130 took 4:31 to 2:08:15 (`docs/h4_one_hour_reach.md`).
+  - H1's cost carried down by L_N[1/3, 1.923] predicted 132 digits, so H4 is rejected.
+  - The effective constant from the reach to 200 digits is 1.67 to 1.68, and the figures above 200 digits are restated with it in the open questions.
+  - The gap is 77 digits, or 4,300 to 4,700 times the laptop's hour.
 
-H4 measures the other end: the largest number this laptop factors completely in one hour. I wrote the prediction and committed it before the first measured run (`docs/h4_falsifiable_prediction.md`). H1's cost, carried down by L_N[1/3, 1.923], puts the reach at 132 digits, and H4 holds within 5 digits of that. CADO-NFS as shipped factored RSA-100, RSA-110, RSA-120 and RSA-130 end to end on 18 threads, each with its default parameter file (`scripts/h4_reach.sh`). The runs took 4:31, 12:38, 41:00 and 2:08:15. Each printed the published factors (`docs/h4_one_hour_reach.md`, `data/results/h4_reach.md`).
+H4 found that the sieving phase takes 60 to 77 percent of the wall time, and its share grows with size. That raised the question of whether a better sieve, or something that replaces it, is where to work. H5 measures what that could buy. I wrote the prediction and committed it before measuring (`docs/h5_falsifiable_prediction.md`).
+- Nine `las -T` samples of RSA-130's sieve, exactly as H4 ran it, split `las`'s time (`scripts/h5_sieve_share.sh`, `docs/h5_sieve_share.md`, `data/results/h5_sieve_share.md`).
+- The sieve proper (norms, sieving and survivor search) is 84.9 percent of it, and the cofactorization 10.8 percent.
+- The sieve is therefore 65.1 percent of a complete factorization at the one-hour reach. A sieve that cost nothing and found the same relations would make it at most 2.87 times faster.
+- H5 holds, narrowly, since its limit was 3 times. My derivation carried H1's 200-digit split down and predicted 1.7 to 2.2 times; at 130 digits the cofactorization's share is much smaller than at 200.
+- At 200 digits a free sieve buys 1.8 to 2.7 times, and a free relation collection 5.9 to 11 times. One hour needs 4,300 to 4,700 times.
 
-The one-hour reach is 123.3 digits, so H4 is rejected. Below 200 digits, the L-scaling makes the cost fall too fast. From 100 to 130 digits the time doubles every 6 to 7 digits, where L_N[1/3, 1.923] says every 4 to 5. The measured times are 10 down to 2.8 times the scaled ones. The constant that joins one hour at 123.3 digits to 4,300 to 4,700 hours at 200 digits is 1.67 to 1.68. The figures above 200 digits are restated with it in the open questions. Measured in the success criterion's units, the gap is 77 digits, or 4,300 to 4,700 times the laptop's hour.
+From RSA-130 to 200 digits the cost of relation collection grows 2,900 times. The cost of each sieve position grows only 1.45 times, from 9.8 to 14.1 core-nanoseconds. The number of positions grows 2,015 times: 14 times as many relations are needed, and each takes 144 times as many positions. A sieve, or a replacement for it, that examines the same candidates can gain only constant factors. To be far more efficient it would have to examine far fewer candidates per relation. That depends on the size of the values, so it is a change of algorithm rather than of sieve.
 
-Sieving is 60 to 77 percent of the wall time, rising with size, and the linear algebra is 13 to 17 percent. These runs ran at sustained clocks, lower than in H1's 20-second samples. During sieving the CPU drew 37 to 44 W, against 62 to 67 W in H1's samples. Measured at sustained clocks, H1's cost would be about 18 percent higher. That moves the predicted reach by about a digit and does not change the verdict.
-
-Next is the linear algebra at 200 digits, which H3's rates also need. After that comes the one-hour reach with tuned settings: the linear algebra's threads, the relation target, polynomial selection effort and the machine's power mode. H3 is not started.
+Next is the linear algebra at 200 digits. It is the floor that remains even with a perfect sieve, and H3's rates also need it. After that comes the one-hour reach with tuned settings. H3 is not started.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
