@@ -2,12 +2,21 @@
 
 **Metadata**
 - **Created**: 2026-11-03 12:10 EST
-- **Last Modified**: 2026-11-11 18:40 EST
-- **Version**: 1.24
+- **Last Modified**: 2026-11-11 20:45 EST
+- **Version**: 1.25
 - **Tags**: current-state, history, roadmap, obstacle-D, obstacle-H
 - **Related Files**: primness_roadmap.md
 
 ## Current State Entries
+
+### 2026-11-11 20:45 EST
+- Pull request 31 (H5) is merged. This change measures the linear algebra at 200 digits.
+- H6 was pre-registered in 2fc8e2e: 46 laptop-hours within a factor of 2, against the records'-share stand-in of about 400.
+- The matrix size is estimated: re-merging RSA-130 at c200's density gives κ = 0.849. Scaling by the large-prime ideal count gives N_200 = 14.1M rows and 2.4 × 10^9 nonzeros.
+- The new `h6-matrix` builds NFS-shaped synthetic matrices, with columns following (i + 32)^-0.94. At RSA-130's shape it is within 11.5% of the real matrix (ρ = 0.897).
+- 661,289 products at 0.240 s, lingen at 0.95 h (thr=1x1) and 6% overhead give T_LA = 47.9 laptop-hours, so H6 holds. Clean intervals only give 55.8, and the top of H4's size range 62.5.
+- The linear algebra is 1.2–1.6% of relations plus linear algebra. A free relation collection buys at most 63–82× before polynomial selection, which is not measured.
+- Next: polynomial selection at 200 digits, then the tuned one-hour reach. H3 is not started.
 
 ### 2026-11-11 18:40 EST
 - Pull request 30 (H4) is merged. This change measures how much of the laptop's work a better sieve could save.

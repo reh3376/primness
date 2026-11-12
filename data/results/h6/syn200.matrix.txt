@@ -1,0 +1,2 @@
+./data/dumps/h6/syn200/m.bin: 14107489 rows 14107489 cols weight 2398429574
+Choosing a column permutation based on largest deviation (5607.84 > 133.43)

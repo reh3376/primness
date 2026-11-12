@@ -1,0 +1,2 @@
+./data/dumps/h4/rsa130/c130.sparse.bin: 1183823 rows 1183631 cols (192 extra rows) weight 131878299
+Choosing a column permutation based on largest deviation (2029.35 > 87.38)

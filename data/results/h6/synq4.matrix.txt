@@ -1,0 +1,2 @@
+./data/dumps/h6/synq4/m.bin: 3526872 rows 3526872 cols weight 599954772
+Choosing a column permutation based on largest deviation (3249.37 > 133.58)

@@ -1,0 +1,19 @@
+~/external/cado-nfs/build/Mac.lan/linalg/bwc/krylov nullspace=left end=6000 prime=2 skip_online_checks=1 wdir=./data/dumps/h6/syn200/wdir interleaving=0 cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf m=64 n=64 matrix=./data/dumps/h6/syn200/m.bin interval=500 thr=3x6 ys=0..64 start=0
+~/external/cado-nfs/build/Mac.lan/linalg/bwc/bwc.pl krylov m=64 n=64 prime=2 thr=3x6 interleaving=0 nullspace=left interval=500 matrix=./data/dumps/h6/syn200/m.bin wdir=./data/dumps/h6/syn200/wdir cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf ys=0..64 start=0 end=6000 skip_online_checks=1
+# (692ecb7) ~/external/cado-nfs/build/Mac.lan/linalg/bwc/krylov nullspace=left end=6000 prime=2 skip_online_checks=1 wdir=./data/dumps/h6/syn200/wdir interleaving=0 cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf m=64 n=64 matrix=./data/dumps/h6/syn200/m.bin interval=500 thr=3x6 ys=0..64 start=0
+# (692ecb7) ~/external/cado-nfs/build/Mac.lan/linalg/bwc/krylov nullspace=left end=6000 prime=2 skip_online_checks=1 wdir=./data/dumps/h6/syn200/wdir interleaving=0 cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf m=64 n=64 matrix=./data/dumps/h6/syn200/m.bin interval=500 thr=3x6 ys=0..64 start=0
+krylov: N=500 ; ETA (N=6000): Wed Nov 11 19:43:36 2026 [0.243 s/iter]
+krylov: N=1000 ; ETA (N=6000): Wed Nov 11 19:44:09 2026 [0.248 s/iter]
+krylov: N=1500 ; ETA (N=6000): Wed Nov 11 19:46:14 2026 [0.269 s/iter]
+krylov: N=2000 ; ETA (N=6000): Wed Nov 11 19:45:45 2026 [0.264 s/iter]
+krylov: N=2500 ; ETA (N=6000): Wed Nov 11 19:47:12 2026 [0.279 s/iter]
+krylov: N=3000 ; ETA (N=6000): Wed Nov 11 19:46:43 2026 [0.274 s/iter]
+krylov: N=3500 ; ETA (N=6000): Wed Nov 11 19:47:03 2026 [0.278 s/iter]
+krylov: N=4000 ; ETA (N=6000): Wed Nov 11 19:46:44 2026 [0.274 s/iter]
+krylov: N=4500 ; ETA (N=6000): Wed Nov 11 19:47:02 2026 [0.277 s/iter]
+krylov: N=5000 ; ETA (N=6000): Wed Nov 11 19:46:45 2026 [0.274 s/iter]
+krylov: N=5500 ; ETA (N=6000): Wed Nov 11 19:46:41 2026 [0.274 s/iter]
+krylov: N=6000 ; ETA (N=6000): Wed Nov 11 19:46:41 2026 [0.274 s/iter]
+krylov done N=6000 ; cpu-wait0: 0.02 s/iter [0.018..0.018]
+Timings for krylov: (wct) 1644.52
+Timings for krylov: (cpu) 23731.87 (aggregated over all threads and 1 MPI jobs)
