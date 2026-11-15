@@ -2,8 +2,8 @@
 
 **Metadata**
 - **Created**: 2026-11-03 (base document)
-- **Last Modified**: 2026-11-11 18:40 EST
-- **Version**: 1.29
+- **Last Modified**: 2026-11-11 20:45 EST
+- **Version**: 1.30
 - **Schema**: current-state/1
 - **Tags**: factoring, GNFS, obstacle-D, obstacle-H, roadmap, primness
 - **Related Files**: context_convo_notes/current_state_history.md, context_convo_notes/INDEX.md
@@ -60,28 +60,31 @@ These are the barriers I currently see. None of them is a rigorous proof that th
 
 ## Current State
 
-As of 2026-11-11 18:40 EST:
+As of 2026-11-11 20:45 EST:
 
-I am developing on `primness_dev01`. Pull request 30 is merged, and this change follows it. It measures how much of the laptop's work a better sieve could save.
+I am developing on `primness_dev01`. Pull request 31 is merged, and this change follows it. It measures the linear algebra at 200 digits.
 
 Obstacle D is closed (`docs/obstacle_d_verdict.md`). The values of the number field sieve are as smooth as their sizes and root counts make them, and nothing more. Obstacle H is forced on the primary hardware envelope:
 - H1: relation collection for RSA-200 takes 3,896 laptop-hours on the CPU (`docs/h1_sieving_cost.md`).
 - H2: the GPU is 8.2 times the CPU on the bucket sieve and 19.6 times on 96-bit Montgomery multiplication. That still leaves at least 189 laptop-hours (`docs/h2_gpu_kernels.md`).
-- H4: with CADO-NFS as shipped, the laptop factors a 123.3-digit number in one hour; RSA-100 to RSA-130 took 4:31 to 2:08:15 (`docs/h4_one_hour_reach.md`).
-  - H1's cost carried down by L_N[1/3, 1.923] predicted 132 digits, so H4 is rejected.
-  - The effective constant from the reach to 200 digits is 1.67 to 1.68, and the figures above 200 digits are restated with it in the open questions.
-  - The gap is 77 digits, or 4,300 to 4,700 times the laptop's hour.
+- H4: with CADO-NFS as shipped, the laptop factors a 123.3-digit number in one hour (`docs/h4_one_hour_reach.md`). The gap to the goal is 77 digits.
+- H5: the sieve proper is 65 percent of a complete factorization at that reach, so a sieve that cost nothing would buy at most 2.87 times (`docs/h5_sieve_share.md`). From 130 to 200 digits the cost per sieve position grows 1.45 times, and the number of positions 2,015 times.
 
-H4 found that the sieving phase takes 60 to 77 percent of the wall time, and its share grows with size. That raised the question of whether a better sieve, or something that replaces it, is where to work. H5 measures what that could buy. I wrote the prediction and committed it before measuring (`docs/h5_falsifiable_prediction.md`).
-- Nine `las -T` samples of RSA-130's sieve, exactly as H4 ran it, split `las`'s time (`scripts/h5_sieve_share.sh`, `docs/h5_sieve_share.md`, `data/results/h5_sieve_share.md`).
-- The sieve proper (norms, sieving and survivor search) is 84.9 percent of it, and the cofactorization 10.8 percent.
-- The sieve is therefore 65.1 percent of a complete factorization at the one-hour reach. A sieve that cost nothing and found the same relations would make it at most 2.87 times faster.
-- H5 holds, narrowly, since its limit was 3 times. My derivation carried H1's 200-digit split down and predicted 1.7 to 2.2 times; at 130 digits the cofactorization's share is much smaller than at 200.
-- At 200 digits a free sieve buys 1.8 to 2.7 times, and a free relation collection 5.9 to 11 times. One hour needs 4,300 to 4,700 times.
+H6 measures the linear algebra at 200 digits, the part a perfect relation collection would leave. I wrote the prediction and committed it before measuring (`docs/h6_falsifiable_prediction.md`). Scaled from H4's linear algebra, it is 46 laptop-hours within a factor of 2. The roadmap's stand-in, taken from the records' share, was about 400.
 
-From RSA-130 to 200 digits the cost of relation collection grows 2,900 times. The cost of each sieve position grows only 1.45 times, from 9.8 to 14.1 core-nanoseconds. The number of positions grows 2,015 times: 14 times as many relations are needed, and each takes 144 times as many positions. A sieve, or a replacement for it, that examines the same candidates can gain only constant factors. To be far more efficient it would have to examine far fewer candidates per relation. That depends on the size of the values, so it is a change of algorithm rather than of sieve.
+A real 200-digit matrix would need H1's 3,896 hours of relations, so its size is estimated from H4's matrices.
+- Re-merging RSA-130's relations at c200's density gives κ = 0.849. Scaling by the large-prime ideal count then gives 14.1 million rows and 2.4 × 10^9 nonzeros.
+- A new generator, `h6-matrix`, builds a synthetic matrix of that size with the column profile of a number field sieve matrix.
+- At RSA-130's shape the synthetic matrix runs within 11.5 percent of the real one (`scripts/h6_linalg.sh`, `docs/h6_linalg_200.md`, `data/results/h6_linalg.md`).
 
-Next is the linear algebra at 200 digits. It is the floor that remains even with a perfect sieve, and H3's rates also need it. After that comes the one-hour reach with tuned settings. H3 is not started.
+Block Wiedemann at 200 digits takes 47.9 laptop-hours, so H6 holds.
+- The parts: 661,289 matrix products at 0.24 s each (44 hours), lingen 0.95 hours, and 6 percent overhead.
+- Other work on the machine slowed some intervals. Counting only clean ones gives 55.8 hours, and the top of H4's range of matrix sizes gives 62.5. The linear algebra is therefore 48 to 63 laptop-hours, a sixth to an eighth of the stand-in.
+- The products are memory-bound. Once the 113 MB vector leaves the caches, the cost per nonzero is 1.2 to 1.4 times RSA-130's.
+
+The linear algebra is 1.2 to 1.6 percent of relation collection and linear algebra together. A complete 200-digit factorization is therefore about 3,950 laptop-hours plus polynomial selection. A relation collection that cost nothing would make it at most 63 to 82 times faster. If polynomial selection kept the 5 to 6 percent share it had in H4, that ceiling would be about 15 times.
+
+Next is polynomial selection at 200 digits, the one part of the cost not yet measured, and then the one-hour reach with tuned settings. H3 is not started.
 
 Full history in `context_convo_notes/current_state_history.md`.
 
@@ -94,6 +97,7 @@ Full history in `context_convo_notes/current_state_history.md`.
 - The five toy quartics sit +0.10% ± 0.03% above the model at 2^24 and 2^28, whatever their Galois group, while the forty NFS polynomials do not. Is that the neglected second-order term, or roots of small height that tiny coefficients produce? It is too small to matter for the verdict.
 - How far do tuned implementations move H2's ratios (8.2 for the sieve, 19.6 for the multiplication)? A tuned 96-bit multiplication on the CPU, a full ECM on the GPU, and a two-dimensional lattice siever with small-prime sieving and survivor rescans would each change them. None would move the bound of 189 hours by its own size.
 - 240 to 260 digits, the range of the latest records, is a stretch beyond the 200-digit target. From H1's 200-digit cost, L_N[1/3, 1.923] gives about 3 × 10^5, 8 × 10^5 and 2 × 10^6 laptop-hours at 240, 250 and 260 digits. H4 measured an effective constant of 1.67 to 1.68 between the laptop's one-hour reach and 200 digits. With that constant the figures are 1.6–1.8 × 10^5, 3.7–4.2 × 10^5 and 8.4–9.7 × 10^5. The constant rose with size across everything measured, so the second set is the lower one. By L_N[1/3] that calls for a constant below the special number field sieve's 1.526 on general numbers.
+- How long does polynomial selection take at 200 digits with CADO-NFS's c200 parameters? It is the only part of a 200-digit factorization no measurement here has covered. At the 5 to 6 percent share it had in H4's runs it would be 200 to 250 laptop-hours, four times the linear algebra (`docs/h6_linalg_200.md`). It also sets the ceiling on what a perfect relation collection could buy.
 - How much slower is a sustained 200-digit run than H1's samples? H1's 20-second samples ran with the CPU at 62 to 67 W. H4's sustained sieving drew 37 to 44 W, with macmon's 6-core tier at 2.88 GHz (`docs/h4_one_hour_reach.md`). By the clocks a sustained run is about 18 percent slower, which would put a complete 200-digit factorization at about 5,100 to 5,600 laptop-hours. A sustained run over one special-q range would measure it.
 - Which of macmon's two CPU tiers on this M5 Max is the performance tier? macmon labels the 12-core tier `P` and the 6-core tier `S`; `sysctl` reports `hw.perflevel0.physicalcpu` = 6 and `hw.perflevel1.physicalcpu` = 12. The hardware samples keep macmon's labels as reported.
 

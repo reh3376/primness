@@ -67,7 +67,13 @@ As of the latest update on the `primness_dev01` branch:
   - Nine `las -T` samples of RSA-130's sieve, as H4 ran it, put the sieve proper (norms, sieving and survivor search) at 84.9% of `las`'s time and 65.1% of the complete factorization.
   - A sieve that cost nothing and found the same relations would make the one-hour-reach factorization at most 2.87× faster, so H5 holds (limit 3×). At 200 digits the ceiling is 1.8–2.7×, and a free relation collection buys 5.9–11×, against the 4,300–4,700× one hour needs.
   - From RSA-130 to 200 digits the cost per sieve position grows only 1.45×. The number of positions grows 2,015×, because smooth values become rarer. A far more efficient replacement would have to examine far fewer candidates, which is a change of algorithm rather than of sieve.
-- Next concrete step: the linear algebra at 200 digits, the floor that remains even with a perfect sieve. Then the one-hour reach with tuned settings. H3, the rates a machine built for the two kernels would need, is not started.
+- H6 measured the linear algebra at 200 digits, under a prediction committed first (`docs/h6_falsifiable_prediction.md`, `docs/h6_linalg_200.md`, `scripts/h6_linalg.sh`).
+  - The matrix size is estimated from H4's matrices: 14.1 million rows and 2.4 × 10^9 nonzeros.
+  - A new generator, `h6-matrix`, builds it synthetically with an NFS column profile. It runs within 11.5% of the real RSA-130 matrix at that size.
+  - Block Wiedemann takes 47.9 laptop-hours: 661,289 products at 0.24 s, plus lingen and overhead. H6 predicted 46 within a factor of 2, so it holds.
+  - With interference from other work removed, or at the top of H4's size range, it is up to 63 hours. That is a sixth to an eighth of the records'-share stand-in the roadmap had used.
+  - A complete 200-digit factorization is about 3,950 laptop-hours plus polynomial selection. A relation collection that cost nothing would make it at most 63–82× faster.
+- Next concrete step: polynomial selection at 200 digits, the one part of the cost not yet measured, then the one-hour reach with tuned settings. H3, the rates a machine built for the two kernels would need, is not started.
 
 Full history of current-state snapshots lives in `context_convo_notes/current_state_history.md`. The authoritative living document is `primness_roadmap.md`.
 

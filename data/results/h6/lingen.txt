@@ -1,0 +1,4 @@
+length 440860
+checksum(F): 2a758a707b5502730064ccfffd1730533108c18f
+Timings for lingen_b64: (wct) 3416.22
+Timings for lingen_b64: (cpu) 3403.37 (aggregated over all threads and 1 MPI jobs)

@@ -1,0 +1,1 @@
+rows 1183823 density 111.4 seed 1 nonzeros 131898916 row_mean 111.42 row_sd 87.48 top1pct_share 0.4772 (law 0.4844) first_cols [234618, 229452, 223965, 219117, 214237, 210831, 205444, 201320] seconds 0.3

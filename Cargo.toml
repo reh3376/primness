@@ -63,6 +63,10 @@ path = "src/bin/d_checks.rs"
 name = "h2-cpu"
 path = "src/bin/h2_cpu.rs"
 
+[[bin]]
+name = "h6-matrix"
+path = "src/bin/h6_matrix.rs"
+
 [profile.release]
 lto = true
 codegen-units = 1

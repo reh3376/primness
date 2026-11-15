@@ -1,0 +1,13 @@
+~/external/cado-nfs/build/Mac.lan/linalg/bwc/krylov interleaving=0 nullspace=left interval=500 thr=3x6 matrix=./data/dumps/h6/syn130/m.bin skip_online_checks=1 m=64 wdir=./data/dumps/h6/syn130/wdir cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf prime=2 end=3000 n=64 ys=0..64 start=0
+~/external/cado-nfs/build/Mac.lan/linalg/bwc/bwc.pl krylov m=64 n=64 prime=2 thr=3x6 interleaving=0 nullspace=left interval=500 matrix=./data/dumps/h6/syn130/m.bin wdir=./data/dumps/h6/syn130/wdir cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf ys=0..64 start=0 end=3000 skip_online_checks=1
+# (692ecb7) ~/external/cado-nfs/build/Mac.lan/linalg/bwc/krylov interleaving=0 nullspace=left interval=500 thr=3x6 matrix=./data/dumps/h6/syn130/m.bin skip_online_checks=1 m=64 wdir=./data/dumps/h6/syn130/wdir cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf prime=2 end=3000 n=64 ys=0..64 start=0
+# (692ecb7) ~/external/cado-nfs/build/Mac.lan/linalg/bwc/krylov interleaving=0 nullspace=left interval=500 thr=3x6 matrix=./data/dumps/h6/syn130/m.bin skip_online_checks=1 m=64 wdir=./data/dumps/h6/syn130/wdir cpubinding=~/external/cado-nfs/parameters/misc/cpubinding.conf prime=2 end=3000 n=64 ys=0..64 start=0
+krylov: N=500 ; ETA (N=3000): Wed Nov 11 19:08:12 2026 [0.009 s/iter]
+krylov: N=1000 ; ETA (N=3000): Wed Nov 11 19:08:11 2026 [0.009 s/iter]
+krylov: N=1500 ; ETA (N=3000): Wed Nov 11 19:08:12 2026 [0.010 s/iter]
+krylov: N=2000 ; ETA (N=3000): Wed Nov 11 19:08:14 2026 [0.010 s/iter]
+krylov: N=2500 ; ETA (N=3000): Wed Nov 11 19:08:17 2026 [0.011 s/iter]
+krylov: N=3000 ; ETA (N=3000): Wed Nov 11 19:08:19 2026 [0.012 s/iter]
+krylov done N=3000 ; cpu-wait0: 0.00 s/iter [0.004..0.004]
+Timings for krylov: (wct) 35.90
+Timings for krylov: (cpu) 402.94 (aggregated over all threads and 1 MPI jobs)
